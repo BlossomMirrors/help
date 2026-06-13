@@ -1,0 +1,9 @@
+---
+title: Benutzerhandbuch
+icon: users
+order: 0
+---
+
+# Benutzerhandbuch
+
+Durchsuche die Abschnitte oder drücke `⌘ K` um in der Dokumentation zu suchen.

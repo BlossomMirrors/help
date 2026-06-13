@@ -1,0 +1,9 @@
+---
+title: Gamer Guide
+icon: star
+order: 0
+---
+
+# Gamer Guide
+
+Typography and formatting showcase from a different docset perspective.

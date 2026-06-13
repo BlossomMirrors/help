@@ -1,0 +1,79 @@
+---
+title: Mixed Content
+order: 2
+icon: wrench
+tag: new
+---
+
+# Mixed Content
+
+This page mixes headings, paragraphs, alerts, code, and lists to demonstrate how a typical long-form page looks and how the animated TOC line behaves.
+
+## Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Configuration
+
+> [!NOTE]
+> Configuration changes take effect after a page reload.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+
+```ts
+export default {
+  theme: 'system',
+  locale: 'en',
+  sidebar: {
+    collapsible: true,
+    defaultOpen: ['getting-started']
+  }
+};
+```
+
+### Sub-section A
+
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+- Neque porro quisquam est
+- Qui dolorem ipsum quia dolor sit
+- Amet, consectetur, adipisci velit
+
+### Sub-section B
+
+> [!TIP]
+> Ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+
+Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum dolorem eum fugiat quo voluptas nulla pariatur.
+
+## Advanced usage
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati.
+
+> [!WARNING]
+> Cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+```svelte
+<script lang="ts">
+  import { getNav } from '$lib/nav';
+  const nav = $derived(getNav('user'));
+</script>
+
+{#each nav as node (node.slug)}
+  <a href={node.href}>{node.title}</a>
+{/each}
+```
+
+### Performance
+
+Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus:
+
+1. Temporibus autem quibusdam et aut officiis debitis
+2. Rerum necessitatibus saepe eveniet ut et voluptates
+3. Repudiandae sint et molestiae non recusandae
+
+## Summary
+
+Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.

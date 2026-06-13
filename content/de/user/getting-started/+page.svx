@@ -1,0 +1,77 @@
+---
+title: Erste Schritte
+order: 1
+icon: rocket
+---
+
+# Erste Schritte
+
+Diese Seite demonstriert **Überschriften**, **Listen**, **Codeblöcke** und **Inline-Formatierung**.
+
+## Überschriften
+
+Überschriften strukturieren den Inhalt. Das Inhaltsverzeichnis rechts verfolgt alle `h2`- und `h3`-Überschriften, die im Viewport sichtbar sind.
+
+### Dritte Ebene
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+#### Vierte Ebene
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+## Absätze und Inline-Formatierung
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. **Fetter Text** hebt wichtige Begriffe hervor. *Kursiver Text* dient zur Betonung. Kombiniert: ***fett und kursiv***. Nutze `Inline-Code` für Befehle oder Dateinamen.
+
+~~Durchgestrichener Text~~ zeigt entfernten oder veralteten Inhalt. [Links](#) öffnen standardmäßig im gleichen Tab.
+
+## Listen
+
+Ungeordnet:
+
+- Lorem ipsum dolor sit amet
+- Consectetur adipiscing elit
+  - Verschachteltes Element eins
+  - Verschachteltes Element zwei
+    - Doppelt verschachtelt
+- Sed do eiusmod tempor
+
+Geordnet:
+
+1. Abhängigkeiten installieren mit `bun install`
+2. Dev-Server starten mit `bun dev`
+3. `http://localhost:5173` öffnen
+
+Aufgabenliste:
+
+- [x] Erledigte Aufgabe
+- [x] Weitere erledigte Aufgabe
+- [ ] Ausstehende Aufgabe
+- [ ] Noch nicht begonnen
+
+## Codeblöcke
+
+Inline: Starte den Server mit `bun dev`.
+
+Mit Syntaxhervorhebung:
+
+```ts
+import { getNav, flattenNav } from '$lib/nav';
+
+export async function load({ params }) {
+  const [docset, ...rest] = params.slug.split('/');
+  const path = rest.join('/');
+  return { docset, path };
+}
+```
+
+```bash
+git clone https://github.com/example/blossom
+cd blossom
+bun install && bun dev
+```
+
+## Blockquotes
+
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

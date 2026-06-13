@@ -1,0 +1,104 @@
+---
+title: Code Blocks Showcase
+order: 1
+icon: code
+---
+
+# Code Blocks Showcase
+
+This page demonstrates fenced code blocks across multiple languages with the copy button.
+
+## TypeScript
+
+```ts
+import type { Heading } from '$lib/hooks/use-toc.svelte';
+
+function flattenWithDepth(
+  headings: Heading[],
+  depth = 0
+): Array<{ heading: Heading; depth: number }> {
+  return headings.flatMap((h) => [
+    { heading: h, depth },
+    ...flattenWithDepth(h.children, depth + 1)
+  ]);
+}
+```
+
+## Svelte component
+
+```svelte
+<script lang="ts">
+  import { page } from '$app/state';
+  import { getNav } from '$lib/nav';
+
+  const currentPath = $derived(page.url.pathname);
+  const nav = $derived(getNav('user'));
+</script>
+
+{#each nav as node (node.slug)}
+  <a
+    href={node.href}
+    class={node.href === currentPath ? 'active' : ''}
+  >
+    {node.title}
+  </a>
+{/each}
+```
+
+## CSS / Tailwind
+
+```css
+.admonition {
+  border-radius: var(--radius-card);
+  border-left: 4px solid;
+  padding: 0.75rem 1rem;
+  margin: 1.25rem 0;
+}
+
+.admonition-note   { border-color: var(--color-info);    background: color-mix(in srgb, var(--color-info) 8%, transparent); }
+.admonition-tip    { border-color: var(--color-success); background: color-mix(in srgb, var(--color-success) 8%, transparent); }
+.admonition-warning { border-color: var(--color-warning); background: color-mix(in srgb, var(--color-warning) 8%, transparent); }
+```
+
+## Shell
+
+```bash
+# Clone and set up
+git clone https://github.com/example/blossom
+cd blossom && bun install
+
+# Development
+bun dev          # starts Vite dev server on :5173
+bun build        # production build
+bun preview      # preview production build
+
+# Type checking
+bunx svelte-check --tsconfig ./tsconfig.json
+```
+
+## JSON / Config
+
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "module": "ESNext",
+    "paths": {
+      "$lib": ["./src/lib"],
+      "$lib/*": ["./src/lib/*"]
+    }
+  }
+}
+```
+
+## Long lines
+
+```ts
+// Long lines should scroll horizontally rather than wrap
+export const allModules = import.meta.glob<{ metadata?: ContentMeta }>('/content/**\/+page.svx', { eager: true });
+```
+
+> [!NOTE]
+> The **Copy** button appears on hover in the top-right corner of every code block. It copies the raw text without any syntax markup.

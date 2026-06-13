@@ -1,0 +1,52 @@
+---
+title: Gemischter Inhalt
+order: 2
+icon: bell
+tag: new
+---
+
+# Gemischter Inhalt
+
+Diese Seite kombiniert verschiedene Markdown-Features auf einer Seite — nützlich um das Layout mit heterogenem Inhalt zu testen.
+
+## Übersicht
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+> [!TIP]
+> Dieser Abschnitt enthält eine Mischung aus Listen, Tabellen, Codeblöcken und Hinweisen, die zusammen das volle Layout testen.
+
+## Feature-Liste
+
+- **Animiertes TOC** — die blaue Linie folgt dem aktuell sichtbaren Bereich
+- **Geteilte Seitenleiste** — Ordner mit Index haben Links und Chevron getrennt
+- **Docset-Umschalter** — wechsle zwischen Benutzer-, Mitwirkenden- und Spieler-Handbuch
+- **Lokalisierung** — Metadaten und Inhalte je nach Spracheinstellung
+
+## Code-Snippet
+
+```svelte
+<script lang="ts">
+  import { getLocale } from '$lib/paraglide/runtime';
+
+  const locale = getLocale();
+</script>
+
+<p>Aktuelle Sprache: {locale}</p>
+```
+
+## Status-Tabelle
+
+| Komponente | Version | Stabil |
+|------------|---------|--------|
+| SvelteKit | 2.x | ✅ |
+| Svelte | 5.x | ✅ |
+| mdsvex | 0.12 | ✅ |
+| Paraglide | 2.x | ✅ |
+
+> [!NOTE]
+> Alle oben genannten Pakete sind in `package.json` als direkte Abhängigkeiten gelistet.
+
+## Abschließender Absatz
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

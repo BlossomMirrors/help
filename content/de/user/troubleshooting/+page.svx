@@ -1,0 +1,50 @@
+---
+title: Hinweise & Warnungen
+order: 3
+icon: wrench
+---
+
+# Hinweise & Warnungen
+
+Diese Seite demonstriert alle fünf Hinweistypen (Admonitions) des Docs-Renderers.
+
+## Hinweis
+
+> [!NOTE]
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nutze **Hinweis** für ergänzende Informationen, die nützlich, aber nicht kritisch sind. Sed do eiusmod tempor incididunt ut labore.
+
+## Tipp
+
+> [!TIP]
+> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nutze **Tipp** für Abkürzungen, Tricks und Best-Practice-Empfehlungen, die dir effizienter arbeiten lassen.
+
+## Wichtig
+
+> [!IMPORTANT]
+> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nutze **Wichtig** für Informationen, die Benutzer nicht übersehen dürfen.
+
+## Warnung
+
+> [!WARNING]
+> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nutze **Warnung** für Aktionen, die Datenverlust oder schwer umkehrbare Folgen haben könnten.
+
+## Achtung
+
+> [!CAUTION]
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Nutze **Achtung** für die schwerwiegendsten Risiken — destruktive oder nicht rückgängig zu machende Aktionen.
+
+## Hinweise mit Inhalt
+
+Hinweise können beliebige Block-Elemente enthalten:
+
+> [!NOTE]
+> Du kannst **fett**, `Code` und sogar Listen innerhalb eines Hinweises nutzen:
+>
+> - Punkt eins
+> - Punkt zwei
+>
+> Lorem ipsum dolor sit amet.
+
+## Kontext
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hinweise unterbrechen den Lesefluss bewusst — setze sie sparsam ein, damit sie ihre visuelle Wirkung behalten. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

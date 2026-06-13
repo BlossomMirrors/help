@@ -1,0 +1,56 @@
+---
+title: Tables Showcase
+order: 1
+icon: zap
+---
+
+# Tables Showcase
+
+This page demonstrates markdown table rendering with various column alignments and content types.
+
+## Basic table
+
+| Name | Type | Default |
+|------|------|---------|
+| `title` | `string` | — |
+| `order` | `number` | `999` |
+| `icon` | `string` | — |
+| `tag` | `'new' \| 'beta' \| 'deprecated'` | — |
+
+## Column alignment
+
+| Left aligned | Centre aligned | Right aligned |
+|:-------------|:--------------:|--------------:|
+| Lorem ipsum | dolor sit | amet |
+| Consectetur | adipiscing | elit |
+| Sed do | eiusmod | tempor |
+
+## With inline formatting
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| **Alerts** | ✅ Done | All 5 types |
+| **Code blocks** | ✅ Done | With copy button |
+| **Tables** | ✅ Done | GFM-flavoured |
+| **TOC** | ✅ Done | Animated line |
+| ~~Tabs~~ | ❌ Planned | Future feature |
+| **Search** | 🚧 Beta | Fuzzy matching |
+
+## Wider content
+
+| Shortcut | Platform | Action | Context |
+|----------|----------|--------|---------|
+| `⌘ K` | macOS | Open command palette | Global |
+| `Ctrl K` | Windows / Linux | Open command palette | Global |
+| `⌘ /` | macOS | Toggle sidebar | Global |
+| `⌘ ⇧ F` | macOS | Filter panel | Inside a view |
+| `⌘ ⇧ G` | macOS | Group by | Inside a view |
+| `G` then `H` | All | Go to Home | Global |
+
+## Long cell content
+
+| Key | Description |
+|-----|-------------|
+| `buildPath` | Generates an SVG path string from an array of segments, connecting same-depth items with vertical lines and inserting cubic S-curves between depth changes. |
+| `flattenWithDepth` | Recursively flattens the heading tree, annotating each node with its depth level starting from zero. |
+| `offsetTopTo` | Walks the `offsetParent` chain from a given element up to a container, accumulating `offsetTop` values to get the total vertical offset. |

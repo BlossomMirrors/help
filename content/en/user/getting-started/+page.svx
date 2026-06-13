@@ -1,0 +1,95 @@
+---
+title: Getting Started
+order: 1
+icon: rocket
+---
+
+# Getting Started
+
+This page demonstrates **headings**, **lists**, **code blocks**, and **inline formatting**.
+
+## Headings
+
+Use headings to structure your content. The TOC on the right tracks all `h2` and `h3` headings visible in the viewport.
+
+### Third-level heading
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+#### Fourth-level heading
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+## Paragraphs and inline formatting
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. **Bold text** draws attention to key terms. *Italic text* is used for emphasis or titles. You can combine them: ***bold italic***. Use `inline code` for commands, file names, or short snippets.
+
+~~Strikethrough~~ indicates removed or deprecated content. [Links](#) open in the same tab by default.
+
+## Lists
+
+Unordered:
+
+- Lorem ipsum dolor sit amet
+- Consectetur adipiscing elit
+  - Nested item one
+  - Nested item two
+    - Doubly nested
+- Sed do eiusmod tempor
+
+Ordered:
+
+1. Install dependencies with `bun install`
+2. Start the dev server with `bun dev`
+3. Open `http://localhost:5173`
+
+Task list:
+
+- [x] Completed item
+- [x] Another done item
+- [ ] Pending item
+- [ ] Not started yet
+
+## Code blocks
+
+Inline: run `bun dev` to start.
+
+Fenced with syntax highlighting:
+
+```ts
+import { getNav, flattenNav } from '$lib/nav';
+
+export async function load({ params }) {
+  const [docset, ...rest] = params.slug.split('/');
+  const path = rest.join('/');
+  return { docset, path };
+}
+```
+
+```bash
+git clone https://github.com/example/blossom
+cd blossom
+bun install
+bun dev
+```
+
+```json
+{
+  "name": "blossom-help",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build"
+  }
+}
+```
+
+## Blockquotes
+
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+Nested blockquote:
+
+> Outer quote lorem ipsum.
+>
+> > Inner nested quote.

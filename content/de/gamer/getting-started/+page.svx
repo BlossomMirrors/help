@@ -1,0 +1,83 @@
+---
+title: Typografie-Showcase
+order: 1
+icon: type
+---
+
+# Typografie-Showcase
+
+Diese Seite demonstriert alle Überschriften-Ebenen, Fließtext und typografische Elemente.
+
+## Zweite Ebene
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+
+### Dritte Ebene
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+
+#### Vierte Ebene
+
+Sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+##### Fünfte Ebene
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+
+###### Sechste Ebene
+
+Tiefste mögliche Überschriften-Ebene in Markdown.
+
+## Fließtext
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Inline-Stile
+
+**Fetter Text.** *Kursiver Text.* ***Fett und kursiv.*** `Inline-Code`. ~~Durchgestrichen~~. [Ein Link](#).
+
+Hochgestellt: E=mc<sup>2</sup>. Tiefgestellt: H<sub>2</sub>O.
+
+## Ungeordnete Liste
+
+- Punkt eins mit etwas mehr Beschreibung als üblich
+- Punkt zwei ist kürzer
+  - Verschachtelter Punkt zwei eins
+  - Verschachtelter Punkt zwei zwei
+- Punkt drei schließt die Liste ab
+
+## Geordnete Liste
+
+1. Zuerst dies tun
+2. Dann jenes
+3. Abschließend das Ergebnis überprüfen
+
+## Gemischte Liste
+
+1. Erster Hauptpunkt
+   - Detail A
+   - Detail B
+2. Zweiter Hauptpunkt
+   - Detail C
+     - Tiefes Detail
+3. Dritter Hauptpunkt
+
+## Tabelle
+
+| Überschrifts-Ebene | HTML-Tag | Verwendung |
+|--------------------|----------|-----------|
+| Erste | `h1` | Seitentitel |
+| Zweite | `h2` | Hauptabschnitte |
+| Dritte | `h3` | Unterabschnitte |
+| Vierte | `h4` | Details |
+| Fünfte-Sechste | `h5`-`h6` | Selten |
+
+## Blockquote
+
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+> Verschachteltes Zitat-Beispiel.
+>
+> > Eingerücktes inneres Zitat. Duis aute irure dolor in reprehenderit.

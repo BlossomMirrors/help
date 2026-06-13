@@ -1,0 +1,21 @@
+---
+title: Features
+order: 2
+icon: sparkles
+---
+
+# Features
+
+Dieser Abschnitt demonstriert funktionale Features der Dokumentationsseite: geteilte Zeilen in der Seitenleiste, aufklappbare Ordner und animierte TOC-Indikatoren.
+
+## Seitenleisten-Navigation
+
+Ordner mit einer eigenen Index-Seite zeigen die geteilte Zeile: links ein klickbarer Link, rechts ein Chevron zum Auf- und Zuklappen der Unterseiten.
+
+## TOC-Indikator
+
+Der Inhaltsverzeichnis-Indikator rechts folgt dem sichtbaren Bereich der Seite. Die blaue Linie passt sich der Einrückungstiefe an und wird mit abgerundeten Kurven zwischen Tiefen-Wechseln gezeichnet.
+
+## Docsets
+
+Jeder Docset ist durch eine `+docset.ts`-Datei definiert und wird automatisch entdeckt. Neue Docsets werden ohne Konfigurationsänderungen registriert.

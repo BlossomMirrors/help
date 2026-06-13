@@ -1,0 +1,9 @@
+---
+title: Contributor Guide
+icon: code
+order: 0
+---
+
+# Contributor Guide
+
+Code blocks, syntax highlighting, and development workflow showcase.

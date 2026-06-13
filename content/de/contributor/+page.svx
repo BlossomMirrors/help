@@ -1,0 +1,9 @@
+---
+title: Mitwirkenden-Handbuch
+icon: code
+order: 0
+---
+
+# Mitwirkenden-Handbuch
+
+Durchsuche die Abschnitte oder drücke `⌘ K` um in der Dokumentation zu suchen.

@@ -1,0 +1,74 @@
+---
+title: Typography Showcase
+order: 1
+icon: book-open
+---
+
+# Typography Showcase
+
+This page demonstrates the prose styles rendered by the `article.prose` container.
+
+## Heading levels
+
+### H3 — Third level
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+#### H4 — Fourth level
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+## Paragraph spacing
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
+
+## Emphasis
+
+Normal text alongside **bold**, *italic*, ***bold italic***, `inline code`, and ~~strikethrough~~.
+
+A [hyperlink](#) and a [link with title](# "This is a title").
+
+## Horizontal rule
+
+Above the rule.
+
+---
+
+Below the rule.
+
+## Dense list
+
+- Consectetur adipiscing elit
+- Sed do eiusmod tempor incididunt
+- Ut labore et dolore magna aliqua
+- Ut enim ad minim veniam
+- Quis nostrud exercitation ullamco
+- Nisi ut aliquip ex ea commodo
+- Consequat duis aute irure dolor
+- In reprehenderit in voluptate
+
+## Nested lists
+
+1. First top-level item
+   1. Sub-item one
+   2. Sub-item two
+      - Leaf a
+      - Leaf b
+2. Second top-level item
+   - Unordered child
+   - Another unordered child
+3. Third top-level item
+
+## Definition-style table
+
+| Term | Explanation |
+|------|-------------|
+| **Docset** | A top-level documentation section (user, contributor, gamer) with its own nav tree |
+| **`+page.svx`** | The index page for a content directory, served when the directory path is visited |
+| **`+docset.ts`** | Metadata file that registers a docset and provides a localised title and icon |
+| **TOC** | Table of contents generated from `h2`-`h4` headings on the current page |
+| **Admonition** | Styled alert block rendered from `> [!TYPE]` blockquote syntax |
