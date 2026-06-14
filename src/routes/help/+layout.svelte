@@ -2,7 +2,6 @@
 	import { page } from '$app/state';
 	import { getNav, flattenNav, type NavNode } from '$lib/nav';
 	import { getDocsetIds, getDocsetMeta } from '$lib/docsets';
-	import { setLocale, locales, getLocale } from '$lib/paraglide/runtime';
 	import { UseToc } from '$lib/hooks/use-toc.svelte';
 	import ScrollToTop from '$lib/components/ui/scroll-to-top.svelte';
 	import * as Toc from '$lib/components/ui/toc/index.js';
@@ -11,56 +10,15 @@
 	import * as m from '$lib/paraglide/messages';
 	import { onMount } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
+	import { initMdComponents } from '$lib/md-helper';
 
 	let { children } = $props();
-
-	const alertLabels: Record<string, () => string> = {
-		note: m.alert_note,
-		tip: m.alert_tip,
-		important: m.alert_important,
-		warning: m.alert_warning,
-		caution: m.alert_caution
-	};
-
-	function initMdComponents(root: HTMLElement) {
-		root.querySelectorAll<HTMLElement>('.admonition-title[data-type]').forEach((el) => {
-			const type = el.dataset.type ?? '';
-			el.textContent = alertLabels[type]?.() ?? type;
-		});
-		root.querySelectorAll<HTMLElement>('pre code').forEach((code) => {
-			const pre = code.parentElement;
-			if (!pre || pre.querySelector('.copy-btn')) return;
-			const btn = document.createElement('button');
-			btn.className = 'copy-btn';
-			btn.textContent = m.copy();
-			btn.setAttribute('aria-label', m.aria_copy_code());
-			btn.addEventListener('click', async () => {
-				await navigator.clipboard.writeText(code.textContent ?? '');
-				btn.textContent = m.copied();
-				setTimeout(() => (btn.textContent = m.copy()), 2000);
-			});
-			pre.appendChild(btn);
-		});
-	}
 
 	onMount(() => {
 		if (articleEl) initMdComponents(articleEl);
 	});
 	afterNavigate(() => {
 		if (articleEl) initMdComponents(articleEl);
-	});
-
-	$effect(() => {
-		const labels: Record<string, string> = {
-			note: m.alert_note(),
-			tip: m.alert_tip(),
-			important: m.alert_important(),
-			warning: m.alert_warning(),
-			caution: m.alert_caution()
-		};
-		articleEl?.querySelectorAll<HTMLElement>('.admonition-title[data-type]').forEach((el) => {
-			el.textContent = labels[el.dataset.type ?? ''] ?? '';
-		});
 	});
 
 	let sidebarOpen = $state(false);
@@ -98,36 +56,10 @@
 		openFolders = next;
 	}
 
-	const breadcrumbs = $derived.by(() => {
-		const flat = flattenNav(nav);
-		const firstDocsetPage = flat[0]?.href ?? `/help/${currentDocsetId}`;
-		const segments = currentPath
-			.replace(/^\/help\/[^/]+\/?/, '')
-			.split('/')
-			.filter(Boolean);
-		const crumbs: { label: string; href: string }[] = [
-			{ label: currentDocset.title, href: firstDocsetPage }
-		];
-		let href = `/help/${currentDocsetId}`;
-		for (const seg of segments) {
-			href += '/' + seg;
-			const node = flat.find((n) => n.href === href);
-			crumbs.push({ label: node?.title ?? seg, href });
-		}
-		return crumbs;
-	});
-
 	const currentArticle = $derived(flattenNav(nav).find((n) => n.href === currentPath));
-
-	const languages = locales.map((code) => ({
-		code,
-		label: code === 'en' ? 'English' : code === 'de' ? 'Deutsch' : code
-	}));
-	let currentLocale = $state(getLocale());
-	function handleLanguageChange(code: string) { setLocale(code as 'en' | 'de'); }
 </script>
 
-<svelte:head><title>{currentArticle?.title ?? 'Help'} — {m.help_title()}</title></svelte:head>
+<svelte:head><title>{currentArticle?.title ?? 'Help'} - {m.help_title()}</title></svelte:head>
 
 {#if sidebarOpen}
 	<button
@@ -145,17 +77,17 @@
 		{currentDocset}
 		{currentPath}
 		{openFolders}
-		{languages}
-		{currentLocale}
 		onToggleFolder={toggleFolder}
 		onClose={() => (sidebarOpen = false)}
-		onLanguageChange={handleLanguageChange}
 	/>
 
 	<div class="flex min-w-0 flex-1 flex-col lg:ml-0">
 		<HelpHeader
 			{sidebarOpen}
-			{breadcrumbs}
+			{nav}
+			{currentDocsetId}
+			{currentDocset}
+			{currentPath}
 			onToggleSidebar={() => (sidebarOpen = !sidebarOpen)}
 		/>
 

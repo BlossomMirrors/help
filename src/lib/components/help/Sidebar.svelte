@@ -19,11 +19,8 @@
 		currentDocset: DocsetMeta;
 		currentPath: string;
 		openFolders: Set<string>;
-		languages: { code: string; label: string }[];
-		currentLocale: string;
 		onToggleFolder: (slug: string) => void;
 		onClose: () => void;
-		onLanguageChange: (code: string) => void;
 	};
 
 	let {
@@ -33,11 +30,8 @@
 		currentDocset,
 		currentPath,
 		openFolders,
-		languages,
-		currentLocale,
 		onToggleFolder,
-		onClose,
-		onLanguageChange
+		onClose
 	}: Props = $props();
 
 	const tagClasses: Record<NavTag, string> = {
@@ -107,7 +101,7 @@
 			aria-label={m.back_to_home()}><HomeIcon size={15} strokeWidth={1.5} /></a
 		>
 		<div class="flex-1"></div>
-		<LanguageSwitcher {languages} value={currentLocale} onChange={onLanguageChange} />
+		<LanguageSwitcher />
 		<ModeToggle />
 	</div>
 </aside>

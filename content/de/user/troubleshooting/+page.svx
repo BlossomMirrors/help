@@ -4,6 +4,12 @@ order: 3
 icon: wrench
 ---
 
+<script>
+	import { Callout } from '$lib/md-layout.svelte';
+</script>
+
+<Callout>Test</Callout>
+
 # Hinweise & Warnungen
 
 Diese Seite demonstriert alle fünf Hinweistypen (Admonitions) des Docs-Renderers.
@@ -31,7 +37,7 @@ Diese Seite demonstriert alle fünf Hinweistypen (Admonitions) des Docs-Renderer
 ## Achtung
 
 > [!CAUTION]
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Nutze **Achtung** für die schwerwiegendsten Risiken — destruktive oder nicht rückgängig zu machende Aktionen.
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Nutze **Achtung** für die schwerwiegendsten Risiken - destruktive oder nicht rückgängig zu machende Aktionen.
 
 ## Hinweise mit Inhalt
 
@@ -47,4 +53,4 @@ Hinweise können beliebige Block-Elemente enthalten:
 
 ## Kontext
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hinweise unterbrechen den Lesefluss bewusst — setze sie sparsam ein, damit sie ihre visuelle Wirkung behalten. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hinweise unterbrechen den Lesefluss bewusst - setze sie sparsam ein, damit sie ihre visuelle Wirkung behalten. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

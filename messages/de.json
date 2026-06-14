@@ -33,5 +33,6 @@
 	"kbd_close": "schließen",
 	"copy": "Kopieren",
 	"copied": "Kopiert!",
-	"aria_copy_code": "Code kopieren"
+	"aria_copy_code": "Code kopieren",
+	"aria_change_language": "Sprache wechseln"
 }

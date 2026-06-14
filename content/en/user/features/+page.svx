@@ -8,5 +8,5 @@ icon: book-open
 
 This section covers individual feature showcases. Each sub-page focuses on a different component of the docs renderer.
 
-- [Keyboard Shortcuts](/help/user/features/shortcuts) — tables showcase
-- [Notifications](/help/user/features/notifications) — mixed content showcase
+- [Keyboard Shortcuts](/help/user/features/shortcuts) - tables showcase
+- [Notifications](/help/user/features/notifications) - mixed content showcase

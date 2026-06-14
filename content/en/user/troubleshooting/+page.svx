@@ -31,7 +31,7 @@ This page demonstrates all five alert (admonition) types supported by the docs r
 ## Caution
 
 > [!CAUTION]
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Use **Caution** for the most severe risks — destructive or irreversible actions.
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Use **Caution** for the most severe risks - destructive or irreversible actions.
 
 ## Alerts with content
 
@@ -47,4 +47,4 @@ Alerts can contain any block-level content:
 
 ## Inline context
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Alerts interrupt the reading flow intentionally — use them sparingly so they retain their visual weight. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Alerts interrupt the reading flow intentionally - use them sparingly so they retain their visual weight. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.

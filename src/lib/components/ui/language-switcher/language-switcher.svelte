@@ -1,63 +1,48 @@
-<script lang="ts" module>
-	export type Language = {
-		/** Language code (e.g., 'en', 'de') */
-		code: string;
-		/** Display name (e.g., 'English', 'Deutsch') */
-		label: string;
-	};
-
-	export type LanguageSwitcherProps = {
-		/** List of available languages */
-		languages: Language[];
-
-		/** Current selected language code */
-		value?: string;
-
-		/** Dropdown alignment */
-		align?: 'start' | 'center' | 'end';
-
-		/** Called when the language changes */
-		onChange?: (code: string) => void;
-
-		class?: string;
-	};
-</script>
-
 <script lang="ts">
-	import GlobeIcon from '@lucide/svelte/icons/globe';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import { cn } from '$lib/utils.js';
-	import Button from '$lib/components/button.svelte';
+	import * as Select from '$lib/components/ui/select/index.js';
+	import { buttonVariants } from '$lib/components/ui/button/index.js';
+	import { locales, getLocale, setLocale } from '$lib/paraglide/runtime';
 
-	let {
-		languages = [],
-		value = $bindable(''),
-		align = 'end',
-		onChange,
-		class: className
-	}: LanguageSwitcherProps = $props();
+	import type { Component } from 'svelte';
 
-	// set default code if there isn't one selected
-	if (value === '') {
-		value = languages[0].code;
-	}
+	import enFlag from '$lib/components/icons/flags/en.svelte';
+	import deFlag from '$lib/components/icons/flags/de.svelte';
+
+	const flags: Record<string, Component> = { en: enFlag, de: deFlag };
+	const labels: Record<string, string> = { en: 'English', de: 'Deutsch' };
+
+	let current = $state(getLocale());
 </script>
 
-<DropdownMenu.Root>
-	<DropdownMenu.Trigger class={className} aria-label="Change language">
-		<Button size="icon">
-			<GlobeIcon class="size-4" />
-			<span class="sr-only">Change language</span>
-		</Button>
-	</DropdownMenu.Trigger>
-	<DropdownMenu.Content {align}>
-		<DropdownMenu.RadioGroup bind:value onValueChange={onChange}>
-			{#each languages as language (language.code)}
-				<DropdownMenu.RadioItem value={language.code}>
-					{language.label}
-				</DropdownMenu.RadioItem>
-			{/each}
-		</DropdownMenu.RadioGroup>
-	</DropdownMenu.Content>
-</DropdownMenu.Root>
+<Select.Root
+	type="single"
+	value={current}
+	onValueChange={(v) => {
+		if (v) {
+			current = v as 'de' | 'en';
+			setLocale(v as 'de' | 'en');
+		}
+	}}
+>
+	<Select.Trigger class={buttonVariants({ variant: 'default' })}>
+		<div class="flex items-center">
+			{#if flags[current]}
+				{@const Flag = flags[current]}
+				<Flag class="h-4 w-auto" />
+			{/if}
+		</div>
+	</Select.Trigger>
+	<Select.Content>
+		{#each locales as locale (locale)}
+			<Select.Item value={locale}>
+				<div class="flex items-center gap-2">
+					{#if flags[locale]}
+						{@const Flag = flags[locale]}
+						<Flag class="h-4 w-auto" />
+					{/if}
+					{labels[locale]}
+				</div>
+			</Select.Item>
+		{/each}
+	</Select.Content>
+</Select.Root>

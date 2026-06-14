@@ -4,13 +4,60 @@ order: 1
 icon: rocket
 ---
 
+<script>
+	import { Steps, Step, Callout } from '$lib/md-layout.svelte';
+</script>
+
 # Getting Started
 
-This page demonstrates **headings**, **lists**, **code blocks**, and **inline formatting**.
+This page demonstrates **headings**, **lists**, **code blocks**, inline formatting, and doc components.
+
+
+## Steps
+
+<Steps>
+<Step>
+
+**Install dependencies**
+
+Run `bun install` in the project root.
+
+</Step>
+<Step>
+
+**Start the dev server**
+
+```bash
+bun dev
+```
+
+The server starts at `http://localhost:5173`.
+
+</Step>
+<Step>
+
+**Open the app**
+
+Navigate to `http://localhost:5173` in your browser.
+
+</Step>
+</Steps>
+
+## Callouts
+
+<Callout type="note" title="Note">
+Use **Callout** for rich content that needs Svelte components inside - unlike the markdown `> [!NOTE]` syntax which is plain text only.
+</Callout>
+
+<Callout type="tip" title="Tip">
+Import doc components from `$lib/md-layout.svelte` — it's the single registry for all doc components.
+</Callout>
+
+<Callout type="warning" title="Warning">
+This is a warning callout. Use it for actions that could have unintended side effects.
+</Callout>
 
 ## Headings
-
-Use headings to structure your content. The TOC on the right tracks all `h2` and `h3` headings visible in the viewport.
 
 ### Third-level heading
 
@@ -20,76 +67,29 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-## Paragraphs and inline formatting
+## Inline formatting
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. **Bold text** draws attention to key terms. *Italic text* is used for emphasis or titles. You can combine them: ***bold italic***. Use `inline code` for commands, file names, or short snippets.
-
-~~Strikethrough~~ indicates removed or deprecated content. [Links](#) open in the same tab by default.
+**Bold text** draws attention to key terms. *Italic text* is used for emphasis. Use `inline code` for commands or file names. ~~Strikethrough~~ indicates removed content.
 
 ## Lists
-
-Unordered:
 
 - Lorem ipsum dolor sit amet
 - Consectetur adipiscing elit
   - Nested item one
   - Nested item two
-    - Doubly nested
 - Sed do eiusmod tempor
 
-Ordered:
-
-1. Install dependencies with `bun install`
-2. Start the dev server with `bun dev`
-3. Open `http://localhost:5173`
-
-Task list:
-
-- [x] Completed item
-- [x] Another done item
-- [ ] Pending item
-- [ ] Not started yet
-
-## Code blocks
-
-Inline: run `bun dev` to start.
-
-Fenced with syntax highlighting:
+## Code block
 
 ```ts
 import { getNav, flattenNav } from '$lib/nav';
 
 export async function load({ params }) {
   const [docset, ...rest] = params.slug.split('/');
-  const path = rest.join('/');
-  return { docset, path };
+  return { docset, path: rest.join('/') };
 }
 ```
 
-```bash
-git clone https://github.com/example/blossom
-cd blossom
-bun install
-bun dev
-```
-
-```json
-{
-  "name": "blossom-help",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build"
-  }
-}
-```
-
-## Blockquotes
+## Blockquote
 
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-Nested blockquote:
-
-> Outer quote lorem ipsum.
->
-> > Inner nested quote.

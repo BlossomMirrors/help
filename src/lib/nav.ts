@@ -19,7 +19,7 @@ type ContentMeta = {
 	icon?: string;
 };
 
-// Only scan +page.svx files — slug comes from the containing folder
+// Only scan +page.svx files - slug comes from the containing folder
 const allModules = import.meta.glob<{ metadata?: ContentMeta }>('/content/**\/+page.svx', {
 	eager: true
 });
@@ -59,7 +59,7 @@ function buildTree(entries: { rel: string; meta: ContentMeta }[], docset: string
 			if (isLeaf) {
 				const href = `/help/${docset}/${folderPath}`;
 				if (existing) {
-					// Folder already created as a group node — attach href and metadata to it
+					// Folder already created as a group node - attach href and metadata to it
 					existing.href = href;
 					if (meta.title) existing.title = meta.title;
 					if (meta.icon) existing.icon = meta.icon;

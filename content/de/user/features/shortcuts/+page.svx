@@ -12,10 +12,10 @@ Diese Seite demonstriert Tabellen mit verschiedenen Spaltenausrichtungen und Inh
 
 | Name | Typ | Standard |
 |------|-----|----------|
-| `title` | `string` | — |
+| `title` | `string` | - |
 | `order` | `number` | `999` |
-| `icon` | `string` | — |
-| `tag` | `'new' \| 'beta' \| 'deprecated'` | — |
+| `icon` | `string` | - |
+| `tag` | `'new' \| 'beta' \| 'deprecated'` | - |
 
 ## Spaltenausrichtung
 

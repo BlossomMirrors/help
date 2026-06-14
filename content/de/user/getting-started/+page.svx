@@ -24,7 +24,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. **Fetter Text** hebt wichtige Begriffe hervor. *Kursiver Text* dient zur Betonung. Kombiniert: ***fett und kursiv***. Nutze `Inline-Code` für Befehle oder Dateinamen.
 
-~~Durchgestrichener Text~~ zeigt entfernten oder veralteten Inhalt. [Links](#) öffnen standardmäßig im gleichen Tab.
+~~Durchgestrichener Text~~ zeigt entfernten oder veralteten Inhalt. [Links](/) öffnen standardmäßig im gleichen Tab.
 
 ## Listen
 

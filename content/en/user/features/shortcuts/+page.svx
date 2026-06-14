@@ -12,10 +12,10 @@ This page demonstrates markdown table rendering with various column alignments a
 
 | Name | Type | Default |
 |------|------|---------|
-| `title` | `string` | — |
+| `title` | `string` | - |
 | `order` | `number` | `999` |
-| `icon` | `string` | — |
-| `tag` | `'new' \| 'beta' \| 'deprecated'` | — |
+| `icon` | `string` | - |
+| `tag` | `'new' \| 'beta' \| 'deprecated'` | - |
 
 ## Column alignment
 

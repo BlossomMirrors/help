@@ -7,7 +7,7 @@ tag: new
 
 # Gemischter Inhalt
 
-Diese Seite kombiniert verschiedene Markdown-Features auf einer Seite — nützlich um das Layout mit heterogenem Inhalt zu testen.
+Diese Seite kombiniert verschiedene Markdown-Features auf einer Seite - nützlich um das Layout mit heterogenem Inhalt zu testen.
 
 ## Übersicht
 
@@ -18,10 +18,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 
 ## Feature-Liste
 
-- **Animiertes TOC** — die blaue Linie folgt dem aktuell sichtbaren Bereich
-- **Geteilte Seitenleiste** — Ordner mit Index haben Links und Chevron getrennt
-- **Docset-Umschalter** — wechsle zwischen Benutzer-, Mitwirkenden- und Spieler-Handbuch
-- **Lokalisierung** — Metadaten und Inhalte je nach Spracheinstellung
+- **Animiertes TOC** - die blaue Linie folgt dem aktuell sichtbaren Bereich
+- **Geteilte Seitenleiste** - Ordner mit Index haben Links und Chevron getrennt
+- **Docset-Umschalter** - wechsle zwischen Benutzer-, Mitwirkenden- und Spieler-Handbuch
+- **Lokalisierung** - Metadaten und Inhalte je nach Spracheinstellung
 
 ## Code-Snippet
 

@@ -4,7 +4,6 @@
 	import ModeToggle from '$lib/components/ui/mode-toggle.svelte';
 	import * as Kbd from '$lib/components/ui/kbd/index.js';
 	import { LanguageSwitcher } from '$lib/components/ui/language-switcher/index.js';
-	import { setLocale, locales, getLocale } from '$lib/paraglide/runtime';
 	import * as m from '$lib/paraglide/messages';
 	import SearchIcon from '@lucide/svelte/icons/search';
 	import BookOpenIcon from '@lucide/svelte/icons/book-open';
@@ -14,19 +13,9 @@
 
 	const groupIcons = [BookOpenIcon, FolderIcon, WrenchIcon];
 
-	const languages = locales.map((code) => ({
-		code,
-		label: code === 'en' ? 'English' : code === 'de' ? 'Deutsch' : code
-	}));
-	let currentLocale = $state(getLocale());
-
 	function openSearch() {
 		window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }));
 	}
-	function handleLanguageChange(code: string) {
-		setLocale(code as 'en' | 'de');
-	}
-
 	const nav = $derived(getNav('user'));
 	const groups = $derived(
 		nav.filter((n) => n.slug !== '+page' && (n.children.length > 0 || n.href))
@@ -41,7 +30,7 @@
 		<div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
 			<a href="/" class="font-serif text-xl font-semibold text-foreground">{m.help_title()}</a>
 			<div class="flex items-center gap-2">
-				<LanguageSwitcher {languages} value={currentLocale} onChange={handleLanguageChange} />
+				<LanguageSwitcher />
 				<ModeToggle />
 			</div>
 		</div>

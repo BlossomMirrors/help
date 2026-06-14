@@ -128,7 +128,7 @@
 				<clipPath id={clipId}>
 					<!--
 						Rect covers the full horizontal extent (x=-20 .. 200) so it captures
-						S-curves that bend sideways. Only y/height animate — plain numbers,
+						S-curves that bend sideways. Only y/height animate - plain numbers,
 						always smooth regardless of path shape changes.
 					-->
 					<rect
@@ -171,8 +171,8 @@
 							class={cn(
 								'block transition-colors hover:text-foreground',
 								heading.active ? 'font-medium text-foreground' : 'text-muted-foreground'
-							)}
-						>{heading.label}</a>
+							)}>{heading.label}</a
+						>
 					{:else}
 						<span class="block">{heading.label}</span>
 					{/if}
@@ -193,8 +193,8 @@
 						class={cn(
 							'block transition-colors hover:text-foreground',
 							heading.active ? 'font-medium text-foreground' : 'text-muted-foreground'
-						)}
-					>{heading.label}</a>
+						)}>{heading.label}</a
+					>
 				{:else}
 					<span class="block">{heading.label}</span>
 				{/if}

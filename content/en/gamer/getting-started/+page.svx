@@ -10,11 +10,11 @@ This page demonstrates the prose styles rendered by the `article.prose` containe
 
 ## Heading levels
 
-### H3 — Third level
+### H3 - Third level
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-#### H4 — Fourth level
+#### H4 - Fourth level
 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
@@ -30,7 +30,7 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 
 Normal text alongside **bold**, *italic*, ***bold italic***, `inline code`, and ~~strikethrough~~.
 
-A [hyperlink](#) and a [link with title](# "This is a title").
+A [hyperlink](/) and a [link with title](/ "This is a title").
 
 ## Horizontal rule
 

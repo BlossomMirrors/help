@@ -36,7 +36,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 ## Inline-Stile
 
-**Fetter Text.** *Kursiver Text.* ***Fett und kursiv.*** `Inline-Code`. ~~Durchgestrichen~~. [Ein Link](#).
+**Fetter Text.** *Kursiver Text.* ***Fett und kursiv.*** `Inline-Code`. ~~Durchgestrichen~~. [Ein Link](/).
 
 Hochgestellt: E=mc<sup>2</sup>. Tiefgestellt: H<sub>2</sub>O.
 
