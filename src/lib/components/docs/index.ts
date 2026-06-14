@@ -1,5 +1,6 @@
-export { default as Kbd } from './Kbd.svelte';
-export { default as Steps } from './Steps.svelte';
-export { default as Step } from './Step.svelte';
-export { default as Callout } from './Callout.svelte';
-export { default as pre } from './Pre.svelte';
+export { default as Kbd } from './kbd.svelte';
+export { default as Steps } from './steps.svelte';
+export { default as Step } from './step.svelte';
+export { default as Callout } from './callout.svelte';
+export { default as pre } from './pre.svelte';
+export { default as code } from './code.svelte';
