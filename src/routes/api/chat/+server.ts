@@ -274,6 +274,9 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 	const writer = writable.getWriter();
 	const enc = new TextEncoder();
 
+	// Collect web search result URLs across all loop iterations
+	const webRefs: { url: string; title: string }[] = [];
+
 	// Streaming agentic loop — single stream() call per iteration, response starts immediately
 	async function runLoop(depth = 0): Promise<void> {
 		if (depth > 5) return;
@@ -304,6 +307,21 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 
 		const finalMsg = await stream.finalMessage();
 
+		// Extract web search result URLs from this iteration
+		for (const block of finalMsg.content) {
+			const b = block as unknown as Record<string, unknown>;
+			if (b.type === 'web_search_tool_result' && Array.isArray(b.content)) {
+				for (const item of b.content as Record<string, unknown>[]) {
+					if (item.type === 'web_search_result' && item.url && item.title) {
+						const url = String(item.url);
+						if (!webRefs.some((r) => r.url === url)) {
+							webRefs.push({ url, title: String(item.title) });
+						}
+					}
+				}
+			}
+		}
+
 		if (finalMsg.stop_reason === 'tool_use') {
 			// Only handle client-side tool_use blocks — server tools (web_search) execute transparently
 			const clientToolUses = finalMsg.content.filter((b): b is ToolUseBlock => b.type === 'tool_use');
@@ -330,6 +348,11 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 	(async () => {
 		try {
 			await runLoop();
+			// Append web search sources after the response text
+			if (webRefs.length > 0) {
+				const refs = webRefs.slice(0, 5).map((r) => `${r.url}|${r.title}`).join('\n');
+				await writer.write(enc.encode(`\n[WEB_REFS]\n${refs}`));
+			}
 		} catch (e) {
 			const errMsg = e instanceof Error ? e.message : String(e);
 			await writer.write(enc.encode(`\nError: ${errMsg.slice(0, 200)}`));
