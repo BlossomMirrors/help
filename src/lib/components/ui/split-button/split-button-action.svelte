@@ -33,7 +33,7 @@
 		bind:ref
 		disabled={disabled || state.rootState.disabled}
 		loading={loading || state.rootState.loading}
-		onclick={(e) => state.onclick(e)}
+		onclick={(e: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) => state.onclick(e)}
 		{...rest}
 	>
 		{@render children?.()}

@@ -1,5 +1,7 @@
 <script lang="ts" module>
 	import { tv, type VariantProps } from 'tailwind-variants';
+	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import type { Snippet } from 'svelte';
 
 	export const buttonVariants = tv({
 		base: "relative overflow-hidden inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-button)] border border-transparent text-sm font-medium transition-colors duration-100 active:translate-y-[1px] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer",
@@ -30,12 +32,18 @@
 			size: 'default'
 		}
 	});
+
+	export type ButtonVariant = VariantProps<typeof buttonVariants>['variant'];
+	export type ButtonSize = VariantProps<typeof buttonVariants>['size'];
+	export type ButtonProps = HTMLButtonAttributes &
+		VariantProps<typeof buttonVariants> & {
+			child?: Snippet<[{ props: Record<string, unknown> }]>;
+			ref?: HTMLElement | null;
+		};
 </script>
 
 <script lang="ts">
 	import { cn } from '$lib/utils.js';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
-	import type { Snippet } from 'svelte';
 
 	let {
 		ref = $bindable(null),
