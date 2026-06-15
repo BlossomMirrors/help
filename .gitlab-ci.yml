@@ -3,6 +3,7 @@ image: oven/bun:latest
 stages:
   - check
   - build
+  - docker
 
 lint:
   stage: check
@@ -38,3 +39,18 @@ build:
     key: $CI_COMMIT_REF_SLUG
     paths:
       - node_modules/
+
+docker:
+  stage: docker
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: '/certs'
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA -t $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - docker push $CI_REGISTRY_IMAGE:latest
+  only:
+    - main
