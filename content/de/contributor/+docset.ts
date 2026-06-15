@@ -1,6 +1,1 @@
-export default {
-	title: 'Mitwirkenden-Handbuch',
-	description: 'So trägst du zu Blossom bei',
-	icon: 'code',
-	order: 2
-};
+export default { title: 'Mitwirken', description: 'Leitfaden für BlossomOS-Entwickler', icon: 'code', order: 3 };

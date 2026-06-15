@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'MapleMono NF';
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/maplemono-nf/maplemono-nf-regular.ttf') format('truetype');
+}

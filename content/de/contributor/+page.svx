@@ -1,9 +1,61 @@
 ---
-title: Mitwirkenden-Handbuch
-icon: code
+title: Erste Schritte
+description: Lerne, wie du zu BlossomOS beitragen kannst.
+icon: git-pull-request
 order: 0
 ---
 
-# Mitwirkenden-Handbuch
+BlossomOS basiert auf **Fedora Linux**. Danke für dein Interesse, beizutragen!
 
-Durchsuche die Abschnitte oder drücke `⌘ K` um in der Dokumentation zu suchen.
+## Was ist BlossomOS?
+
+BlossomOS ist eine Fedora-basierte Desktop-Plattform, die auf digitale Unabhängigkeit und Benutzerfreundlichkeit ausgerichtet ist. Sie wird mit einer angepassten KDE Plasma-Umgebung (**BlossomUI**) und **Arc** ausgeliefert, einem Software-Manager, der die Installation jeder App zu einem Ein-Klick-Erlebnis macht.
+
+## Repositories
+
+- **[blossom/docs](https://dev.blossomos.org/blossom/docs)** - Diese Dokumentationsseite.
+- **[blossom/arc](https://dev.blossomos.org/blossom/arc)** - Arc, der BlossomOS Software-Manager und App Store.
+- **[blossom/blossomui](https://dev.blossomos.org/blossom/blossomui)** - BlossomUI, das KDE Plasma-Theme und die Desktop-Konfiguration.
+
+## Voraussetzungen
+
+<details>
+<summary>Fedora / RPM-Ökosystem</summary>
+
+BlossomOS ist Fedora-basiert. Kenntnisse von `dnf` und RPM-Packaging helfen bei Beiträgen auf Systemebene.
+
+</details>
+
+<details>
+<summary>Git und Blossom Git</summary>
+
+Alle Entwicklung wird mit Git verfolgt und auf [Blossom Git](https://dev.blossomos.org/blossom) gehostet. Du brauchst ein Blossom Git-Konto, um Pull Requests zu öffnen.
+
+</details>
+
+<details>
+<summary>KDE / Qt (für UI-Beiträge)</summary>
+
+BlossomUI basiert auf KDE Plasma. Qt- und QML-Kenntnisse sind für Theme- und Widget-Beiträge nötig.
+
+</details>
+
+## Beitragen
+
+1. Das relevante Repository auf Blossom Git **forken**
+2. Deinen Fork **klonen** und die in der `README` des Repos aufgeführten Build-Abhängigkeiten installieren
+3. Einen **Branch** für dein Feature oder deinen Fix erstellen. Auf eine Sache fokussiert halten
+4. Änderungen vornehmen und mit einer klaren englischen Commit-Nachricht **committen**
+5. Einen **Pull Request** auf Blossom Git öffnen und beschreiben was du geändert hast und warum
+
+## Richtlinien
+
+> [!NOTE]
+> - Den bestehenden Code-Stil in jedem Repository befolgen
+> - Commit-Nachrichten auf Englisch
+> - Ein Feature oder Fix pro Pull Request
+> - Dokumentation aktualisieren bei nutzer-sichtbaren Änderungen
+
+## Fehler melden
+
+Einen Bug gefunden? Eröffne ein Issue im entsprechenden Blossom Git-Repository. BlossomOS-Version, Schritte zur Reproduktion und erwartetes Verhalten angeben.

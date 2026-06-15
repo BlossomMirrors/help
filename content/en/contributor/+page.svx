@@ -1,9 +1,61 @@
 ---
-title: Contributor Guide
-icon: code
+title: Getting Started
+description: Learn how to contribute to BlossomOS.
+icon: git-pull-request
 order: 0
 ---
 
-# Contributor Guide
+BlossomOS is based on **Fedora Linux**. Thank you for your interest in contributing!
 
-Code blocks, syntax highlighting, and development workflow showcase.
+## What is BlossomOS?
+
+BlossomOS is a Fedora-based desktop platform built around digital independence and ease of use. It ships with a customized KDE Plasma environment (**BlossomUI**) and **Arc**, a software manager that makes installing any app a one-click experience.
+
+## Repositories
+
+- **[blossom/docs](https://dev.blossomos.org/blossom/docs)** - This documentation site.
+- **[blossom/arc](https://dev.blossomos.org/blossom/arc)** - Arc, the BlossomOS software manager and app store.
+- **[blossom/blossomui](https://dev.blossomos.org/blossom/blossomui)** - BlossomUI, the KDE Plasma theme and desktop configuration.
+
+## Prerequisites
+
+<details>
+<summary>Fedora / RPM ecosystem</summary>
+
+BlossomOS is Fedora-based. Familiarity with `dnf` and RPM packaging helps for system-level contributions.
+
+</details>
+
+<details>
+<summary>Git and Blossom Git</summary>
+
+All development is tracked with Git and hosted on [Blossom Git](https://dev.blossomos.org/blossom). You'll need a Blossom Git account to open pull requests.
+
+</details>
+
+<details>
+<summary>KDE / Qt (for UI contributions)</summary>
+
+BlossomUI is built on KDE Plasma. Qt and QML knowledge is needed for theme and widget contributions.
+
+</details>
+
+## Contributing
+
+1. **Fork** the relevant repository on Blossom Git
+2. **Clone** your fork and install the build dependencies listed in the repo's `README`
+3. **Create a branch** for your feature or fix. Keep it focused on one thing
+4. Make your changes and **commit** with a clear English commit message
+5. **Open a pull request** on Blossom Git and describe what you changed and why
+
+## Guidelines
+
+> [!NOTE]
+> - Follow the existing code style in each repository
+> - Commit messages in English
+> - One feature or fix per pull request
+> - Update documentation when changing user-facing behavior
+
+## Reporting Issues
+
+Found a bug? Open an issue in the relevant Blossom Git repository. Include the BlossomOS version, steps to reproduce, and what you expected to happen.

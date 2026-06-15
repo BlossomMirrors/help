@@ -1,0 +1,69 @@
+---
+title: Heroic Games Launcher
+description: Play Epic Games Store and GOG titles on BlossomOS.
+icon: zap
+order: 2
+---
+
+Heroic is an open-source launcher for Epic Games Store and GOG that runs natively on Linux. No Wine wrapper is needed for the launcher itself.
+
+## Installation
+
+Install **Heroic Games Launcher** from Arc Store.
+
+## Supported Stores
+
+- **[Epic Games Store](https://store.epicgames.com)** - Your full Epic library plus a free game every week. Heroic syncs your claimed games automatically.
+- **[GOG](https://www.gog.com)** - DRM-free games from your GOG account, with cloud save sync and automatic updates.
+- **[Amazon Prime Gaming](https://gaming.amazon.com)** - Claim and play Prime Gaming titles. Support is experimental.
+
+## Connecting Your Accounts
+
+#### Epic Games
+
+1. Open **Heroic Games Launcher**
+2. Click **Log in** next to **Epic Games** in the sidebar
+3. A browser window opens for you to sign in
+4. Your library syncs automatically once logged in
+
+#### GOG
+
+1. Open **Heroic Games Launcher**
+2. Click **Log in** next to **GOG** in the sidebar
+3. A browser window opens for you to sign in
+4. Your library syncs automatically. Cloud saves work out of the box for supported titles
+
+#### Amazon Prime Gaming
+
+1. Open **Heroic Games Launcher**
+2. Click **Log in** next to **Amazon** in the sidebar
+3. Sign in with your Amazon account in the browser window
+
+> [!NOTE]
+> Amazon Prime Gaming support in Heroic is experimental. Some titles may not install correctly.
+
+## Proton-GE
+
+For better game compatibility, install **ProtonUp-Qt** from Arc Store, select Heroic as the launcher, and download a Proton-GE version. It will appear in Heroic's Wine settings as a selectable option.
+
+## Free Weekly Games
+
+Epic gives away free games every week. Heroic shows them on the home screen and you can claim them without leaving the launcher. Claimed games stay in your library permanently.
+
+## Heroic vs. Lutris for GOG
+
+> [!NOTE]
+> Both Heroic and Lutris can play GOG games. Heroic has native GOG integration with cloud saves and auto-updates, so it works well for most titles. Lutris is worth trying if a specific game needs advanced Wine configuration that Heroic doesn't expose.
+
+## Storage
+
+- **[Extra Drives](/help/user/drives)** - Set up and mount a second hard drive or SSD before adding it here.
+
+Heroic does not auto-detect drives. You need to set the path manually:
+
+1. Open **Heroic** and go to **Settings**
+2. Under **Games Installation Path**, click the folder icon and select your mount point
+
+## Compatibility
+
+- **[Compatibility & Anti-Cheat](./anticheat)** - ProtonDB ratings explained, anti-cheat status per game, and which multiplayer games work on Linux.

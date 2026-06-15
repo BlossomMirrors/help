@@ -1,0 +1,78 @@
+---
+title: Lutris
+description: Run any game on BlossomOS with Lutris.
+icon: play
+order: 3
+---
+
+Lutris is a universal game manager that can install and configure games from almost any source. It handles Wine, runners, and emulators automatically using community-maintained install scripts.
+
+## Installation
+
+Install **Lutris** from Arc Store.
+
+## What Lutris is Good For
+
+- **[Battle.net](https://lutris.net)** - World of Warcraft, Diablo IV, Overwatch 2 and other Blizzard titles. Lutris has maintained install scripts for all of them.
+- **[EA App & Origin](https://lutris.net)** - EA titles not available on Steam. Lutris scripts handle the launcher setup automatically.
+- **[Ubisoft Connect](https://lutris.net)** - Ubisoft games that aren't on Steam. Lutris manages the Ubisoft Connect launcher.
+- **[GOG Games](https://lutris.net)** - DRM-free titles from GOG. Alternative to Heroic with more Wine control.
+
+## Install Scripts
+
+Lutris community scripts automatically configure Wine, set the right runtime, and apply known fixes for hundreds of games. Browse and install directly from [lutris.net](https://lutris.net). Clicking **Install** on the website opens Lutris and starts the setup.
+
+## Runners
+
+<details>
+<summary>Wine: Generic Windows games and apps</summary>
+
+The most common runner. Lutris manages Wine versions automatically, no setup needed.
+
+</details>
+
+<details>
+<summary>Wine-GE: Wine with Proton patches</summary>
+
+Great for newer Windows games. Uses the same Proton patches as Steam but outside of Steam.
+
+</details>
+
+<details>
+<summary>DOSBox: Old DOS games</summary>
+
+For classic PC games from the 80s and 90s.
+
+</details>
+
+<details>
+<summary>ScummVM: Classic adventure games</summary>
+
+LucasArts, Sierra, and other point-and-click adventures.
+
+</details>
+
+<details>
+<summary>RetroArch and standalone emulators</summary>
+
+RPCS3 (PS3), PPSSPP (PSP), Dolphin (GameCube/Wii), Citra (3DS), and many more. All manageable through Lutris.
+
+</details>
+
+## Emulation
+
+For emulation, **RetroArch** covers hundreds of consoles in a single app. Install **RetroArch** from Arc Store.
+
+> [!NOTE]
+> Before spending time configuring a Windows game in Lutris, check if it's on Steam first. Steam with Proton is usually easier to get running.
+
+## Storage
+
+- **[Extra Drives](/help/user/drives)** - Set up and mount a second hard drive or SSD before adding it here.
+
+Lutris does not auto-detect drives. You need to set the path manually:
+
+1. Open **Lutris**, open the top-right menu and go to **Preferences**
+2. Under **Game Library**, add your mount point as an additional games folder
+
+- **[Compatibility & Anti-Cheat](./anticheat)** - ProtonDB ratings explained, anti-cheat status per game, and which multiplayer games work on Linux.

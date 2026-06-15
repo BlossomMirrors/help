@@ -4,3 +4,4 @@ export { default as Step } from './step.svelte';
 export { default as Callout } from './callout.svelte';
 export { default as pre } from './pre.svelte';
 export { default as code } from './code.svelte';
+export { default as ProtonDBSearch } from './proton-db-search.svelte';

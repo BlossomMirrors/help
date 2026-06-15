@@ -1,9 +1,0 @@
----
-title: Spieler-Handbuch
-icon: star
-order: 0
----
-
-# Spieler-Handbuch
-
-Durchsuche die Abschnitte oder drücke `⌘ K` um in der Dokumentation zu suchen.

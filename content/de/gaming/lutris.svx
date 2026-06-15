@@ -1,0 +1,78 @@
+---
+title: Lutris
+description: Beliebige Spiele auf BlossomOS mit Lutris ausführen.
+icon: play
+order: 3
+---
+
+Lutris ist ein universeller Spiele-Manager, der Spiele aus fast jeder Quelle installieren und konfigurieren kann. Wine, Runner und Emulatoren werden automatisch über Community-gepflegte Installationsskripte verwaltet.
+
+## Installation
+
+**Lutris** in Arc Store installieren.
+
+## Wofür Lutris gut ist
+
+- **[Battle.net](https://lutris.net)** - World of Warcraft, Diablo IV, Overwatch 2 und andere Blizzard-Titel. Lutris hat gepflegte Installationsskripte für alle.
+- **[EA App & Origin](https://lutris.net)** - EA-Titel, die nicht auf Steam sind. Lutris-Skripte richten den Launcher automatisch ein.
+- **[Ubisoft Connect](https://lutris.net)** - Ubisoft-Spiele außerhalb von Steam. Lutris verwaltet den Ubisoft Connect-Launcher.
+- **[GOG-Spiele](https://lutris.net)** - DRM-freie Titel von GOG. Alternative zu Heroic mit mehr Wine-Kontrolle.
+
+## Installationsskripte
+
+Lutris-Community-Skripte konfigurieren Wine automatisch, stellen die richtige Runtime ein und wenden bekannte Fixes für Hunderte von Spielen an. Durchsuche und installiere direkt von [lutris.net](https://lutris.net). Ein Klick auf **Installieren** öffnet Lutris und startet die Einrichtung.
+
+## Runner
+
+<details>
+<summary>Wine: Allgemeine Windows-Spiele und Apps</summary>
+
+Der häufigste Runner. Lutris verwaltet Wine-Versionen automatisch, keine Einrichtung nötig.
+
+</details>
+
+<details>
+<summary>Wine-GE: Wine mit Proton-Patches</summary>
+
+Ideal für neuere Windows-Spiele. Verwendet die gleichen Proton-Patches wie Steam, aber außerhalb von Steam.
+
+</details>
+
+<details>
+<summary>DOSBox: Alte DOS-Spiele</summary>
+
+Für klassische PC-Spiele aus den 80ern und 90ern.
+
+</details>
+
+<details>
+<summary>ScummVM: Klassische Adventure-Spiele</summary>
+
+LucasArts, Sierra und andere Point-and-Click-Adventures.
+
+</details>
+
+<details>
+<summary>RetroArch und eigenständige Emulatoren</summary>
+
+RPCS3 (PS3), PPSSPP (PSP), Dolphin (GameCube/Wii), Citra (3DS) und viele mehr. Alle über Lutris verwaltbar.
+
+</details>
+
+## Emulation
+
+Für Emulation deckt **RetroArch** Hunderte von Konsolen in einer einzigen App ab. **RetroArch** in Arc Store installieren.
+
+> [!NOTE]
+> Bevor du Zeit damit verbringst, ein Windows-Spiel in Lutris zu konfigurieren, prüfe zuerst ob es auf Steam ist. Steam mit Proton ist normalerweise einfacher zum Laufen zu bringen.
+
+## Speicher
+
+- **[Extra-Festplatten](/help/user/drives)** - Eine zweite Festplatte oder SSD einrichten und einbinden, bevor sie hier hinzugefügt wird.
+
+Lutris erkennt Laufwerke nicht automatisch. Den Pfad manuell setzen:
+
+1. **Lutris** öffnen, das Menü oben rechts öffnen und zu **Einstellungen** gehen
+2. Unter **Spielebibliothek** den Einhängepunkt als zusätzlichen Spieleordner hinzufügen
+
+- **[Kompatibilität & Anti-Cheat](./anticheat)** - ProtonDB-Bewertungen erklärt, Anti-Cheat-Status pro Spiel und welche Multiplayer-Spiele unter Linux funktionieren.

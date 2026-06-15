@@ -1,0 +1,79 @@
+---
+title: Kompatibilität & Anti-Cheat
+description: Spielekompatibilität prüfen, ProtonDB-Bewertungen erklärt und eine Übersicht aller wichtigen Anti-Cheat-Systeme.
+icon: shield-check
+order: 6
+---
+
+
+## Vor dem Kauf prüfen
+
+- **[ProtonDB](https://www.protondb.com)** - Community-Berichte wie gut jedes Spiel über Proton läuft.
+- **[Are We Anti-Cheat Yet?](https://areweanticheatyet.com)** - Anti-Cheat-Kompatibilitätstracker pro Spiel für Linux.
+
+<ProtonDBSearch placeholder="Spiel auf ProtonDB suchen..." />
+
+<details>
+<summary>Platinum: Funktioniert sofort</summary>
+
+Keine Anpassungen nötig. Starten und spielen.
+
+</details>
+
+<details>
+<summary>Gold: Funktioniert mit kleinen Anpassungen</summary>
+
+Benötigt meist nur eine bestimmte Proton-Version oder eine Start-Option. Die ProtonDB-Kommentare erklären genau was zu tun ist.
+
+</details>
+
+<details>
+<summary>Silver: Läuft mit Problemen</summary>
+
+Spielbar, aber mit Abstürzen, fehlendem Audio oder grafischen Fehlern zu rechnen.
+
+</details>
+
+<details>
+<summary>Bronze: Erhebliche Probleme</summary>
+
+Läuft, aber kaum genießbar. ProtonDB auf Workarounds prüfen.
+
+</details>
+
+<details>
+<summary>Borked: Läuft nicht</summary>
+
+Meist durch Kernel-Level Anti-Cheat verursacht, das keinen Linux-Support hat.
+
+</details>
+
+## Anti-Cheat
+
+Die meisten Spiele funktionieren unter Linux über Proton ohne Probleme. Die wenigen, die es nicht tun, scheitern fast immer an Anti-Cheat.
+
+### EasyAntiCheat und BattlEye
+
+Beide unterstützen Linux nativ. Laut Epics eigener Dokumentation muss ein Entwickler dafür nur die Linux-Unterstützung im Developer-Portal aktivieren und eine vorgefertigte Linux-Binary mit dem Spiel ausliefern. Das ist der gesamte Aufwand auf ihrer Seite.
+
+> [!NOTE]
+> **Linux nicht zu unterstützen ist eine bewusste Entscheidung**
+> Manche Entwickler haben das aktiviert und ihre Spiele funktionieren unter Linux problemlos. Andere nicht, nicht weil es technisch schwierig wäre, sondern weil sie Linux nicht als Priorität sehen, keine zusätzliche Plattform pflegen möchten, oder glauben dass Linux für Anti-Cheat-Zwecke nicht sicher genug ist.
+
+- **[EasyAntiCheat: Linux, Wine and Proton Support](https://dev.epicgames.com/docs/epic-online-services/trust-and-safety/anti-cheat-interfaces/anti-cheat-interfaces#linux-wine-and-proton-support)** - Epics offizielle Dokumentation erklärt was Entwickler tun müssen, um Linux-Support für EasyAntiCheat zu aktivieren.
+
+### Kernel-Level Anti-Cheat
+
+> [!WARNING]
+> **Funktioniert nicht unter Linux**
+> Kernel-Level Anti-Cheat-Systeme laufen als Treiber im Windows-Kernel. Linux kann keine Windows-Kernel-Treiber laden und kein Kompatibilitätslayer kann das ändern. Spiele mit Vanguard oder Ricochet laufen nicht unter Linux.
+
+### Übersicht
+
+| Anti-Cheat | Genutzt von | Linux-Support |
+|---|---|---|
+| [EasyAntiCheat](https://easy.ac) | Apex Legends, Rust, Dead by Daylight, viele weitere | Opt-in pro Spiel. Funktioniert wenn der Entwickler es aktiviert |
+| [BattlEye](https://www.battleye.com) | PUBG, Rainbow Six Siege, DayZ, andere | Opt-in pro Spiel. Funktioniert wenn der Entwickler es aktiviert |
+| [Vanguard](https://playvalorant.com) | Valorant, League of Legends | Nein. Kernel-Level Windows-Treiber |
+| [Ricochet](https://www.callofduty.com) | Call of Duty-Reihe | Nein. Kernel-Level Windows-Treiber |
+| [GameGuard](https://nprotect.com) | Verschiedene koreanische MMOs | Nein. Kein Linux-Support |

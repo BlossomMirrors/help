@@ -1,6 +1,6 @@
 export default {
-	title: 'Contributor Guide',
-	description: 'How to contribute to Blossom',
+	title: 'Contributing',
+	description: 'Contributor guide for BlossomOS developers',
 	icon: 'code',
-	order: 2
+	order: 3
 };

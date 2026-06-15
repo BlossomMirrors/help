@@ -19,8 +19,7 @@ type ContentMeta = {
 	icon?: string;
 };
 
-// Only scan +page.svx files - slug comes from the containing folder
-const allModules = import.meta.glob<{ metadata?: ContentMeta }>('/content/**\/+page.svx', {
+const allModules = import.meta.glob<{ metadata?: ContentMeta }>('/content/**\/*.svx', {
 	eager: true
 });
 
@@ -32,8 +31,12 @@ function buildTree(entries: { rel: string; meta: ContentMeta }[], docset: string
 	const root: NavNode[] = [];
 
 	for (const { rel, meta } of entries) {
-		// rel is like '+page.svx', 'getting-started/+page.svx', 'features/shortcuts/+page.svx'
-		const folderPath = rel === '+page.svx' ? '' : rel.slice(0, -'/+page.svx'.length);
+		// Normalize: '+page.svx' → '', 'dir/+page.svx' → 'dir', 'name.svx' → 'name'
+		let folderPath: string;
+		if (rel === '+page.svx') folderPath = '';
+		else if (rel.endsWith('/+page.svx')) folderPath = rel.slice(0, -'/+page.svx'.length);
+		else if (rel.endsWith('.svx')) folderPath = rel.slice(0, -'.svx'.length);
+		else continue;
 
 		if (!folderPath) {
 			// Docset root landing page

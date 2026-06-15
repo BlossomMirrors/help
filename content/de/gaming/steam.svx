@@ -1,0 +1,46 @@
+---
+title: Steam
+description: Steam auf BlossomOS installieren und konfigurieren.
+icon: steam
+order: 1
+---
+
+Steam hat die beste Linux-Unterstützung aller Spiele-Launcher, aufgebaut auf **Proton**, das Windows-Spiele nativ unter Linux laufen lässt.
+
+## Installation
+
+**Steam** in Arc Store installieren.
+
+## Proton-Version wechseln
+
+Proton ist standardmäßig aktiv. Falls ein Spiel Probleme hat, probiere eine andere Proton-Version. **Proton-GE** ist ein Community-Build mit zusätzlichen Patches und Media-Codecs, der oft Spiele repariert, mit denen das offizielle Proton Schwierigkeiten hat.
+
+#### Pro Spiel
+
+1. Rechtsklick auf das Spiel in der Bibliothek und **Eigenschaften** öffnen
+2. Den Tab **Kompatibilität** öffnen
+3. **Bestimmtes Steam-Play-Kompatibilitätstool erzwingen** aktivieren
+4. Eine Version aus dem Dropdown wählen. Zuerst **Proton Experimental** ausprobieren, dann **Proton-GE** wenn das nicht hilft
+
+#### Alle Spiele (Global)
+
+1. **Steam** öffnen und zu **Einstellungen** gehen
+2. Unter **Kompatibilität** **Steam Play für alle anderen Titel aktivieren**
+3. Eine Standard-Proton-Version aus dem Dropdown wählen
+
+Pro-Spiel-Einstellungen haben immer Vorrang vor der globalen Einstellung.
+
+**ProtonUp-Qt** aus Arc Store installieren, um Proton-GE-Versionen herunterzuladen und zu verwalten. Versionen erscheinen automatisch in Steams Kompatibilitätstool-Liste.
+
+## Speicher
+
+- **[Extra-Festplatten](/help/user/drives)** - Eine zweite Festplatte oder SSD einrichten und einbinden, bevor sie hier hinzugefügt wird.
+
+Eingebundene Laufwerke werden automatisch erkannt. **Steam** öffnen und zu **Einstellungen** dann **Speicher** gehen. Das Laufwerk sollte bereits in der Liste erscheinen. Falls nicht, manuell hinzufügen:
+
+1. **+** klicken und den Einhängepunkt auswählen (zum Beispiel `/mnt/data`)
+2. Optional als Standard-Installationspfad festlegen
+
+## Kompatibilität
+
+- **[Kompatibilität & Anti-Cheat](./anticheat)** - ProtonDB-Bewertungen erklärt, Anti-Cheat-Status pro Spiel und welche Multiplayer-Spiele unter Linux funktionieren.

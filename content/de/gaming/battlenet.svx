@@ -1,0 +1,26 @@
+---
+title: Battle.net
+description: Den Battle.net-Launcher auf BlossomOS mit Lutris ausführen.
+icon: sword
+order: 4
+---
+
+Battle.net hat keine native Linux-Version. Du kannst es über Lutris starten, das Wine einrichtet und alles automatisch konfiguriert.
+
+## Was du brauchst
+
+**Lutris** in Arc Store installieren.
+
+## Battle.net installieren
+
+1. Die [Battle.net-Seite auf Lutris](https://lutris.net/games/battlenet/) öffnen und neben dem **Wine Standard**-Eintrag auf **Installieren** klicken
+2. Lutris öffnet sich und richtet Wine und das Prefix automatisch ein
+3. Mit dem Blizzard-Konto einloggen und Spiele wie gewohnt installieren
+
+## Spielekompatibilität
+
+- **[Kompatibilität & Anti-Cheat](./anticheat)** - ProtonDB-Bewertungen erklärt, Anti-Cheat-Status pro Spiel und welche Multiplayer-Spiele unter Linux funktionieren.
+
+## Problemlösung
+
+Falls der Launcher nicht startet oder sich nicht aktualisiert, eine andere Wine-GE-Version in Lutris ausprobieren. **ProtonUp-Qt** aus Arc Store installieren, um Wine-GE- und Proton-GE-Versionen für Lutris und andere Launcher herunterzuladen und zu verwalten.

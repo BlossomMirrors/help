@@ -6,4 +6,4 @@ order: 0
 
 # User Guide
 
-Browse the sections below or press `⌘ K` to search the docs.
+Welcome to the BlossomOS Help Center. Browse the sections below or press `⌘ K` to search the docs.

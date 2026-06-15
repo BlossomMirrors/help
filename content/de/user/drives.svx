@@ -1,0 +1,109 @@
+---
+title: Extra-Festplatten
+description: Zusätzliche Festplatten auf BlossomOS einrichten.
+icon: hard-drive
+order: 1
+---
+
+# Extra-Festplatten
+
+Wenn du eine zweite Festplatte oder SSD hast, richte sie mit dem **KDE-Partitionsmanager** ein. Nützlich zum Speichern von Spielen und um Launcher wie Steam auf ein eigenes Laufwerk zu verweisen, oder einfach für mehr Platz zum Speichern von Dateien.
+
+> [!NOTE]
+> Die Screenshots in dieser Anleitung wurden mit einem USB-Stick aufgenommen, da beim Erstellen kein zweites Laufwerk verfügbar war. Die Schritte sind für jede Festplatte identisch.
+
+<details>
+<summary>Was bedeutet Einbinden?</summary>
+
+Einbinden (Mounten) macht eine Festplatte unter einem bestimmten Ordnerpfad zugänglich. Bis eine Festplatte eingebunden ist, kann BlossomOS nicht darauf lesen oder schreiben. Der Einhängepunkt ist ein normaler Ordner, zum Beispiel `/mnt/data`, der als Zugang zu allem auf dieser Festplatte dient.
+
+</details>
+
+> [!WARNING]
+> **Alle Daten auf der Festplatte werden gelöscht**
+> Die folgenden Schritte löschen alle vorhandenen Partitionen und erstellen eine neue. Alles auf dieser Festplatte geht verloren. Stelle sicher, dass du die richtige Festplatte ausgewählt hast und nichts Wichtiges darauf ist.
+
+## Festplatte vorbereiten
+
+1. **KDE-Partitionsmanager** öffnen und Passwort eingeben wenn gefragt.
+
+2. Deine Festplatte aus der Geräteliste links auswählen. Prüfe die angezeigte Größe um sicherzugehen, dass du die richtige hast.
+
+   ![KDE-Partitionsmanager Geräteliste](/screenshots/drives/device-list.png)
+
+3. Falls die Partition eingebunden ist (Schloss-Symbol), Rechtsklick darauf und **Aushängen** wählen. Wenn alle Aktionen ausgegraut sind, ist die Festplatte noch eingebunden. Nach dem Aushängen sind sie wieder verfügbar.
+
+   ![Rechtsklick-Menü mit Aushängen-Option](/screenshots/drives/unmount.png)
+
+4. Rechtsklick auf jede vorhandene Partition und **Löschen** wählen, bis der gesamte Speicherplatz als nicht zugeordnet angezeigt wird.
+
+5. Rechtsklick auf den nicht zugeordneten Speicherplatz und **Neu** wählen. Ein Label vergeben, das Dateisystem so lassen wie es ist, und sicherstellen dass **Berechtigungen** auf **Alle** gesetzt ist. Dateisystem nur ändern wenn NTFS für Dual Boot benötigt wird.
+
+   **btrfs (Standard)** - btrfs ist bereits standardmäßig ausgewählt. So lassen für die beste Erfahrung auf BlossomOS.
+
+   **NTFS (Dual Boot)**
+
+   > [!WARNING]
+   > **Für die meisten Fälle ungeeignet**
+   > NTFS unterstützt keine Linux-Ausführungsrechte. Native Linux-Spiele und Apps starten damit nicht, und manche Wine/Proton-Spiele schlagen ebenfalls fehl. Nur verwenden, wenn die Festplatte wirklich auch unter Windows zugänglich sein muss.
+
+   Dateisystem auf **NTFS** setzen.
+
+   ![Neue Partition Dialog mit btrfs und Alle als Berechtigungen](/screenshots/drives/new-partition.png)
+
+6. In der Symbolleiste auf **Anwenden** klicken und bestätigen. Der KDE-Partitionsmanager formatiert die Festplatte.
+
+## Automatisches Einbinden einrichten
+
+> [!WARNING]
+> **Diesen Schritt nicht überspringen**
+> Ohne automatisches Einbinden ist die Festplatte nach einem Neustart nicht verfügbar und Apps finden sie nicht. Jede Festplatte braucht einen eigenen Einhängepunkt.
+
+1. Rechtsklick auf deine neu erstellte Partition und **Einhängepunkte verwalten...** wählen.
+
+2. **Hinzufügen** klicken und einen Einhängepunkt setzen, zum Beispiel `/mnt/data`. Bei mehreren Festplatten braucht jede einen eigenen Pfad, zum Beispiel `/mnt/data` und `/mnt/games`.
+
+3. Sicherstellen dass **Nicht automatisch einbinden** deaktiviert ist, damit die Festplatte bei jedem Start eingebunden wird.
+
+   ![Einhängepunkte verwalten Dialog](/screenshots/drives/mount-points.png)
+
+4. **OK** klicken und bestätigen.
+
+## Fehlerbehebung
+
+<details>
+<summary>Festplatte ist nicht zugänglich</summary>
+
+Wenn im Schritt zur Partitionserstellung **Berechtigungen** auf **Alle** gesetzt wurde, kann dieser Schritt übersprungen werden. Falls die Festplatte nicht zugänglich ist, **Dolphin** öffnen und zum Einhängepunkt navigieren:
+
+1. Rechtsklick auf den Ordner und **Als Administrator öffnen** wählen.
+
+   ![Dolphin Kontextmenü mit Als Administrator öffnen](/screenshots/drives/open-as-admin.png)
+
+2. Im Administrator-Dolphin-Fenster erneut Rechtsklick auf den Ordner und **Eigenschaften** dann **Berechtigungen** öffnen.
+
+3. **Andere** auf **Kann lesen und schreiben** setzen.
+
+</details>
+
+<details>
+<summary>Festplatte erscheint nach Neustart nicht</summary>
+
+**Dolphin** öffnen und zum Einhängepunkt navigieren. Rechtsklick auf den Ordner und **Eigenschaften** öffnen. Der Tab **Allgemein** sollte den Dateisystemtyp und die Gesamtgröße der Festplatte anzeigen. Wenn der Ordner leer erscheint oder 0 Bytes anzeigt, ist die Festplatte nicht eingebunden.
+
+Ohne Neustart lässt sich das beheben, indem man **KDE-Partitionsmanager** öffnet, Rechtsklick auf die Partition und **Einbinden** wählt. Wenn das nicht hilft, werden die Auto-Mount-Einstellungen nach einem Neustart angewendet.
+
+</details>
+
+<details>
+<summary>Apps können nicht auf die Festplatte schreiben</summary>
+
+Im Berechtigungs-Tab von Dolphin wird möglicherweise **root** als Eigentümer angezeigt. Selbst wenn **Alle** auf **Kann anzeigen und Inhalt ändern** gesetzt ist, können manche Apps nicht auf die Festplatte schreiben wenn root der Eigentümer ist. Es gibt keinen GUI-Weg um den Eigentümer zu ändern. Einmalig ein Terminal öffnen und folgenden Befehl ausführen:
+
+```bash
+sudo chown $USER:$USER /mnt/data
+```
+
+`/mnt/data` durch den eigenen Einhängepunkt ersetzen. Danach gehört die Festplatte vollständig dem eigenen Benutzerkonto.
+
+</details>

@@ -6,4 +6,4 @@ order: 0
 
 # Benutzerhandbuch
 
-Durchsuche die Abschnitte oder drücke `⌘ K` um in der Dokumentation zu suchen.
+Willkommen im BlossomOS Help Center. Stöbere in den Abschnitten oder drücke `⌘ K` um die Dokumentation zu durchsuchen.

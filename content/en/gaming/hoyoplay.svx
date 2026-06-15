@@ -1,0 +1,32 @@
+---
+title: Genshin & Hoyoverse 3rd Party Launchers
+description: Run Genshin Impact, Honkai Star Rail, Zenless Zone Zero and Honkai Impact 3rd on BlossomOS.
+icon: sparkles
+order: 5
+---
+
+Hoyoverse does not provide native Linux support for any of their games. The community has built and maintains dedicated open-source launchers for each title. These are not official Hoyoverse products, but they are widely used, actively maintained, and installable directly from Arc Store.
+
+> [!WARNING]
+> **Not affiliated with Hoyoverse**
+> These launchers are third-party projects. They are not made or supported by Hoyoverse. Use them at your own discretion.
+
+## Genshin Impact
+
+Install **An Anime Game Launcher** from Arc Store. Community-maintained Linux launcher for Genshin Impact.
+
+## Honkai: Star Rail
+
+Install **The Honkers Railway** from Arc Store. Community-maintained Linux launcher for Honkai: Star Rail.
+
+## Zenless Zone Zero
+
+Install **Sleepy Launcher** from Arc Store. Community-maintained Linux launcher for Zenless Zone Zero.
+
+## Honkai Impact 3rd
+
+Install **Honkers Launcher** from Arc Store. Community-maintained Linux launcher for Honkai Impact 3rd.
+
+> [!NOTE]
+> **After major game updates**
+> If a launcher stops working after a game update, it usually updates itself within a day or two. If it doesn't, open the launcher and look for an update prompt, or check for updates in Arc Store.

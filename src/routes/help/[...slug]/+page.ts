@@ -4,7 +4,7 @@ import { getNav, flattenNav } from '$lib/nav';
 import type { Component } from 'svelte';
 
 const pages = import.meta.glob<{ default: Component; metadata?: Record<string, unknown> }>(
-	'/content/**\/+page.svx'
+	'/content/**\/*.svx'
 );
 
 export async function load({ params }) {
@@ -12,14 +12,13 @@ export async function load({ params }) {
 	const [docset, ...rest] = params.slug.split('/');
 	const path = rest.join('/');
 
-	const localePath = path
-		? `/content/${locale}/${docset}/${path}/+page.svx`
-		: `/content/${locale}/${docset}/+page.svx`;
-	const fallbackPath = path
-		? `/content/en/${docset}/${path}/+page.svx`
-		: `/content/en/${docset}/+page.svx`;
-
-	const loader = pages[localePath] ?? pages[fallbackPath];
+	const loader = path
+		? (pages[`/content/${locale}/${docset}/${path}.svx`] ??
+			pages[`/content/${locale}/${docset}/${path}/+page.svx`] ??
+			pages[`/content/en/${docset}/${path}.svx`] ??
+			pages[`/content/en/${docset}/${path}/+page.svx`])
+		: (pages[`/content/${locale}/${docset}/+page.svx`] ??
+			pages[`/content/en/${docset}/+page.svx`]);
 
 	if (!loader) {
 		if (!path) {

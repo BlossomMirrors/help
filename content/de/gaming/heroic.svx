@@ -1,0 +1,69 @@
+---
+title: Heroic Games Launcher
+description: Epic Games Store und GOG-Titel auf BlossomOS spielen.
+icon: zap
+order: 2
+---
+
+Heroic ist ein Open-Source-Launcher für Epic Games Store und GOG, der nativ unter Linux läuft. Für den Launcher selbst ist kein Wine nötig.
+
+## Installation
+
+**Heroic Games Launcher** in Arc Store installieren.
+
+## Unterstützte Stores
+
+- **[Epic Games Store](https://store.epicgames.com)** - Deine gesamte Epic-Bibliothek plus ein kostenloses Spiel jede Woche. Heroic synchronisiert beanspruchte Spiele automatisch.
+- **[GOG](https://www.gog.com)** - DRM-freie Spiele aus deinem GOG-Konto, mit Cloud-Speicherständen und automatischen Updates.
+- **[Amazon Prime Gaming](https://gaming.amazon.com)** - Prime Gaming-Titel beanspruchen und spielen. Support ist experimentell.
+
+## Konten verbinden
+
+#### Epic Games
+
+1. **Heroic Games Launcher** öffnen
+2. In der Seitenleiste neben **Epic Games** auf **Anmelden** klicken
+3. Ein Browserfenster öffnet sich für die Anmeldung
+4. Die Bibliothek synchronisiert sich automatisch nach der Anmeldung
+
+#### GOG
+
+1. **Heroic Games Launcher** öffnen
+2. In der Seitenleiste neben **GOG** auf **Anmelden** klicken
+3. Ein Browserfenster öffnet sich für die Anmeldung
+4. Die Bibliothek synchronisiert sich automatisch. Cloud-Speicherstände funktionieren bei unterstützten Titeln direkt
+
+#### Amazon Prime Gaming
+
+1. **Heroic Games Launcher** öffnen
+2. In der Seitenleiste neben **Amazon** auf **Anmelden** klicken
+3. Im Browserfenster mit dem Amazon-Konto anmelden
+
+> [!NOTE]
+> Amazon Prime Gaming-Support in Heroic ist experimentell. Manche Titel lassen sich möglicherweise nicht korrekt installieren.
+
+## Proton-GE
+
+Für bessere Spielekompatibilität **ProtonUp-Qt** aus Arc Store installieren, Heroic als Launcher auswählen und eine Proton-GE-Version herunterladen. Sie erscheint dann in Heroics Wine-Einstellungen als Option.
+
+## Wöchentliche Gratis-Spiele
+
+Epic verschenkt jede Woche Spiele. Heroic zeigt sie auf dem Startbildschirm und du kannst sie beanspruchen ohne den Launcher zu verlassen. Beanspruchte Spiele bleiben dauerhaft in der Bibliothek.
+
+## Heroic vs. Lutris für GOG
+
+> [!NOTE]
+> Sowohl Heroic als auch Lutris können GOG-Spiele spielen. Heroic hat native GOG-Integration mit Cloud-Speicherständen und Auto-Updates und eignet sich gut für die meisten Titel. Lutris lohnt sich, wenn ein bestimmtes Spiel erweiterte Wine-Konfiguration braucht, die Heroic nicht anbietet.
+
+## Speicher
+
+- **[Extra-Festplatten](/help/user/drives)** - Eine zweite Festplatte oder SSD einrichten und einbinden, bevor sie hier hinzugefügt wird.
+
+Heroic erkennt Laufwerke nicht automatisch. Den Pfad manuell setzen:
+
+1. **Heroic** öffnen und zu **Einstellungen** gehen
+2. Unter **Spiele-Installationspfad** das Ordner-Symbol klicken und den Einhängepunkt auswählen
+
+## Kompatibilität
+
+- **[Kompatibilität & Anti-Cheat](./anticheat)** - ProtonDB-Bewertungen erklärt, Anti-Cheat-Status pro Spiel und welche Multiplayer-Spiele unter Linux funktionieren.

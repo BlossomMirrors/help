@@ -1,6 +1,6 @@
 export default {
 	title: 'Benutzerhandbuch',
-	description: 'Alles was du brauchst, um Blossom zu nutzen',
+	description: 'Anleitungen für BlossomOS-Benutzer',
 	icon: 'users',
 	order: 1
 };

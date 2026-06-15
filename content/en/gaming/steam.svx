@@ -1,0 +1,46 @@
+---
+title: Steam
+description: Install and configure Steam on BlossomOS.
+icon: steam
+order: 1
+---
+
+Steam has the best Linux game support of any launcher, built around **Proton** which lets Windows games run natively on Linux.
+
+## Installation
+
+Install **Steam** from Arc Store.
+
+## Changing the Proton Version
+
+Proton is active by default. If a game has issues, try switching the Proton version. **Proton-GE** is a community build with extra patches and media codecs that often fixes games the official Proton can't handle.
+
+#### Per Game
+
+1. Right-click the game in your library and open **Properties**
+2. Go to the **Compatibility** tab
+3. Check **Force the use of a specific Steam Play compatibility tool**
+4. Pick a version from the dropdown. Try **Proton Experimental** first, then **Proton-GE** if that doesn't help
+
+#### All Games (Global)
+
+1. Open **Steam** and go to **Settings**
+2. Under **Compatibility**, enable **Steam Play for all other titles**
+3. Pick a default Proton version from the dropdown
+
+Per-game overrides always take priority over the global setting.
+
+Install **ProtonUp-Qt** from Arc Store to download and manage Proton-GE versions. Versions appear automatically in Steam's compatibility tool list.
+
+## Storage
+
+- **[Extra Drives](/help/user/drives)** - Set up and mount a second hard drive or SSD before adding it here.
+
+Mounted drives are detected automatically. Open **Steam** and go to **Settings** then **Storage**. Your drive should already appear in the list. If it does not, add it manually:
+
+1. Click the **+** button and select your mount point (for example `/mnt/data`)
+2. Optionally set it as the default install location
+
+## Compatibility
+
+- **[Compatibility & Anti-Cheat](./anticheat)** - ProtonDB ratings explained, anti-cheat status per game, and which multiplayer games work on Linux.
