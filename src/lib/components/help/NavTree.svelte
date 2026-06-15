@@ -18,9 +18,7 @@
 	let { nodes, depth, openFolders, currentPath, tagClasses, onToggle, onClose }: Props = $props();
 </script>
 
-<ul
-	class={depth === 0 ? 'space-y-0.5' : 'ml-3.5 mt-0.5 space-y-0.5 border-l border-border pl-2'}
->
+<ul class={depth === 0 ? 'space-y-0.5' : 'ml-3.5 mt-0.5 space-y-0.5 border-l border-border pl-2'}>
 	{#each nodes as node (node.slug)}
 		{@const hasChildren = node.children.length > 0}
 		{@const isOpen = openFolders.has(node.slug)}
@@ -43,16 +41,14 @@
 					>
 						{#if node.icon && icons[node.icon]}
 							{@const Icon = icons[node.icon]}
-							<Icon
-								size={14}
-								strokeWidth={1.5}
-								class="shrink-0 {active ? 'text-primary' : 'opacity-60'}"
-							/>
+							<Icon size={14} class="shrink-0 {active ? 'text-primary' : 'opacity-60'}" />
 						{/if}
 						<span class="flex-1 truncate">{node.title}</span>
 						{#if node.tag}
 							<span
-								class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide {tagClasses[node.tag]}"
+								class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide {tagClasses[
+									node.tag
+								]}"
 								>{node.tag === 'new'
 									? m.tag_new()
 									: node.tag === 'beta'
@@ -66,11 +62,7 @@
 						class="flex h-7 w-7 shrink-0 items-center justify-center rounded text-muted-foreground transition-colors hover:text-foreground"
 						aria-label={isOpen ? m.aria_collapse() : m.aria_expand()}
 					>
-						<ChevronRightIcon
-							size={13}
-							strokeWidth={1.5}
-							class="transition-transform {isOpen ? 'rotate-90' : ''}"
-						/>
+						<ChevronRightIcon size={13} class="transition-transform {isOpen ? 'rotate-90' : ''}" />
 					</button>
 				</div>
 				{#if isOpen}
@@ -85,7 +77,6 @@
 					/>
 				{/if}
 			</li>
-
 		{:else if node.href}
 			{@const active = currentPath === node.href}
 			<li>
@@ -101,16 +92,14 @@
 				>
 					{#if node.icon && icons[node.icon]}
 						{@const Icon = icons[node.icon]}
-						<Icon
-							size={14}
-							strokeWidth={1.5}
-							class="shrink-0 {active ? 'text-primary' : 'opacity-60'}"
-						/>
+						<Icon size={14} class="shrink-0 {active ? 'text-primary' : 'opacity-60'}" />
 					{/if}
 					<span class="flex-1 truncate">{node.title}</span>
 					{#if node.tag}
 						<span
-							class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide {tagClasses[node.tag]}"
+							class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide {tagClasses[
+								node.tag
+							]}"
 							>{node.tag === 'new'
 								? m.tag_new()
 								: node.tag === 'beta'
@@ -120,10 +109,11 @@
 					{/if}
 				</a>
 			</li>
-
 		{:else if depth === 0}
 			<li class="mt-5 first:mt-2">
-				<p class="mb-1 px-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+				<p
+					class="mb-1 px-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground"
+				>
 					{node.title}
 				</p>
 				<NavTree
@@ -136,7 +126,6 @@
 					{onClose}
 				/>
 			</li>
-
 		{:else}
 			<li>
 				<button
@@ -145,12 +134,11 @@
 				>
 					{#if node.icon && icons[node.icon]}
 						{@const Icon = icons[node.icon]}
-						<Icon size={14} strokeWidth={1.5} class="shrink-0 opacity-60" />
+						<Icon size={14} class="shrink-0 opacity-60" />
 					{/if}
 					<span class="flex-1 truncate text-left">{node.title}</span>
 					<ChevronRightIcon
 						size={13}
-						strokeWidth={1.5}
 						class="shrink-0 text-muted-foreground transition-transform {isOpen ? 'rotate-90' : ''}"
 					/>
 				</button>

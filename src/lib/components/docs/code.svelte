@@ -27,7 +27,7 @@
 		onclick={() => clipboard.copy(el?.textContent ?? '')}
 		class={cn(
 			'cursor-pointer rounded px-[0.3em] py-[0.15em] font-mono text-[0.875em] transition-colors',
-			'bg-muted text-foreground hover:bg-primary/15 hover:text-primary',
+			'bg-muted text-foreground',
 			clipboard.status === 'success' && 'bg-green-500/15 text-green-600 dark:text-green-400',
 			className
 		)}

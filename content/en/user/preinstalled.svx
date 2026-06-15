@@ -1,0 +1,56 @@
+---
+title: Preinstalled Software
+description: What comes with BlossomOS out of the box.
+icon: package-open
+order: 2
+---
+
+BlossomOS ships with a curated set of essential software pre-installed and ready to use. Everything is open-source or privacy-respecting, with no bloatware or vendor-locked services.
+
+## System Tools
+
+**KDE Plasma** - The desktop environment. Modern, fast, and highly customizable. See BlossomUI for theme and design system.
+
+**Dolphin** - File manager with built-in Blossom Cloud integration for file sync and sharing.
+
+**KDE Partition Manager** - Manage and format drives, set up mount points. Used for [Extra Drives](./drives).
+
+**Konsole** - Terminal emulator with transparency, profiles, and split panes.
+
+## Internet & Communication
+
+**Helium** - Privacy-focused browser based on Ungoogled Chromium. No Google telemetry or mandatory sign-in. Supports Chrome extensions.
+
+**Thunderbird** - Email client with built-in calendar and address book. Supports all major email providers and protocols.
+
+## Office & Productivity
+
+**LibreOffice** - Full office suite with Writer (word processing), Calc (spreadsheets), Impress (presentations), and Draw (graphics). Import/export all major formats.
+
+**Calendar** - KDE's calendar application with Blossom Cloud sync support.
+
+**KDE Notes** - Simple note-taking application.
+
+## Multimedia
+
+**Spectacle** - Screenshot and screen recording tool. Capture screens, record videos, annotate before saving.
+
+**VLC Media Player** - Media player that plays almost any audio or video format.
+
+## Development Tools
+
+**Kate** - Advanced text editor for code. Available from the app launcher.
+
+**Git** - Version control system, installed system-wide for use in any terminal.
+
+**Podman** - Container system for running isolated applications. Powers Distrobox and pkglayer.
+
+## Customization
+
+**KDE System Settings** - Configure the desktop, themes, shortcuts, startup apps, and more. All changes apply immediately.
+
+## Installing More Software
+
+Everything else comes from **Arc Store**.
+
+See [Arc Store](./arc-store) and [Web Apps](./web-apps) for details.

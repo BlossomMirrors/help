@@ -4,6 +4,8 @@ import remarkGfm from 'remark-gfm';
 import remarkAlerts from './src/lib/remark-alerts.js';
 import rehypeSlug from 'rehype-slug';
 import adapter from '@sveltejs/adapter-node';
+import { injectSvxComponents } from './src/lib/svx-inject-components.js';
+import { rehypeExtractHeadings } from './src/lib/rehype-extract-headings.js';
 
 const layoutPath = new URL('src/lib/md-layout.svelte', import.meta.url).pathname;
 
@@ -11,11 +13,12 @@ const layoutPath = new URL('src/lib/md-layout.svelte', import.meta.url).pathname
 const config = {
 	extensions: ['.svelte', '.svx'],
 	preprocess: [
+		injectSvxComponents(),
 		mdsvex({
 			layout: layoutPath,
 			highlight: { highlighter: highlight },
 			remarkPlugins: [remarkGfm, remarkAlerts],
-			rehypePlugins: [rehypeSlug]
+			rehypePlugins: [rehypeSlug, rehypeExtractHeadings]
 		})
 	],
 	kit: {

@@ -1,0 +1,82 @@
+---
+title: System Updates
+description: How BlossomOS atomic updates work, and how to roll back if something goes wrong.
+icon: refresh-cw
+order: 8
+---
+
+BlossomOS uses **atomic updates** - the entire system image is replaced at once, as a single operation. Either the update fully applies and the system reboots into the new version, or nothing changes at all. There's no halfway state where a partial update breaks your system.
+
+## How Updates Work
+
+BlossomOS is built on **Fedora Kinoite**, which uses `rpm-ostree` to manage the base system as a versioned, immutable image. When an update is available:
+
+1. The new system image downloads in the background
+2. You get a notification that a reboot will apply the update
+3. On reboot, the system switches to the new image in seconds
+4. If something goes wrong, you can boot back into the previous version
+
+Your personal files, settings, and installed apps are unaffected by system updates.
+
+## Updating Through Arc
+
+Arc shows system updates alongside app updates. Open **Arc Store** and go to **Updates**. System updates appear with a reboot indicator. Click **Update** to download and stage it, then reboot when convenient.
+
+## App Updates vs. System Updates
+
+| | App Updates | System Updates |
+|---|---|---|
+| What updates | Flatpaks, web apps, pkglayer packages | The base OS, KDE Plasma, system libraries |
+| Reboot needed | No | Yes |
+| Managed by | Arc | Arc / rpm-ostree |
+| Rollback | Remove the app | Boot previous deployment |
+
+## Rolling Back
+
+If an update causes a problem, you can boot into the previous system version:
+
+1. Reboot your machine
+2. At the GRUB boot screen, select the previous BlossomOS entry (the one without "current")
+3. BlossomOS boots into the last working version
+
+To make the rollback permanent (so the old version is the default on next boot):
+
+```bash
+rpm-ostree rollback
+```
+
+Run this in a terminal, then reboot. The system goes back to the previous deployment and the failed update is removed.
+
+## Checking Update Status
+
+```bash
+rpm-ostree status
+```
+
+This shows all installed deployments, which one you're currently running, and whether an update is staged for next boot.
+
+## Pinning a Deployment
+
+If you want to keep a specific version available even after future updates, you can pin it:
+
+```bash
+rpm-ostree pin 0    # pin the currently booted deployment
+```
+
+Pinned deployments are never automatically removed. Unpin with `rpm-ostree pin --unpin 0`.
+
+## Automatic Updates
+
+BlossomOS checks for updates automatically and downloads them in the background. By default, it does not reboot automatically - you choose when to apply them. You can configure this behaviour in **System Settings → System Updates**.
+
+## System Base is Read-Only
+
+The `/usr` directory and most of the system are read-only by default. This is intentional - it prevents software from modifying system files in ways that could break things or introduce security issues.
+
+If you need to temporarily write to `/usr` for testing (not recommended for production use):
+
+```bash
+rpm-ostree usroverlay
+```
+
+This creates a temporary writable overlay that reverts completely on the next reboot. Available in Arc Store as a one-click option under CLI tools.

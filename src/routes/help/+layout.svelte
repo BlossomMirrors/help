@@ -5,6 +5,7 @@
 	import { UseToc } from '$lib/hooks/use-toc.svelte';
 	import ScrollToTop from '$lib/components/ui/scroll-to-top.svelte';
 	import * as Toc from '$lib/components/ui/toc/index.js';
+	import type { TocItem } from '$lib/components/ui/toc/toc.svelte';
 	import Sidebar from '$lib/components/help/Sidebar.svelte';
 	import HelpHeader from '$lib/components/help/HelpHeader.svelte';
 	import * as m from '$lib/paraglide/messages';
@@ -27,6 +28,27 @@
 	$effect(() => {
 		if (articleEl) toc.ref = articleEl;
 	});
+
+	// Build a nested TocItem tree from the flat server-side heading list.
+	// No DOM required - renders in SSR immediately.
+	function buildServerToc(
+		flat: { id: string; label: string; level: number }[]
+	): TocItem[] {
+		const root: TocItem[] = [];
+		const stack: { item: TocItem; level: number }[] = [];
+		for (const h of flat) {
+			const item: TocItem = { id: h.id, label: h.label, active: false, children: [] };
+			while (stack.length && stack[stack.length - 1].level >= h.level) stack.pop();
+			if (stack.length === 0) root.push(item);
+			else stack[stack.length - 1].item.children.push(item);
+			stack.push({ item, level: h.level });
+		}
+		return root;
+	}
+
+	const serverToc = $derived(buildServerToc((page.data.headings as { id: string; label: string; level: number }[]) ?? []));
+	// Use live DOM toc once hydrated (has active state), fall back to server toc for SSR
+	const displayToc = $derived(toc.current.length > 0 ? (toc.current as unknown as TocItem[]) : serverToc);
 
 	const currentPath = $derived(page.url.pathname);
 	const currentDocsetId = $derived(currentPath.split('/')[2] ?? getDocsetIds()[0] ?? 'user');
@@ -98,14 +120,14 @@
 				</article>
 			</main>
 
-			{#if toc.current.length > 0}
+			{#if displayToc.length > 0}
 				<aside
 					class="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-52 shrink-0 overflow-y-auto border-l border-border px-4 py-8 xl:block"
 				>
 					<p class="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
 						{m.on_this_page()}
 					</p>
-					<Toc.Root toc={toc.current} />
+					<Toc.Root toc={displayToc} />
 				</aside>
 			{/if}
 		</div>

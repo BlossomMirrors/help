@@ -23,6 +23,6 @@
 		class="fixed right-6 bottom-6 z-50 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-all hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
 		aria-label="Scroll to top"
 	>
-		<ArrowUpIcon size={18} strokeWidth={1.5} />
+		<ArrowUpIcon size={18} />
 	</button>
 {/if}

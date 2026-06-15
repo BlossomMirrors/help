@@ -6,7 +6,6 @@
 	import { icons } from '$lib/icons';
 	import { getDocsetIds, getDocsetMeta } from '$lib/docsets';
 	import BookOpenIcon from '@lucide/svelte/icons/book-open';
-	import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
 	import * as m from '$lib/paraglide/messages';
 
 	let open = $state(false);
@@ -29,34 +28,36 @@
 	});
 
 	const allItems = $derived(flattenNav(getNav(selectedDocset)).filter((n) => n.href));
+	const currentDocset = $derived(getDocsetMeta(selectedDocset));
+	const docsetIds = $derived(getDocsetIds());
 
 	function iconComponent(node: NavNode) {
 		return node.icon ? icons[node.icon] : BookOpenIcon;
 	}
-
-	const currentDocset = $derived(getDocsetMeta(selectedDocset));
 </script>
 
-<Command.Dialog bind:open title={m.search_dialog_title()} description={m.search_dialog_description()}>
+<Command.Dialog
+	bind:open
+	title={m.search_dialog_title()}
+	description={m.search_dialog_description()}
+>
 	{#snippet children()}
-		<div class="flex items-center border-b border-border">
-			<Command.Input placeholder={m.search_placeholder()} class="flex-1" />
-			<div class="relative shrink-0 border-l border-border">
-				<select
-					bind:value={selectedDocset}
-					class="h-10 cursor-pointer appearance-none bg-transparent pl-3 pr-7 text-sm text-muted-foreground focus:outline-none"
+		<Command.Input placeholder={m.search_placeholder()} />
+		<div class="flex gap-1 border-y border-border px-3 py-1.5">
+			{#each docsetIds as dsId (dsId)}
+				<button
+					onclick={() => (selectedDocset = dsId)}
+					class="rounded-md px-2.5 py-1 text-xs font-medium transition-colors {dsId ===
+					selectedDocset
+						? 'bg-primary text-primary-foreground'
+						: 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'}"
 				>
-					{#each getDocsetIds() as dsId (dsId)}
-						<option value={dsId}>{getDocsetMeta(dsId).title}</option>
-					{/each}
-				</select>
-				<ChevronDownIcon size={12} class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground" />
-			</div>
+					{getDocsetMeta(dsId).title}
+				</button>
+			{/each}
 		</div>
 		<Command.List>
-			<Command.Empty>
-				<p class="py-2 text-sm text-muted-foreground">{m.search_no_results()}</p>
-			</Command.Empty>
+			<Command.Empty>{m.search_no_results()}</Command.Empty>
 			<Command.Group heading={currentDocset.title}>
 				{#each allItems as item (item.href)}
 					{@const Icon = iconComponent(item)}
@@ -64,23 +65,28 @@
 						href={item.href}
 						value={item.title}
 						onclick={() => (open = false)}
-						class="flex items-center gap-2"
 					>
-						<Icon size={14} strokeWidth={1.5} class="shrink-0 text-muted-foreground" />
-						<span class="flex-1 truncate">{item.title}</span>
+						<Icon />
+						<span>{item.title}</span>
 						{#if item.tag}
-							<span class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide
+							<span
+								class="ml-auto rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide
 								{item.tag === 'beta' ? 'bg-primary/10 text-primary' : ''}
 								{item.tag === 'new' ? 'bg-tertiary-700/10 text-tertiary-700 dark:text-tertiary-400' : ''}
 								{item.tag === 'deprecated' ? 'bg-destructive/10 text-destructive' : ''}
-							">{item.tag === 'new' ? m.tag_new() : item.tag === 'beta' ? m.tag_beta() : m.tag_deprecated()}</span>
+							">{item.tag === 'new' ? m.tag_new() : item.tag === 'beta' ? m.tag_beta() : m.tag_deprecated()}</span
+							>
 						{/if}
 					</Command.LinkItem>
 				{/each}
 			</Command.Group>
 		</Command.List>
-		<div class="border-t border-border px-3 py-2 flex items-center gap-3 text-[11px] text-muted-foreground">
-			<span class="flex items-center gap-1"><Kbd.Root>↑</Kbd.Root><Kbd.Root>↓</Kbd.Root> {m.kbd_navigate()}</span>
+		<div
+			class="flex items-center gap-3 border-t border-border px-3 py-2 text-[11px] text-muted-foreground"
+		>
+			<span class="flex items-center gap-1"
+				><Kbd.Root>↑</Kbd.Root><Kbd.Root>↓</Kbd.Root> {m.kbd_navigate()}</span
+			>
 			<span class="flex items-center gap-1"><Kbd.Root>↵</Kbd.Root> {m.kbd_open()}</span>
 			<span class="flex items-center gap-1"><Kbd.Root>Esc</Kbd.Root> {m.kbd_close()}</span>
 		</div>

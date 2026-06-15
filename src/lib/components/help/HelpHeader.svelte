@@ -2,6 +2,7 @@
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
 	import MenuIcon from '@lucide/svelte/icons/menu';
 	import XIcon from '@lucide/svelte/icons/x';
+	import SparklesIcon from '@lucide/svelte/icons/sparkles';
 	import * as m from '$lib/paraglide/messages';
 	import { flattenNav, type NavNode } from '$lib/nav';
 
@@ -45,10 +46,7 @@
 		class="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:hidden"
 		aria-label={m.aria_toggle_sidebar()}
 	>
-		{#if sidebarOpen}<XIcon size={18} strokeWidth={1.5} />{:else}<MenuIcon
-				size={18}
-				strokeWidth={1.5}
-			/>{/if}
+		{#if sidebarOpen}<XIcon size={18} />{:else}<MenuIcon size={18} />{/if}
 	</button>
 
 	<Breadcrumb.Root class="min-w-0 flex-1">
@@ -65,4 +63,13 @@
 			{/each}
 		</Breadcrumb.List>
 	</Breadcrumb.Root>
+
+	<button
+		onclick={() => window.dispatchEvent(new Event('open-chat'))}
+		class="flex h-8 items-center gap-1.5 rounded-md px-2.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+		aria-label="Ask AI"
+	>
+		<SparklesIcon size={14} class="text-primary" />
+		<span class="hidden sm:inline">Ask AI</span>
+	</button>
 </header>

@@ -29,5 +29,6 @@ export async function load({ params }) {
 	}
 
 	const mod = await loader();
-	return { Content: mod.default, metadata: mod.metadata ?? {}, docset };
+	const headings = (mod.metadata?.headings as { id: string; label: string; level: number }[]) ?? [];
+	return { Content: mod.default, metadata: mod.metadata ?? {}, docset, headings };
 }
