@@ -1,1 +1,6 @@
-export default { title: 'Mitwirken', description: 'Leitfaden für BlossomOS-Entwickler', icon: 'code', order: 3 };
+export default {
+	title: 'Mitwirken',
+	description: 'Leitfaden für BlossomOS-Entwickler',
+	icon: 'code',
+	order: 3
+};

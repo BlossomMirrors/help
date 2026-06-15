@@ -37,7 +37,11 @@
 	const currentDocset = $derived(getDocsetMeta(selectedDocset));
 </script>
 
-<Command.Dialog bind:open title={m.search_dialog_title()} description={m.search_dialog_description()}>
+<Command.Dialog
+	bind:open
+	title={m.search_dialog_title()}
+	description={m.search_dialog_description()}
+>
 	{#snippet children()}
 		<div class="flex items-center border-b border-border">
 			<Command.Input placeholder={m.search_placeholder()} class="flex-1" />
@@ -50,7 +54,10 @@
 						<option value={dsId}>{getDocsetMeta(dsId).title}</option>
 					{/each}
 				</select>
-				<ChevronDownIcon size={12} class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground" />
+				<ChevronDownIcon
+					size={12}
+					class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground"
+				/>
 			</div>
 		</div>
 		<Command.List>
@@ -69,18 +76,24 @@
 						<Icon size={14} strokeWidth={1.5} class="shrink-0 text-muted-foreground" />
 						<span class="flex-1 truncate">{item.title}</span>
 						{#if item.tag}
-							<span class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide
+							<span
+								class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide
 								{item.tag === 'beta' ? 'bg-primary/10 text-primary' : ''}
 								{item.tag === 'new' ? 'bg-tertiary-700/10 text-tertiary-700 dark:text-tertiary-400' : ''}
 								{item.tag === 'deprecated' ? 'bg-destructive/10 text-destructive' : ''}
-							">{item.tag === 'new' ? m.tag_new() : item.tag === 'beta' ? m.tag_beta() : m.tag_deprecated()}</span>
+							">{item.tag === 'new' ? m.tag_new() : item.tag === 'beta' ? m.tag_beta() : m.tag_deprecated()}</span
+							>
 						{/if}
 					</Command.LinkItem>
 				{/each}
 			</Command.Group>
 		</Command.List>
-		<div class="border-t border-border px-3 py-2 flex items-center gap-3 text-[11px] text-muted-foreground">
-			<span class="flex items-center gap-1"><Kbd.Root>↑</Kbd.Root><Kbd.Root>↓</Kbd.Root> {m.kbd_navigate()}</span>
+		<div
+			class="border-t border-border px-3 py-2 flex items-center gap-3 text-[11px] text-muted-foreground"
+		>
+			<span class="flex items-center gap-1"
+				><Kbd.Root>↑</Kbd.Root><Kbd.Root>↓</Kbd.Root> {m.kbd_navigate()}</span
+			>
 			<span class="flex items-center gap-1"><Kbd.Root>↵</Kbd.Root> {m.kbd_open()}</span>
 			<span class="flex items-center gap-1"><Kbd.Root>Esc</Kbd.Root> {m.kbd_close()}</span>
 		</div>

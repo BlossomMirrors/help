@@ -24,14 +24,18 @@
 			class={`group flex flex-col rounded-2xl border border-border bg-card p-7 transition-colors md:p-9 ${p.href ? 'hover:border-primary/30 hover:bg-primary/3' : 'cursor-default'}`}
 			target={p.href?.startsWith('http') && p.href.includes('://') ? '_blank' : undefined}
 		>
-			<div class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+			<div
+				class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"
+			>
 				<p.Icon size={20} strokeWidth={1.5} />
 			</div>
 			<div class="flex-1">
 				<div class="flex items-center gap-2">
 					<h3 class="font-semibold">{p.title}</h3>
 					{#if p.soon}
-						<span class="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold tracking-wide text-muted-foreground uppercase">
+						<span
+							class="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold tracking-wide text-muted-foreground uppercase"
+						>
 							{soonBadge}
 						</span>
 					{/if}

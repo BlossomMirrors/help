@@ -1,7 +1,13 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
 
-	let { Icon, img, label, sublabel, color = 'primary' }: {
+	let {
+		Icon,
+		img,
+		label,
+		sublabel,
+		color = 'primary'
+	}: {
 		Icon?: Component<{ size?: number; strokeWidth?: number }>;
 		img?: string;
 		label: string;
@@ -27,7 +33,9 @@
 	<div>
 		<p class="text-sm font-medium">{label}</p>
 		{#if sublabel}
-			<p class="text-[10px] font-semibold tracking-wide text-muted-foreground uppercase">{sublabel}</p>
+			<p class="text-[10px] font-semibold tracking-wide text-muted-foreground uppercase">
+				{sublabel}
+			</p>
 		{/if}
 	</div>
 </div>

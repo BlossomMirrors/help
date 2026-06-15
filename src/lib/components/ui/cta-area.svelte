@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button } from "$lib/components/ui/button/index.js";
+	import { Button } from '$lib/components/ui/button/index.js';
 
 	let {
 		title,
@@ -7,7 +7,7 @@
 		button1Text,
 		button1Href = '#',
 		button2Text,
-		button2Href,
+		button2Href
 	}: {
 		title: string;
 		body: string;
@@ -22,8 +22,12 @@
 	}
 </script>
 
-<div class="relative overflow-hidden rounded-3xl bg-linear-to-br from-primary/10 via-primary/5 to-transparent p-10 md:p-16">
-	<div class="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-primary/8 blur-3xl"></div>
+<div
+	class="relative overflow-hidden rounded-3xl bg-linear-to-br from-primary/10 via-primary/5 to-transparent p-10 md:p-16"
+>
+	<div
+		class="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-primary/8 blur-3xl"
+	></div>
 	<div class="relative max-w-2xl">
 		<h2 class="font-serif text-4xl leading-tight md:text-5xl">{title}</h2>
 		<p class="mt-5 text-lg leading-relaxed text-muted-foreground">{body}</p>

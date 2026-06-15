@@ -18,9 +18,7 @@
 	let { nodes, depth, openFolders, currentPath, tagClasses, onToggle, onClose }: Props = $props();
 </script>
 
-<ul
-	class={depth === 0 ? 'space-y-0.5' : 'ml-3.5 mt-0.5 space-y-0.5 border-l border-border pl-2'}
->
+<ul class={depth === 0 ? 'space-y-0.5' : 'ml-3.5 mt-0.5 space-y-0.5 border-l border-border pl-2'}>
 	{#each nodes as node (node.slug)}
 		{@const hasChildren = node.children.length > 0}
 		{@const isOpen = openFolders.has(node.slug)}
@@ -52,7 +50,9 @@
 						<span class="flex-1 truncate">{node.title}</span>
 						{#if node.tag}
 							<span
-								class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide {tagClasses[node.tag]}"
+								class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide {tagClasses[
+									node.tag
+								]}"
 								>{node.tag === 'new'
 									? m.tag_new()
 									: node.tag === 'beta'
@@ -85,7 +85,6 @@
 					/>
 				{/if}
 			</li>
-
 		{:else if node.href}
 			{@const active = currentPath === node.href}
 			<li>
@@ -110,7 +109,9 @@
 					<span class="flex-1 truncate">{node.title}</span>
 					{#if node.tag}
 						<span
-							class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide {tagClasses[node.tag]}"
+							class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide {tagClasses[
+								node.tag
+							]}"
 							>{node.tag === 'new'
 								? m.tag_new()
 								: node.tag === 'beta'
@@ -120,10 +121,11 @@
 					{/if}
 				</a>
 			</li>
-
 		{:else if depth === 0}
 			<li class="mt-5 first:mt-2">
-				<p class="mb-1 px-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+				<p
+					class="mb-1 px-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground"
+				>
 					{node.title}
 				</p>
 				<NavTree
@@ -136,7 +138,6 @@
 					{onClose}
 				/>
 			</li>
-
 		{:else}
 			<li>
 				<button

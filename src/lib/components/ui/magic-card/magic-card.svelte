@@ -36,7 +36,9 @@
 >
 	<div
 		class="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
-		style="opacity: {hovered ? 1 : 0}; background: radial-gradient(circle at var(--mx) var(--my), var(--glow) 0%, transparent 65%);"
+		style="opacity: {hovered
+			? 1
+			: 0}; background: radial-gradient(circle at var(--mx) var(--my), var(--glow) 0%, transparent 65%);"
 	></div>
 	{@render children()}
 </div>

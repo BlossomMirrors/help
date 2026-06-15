@@ -17,8 +17,7 @@ export async function load({ params }) {
 			pages[`/content/${locale}/${docset}/${path}/+page.svx`] ??
 			pages[`/content/en/${docset}/${path}.svx`] ??
 			pages[`/content/en/${docset}/${path}/+page.svx`])
-		: (pages[`/content/${locale}/${docset}/+page.svx`] ??
-			pages[`/content/en/${docset}/+page.svx`]);
+		: (pages[`/content/${locale}/${docset}/+page.svx`] ?? pages[`/content/en/${docset}/+page.svx`]);
 
 	if (!loader) {
 		if (!path) {
