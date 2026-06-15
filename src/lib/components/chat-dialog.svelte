@@ -19,6 +19,7 @@
 		role: 'user' | 'assistant';
 		content: string;
 		sources: Source[];
+		tools?: string[];
 	};
 
 	const TOOL_LABELS: Record<string, () => string> = {
@@ -65,12 +66,30 @@
 	];
 
 	function parseResponse(raw: string): { content: string; sources: Source[] } {
-		const marker = '\n[REFS]\n';
-		const idx = raw.indexOf(marker);
-		if (idx === -1) return { content: raw, sources: [] };
+		// Strip [WEB_REFS] block first (server-appended external sources)
+		const webRefsMarker = '\n[WEB_REFS]\n';
+		const webIdx = raw.indexOf(webRefsMarker);
+		let webSources: Source[] = [];
+		if (webIdx !== -1) {
+			webSources = raw
+				.slice(webIdx + webRefsMarker.length)
+				.split('\n')
+				.filter(Boolean)
+				.map((line) => {
+					const [url, title] = line.split('|').map((s) => s.trim());
+					return { url, title: title ?? url };
+				})
+				.filter((s) => s.url?.startsWith('http'));
+			raw = raw.slice(0, webIdx);
+		}
+
+		// Parse [REFS] block (AI-generated doc citations)
+		const refsMarker = '\n[REFS]\n';
+		const idx = raw.indexOf(refsMarker);
+		if (idx === -1) return { content: raw.trimEnd(), sources: webSources };
 		const content = raw.slice(0, idx).trimEnd();
-		const sources = raw
-			.slice(idx + marker.length)
+		const docSources = raw
+			.slice(idx + refsMarker.length)
 			.split('\n')
 			.filter(Boolean)
 			.map((line) => {
@@ -78,7 +97,7 @@
 				return { url, title: title ?? url, description };
 			})
 			.filter((s) => s.url?.startsWith('/help/'));
-		return { content, sources };
+		return { content, sources: [...docSources, ...webSources] };
 	}
 
 	// Strip \x01TOOLNAME\x01 markers and collect tool names
@@ -131,9 +150,9 @@
 			streamingText = 'Connection error. Please try again.';
 		}
 
-		const { text: finalText, tools: _ } = parseStream(streamingText);
+		const { text: finalText, tools: usedTools } = parseStream(streamingText);
 		const { content, sources } = parseResponse(finalText);
-		messages = [...messages, { role: 'assistant', content, sources }];
+		messages = [...messages, { role: 'assistant', content, sources, tools: usedTools }];
 		streamingText = '';
 		streamingTools = [];
 		loading = false;
@@ -196,6 +215,16 @@
 				{:else}
 					{#each messages as msg, i (i)}
 						<div>
+							{#if msg.role === 'assistant' && msg.tools && msg.tools.length > 0}
+								<div class="ml-8 mb-1.5 flex flex-wrap gap-x-3 gap-y-1">
+									{#each msg.tools as tool}
+										<span class="flex items-center gap-1 text-xs text-muted-foreground/60">
+											<span class="inline-block h-1 w-1 rounded-full bg-muted-foreground/40"></span>
+											{TOOL_LABELS[tool]?.() ?? tool}
+										</span>
+									{/each}
+								</div>
+							{/if}
 							<Message role={msg.role} content={msg.content} />
 							{#if msg.role === 'assistant' && msg.sources.length > 0}
 								<Sources sources={msg.sources} />
@@ -205,12 +234,22 @@
 
 					{#if loading}
 						<div>
+							{#if streamingTools.length > 0}
+								<div class="ml-8 mb-1.5 flex flex-wrap gap-x-3 gap-y-1">
+									{#each streamingTools as tool}
+										<span class="flex items-center gap-1.5 text-xs text-muted-foreground">
+											<span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
+											{TOOL_LABELS[tool]?.() ?? tool}
+										</span>
+									{/each}
+								</div>
+							{/if}
 							{#if streamingParsed().content}
 								<Message role="assistant" content={streamingParsed().content} streaming />
 								{#if streamingParsed().sources.length > 0}
 									<Sources sources={streamingParsed().sources} />
 								{/if}
-							{:else}
+							{:else if streamingTools.length === 0}
 								<div class="flex gap-2.5">
 									<div
 										class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10"
@@ -218,18 +257,7 @@
 										<SparklesIcon size={12} class="text-primary" />
 									</div>
 									<div class="flex-1 pt-1">
-										{#if streamingTools.length > 0}
-											<div class="flex flex-col gap-1">
-												{#each streamingTools as tool}
-													<span class="flex items-center gap-1.5 text-xs text-muted-foreground">
-														<span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
-														{TOOL_LABELS[tool]?.() ?? tool}
-													</span>
-												{/each}
-											</div>
-										{:else}
-											<Shimmer />
-										{/if}
+										<Shimmer />
 									</div>
 								</div>
 							{/if}

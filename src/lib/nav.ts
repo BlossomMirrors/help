@@ -19,7 +19,7 @@ type ContentMeta = {
 	icon?: string;
 };
 
-const allModules = import.meta.glob<{ metadata?: ContentMeta }>('/content/**\/*.svx', {
+const allModules = import.meta.glob<{ metadata?: ContentMeta }>('/content/**/*.svx', {
 	eager: true
 });
 

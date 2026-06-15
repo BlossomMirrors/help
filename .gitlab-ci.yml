@@ -1,0 +1,57 @@
+image: oven/bun:latest
+
+stages:
+  - check
+  - build
+  - docker
+
+lint:
+  stage: check
+  script:
+    - bun install --frozen-lockfile
+    - bun run lint
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - node_modules/
+
+typecheck:
+  stage: check
+  script:
+    - bun install --frozen-lockfile
+    - bunx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
+    - bun run check
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - node_modules/
+
+build:
+  stage: build
+  script:
+    - bun install --frozen-lockfile
+    - bun run build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 week
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - node_modules/
+
+docker:
+  stage: docker
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: ['']
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n $CI_REGISTRY_USER:$CI_REGISTRY_PASSWORD | base64 -w 0)\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor
+      --context $CI_PROJECT_DIR
+      --dockerfile $CI_PROJECT_DIR/Dockerfile
+      --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+      --destination $CI_REGISTRY_IMAGE:latest
+  only:
+    - main

@@ -1,0 +1,14 @@
+services:
+  help:
+    image: registry.blossomos.org/blossom/help:latest
+    ports:
+      - '1001:3000'
+    environment:
+      NODE_ENV: production
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://localhost:3000/']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped

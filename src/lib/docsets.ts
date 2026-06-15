@@ -9,7 +9,7 @@ export type DocsetMeta = {
 };
 
 const allDocsetFiles = import.meta.glob<{ default: Omit<DocsetMeta, 'id'> }>(
-	'/content/**\/+docset.ts',
+	'/content/**/+docset.ts',
 	{ eager: true }
 );
 
@@ -31,5 +31,11 @@ export function getDocsetMeta(id: string): DocsetMeta {
 	const localePath = `/content/${locale}/${id}/+docset.ts`;
 	const fallbackPath = `/content/en/${id}/+docset.ts`;
 	const data = allDocsetFiles[localePath]?.default ?? allDocsetFiles[fallbackPath]?.default;
-	return { id, title: data?.title ?? id, description: data?.description, icon: data?.icon, order: data?.order };
+	return {
+		id,
+		title: data?.title ?? id,
+		description: data?.description,
+		icon: data?.icon,
+		order: data?.order
+	};
 }

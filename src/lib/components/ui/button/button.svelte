@@ -1,42 +1,49 @@
 <script lang="ts" module>
-	import { tv, type VariantProps } from "tailwind-variants";
+	import { tv, type VariantProps } from 'tailwind-variants';
+	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import type { Snippet } from 'svelte';
 
 	export const buttonVariants = tv({
 		base: "relative overflow-hidden inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-button)] border border-transparent text-sm font-medium transition-colors duration-100 active:translate-y-[1px] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer",
 		variants: {
 			variant: {
-				default:
-					"bg-button text-button-foreground border-border hover:bg-button-hover",
+				default: 'bg-button text-button-foreground border-border hover:bg-button-hover',
 				primary:
-					"bg-button-accent/25 text-button-foreground border-primary/50 hover:bg-button-accent-hover/35 hover:border-primary/80",
+					'bg-button-accent/25 text-button-foreground border-primary/50 hover:bg-button-accent-hover/35 hover:border-primary/80',
 				destructive:
-					"bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/85 hover:border-destructive/85 focus-visible:ring-destructive/30",
-				ghost: "border-transparent text-foreground hover:bg-button-hover",
-				link: "border-transparent text-link underline-offset-4 hover:underline",
-				outline: "border-border text-foreground hover:bg-button-hover",
-				secondary: "bg-muted text-muted-foreground border-border hover:bg-muted/80",
+					'bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/85 hover:border-destructive/85 focus-visible:ring-destructive/30',
+				ghost: 'border-transparent text-foreground hover:bg-button-hover',
+				link: 'border-transparent text-link underline-offset-4 hover:underline',
+				outline: 'border-border text-foreground hover:bg-button-hover',
+				secondary: 'bg-muted text-muted-foreground border-border hover:bg-muted/80'
 			},
 			size: {
-				default: "h-9 px-4 py-2 has-[>svg]:px-3",
-				sm: "h-8 gap-1.5 px-3 has-[>svg]:px-2.5",
-				lg: "h-11 px-6 has-[>svg]:px-4",
-				icon: "size-9",
-				"icon-sm": "size-8",
-				"icon-xs": "size-6",
-				xs: "h-7 gap-1 px-2 text-xs",
-			},
+				default: 'h-9 px-4 py-2 has-[>svg]:px-3',
+				sm: 'h-8 gap-1.5 px-3 has-[>svg]:px-2.5',
+				lg: 'h-11 px-6 has-[>svg]:px-4',
+				icon: 'size-9',
+				'icon-sm': 'size-8',
+				'icon-xs': 'size-6',
+				xs: 'h-7 gap-1 px-2 text-xs'
+			}
 		},
 		defaultVariants: {
-			variant: "default",
-			size: "default",
-		},
+			variant: 'default',
+			size: 'default'
+		}
 	});
+
+	export type ButtonVariant = VariantProps<typeof buttonVariants>['variant'];
+	export type ButtonSize = VariantProps<typeof buttonVariants>['size'];
+	export type ButtonProps = HTMLButtonAttributes &
+		VariantProps<typeof buttonVariants> & {
+			child?: Snippet<[{ props: Record<string, unknown> }]>;
+			ref?: HTMLElement | null;
+		};
 </script>
 
 <script lang="ts">
-	import { cn } from "$lib/utils.js";
-	import type { HTMLButtonAttributes } from "svelte/elements";
-	import type { Snippet } from "svelte";
+	import { cn } from '$lib/utils.js';
 
 	let {
 		ref = $bindable(null),
@@ -68,7 +75,7 @@
 		setTimeout(() => {
 			ripples = ripples.filter((r) => r.id !== id);
 		}, 600);
-		if (typeof onpointerdown === "function") {
+		if (typeof onpointerdown === 'function') {
 			onpointerdown(e as PointerEvent & { currentTarget: EventTarget & HTMLButtonElement });
 		}
 	}
@@ -76,12 +83,10 @@
 	const mergedProps = $derived({
 		...restProps,
 		class: cn(buttonVariants({ variant, size }), className),
-		"data-slot": "button",
+		'data-slot': 'button'
 	});
 
-	const rippleColorClass = $derived(
-		variant === "destructive" ? "bg-foreground" : "bg-primary"
-	);
+	const rippleColorClass = $derived(variant === 'destructive' ? 'bg-foreground' : 'bg-primary');
 </script>
 
 {#if child}

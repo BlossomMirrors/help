@@ -10,6 +10,7 @@ const gitignorePath = path.resolve(import.meta.dirname, '.gitignore');
 
 export default defineConfig(
 	includeIgnoreFile(gitignorePath),
+	{ ignores: ['src/lib/paraglide/**'] },
 	js.configs.recommended,
 	ts.configs.recommended,
 	svelte.configs.recommended,
@@ -39,6 +40,12 @@ export default defineConfig(
 		rules: {
 			'svelte/no-navigation-without-resolve': 'off',
 			'svelte/no-unnecessary-children-snippet': 'off'
+		}
+	},
+	{
+		files: ['src/lib/remark-*.ts'],
+		rules: {
+			'@typescript-eslint/no-explicit-any': 'off'
 		}
 	}
 );

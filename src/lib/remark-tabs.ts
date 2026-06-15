@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Remark plugin for markdown tabs.
  *
@@ -19,33 +18,36 @@ import { toHtml } from 'hast-util-to-html';
 let counter = 0;
 
 export function remarkTabs() {
-	return (tree) => {
-		visit(tree, 'containerDirective', (node, index, parent) => {
+	return (tree: any) => {
+		visit(tree, 'containerDirective', (node: any, index, parent) => {
 			if (node.name !== 'tabs' || index == null || !parent) return;
 
 			const id = `md-tabs-${++counter}`;
 
 			const tabs = node.children.filter(
-				(child) => child.type === 'containerDirective' && child.name === 'tab'
+				(child: any) => child.type === 'containerDirective' && child.name === 'tab'
 			);
 
 			if (tabs.length === 0) return;
 
 			const buttons = tabs
-				.map((tab, i) => {
+				.map((tab: any, i: number) => {
 					const label =
 						tab.children
-							.find((c) => c?.data?.directiveLabel)
-							?.children?.map((c) => c.value ?? '')
+							.find((c: any) => c?.data?.directiveLabel)
+							?.children?.map((c: any) => c.value ?? '')
 							.join('') ?? `Tab ${i + 1}`;
 					return `<button class="md-tab-btn" role="tab" data-tab="${i}" aria-selected="${i === 0}" aria-controls="${id}-panel-${i}">${label}</button>`;
 				})
 				.join('');
 
 			const panels = tabs
-				.map((tab, i) => {
-					const bodyChildren = tab.children.filter((c) => !c?.data?.directiveLabel);
-					const bodyHast = { type: 'root', children: bodyChildren.map((c) => toHast(c)) };
+				.map((tab: any, i: number) => {
+					const bodyChildren = tab.children.filter((c: any) => !c?.data?.directiveLabel);
+					const bodyHast = {
+						type: 'root' as const,
+						children: bodyChildren.map((c: any) => toHast(c))
+					};
 					const bodyHtml = toHtml(bodyHast);
 					return `<div class="md-tab-panel" role="tabpanel" id="${id}-panel-${i}" data-panel="${i}"${i > 0 ? ' hidden' : ''}>${bodyHtml}</div>`;
 				})
