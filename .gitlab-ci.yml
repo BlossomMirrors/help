@@ -1,0 +1,39 @@
+image: oven/bun:latest
+
+stages:
+  - check
+  - build
+
+lint:
+  stage: check
+  script:
+    - bun install --frozen-lockfile
+    - bun run lint
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - node_modules/
+
+typecheck:
+  stage: check
+  script:
+    - bun install --frozen-lockfile
+    - bun run check
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - node_modules/
+
+build:
+  stage: build
+  script:
+    - bun install --frozen-lockfile
+    - bun run build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 week
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - node_modules/
