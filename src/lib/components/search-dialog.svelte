@@ -42,60 +42,58 @@
 	title={m.search_dialog_title()}
 	description={m.search_dialog_description()}
 >
-	{#snippet children()}
-		<div class="flex items-center border-b border-border">
-			<Command.Input placeholder={m.search_placeholder()} class="flex-1" />
-			<div class="relative shrink-0 border-l border-border">
-				<select
-					bind:value={selectedDocset}
-					class="h-10 cursor-pointer appearance-none bg-transparent pl-3 pr-7 text-sm text-muted-foreground focus:outline-none"
-				>
-					{#each getDocsetIds() as dsId (dsId)}
-						<option value={dsId}>{getDocsetMeta(dsId).title}</option>
-					{/each}
-				</select>
-				<ChevronDownIcon
-					size={12}
-					class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground"
-				/>
-			</div>
-		</div>
-		<Command.List>
-			<Command.Empty>
-				<p class="py-2 text-sm text-muted-foreground">{m.search_no_results()}</p>
-			</Command.Empty>
-			<Command.Group heading={currentDocset.title}>
-				{#each allItems as item (item.href)}
-					{@const Icon = iconComponent(item)}
-					<Command.LinkItem
-						href={item.href}
-						value={item.title}
-						onclick={() => (open = false)}
-						class="flex items-center gap-2"
-					>
-						<Icon size={14} strokeWidth={1.5} class="shrink-0 text-muted-foreground" />
-						<span class="flex-1 truncate">{item.title}</span>
-						{#if item.tag}
-							<span
-								class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide
-								{item.tag === 'beta' ? 'bg-primary/10 text-primary' : ''}
-								{item.tag === 'new' ? 'bg-tertiary-700/10 text-tertiary-700 dark:text-tertiary-400' : ''}
-								{item.tag === 'deprecated' ? 'bg-destructive/10 text-destructive' : ''}
-							">{item.tag === 'new' ? m.tag_new() : item.tag === 'beta' ? m.tag_beta() : m.tag_deprecated()}</span
-							>
-						{/if}
-					</Command.LinkItem>
-				{/each}
-			</Command.Group>
-		</Command.List>
-		<div
-			class="border-t border-border px-3 py-2 flex items-center gap-3 text-[11px] text-muted-foreground"
-		>
-			<span class="flex items-center gap-1"
-				><Kbd.Root>↑</Kbd.Root><Kbd.Root>↓</Kbd.Root> {m.kbd_navigate()}</span
+	<div class="flex items-center border-b border-border">
+		<Command.Input placeholder={m.search_placeholder()} class="flex-1" />
+		<div class="relative shrink-0 border-l border-border">
+			<select
+				bind:value={selectedDocset}
+				class="h-10 cursor-pointer appearance-none bg-transparent pl-3 pr-7 text-sm text-muted-foreground focus:outline-none"
 			>
-			<span class="flex items-center gap-1"><Kbd.Root>↵</Kbd.Root> {m.kbd_open()}</span>
-			<span class="flex items-center gap-1"><Kbd.Root>Esc</Kbd.Root> {m.kbd_close()}</span>
+				{#each getDocsetIds() as dsId (dsId)}
+					<option value={dsId}>{getDocsetMeta(dsId).title}</option>
+				{/each}
+			</select>
+			<ChevronDownIcon
+				size={12}
+				class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground"
+			/>
 		</div>
-	{/snippet}
+	</div>
+	<Command.List>
+		<Command.Empty>
+			<p class="py-2 text-sm text-muted-foreground">{m.search_no_results()}</p>
+		</Command.Empty>
+		<Command.Group heading={currentDocset.title}>
+			{#each allItems as item (item.href)}
+				{@const Icon = iconComponent(item)}
+				<Command.LinkItem
+					href={item.href}
+					value={item.title}
+					onclick={() => (open = false)}
+					class="flex items-center gap-2"
+				>
+					<Icon size={14} strokeWidth={1.5} class="shrink-0 text-muted-foreground" />
+					<span class="flex-1 truncate">{item.title}</span>
+					{#if item.tag}
+						<span
+							class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide
+							{item.tag === 'beta' ? 'bg-primary/10 text-primary' : ''}
+							{item.tag === 'new' ? 'bg-tertiary-700/10 text-tertiary-700 dark:text-tertiary-400' : ''}
+							{item.tag === 'deprecated' ? 'bg-destructive/10 text-destructive' : ''}
+						">{item.tag === 'new' ? m.tag_new() : item.tag === 'beta' ? m.tag_beta() : m.tag_deprecated()}</span
+						>
+					{/if}
+				</Command.LinkItem>
+			{/each}
+		</Command.Group>
+	</Command.List>
+	<div
+		class="border-t border-border px-3 py-2 flex items-center gap-3 text-[11px] text-muted-foreground"
+	>
+		<span class="flex items-center gap-1"
+			><Kbd.Root>↑</Kbd.Root><Kbd.Root>↓</Kbd.Root> {m.kbd_navigate()}</span
+		>
+		<span class="flex items-center gap-1"><Kbd.Root>↵</Kbd.Root> {m.kbd_open()}</span>
+		<span class="flex items-center gap-1"><Kbd.Root>Esc</Kbd.Root> {m.kbd_close()}</span>
+	</div>
 </Command.Dialog>

@@ -9,7 +9,7 @@ export type DocsetMeta = {
 };
 
 const allDocsetFiles = import.meta.glob<{ default: Omit<DocsetMeta, 'id'> }>(
-	'/content/**\/+docset.ts',
+	'/content/**/+docset.ts',
 	{ eager: true }
 );
 

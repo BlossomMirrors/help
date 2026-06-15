@@ -4,7 +4,7 @@ import { getNav, flattenNav } from '$lib/nav';
 import type { Component } from 'svelte';
 
 const pages = import.meta.glob<{ default: Component; metadata?: Record<string, unknown> }>(
-	'/content/**\/*.svx'
+	'/content/**/*.svx'
 );
 
 export async function load({ params }) {

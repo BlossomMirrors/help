@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Remark plugin for inline keyboard key rendering:
  *   :kbd[⌘ K]  →  <kbd class="md-kbd">⌘ K</kbd>

@@ -9,6 +9,7 @@
 	import HelpHeader from '$lib/components/help/HelpHeader.svelte';
 	import * as m from '$lib/paraglide/messages';
 	import { onMount } from 'svelte';
+	import { SvelteSet } from 'svelte/reactivity';
 	import { afterNavigate } from '$app/navigation';
 	import { initMdComponents } from '$lib/md-helper';
 
@@ -33,9 +34,9 @@
 	const currentDocset = $derived(getDocsetMeta(currentDocsetId));
 	const nav = $derived(getNav(currentDocsetId));
 
-	let openFolders = $state<Set<string>>(new Set());
+	let openFolders = new SvelteSet<string>();
 	$effect(() => {
-		const newOpen = new Set<string>();
+		const newOpen = new SvelteSet<string>();
 		function markOpen(nodes: NavNode[]) {
 			for (const n of nodes) {
 				if (n.children.length > 0) {
@@ -51,8 +52,12 @@
 	});
 
 	function toggleFolder(slug: string) {
-		const next = new Set(openFolders);
-		next.has(slug) ? next.delete(slug) : next.add(slug);
+		const next = new SvelteSet(openFolders);
+		if (next.has(slug)) {
+			next.delete(slug);
+		} else {
+			next.add(slug);
+		}
 		openFolders = next;
 	}
 

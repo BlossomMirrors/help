@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Remark plugin for markdown tabs.
  *
