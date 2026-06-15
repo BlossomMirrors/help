@@ -40,5 +40,11 @@ export default defineConfig(
 			'svelte/no-navigation-without-resolve': 'off',
 			'svelte/no-unnecessary-children-snippet': 'off'
 		}
+	},
+	{
+		files: ['src/lib/remark-*.ts'],
+		rules: {
+			'@typescript-eslint/no-explicit-any': 'off'
+		}
 	}
 );
