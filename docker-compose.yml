@@ -1,6 +1,6 @@
 services:
   help:
-    build: .
+    image: registry.blossomos.org/blossom/help:latest
     ports:
       - '3000:3000'
     environment:
