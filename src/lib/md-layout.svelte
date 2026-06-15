@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	export { Kbd, Steps, Step, Callout, pre, code, ProtonDBSearch } from '$lib/components/docs';
+	export { Kbd, Steps, Step, Callout, pre, code, img, ProtonDBSearch } from '$lib/components/docs';
 </script>
 
 <script lang="ts">

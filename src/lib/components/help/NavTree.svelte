@@ -41,11 +41,7 @@
 					>
 						{#if node.icon && icons[node.icon]}
 							{@const Icon = icons[node.icon]}
-							<Icon
-								size={14}
-								strokeWidth={1.5}
-								class="shrink-0 {active ? 'text-primary' : 'opacity-60'}"
-							/>
+							<Icon size={14} class="shrink-0 {active ? 'text-primary' : 'opacity-60'}" />
 						{/if}
 						<span class="flex-1 truncate">{node.title}</span>
 						{#if node.tag}
@@ -66,11 +62,7 @@
 						class="flex h-7 w-7 shrink-0 items-center justify-center rounded text-muted-foreground transition-colors hover:text-foreground"
 						aria-label={isOpen ? m.aria_collapse() : m.aria_expand()}
 					>
-						<ChevronRightIcon
-							size={13}
-							strokeWidth={1.5}
-							class="transition-transform {isOpen ? 'rotate-90' : ''}"
-						/>
+						<ChevronRightIcon size={13} class="transition-transform {isOpen ? 'rotate-90' : ''}" />
 					</button>
 				</div>
 				{#if isOpen}
@@ -100,11 +92,7 @@
 				>
 					{#if node.icon && icons[node.icon]}
 						{@const Icon = icons[node.icon]}
-						<Icon
-							size={14}
-							strokeWidth={1.5}
-							class="shrink-0 {active ? 'text-primary' : 'opacity-60'}"
-						/>
+						<Icon size={14} class="shrink-0 {active ? 'text-primary' : 'opacity-60'}" />
 					{/if}
 					<span class="flex-1 truncate">{node.title}</span>
 					{#if node.tag}
@@ -146,12 +134,11 @@
 				>
 					{#if node.icon && icons[node.icon]}
 						{@const Icon = icons[node.icon]}
-						<Icon size={14} strokeWidth={1.5} class="shrink-0 opacity-60" />
+						<Icon size={14} class="shrink-0 opacity-60" />
 					{/if}
 					<span class="flex-1 truncate text-left">{node.title}</span>
 					<ChevronRightIcon
 						size={13}
-						strokeWidth={1.5}
 						class="shrink-0 text-muted-foreground transition-transform {isOpen ? 'rotate-90' : ''}"
 					/>
 				</button>

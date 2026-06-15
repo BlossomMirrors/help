@@ -1,6 +1,13 @@
 <script lang="ts" module>
+	export type TocItem = {
+		id?: string | null;
+		label: string;
+		active: boolean;
+		children: TocItem[];
+	};
+
 	export type TocProps = {
-		toc: Heading[];
+		toc: TocItem[];
 		class?: string;
 		isChild?: boolean;
 	};
@@ -25,9 +32,9 @@
 	const INDENT = 12;
 
 	function flattenWithDepth(
-		headings: Heading[],
+		headings: TocItem[],
 		depth = 0
-	): Array<{ heading: Heading; depth: number }> {
+	): Array<{ heading: TocItem; depth: number }> {
 		return headings.flatMap((h) => [
 			{ heading: h, depth },
 			...flattenWithDepth(h.children, depth + 1)
@@ -62,7 +69,7 @@
 	}
 
 	function buildSegs(
-		items: Array<{ heading: Heading; depth: number }>
+		items: Array<{ heading: TocItem; depth: number }>
 	): { x: number; yTop: number; yBot: number }[] {
 		if (!wrapperEl) return [];
 		const segs: { x: number; yTop: number; yBot: number }[] = [];

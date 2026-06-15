@@ -3,6 +3,6 @@
 	import { browser } from '$app/environment';
 
 	if (browser) {
-		goto('/help/user/getting-started', { replaceState: true });
+		goto('/help/user', { replaceState: true });
 	}
 </script>

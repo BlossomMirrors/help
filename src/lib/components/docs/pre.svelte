@@ -34,9 +34,9 @@
 		)}
 	>
 		{#if copied}
-			<CheckIcon size={13} strokeWidth={1.5} />
+			<CheckIcon size={13} />
 		{:else}
-			<CopyIcon size={13} strokeWidth={1.5} />
+			<CopyIcon size={13} />
 		{/if}
 	</button>
 

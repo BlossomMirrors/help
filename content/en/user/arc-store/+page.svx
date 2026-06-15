@@ -1,0 +1,30 @@
+---
+title: Arc Store
+description: Install any software on BlossomOS with one click - Flatpaks, web apps, Windows apps, and more.
+icon: package
+order: 2
+---
+
+Arc is BlossomOS's software store. Search for anything - it finds Flatpak apps, web services, Windows apps, and CLI tools all in one place.
+
+## What Arc Can Install
+
+**Flatpaks** — Thousands of Linux desktop apps from [Flathub](https://flathub.org). Sandboxed and updated independently of the system.
+
+**AppImages** — Standalone app bundles. Arc downloads and integrates them into your launcher automatically.
+
+**Web Apps** — Any website as a native desktop app with its own window, taskbar entry, and notifications. See [Web Apps](./web-apps).
+
+**Windows Apps** — Pre-configured Wine packages for popular Windows software. Search first; if it's not there, [Lutris](./windows-apps) covers the rest.
+
+**CLI tools** — Install `apt`, `yay`, `nix`, or other package managers via [pkglayer](./pkglayer), or use Homebrew directly.
+
+**Local files** — Drag a `.rpm`, `.deb`, or `.AppImage` into Arc and it handles integration automatically.
+
+## Using Arc
+
+Open Arc from the application launcher. Search by name or browse by category. Click any app to see details, then **Install**.
+
+Go to **Updates** to see available updates and apply them all at once. System updates (OS) are separate — see [System Updates](../updates).
+
+Go to **Installed** to see everything Arc manages, remove apps, or check versions.

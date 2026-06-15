@@ -60,7 +60,7 @@
 		<button
 			onclick={onClose}
 			class="flex h-7 w-7 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground lg:hidden"
-			aria-label={m.aria_close()}><XIcon size={16} strokeWidth={1.5} /></button
+			aria-label={m.aria_close()}><XIcon size={16} /></button
 		>
 	</div>
 
@@ -70,7 +70,7 @@
 			class="flex w-full items-center gap-2.5 rounded-[var(--radius-menu)] border border-border bg-muted/40 px-3 py-2 text-sm text-muted-foreground transition-colors hover:border-primary/30 hover:bg-muted"
 			aria-label={m.aria_search()}
 		>
-			<SearchIcon size={14} strokeWidth={1.5} class="shrink-0" />
+			<SearchIcon size={14} class="shrink-0" />
 			<span class="flex-1 text-left">{m.search_placeholder()}</span>
 			<span class="flex items-center gap-0.5 text-xs opacity-60"
 				><Kbd.Root>⌘</Kbd.Root><Kbd.Root>K</Kbd.Root></span
@@ -98,7 +98,7 @@
 		<a
 			href="/"
 			class="flex h-8 w-8 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-			aria-label={m.back_to_home()}><HomeIcon size={15} strokeWidth={1.5} /></a
+			aria-label={m.back_to_home()}><HomeIcon size={15} /></a
 		>
 		<div class="flex-1"></div>
 		<LanguageSwitcher />

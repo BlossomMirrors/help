@@ -34,5 +34,13 @@
 	"copy": "Copy",
 	"copied": "Copied!",
 	"aria_copy_code": "Copy code",
-	"aria_change_language": "Change language"
+	"aria_change_language": "Change language",
+	"open_in_arc": "Open in Arc",
+	"open_in_arc_aria": "Open {name} in Arc Store",
+	"tool_search_arc": "Searching Arc Store",
+	"tool_get_pwas": "Checking available apps",
+	"tool_get_lutris_whitelist": "Checking Lutris",
+	"tool_get_homebrew_formula": "Checking Homebrew",
+	"tool_get_protondb_rating": "Checking ProtonDB",
+	"tool_search_web": "Searching the web"
 }

@@ -27,7 +27,7 @@
 		{#if img}
 			<img src={img} alt="" class="h-5 w-5 object-contain" />
 		{:else if Icon}
-			<Icon size={16} strokeWidth={1.5} />
+			<Icon size={16} />
 		{/if}
 	</div>
 	<div>

@@ -1,26 +1,29 @@
 <script lang="ts">
 	import { getNav, flattenNav } from '$lib/nav';
+	import { getDocsetIds, getDocsetMeta } from '$lib/docsets';
 	import { MagicCard } from '$lib/components/ui/magic-card/index.js';
 	import ModeToggle from '$lib/components/ui/mode-toggle.svelte';
 	import * as Kbd from '$lib/components/ui/kbd/index.js';
 	import { LanguageSwitcher } from '$lib/components/ui/language-switcher/index.js';
 	import * as m from '$lib/paraglide/messages';
 	import SearchIcon from '@lucide/svelte/icons/search';
+	import SparklesIcon from '@lucide/svelte/icons/sparkles';
 	import BookOpenIcon from '@lucide/svelte/icons/book-open';
-	import FolderIcon from '@lucide/svelte/icons/folder';
-	import WrenchIcon from '@lucide/svelte/icons/wrench';
 	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
-
-	const groupIcons = [BookOpenIcon, FolderIcon, WrenchIcon];
+	import { icons } from '$lib/icons';
 
 	function openSearch() {
 		window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }));
 	}
-	const nav = $derived(getNav('user'));
-	const groups = $derived(
-		nav.filter((n) => n.slug !== '+page' && (n.children.length > 0 || n.href))
+
+	function openChat() {
+		window.dispatchEvent(new Event('open-chat'));
+	}
+
+	const docsetIds = $derived(getDocsetIds());
+	const allArticles = $derived(
+		docsetIds.flatMap((id) => flattenNav(getNav(id)).filter((a) => a.slug !== '+page'))
 	);
-	const allArticles = $derived(flattenNav(nav).filter((a) => a.slug !== '+page'));
 </script>
 
 <svelte:head><title>{m.help_title()}</title></svelte:head>
@@ -49,37 +52,48 @@
 			<h1 class="mb-6 font-serif text-5xl leading-tight md:text-6xl">{m.hero_title()}</h1>
 			<p class="mb-10 text-lg text-muted-foreground">{m.hero_subtitle()}</p>
 
-			<button
-				onclick={openSearch}
-				class="group flex w-full cursor-text items-center gap-3 rounded-[var(--radius-card)] border border-border bg-card px-4 py-3.5 text-left shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
-			>
-				<SearchIcon size={18} strokeWidth={1.5} class="shrink-0 text-muted-foreground" />
-				<span class="flex-1 text-sm text-muted-foreground">{m.search_placeholder()}</span>
-				<span class="flex items-center gap-1"><Kbd.Root>⌘</Kbd.Root><Kbd.Root>K</Kbd.Root></span>
-			</button>
+			<div class="flex gap-3">
+				<button
+					onclick={openSearch}
+					class="group flex flex-1 cursor-text items-center gap-3 rounded-[var(--radius-card)] border border-border bg-card px-4 py-3.5 text-left shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
+				>
+					<SearchIcon size={18} class="shrink-0 text-muted-foreground" />
+					<span class="flex-1 text-sm text-muted-foreground">{m.search_placeholder()}</span>
+					<span class="flex items-center gap-1"><Kbd.Root>⌘</Kbd.Root><Kbd.Root>K</Kbd.Root></span>
+				</button>
+				<button
+					onclick={openChat}
+					class="flex shrink-0 items-center gap-2 rounded-[var(--radius-card)] border border-border bg-card px-4 py-3.5 shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
+				>
+					<SparklesIcon size={18} class="text-primary" />
+					<span class="text-sm font-medium text-foreground">Ask AI</span>
+				</button>
+			</div>
 		</div>
 	</section>
 
 	<section class="mx-auto max-w-6xl px-4 pb-16">
 		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-			{#each groups as group, i (group.slug)}
-				{@const Icon = groupIcons[i] ?? FolderIcon}
-				{@const firstHref = group.href ?? group.children[0]?.href ?? '/help'}
+			{#each docsetIds as id (id)}
+				{@const meta = getDocsetMeta(id)}
+				{@const nav = getNav(id)}
+				{@const articles = flattenNav(nav).filter((a) => a.slug !== '+page')}
+				{@const DocIcon = (meta.icon && icons[meta.icon]) ?? BookOpenIcon}
 				<MagicCard
 					class="group flex flex-col rounded-[var(--radius-card)] border border-border bg-card transition-colors hover:border-primary/30"
 				>
-					<a href={firstHref} class="flex flex-1 flex-col p-6">
+					<a href="/help/{id}" class="flex flex-1 flex-col p-6">
 						<div
 							class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"
 						>
-							<Icon size={20} strokeWidth={1.5} />
+							<DocIcon size={20} strokeWidth={1.5} />
 						</div>
-						<h2 class="mb-1 font-semibold">{group.title}</h2>
+						<h2 class="mb-1 font-semibold">{meta.title}</h2>
 						<p class="mb-4 flex-1 text-sm text-muted-foreground">
-							{m.articles_count({ count: flattenNav(group.children).length || 1 })}
+							{m.articles_count({ count: articles.length || 1 })}
 						</p>
 						<ul class="mb-4 space-y-1">
-							{#each flattenNav([group]).slice(0, 2) as article (article.slug)}
+							{#each articles.slice(0, 2) as article (article.slug)}
 								<li class="truncate text-xs text-muted-foreground">· {article.title}</li>
 							{/each}
 						</ul>
@@ -105,7 +119,7 @@
 							<div
 								class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded bg-primary/10 text-primary"
 							>
-								<SearchIcon size={12} strokeWidth={1.5} />
+								<SearchIcon size={12} />
 							</div>
 							<div class="min-w-0">
 								<div class="flex items-center gap-2">

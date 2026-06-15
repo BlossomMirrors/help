@@ -6,4 +6,18 @@ order: 0
 
 # User Guide
 
-Welcome to the BlossomOS Help Center. Browse the sections below or press `⌘ K` to search the docs.
+Welcome to BlossomOS.
+
+## Getting Started
+
+- **[What's Preinstalled](./preinstalled)** — What comes with BlossomOS out of the box.
+
+## Software
+
+- **[Arc Store](./arc-store)** — Install Flatpaks, web apps, Windows apps, and CLI tools.
+
+## System
+
+- **[Blossom Cloud](./blossom-cloud)** — EU-hosted file sync, collaborative docs, and video calls.
+- **[System Updates](./updates)** — How atomic updates work and how to roll back.
+- **[Extra Drives](./drives)** — Set up and mount additional hard drives or SSDs.

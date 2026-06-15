@@ -27,7 +27,7 @@
 			<div
 				class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"
 			>
-				<p.Icon size={20} strokeWidth={1.5} />
+				<p.Icon size={20} />
 			</div>
 			<div class="flex-1">
 				<div class="flex items-center gap-2">
