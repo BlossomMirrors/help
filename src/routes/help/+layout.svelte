@@ -36,29 +36,26 @@
 
 	let openFolders = new SvelteSet<string>();
 	$effect(() => {
-		const newOpen = new SvelteSet<string>();
+		openFolders.clear();
 		function markOpen(nodes: NavNode[]) {
 			for (const n of nodes) {
 				if (n.children.length > 0) {
 					const selfActive = n.href === currentPath;
 					const childActive = flattenNav(n.children).some((c) => c.href === currentPath);
-					if (selfActive || childActive) newOpen.add(n.slug);
+					if (selfActive || childActive) openFolders.add(n.slug);
 					markOpen(n.children);
 				}
 			}
 		}
 		markOpen(nav);
-		openFolders = newOpen;
 	});
 
 	function toggleFolder(slug: string) {
-		const next = new SvelteSet(openFolders);
-		if (next.has(slug)) {
-			next.delete(slug);
+		if (openFolders.has(slug)) {
+			openFolders.delete(slug);
 		} else {
-			next.add(slug);
+			openFolders.add(slug);
 		}
-		openFolders = next;
 	}
 
 	const currentArticle = $derived(flattenNav(nav).find((n) => n.href === currentPath));

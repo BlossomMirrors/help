@@ -7,13 +7,13 @@
 import { visit } from 'unist-util-visit';
 
 export function remarkKbd() {
-	return (tree) => {
-		visit(tree, 'textDirective', (node, index, parent) => {
+	return (tree: any) => {
+		visit(tree, 'textDirective', (node: any, index, parent) => {
 			if (node.name !== 'kbd' || index == null || !parent) return;
 
 			const label = node.children
-				?.filter((c) => c.type === 'text')
-				.map((c) => c.value)
+				?.filter((c: any) => c.type === 'text')
+				.map((c: any) => c.value)
 				.join('');
 
 			parent.children[index] = {
