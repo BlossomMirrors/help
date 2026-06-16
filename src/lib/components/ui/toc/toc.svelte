@@ -14,7 +14,6 @@
 </script>
 
 <script lang="ts">
-	import type { Heading } from '$lib/hooks/use-toc.svelte';
 	import { cn } from '$lib/utils.js';
 	import Self from './toc.svelte';
 
