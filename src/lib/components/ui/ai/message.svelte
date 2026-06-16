@@ -62,7 +62,9 @@
 		font-weight: 500;
 		color: var(--color-foreground);
 		text-decoration: none !important;
-		transition: border-color 100ms, background 100ms;
+		transition:
+			border-color 100ms,
+			background 100ms;
 		vertical-align: middle;
 	}
 	:global(.arc-btn:hover) {

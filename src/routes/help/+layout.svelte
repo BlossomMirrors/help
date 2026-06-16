@@ -32,9 +32,7 @@
 
 	// Build a nested TocItem tree from the flat server-side heading list.
 	// No DOM required - renders in SSR immediately.
-	function buildServerToc(
-		flat: { id: string; label: string; level: number }[]
-	): TocItem[] {
+	function buildServerToc(flat: { id: string; label: string; level: number }[]): TocItem[] {
 		const root: TocItem[] = [];
 		const stack: { item: TocItem; level: number }[] = [];
 		for (const h of flat) {
@@ -47,9 +45,13 @@
 		return root;
 	}
 
-	const serverToc = $derived(buildServerToc((page.data.headings as { id: string; label: string; level: number }[]) ?? []));
+	const serverToc = $derived(
+		buildServerToc((page.data.headings as { id: string; label: string; level: number }[]) ?? [])
+	);
 	// Use live DOM toc once hydrated (has active state), fall back to server toc for SSR
-	const displayToc = $derived(toc.current.length > 0 ? (toc.current as unknown as TocItem[]) : serverToc);
+	const displayToc = $derived(
+		toc.current.length > 0 ? (toc.current as unknown as TocItem[]) : serverToc
+	);
 
 	const currentPath = $derived(page.url.pathname);
 	const currentDocsetId = $derived(currentPath.split('/')[2] ?? getDocsetIds()[0] ?? 'user');

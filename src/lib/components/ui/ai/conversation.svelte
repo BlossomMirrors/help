@@ -14,10 +14,10 @@
 
 	onMount(() => {
 		if (!sentinelEl || !containerEl) return;
-		const obs = new IntersectionObserver(
-			([entry]) => (showFab = !entry.isIntersecting),
-			{ root: containerEl, threshold: 0.1 }
-		);
+		const obs = new IntersectionObserver(([entry]) => (showFab = !entry.isIntersecting), {
+			root: containerEl,
+			threshold: 0.1
+		});
 		obs.observe(sentinelEl);
 		return () => obs.disconnect();
 	});

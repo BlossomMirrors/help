@@ -238,7 +238,8 @@
 								<div class="ml-8 mb-1.5 flex flex-wrap gap-x-3 gap-y-1">
 									{#each streamingTools as tool}
 										<span class="flex items-center gap-1.5 text-xs text-muted-foreground">
-											<span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
+											<span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary"
+											></span>
 											{TOOL_LABELS[tool]?.() ?? tool}
 										</span>
 									{/each}

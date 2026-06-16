@@ -40,7 +40,9 @@
 							{@const DsIcon = icons[ds.icon]}
 							<DsIcon
 								size={14}
-								class="shrink-0 {dsId === currentDocsetId ? 'text-primary' : 'text-muted-foreground'}"
+								class="shrink-0 {dsId === currentDocsetId
+									? 'text-primary'
+									: 'text-muted-foreground'}"
 							/>
 						{/if}
 						<span>{ds.title}</span>

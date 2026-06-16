@@ -153,7 +153,10 @@ const tools: ToolUnion[] = [
 		input_schema: {
 			type: 'object',
 			properties: {
-				steam_app_id: { type: 'string', description: 'Numeric Steam App ID (e.g. 292030 for The Witcher 3)' }
+				steam_app_id: {
+					type: 'string',
+					description: 'Numeric Steam App ID (e.g. 292030 for The Witcher 3)'
+				}
 			},
 			required: ['steam_app_id']
 		}
@@ -214,17 +217,31 @@ async function callTool(toolName: string, toolInput: Record<string, unknown>): P
 			}
 			if (caskRes.ok) {
 				const c = await caskRes.json();
-				results.push({ type: 'cask', token: c.token, name: c.name?.[0] ?? c.token, desc: c.desc, homepage: c.homepage });
+				results.push({
+					type: 'cask',
+					token: c.token,
+					name: c.name?.[0] ?? c.token,
+					desc: c.desc,
+					homepage: c.homepage
+				});
 			}
-			return results.length > 0 ? JSON.stringify(results, null, 2) : `${name} not found in Homebrew`;
+			return results.length > 0
+				? JSON.stringify(results, null, 2)
+				: `${name} not found in Homebrew`;
 		}
 
 		if (toolName === 'get_protondb_rating') {
 			const appId = String(toolInput.steam_app_id || '');
-			const res = await fetch(`https://www.protondb.com/api/v1/reports/summaries/${encodeURIComponent(appId)}.json`);
+			const res = await fetch(
+				`https://www.protondb.com/api/v1/reports/summaries/${encodeURIComponent(appId)}.json`
+			);
 			if (!res.ok) return 'No ProtonDB data found for this game';
 			const data = await res.json();
-			return JSON.stringify({ tier: data.tier, total: data.total, confidence: data.confidence }, null, 2);
+			return JSON.stringify(
+				{ tier: data.tier, total: data.total, confidence: data.confidence },
+				null,
+				2
+			);
 		}
 
 		return 'Unknown tool';
@@ -324,7 +341,9 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 
 		if (finalMsg.stop_reason === 'tool_use') {
 			// Only handle client-side tool_use blocks — server tools (web_search) execute transparently
-			const clientToolUses = finalMsg.content.filter((b): b is ToolUseBlock => b.type === 'tool_use');
+			const clientToolUses = finalMsg.content.filter(
+				(b): b is ToolUseBlock => b.type === 'tool_use'
+			);
 
 			if (clientToolUses.length === 0) {
 				// Only server tools were called; the API handled them — nothing to do
@@ -350,7 +369,10 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			await runLoop();
 			// Append web search sources after the response text
 			if (webRefs.length > 0) {
-				const refs = webRefs.slice(0, 5).map((r) => `${r.url}|${r.title}`).join('\n');
+				const refs = webRefs
+					.slice(0, 5)
+					.map((r) => `${r.url}|${r.title}`)
+					.join('\n');
 				await writer.write(enc.encode(`\n[WEB_REFS]\n${refs}`));
 			}
 		} catch (e) {

@@ -7,6 +7,7 @@ This document provides detailed context for the AI assistant about Arc Store cap
 The PWA wrapper in Arc can install these web services as native desktop applications:
 
 ### Streaming & Media
+
 - **Netflix** - Subscription streaming service for movies and TV shows. Supports offline viewing on mobile, smart recommendations, up to 5 profiles per account.
 - **Amazon Prime Video (DE)** - Films and series streaming with exclusive originals. German regional version.
 - **YouTube** - Video platform with tutorials, music, entertainment, livestreams, and creator content.
@@ -14,6 +15,7 @@ The PWA wrapper in Arc can install these web services as native desktop applicat
 - **Twitch** - Live streaming platform for gaming and creative content.
 
 ### Communication & Messaging
+
 - **WhatsApp** - E2E-encrypted messaging and video calling. 1-1 and group chats, file sharing, status updates, up to 32 participants in calls.
 - **Telegram** - Messaging service with channels and groups.
 - **Discord** - Team communication and community platform. Alternative to native app.
@@ -23,6 +25,7 @@ The PWA wrapper in Arc can install these web services as native desktop applicat
 - **Pinterest** - Visual inspiration platform for DIY, fashion, recipes, home decor.
 
 ### Productivity & AI
+
 - **Claude (Claude.ai)** - Anthropic's AI assistant for writing, coding, research, document analysis, long-context understanding, and complex problem-solving. Supports file uploads (documents, PDFs, images, screenshots).
 - **ChatGPT** - OpenAI's AI assistant. Supports questions, writing, learning, coding, and creative ideas.
 - **Notion** - Workspace for notes, databases, and collaboration.
@@ -32,6 +35,7 @@ The PWA wrapper in Arc can install these web services as native desktop applicat
 - **Google Workspace** - Google Drive, Docs, Sheets, Slides as individual PWAs.
 
 ### Banking & Finance
+
 - **finanzblick Online-Banking** - German banking app aggregating 4,000+ banks. Auto-categorization of income/expenses, budgets, tax category mapping, screenshot bill payment, loyalty card storage, ATM finder.
 - **WISO Steuer** - German tax filing application with step-by-step guidance, automatic tax savings detection, multi-situation support (employees, students, self-employed).
 - **BiBox** - Digital schoolbook platform for teachers and students. Interactive content, offline access, assignment tools, multimedia materials.
@@ -59,6 +63,7 @@ Arc is a unified Linux software manager built as a Cargo workspace with four cra
 ## Arc Live APIs (use these for current data)
 
 ### Arc Core Search API
+
 **Endpoint:** `https://arpi.blossomos.org/api/v1/search`
 **Method:** GET
 **Query parameter:** `?q=<search_term>`
@@ -69,11 +74,13 @@ Example: `https://arpi.blossomos.org/api/v1/search?q=firefox`
 Searches both Flatpak (Flathub integrated) and native package repos simultaneously. The Arc daemon handles all merging/deduplication behind the scenes.
 
 ### Arc Forge API (PWA Store)
+
 **Endpoint:** `https://forge.blossomos.org/api/pwas`
 **Method:** GET
 **Returns:** Array of PWA app objects with full metadata
 
 **Response fields per app:**
+
 - `id` - unique app ID (e.g., `com.netflix.App`)
 - `appid` - alternative ID format
 - `name` - display name
@@ -94,6 +101,7 @@ Searches both Flatpak (Flathub integrated) and native package repos simultaneous
 - `tray` - boolean, system tray support (WhatsApp)
 
 **Arc Forge also manages:**
+
 - PWA app metadata and store listing
 - Lutris game whitelist curation
 - Store homepage visual editor
@@ -103,14 +111,14 @@ Searches both Flatpak (Flathub integrated) and native package repos simultaneous
 
 pkglayer containers available in Arc:
 
-| Option | Command | Distro Base | Best For |
-|--------|---------|------------|----------|
-| **apt** | `apt install pkg` | Debian/Ubuntu | Largest package count, most Linux users familiar |
-| **yay** | `yay -S pkg` | Arch (AUR) | Access to Arch User Repository, cutting-edge packages |
-| **dnf** | `dnf install pkg` | Fedora | Native Fedora packages in isolated environment |
-| **nix** | `nix-env -iA nixpkgs.pkg` | NixOS | Reproducible builds, massive package count |
-| **emerge** | `emerge pkg` | Gentoo | Source-based, maximum control |
-| **brew** | `brew install pkg` | Homebrew (independent) | macOS-style package management, developer tools |
+| Option     | Command                   | Distro Base            | Best For                                              |
+| ---------- | ------------------------- | ---------------------- | ----------------------------------------------------- |
+| **apt**    | `apt install pkg`         | Debian/Ubuntu          | Largest package count, most Linux users familiar      |
+| **yay**    | `yay -S pkg`              | Arch (AUR)             | Access to Arch User Repository, cutting-edge packages |
+| **dnf**    | `dnf install pkg`         | Fedora                 | Native Fedora packages in isolated environment        |
+| **nix**    | `nix-env -iA nixpkgs.pkg` | NixOS                  | Reproducible builds, massive package count            |
+| **emerge** | `emerge pkg`              | Gentoo                 | Source-based, maximum control                         |
+| **brew**   | `brew install pkg`        | Homebrew (independent) | macOS-style package management, developer tools       |
 
 All containers run via Distrobox. Installed packages appear on system `$PATH` immediately and are isolated from the host.
 
@@ -119,6 +127,7 @@ All containers run via Distrobox. Installed packages appear on system `$PATH` im
 Flatpak source: **Flathub** (`https://flathub.org`)
 
 Key facts:
+
 - Sandboxed packages with explicit permission grants
 - Automatic security isolation (filesystems, networks, D-Bus access)
 - Independent update cycle from system
@@ -126,6 +135,7 @@ Key facts:
 - All permissions visible to user before install
 
 Common Flatpak apps available via Arc Store:
+
 - Firefox, Thunderbird, Chromium, Edge
 - VLC, Audacity, Blender, GIMP, Inkscape
 - LibreOffice, Krita, OBS, Zoom, Element (Matrix), Nextcloud
@@ -135,13 +145,14 @@ Common Flatpak apps available via Arc Store:
 
 Arc Winapps wraps Windows applications via Wine/Proton. Pre-configured packages:
 
-| App | Windows Version | Wine Method | Status |
-|-----|-----------------|-------------|--------|
-| Affinity v3 | Latest | Wine + DXVK | Fully functional |
-| Battle.net | Latest | Wine + Proton | Fully functional |
-| (More added regularly) | | | |
+| App                    | Windows Version | Wine Method   | Status           |
+| ---------------------- | --------------- | ------------- | ---------------- |
+| Affinity v3            | Latest          | Wine + DXVK   | Fully functional |
+| Battle.net             | Latest          | Wine + Proton | Fully functional |
+| (More added regularly) |                 |               |                  |
 
 For unlisted Windows apps:
+
 - **Lutris** - community install scripts for hundreds of games/apps
 - **Manual Wine via Distrobox** - full control, run any distro's Wine
 - **Steam + Proton** - best for Windows games
@@ -159,6 +170,7 @@ Available distros: Debian, Ubuntu, Arch, Fedora, Alpine, CentOS, AlmaLinux, Gent
 ## Arc Winapps Technology
 
 Arc Winapps uses Wine to run Windows applications natively on Linux:
+
 - Install and run Windows .exe files via Wine
 - Present each app as a native launcher entry
 - Full file access to host directories
@@ -172,25 +184,30 @@ Result: Windows apps appear and behave like native Linux apps - click and run.
 ### "I want to use X software on BlossomOS"
 
 **For desktop apps:**
+
 1. **Search Arc Store** - searches Flatpak (Flathub integrated) + native packages simultaneously
 2. **Use Arc CLI** - `arc search firefox` searches all sources
 
 **For CLI/developer tools:**
+
 1. **Search Arc Store** - may find Flatpak versions
 2. **Use pkglayer** - `apt install x`, `yay -S x`, `nix-env -iA x`, etc. (your choice of distro)
 3. **Use Homebrew** - `brew install x` (standalone, no Distrobox needed)
 
 **For games:**
+
 1. **Steam** - best Proton integration
 2. **Heroic** - Epic Games Store, GOG
 3. **Lutris** - community scripts for hard-to-run games
 
 **For Windows software:**
+
 1. **Arc Winapps** - pre-configured packages (Affinity v3, Battle.net)
 2. **Lutris** - community Wine configurations
 3. **Manual Distrobox + Wine** - full control for advanced users
 
 **For web services:**
+
 1. **Arc Store PWA wrapper** - install Netflix, WhatsApp, Claude, Figma, etc. as native apps
 
 ### Installation Success Rate by Type
