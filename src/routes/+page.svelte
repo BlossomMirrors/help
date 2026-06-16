@@ -42,7 +42,7 @@
 	<section class="relative overflow-hidden px-4 py-24">
 		<div class="pointer-events-none absolute inset-0 -z-10">
 			<div
-				class="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-primary/6 blur-3xl"
+				class="absolute left-1/2 top-0 h-100 w-150 -translate-x-1/2 rounded-full bg-primary/6 blur-3xl"
 			></div>
 		</div>
 		<div class="mx-auto max-w-2xl text-center">
@@ -55,7 +55,7 @@
 			<div class="flex gap-3">
 				<button
 					onclick={openSearch}
-					class="group flex flex-1 cursor-text items-center gap-3 rounded-[var(--radius-card)] border border-border bg-card px-4 py-3.5 text-left shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
+					class="group flex flex-1 cursor-text items-center gap-3 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 text-left shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
 				>
 					<SearchIcon size={18} class="shrink-0 text-muted-foreground" />
 					<span class="flex-1 text-sm text-muted-foreground">{m.search_placeholder()}</span>
@@ -63,7 +63,7 @@
 				</button>
 				<button
 					onclick={openChat}
-					class="flex shrink-0 items-center gap-2 rounded-[var(--radius-card)] border border-border bg-card px-4 py-3.5 shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
+					class="flex shrink-0 items-center gap-2 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
 				>
 					<SparklesIcon size={18} class="text-primary" />
 					<span class="text-sm font-medium text-foreground">Ask AI</span>
@@ -80,7 +80,7 @@
 				{@const articles = flattenNav(nav).filter((a) => a.slug !== '+page')}
 				{@const DocIcon = (meta.icon ? icons[meta.icon] : undefined) ?? BookOpenIcon}
 				<MagicCard
-					class="group flex flex-col rounded-[var(--radius-card)] border border-border bg-card transition-colors hover:border-primary/30"
+					class="group flex flex-col rounded-(--radius-card) border border-border bg-card transition-colors hover:border-primary/30"
 				>
 					<a href="/help/{id}" class="flex flex-1 flex-col p-6">
 						<div
@@ -113,7 +113,7 @@
 			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 				{#each allArticles as article (article.href)}
 					<MagicCard
-						class="rounded-[var(--radius-card)] border border-border bg-card transition-colors hover:border-primary/30"
+						class="rounded-(--radius-card) border border-border bg-card transition-colors hover:border-primary/30"
 					>
 						<a href={article.href} class="flex items-start gap-3 p-4">
 							<div
