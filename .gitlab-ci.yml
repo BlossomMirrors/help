@@ -20,7 +20,7 @@ typecheck:
   script:
     - bun install --frozen-lockfile
     - bunx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
-    - bun run check
+    - ANTHROPIC_API_KEY=abc bun run check
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
