@@ -207,7 +207,7 @@
 							I have access to the full documentation
 						</p>
 						<div class="flex flex-wrap justify-center gap-2">
-							{#each SUGGESTIONS as s}
+							{#each SUGGESTIONS as s, i (i)}
 								<Suggestion label={s} onclick={() => send(s)} />
 							{/each}
 						</div>
@@ -217,7 +217,7 @@
 						<div>
 							{#if msg.role === 'assistant' && msg.tools && msg.tools.length > 0}
 								<div class="ml-8 mb-1.5 flex flex-wrap gap-x-3 gap-y-1">
-									{#each msg.tools as tool}
+									{#each msg.tools as tool, i (i)}
 										<span class="flex items-center gap-1 text-xs text-muted-foreground/60">
 											<span class="inline-block h-1 w-1 rounded-full bg-muted-foreground/40"></span>
 											{TOOL_LABELS[tool]?.() ?? tool}
@@ -236,7 +236,7 @@
 						<div>
 							{#if streamingTools.length > 0}
 								<div class="ml-8 mb-1.5 flex flex-wrap gap-x-3 gap-y-1">
-									{#each streamingTools as tool}
+									{#each streamingTools as tool, i (i)}
 										<span class="flex items-center gap-1.5 text-xs text-muted-foreground">
 											<span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary"
 											></span>

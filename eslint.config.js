@@ -39,7 +39,8 @@ export default defineConfig(
 		// 'svelte/button-has-type': 'error'
 		rules: {
 			'svelte/no-navigation-without-resolve': 'off',
-			'svelte/no-unnecessary-children-snippet': 'off'
+			'svelte/no-unnecessary-children-snippet': 'off',
+			'no-control-regex': 'off'
 		}
 	},
 	{
