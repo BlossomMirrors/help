@@ -28,6 +28,7 @@
 		get_lutris_whitelist: m.tool_get_lutris_whitelist,
 		get_homebrew_formula: m.tool_get_homebrew_formula,
 		get_protondb_rating: m.tool_get_protondb_rating,
+		get_anticheat_status: m.tool_get_anticheat_status,
 		web_search: m.tool_search_web
 	};
 

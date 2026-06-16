@@ -42,5 +42,6 @@
 	"tool_get_lutris_whitelist": "Lutris wird geprüft",
 	"tool_get_homebrew_formula": "Homebrew wird geprüft",
 	"tool_get_protondb_rating": "ProtonDB wird geprüft",
-	"tool_search_web": "Im Web suchen"
+	"tool_search_web": "Im Web suchen",
+	"tool_get_anticheat_status": "Prüfe Anticheat Status"
 }

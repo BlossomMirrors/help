@@ -1,10 +1,10 @@
 import Anthropic from '@anthropic-ai/sdk';
 import type { ToolUnion, MessageParam, ToolUseBlock } from '@anthropic-ai/sdk/resources';
-import { ANTHROPIC_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
-const client = new Anthropic({ apiKey: ANTHROPIC_API_KEY });
+const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
 const rl = new Map<string, { n: number; t: number }>();
 
 // Load all doc content at module init (build-time glob, zero runtime I/O)
@@ -80,8 +80,9 @@ Don't volunteer technical details proactively. Answer what was asked, nothing mo
 ### For gaming questions:
 1. **search_arc** — check if available via Arc (Steam, Heroic, Lutris are all in Arc)
 2. **get_lutris_whitelist** — for specific Windows game compatibility
-3. **get_protondb_rating** — check Linux/Proton compatibility by Steam App ID; use web_search first if you need to find the Steam App ID
-4. **web_search** — for anything not covered above; add "Linux Proton" or "Steam Deck" to queries for gaming context
+3. **get_anticheat_status** — for any game with multiplayer or an anti-cheat system, check this before recommending it. A "Denied" status means the developer has actively blocked Linux/Proton — the game will never run, no matter what ProtonDB says. Never recommend or list as an alternative a game with "Denied" status; "Broken" means it doesn't currently work but isn't permanently blocked. Only recommend a cloud gaming service if the result's cloudGaming field names one for that game — never suggest cloud gaming speculatively.
+4. **get_protondb_rating** — check Linux/Proton compatibility by Steam App ID; use web_search first if you need to find the Steam App ID. Note ProtonDB tiers can be stale and don't reflect anti-cheat blocks added after older reports — always cross-check with get_anticheat_status for anti-cheat-protected games.
+5. **web_search** — for anything not covered above; add "Linux Proton" or "Steam Deck" to queries for gaming context
 
 **If Arc tools return no results for something: do not immediately tell the user it's unavailable. Use web_search to find Linux alternatives or workarounds first.**
 
@@ -145,6 +146,19 @@ const tools: ToolUnion[] = [
 			required: ['name']
 		}
 	},
+	// Are We Anti-Cheat Yet — whether a game's anti-cheat blocks Linux/Proton
+	{
+		name: 'get_anticheat_status',
+		description:
+			"Check Are We Anti-Cheat Yet for whether a game's anti-cheat blocks Linux/Proton. Use for any multiplayer game or one with an anti-cheat system before recommending it.",
+		input_schema: {
+			type: 'object',
+			properties: {
+				game: { type: 'string', description: 'Game name to search for' }
+			},
+			required: ['game']
+		}
+	},
 	// ProtonDB — for Steam game Linux compatibility
 	{
 		name: 'get_protondb_rating',
@@ -164,6 +178,38 @@ const tools: ToolUnion[] = [
 	// Built-in Claude web search — no API key needed, Anthropic handles it server-side
 	{ type: 'web_search_20250305', name: 'web_search' }
 ];
+
+type AnticheatGame = {
+	name: string;
+	status: string;
+	native: boolean;
+	anticheats: string[];
+	notes?: [string, string][];
+};
+
+const CLOUD_GAMING_RE =
+	/geforce now|xbox[\s-]?cloud|boosteroid|luna|shadow\.tech|playstation plus cloud/i;
+
+function findCloudGaming(notes: [string, string][] | undefined): string[] {
+	if (!notes) return [];
+	return notes.filter(([text]) => CLOUD_GAMING_RE.test(text)).map(([text]) => text);
+}
+
+let anticheatCache: { games: AnticheatGame[]; ts: number } | null = null;
+const ANTICHEAT_TTL = 60 * 60 * 1000;
+
+async function getAnticheatGames(): Promise<AnticheatGame[]> {
+	if (anticheatCache && Date.now() - anticheatCache.ts < ANTICHEAT_TTL) {
+		return anticheatCache.games;
+	}
+	const res = await fetch(
+		'https://raw.githubusercontent.com/AreWeAntiCheatYet/AreWeAntiCheatYet/master/games.json'
+	);
+	if (!res.ok) throw new Error('Are We Anti-Cheat Yet data unavailable');
+	const games = (await res.json()) as AnticheatGame[];
+	anticheatCache = { games, ts: Date.now() };
+	return games;
+}
 
 async function callTool(toolName: string, toolInput: Record<string, unknown>): Promise<string> {
 	try {
@@ -228,6 +274,24 @@ async function callTool(toolName: string, toolInput: Record<string, unknown>): P
 			return results.length > 0
 				? JSON.stringify(results, null, 2)
 				: `${name} not found in Homebrew`;
+		}
+
+		if (toolName === 'get_anticheat_status') {
+			const query = String(toolInput.game || '').toLowerCase();
+			const games = await getAnticheatGames();
+			const matches = games
+				.filter((g) => g.name.toLowerCase().includes(query))
+				.slice(0, 5)
+				.map((g) => ({
+					name: g.name,
+					status: g.status,
+					native: g.native,
+					anticheats: g.anticheats,
+					cloudGaming: findCloudGaming(g.notes)
+				}));
+			return matches.length > 0
+				? JSON.stringify(matches, null, 2)
+				: `${toolInput.game} not found on Are We Anti-Cheat Yet`;
 		}
 
 		if (toolName === 'get_protondb_rating') {
@@ -377,9 +441,17 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			}
 		} catch (e) {
 			const errMsg = e instanceof Error ? e.message : String(e);
-			await writer.write(enc.encode(`\nError: ${errMsg.slice(0, 200)}`));
+			try {
+				await writer.write(enc.encode(`\nError: ${errMsg.slice(0, 200)}`));
+			} catch {
+				// client disconnected, nothing left to write to
+			}
 		} finally {
-			await writer.close();
+			try {
+				await writer.close();
+			} catch {
+				// stream already closed, e.g. client disconnected mid-response
+			}
 		}
 	})();
 
