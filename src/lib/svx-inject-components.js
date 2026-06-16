@@ -4,6 +4,7 @@ import { resolve, dirname } from 'path';
 
 const layoutPath = resolve(dirname(fileURLToPath(import.meta.url)), 'md-layout.svelte');
 
+/** @returns {import('svelte/compiler').PreprocessorGroup} */
 export function injectSvxComponents() {
 	const src = fs.readFileSync(layoutPath, 'utf8');
 	const block = src.match(/export\s*\{([^}]+)\}/)?.[1] ?? '';

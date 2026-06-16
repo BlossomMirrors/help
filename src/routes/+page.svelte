@@ -78,7 +78,7 @@
 				{@const meta = getDocsetMeta(id)}
 				{@const nav = getNav(id)}
 				{@const articles = flattenNav(nav).filter((a) => a.slug !== '+page')}
-				{@const DocIcon = (meta.icon && icons[meta.icon]) ?? BookOpenIcon}
+				{@const DocIcon = (meta.icon ? icons[meta.icon] : undefined) ?? BookOpenIcon}
 				<MagicCard
 					class="group flex flex-col rounded-[var(--radius-card)] border border-border bg-card transition-colors hover:border-primary/30"
 				>
