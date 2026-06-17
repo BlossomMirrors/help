@@ -66,7 +66,7 @@
 					class="flex shrink-0 items-center gap-2 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
 				>
 					<SparklesIcon size={18} class="text-primary" />
-					<span class="text-sm font-medium text-foreground">Ask AI</span>
+					<span class="text-sm font-medium text-foreground">{m.ask_ai()}</span>
 				</button>
 			</div>
 		</div>

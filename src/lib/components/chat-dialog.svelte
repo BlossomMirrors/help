@@ -32,6 +32,8 @@
 		web_search: m.tool_search_web
 	};
 
+	const STORAGE_KEY = 'chat-history';
+
 	let open = $state(false);
 	let messages = $state<ChatMessage[]>([]);
 	let streamingText = $state('');
@@ -41,11 +43,27 @@
 	let conversation = $state<ReturnType<typeof Conversation> | null>(null);
 	let promptInput = $state<ReturnType<typeof PromptInput> | null>(null);
 
+	function loadMessages(): ChatMessage[] {
+		try {
+			const raw = localStorage.getItem(STORAGE_KEY);
+			return raw ? (JSON.parse(raw) as ChatMessage[]) : [];
+		} catch {
+			return [];
+		}
+	}
+
+	function saveMessages(msgs: ChatMessage[]) {
+		try {
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(msgs));
+		} catch {}
+	}
+
 	export function openChat() {
 		window.dispatchEvent(new Event('open-chat'));
 	}
 
 	onMount(() => {
+		messages = loadMessages();
 		window.addEventListener('open-chat', () => (open = true));
 	});
 
@@ -56,15 +74,19 @@
 	});
 
 	$effect(() => {
+		saveMessages(messages);
+	});
+
+	$effect(() => {
 		if (open) setTimeout(() => promptInput?.focus(), 60);
 	});
 
-	const SUGGESTIONS = [
-		'How do I install Steam?',
-		'How do I mount an extra drive?',
-		'What anti-cheat systems work on Linux?',
-		'How do I install Windows apps?'
-	];
+	const SUGGESTIONS = $derived([
+		m.chat_suggestion_steam(),
+		m.chat_suggestion_drive(),
+		m.chat_suggestion_anticheat(),
+		m.chat_suggestion_windows()
+	]);
 
 	function parseResponse(raw: string): { content: string; sources: Source[] } {
 		// Strip [WEB_REFS] block first (server-appended external sources)
@@ -164,6 +186,9 @@
 		streamingText = '';
 		streamingTools = [];
 		loading = false;
+		try {
+			localStorage.removeItem(STORAGE_KEY);
+		} catch {}
 	}
 </script>
 
@@ -173,18 +198,19 @@
 			class="data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 z-50 bg-black/60 backdrop-blur-sm duration-150"
 		/>
 		<Dialog.Content
+			interactOutsideBehavior="ignore"
 			class="data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 fixed top-1/2 left-1/2 z-50 flex w-full max-w-lg -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-xl border border-border bg-popover shadow-xl duration-150 outline-none"
 			style="height: min(640px, 88vh);"
 		>
 			<!-- Header -->
 			<div class="flex shrink-0 items-center gap-2.5 border-b border-border px-4 py-3">
 				<SparklesIcon size={16} class="shrink-0 text-primary" />
-				<span class="flex-1 text-sm font-semibold">BlossomOS Help</span>
+				<span class="flex-1 text-sm font-semibold">{m.chat_title()}</span>
 				{#if messages.length > 0}
 					<button
 						onclick={reset}
 						class="flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-						aria-label="Clear conversation"
+						aria-label={m.chat_clear_conversation()}
 					>
 						<RotateCcwIcon size={13} />
 					</button>
@@ -203,9 +229,9 @@
 						<div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
 							<SparklesIcon size={22} class="text-primary" />
 						</div>
-						<p class="mb-1 font-semibold">Ask anything about BlossomOS</p>
+						<p class="mb-1 font-semibold">{m.chat_welcome_heading()}</p>
 						<p class="mb-6 text-sm text-muted-foreground">
-							I have access to the full documentation
+							{m.chat_welcome_subtitle()}
 						</p>
 						<div class="flex flex-wrap justify-center gap-2">
 							{#each SUGGESTIONS as s, i (i)}
@@ -269,7 +295,12 @@
 			</Conversation>
 
 			<!-- Input -->
-			<PromptInput bind:this={promptInput} onsubmit={send} disabled={loading} />
+			<PromptInput
+				bind:this={promptInput}
+				placeholder={m.chat_ask_placeholder()}
+				onsubmit={send}
+				disabled={loading}
+			/>
 		</Dialog.Content>
 	</Dialog.Portal>
 </Dialog.Root>

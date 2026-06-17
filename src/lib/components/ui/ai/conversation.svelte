@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import ArrowDownIcon from '@lucide/svelte/icons/arrow-down';
+	import * as m from '$lib/paraglide/messages';
 
 	let { children }: { children: import('svelte').Snippet } = $props();
 
@@ -23,18 +24,20 @@
 	});
 </script>
 
-<div bind:this={containerEl} class="relative flex-1 overflow-y-auto">
-	<div class="space-y-4 px-4 py-4">
-		{@render children()}
+<div class="relative flex-1 min-h-0">
+	<div bind:this={containerEl} class="h-full overflow-y-auto">
+		<div class="space-y-4 px-4 py-4">
+			{@render children()}
+		</div>
+		<div bind:this={sentinelEl} class="h-px"></div>
 	</div>
-	<div bind:this={sentinelEl} class="h-px"></div>
 
 	{#if showFab}
 		<button
 			onclick={() => scrollToBottom()}
 			class="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-border bg-popover px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-md transition-colors hover:bg-muted"
 		>
-			<ArrowDownIcon size={12} />Scroll to bottom
+			<ArrowDownIcon size={12} />{m.chat_scroll_to_bottom()}
 		</button>
 	{/if}
 </div>

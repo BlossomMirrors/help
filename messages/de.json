@@ -43,5 +43,16 @@
 	"tool_get_homebrew_formula": "Homebrew wird geprüft",
 	"tool_get_protondb_rating": "ProtonDB wird geprüft",
 	"tool_search_web": "Im Web suchen",
-	"tool_get_anticheat_status": "Prüfe Anticheat Status"
+	"tool_get_anticheat_status": "Anticheat-Status wird geprüft",
+	"ask_ai": "KI fragen",
+	"chat_title": "BlossomOS Hilfe",
+	"chat_clear_conversation": "Gespräch löschen",
+	"chat_welcome_heading": "Frag alles über BlossomOS",
+	"chat_welcome_subtitle": "Ich habe Zugriff auf die vollständige Dokumentation",
+	"chat_suggestion_steam": "Wie installiere ich Steam?",
+	"chat_suggestion_drive": "Wie binde ich eine zusätzliche Festplatte ein?",
+	"chat_suggestion_anticheat": "Welche Anti-Cheat-Systeme funktionieren auf BlossomOS?",
+	"chat_suggestion_windows": "Wie installiere ich Windows-Apps?",
+	"chat_scroll_to_bottom": "Nach unten scrollen",
+	"chat_ask_placeholder": "Frage stellen…"
 }
