@@ -55,7 +55,9 @@
 	function saveMessages(msgs: ChatMessage[]) {
 		try {
 			localStorage.setItem(STORAGE_KEY, JSON.stringify(msgs));
-		} catch {}
+		} catch (e) {
+			void e;
+		}
 	}
 
 	export function openChat() {
@@ -188,7 +190,9 @@
 		loading = false;
 		try {
 			localStorage.removeItem(STORAGE_KEY);
-		} catch {}
+		} catch (e) {
+			void e;
+		}
 	}
 </script>
 
