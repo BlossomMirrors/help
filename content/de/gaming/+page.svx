@@ -9,12 +9,12 @@ BlossomOS macht Gaming unter Linux einfach. Alle Launcher sind im Arc Store zu f
 
 ## Launcher
 
-- **[Steam](./steam)** - Die beste Proton-Integration. Die meisten PC-Spiele laufen sofort.
-- **[Heroic Games Launcher](./heroic)** - Open-Source-Launcher für Epic Games Store und GOG. Wöchentliche Gratis-Spiele inklusive.
-- **[Lutris](./lutris)** - Universeller Launcher für Battle.net, EA, Ubisoft, Emulatoren und ältere Windows-Spiele.
-- **[Battle.net](./battlenet)** - Den Battle.net-Launcher über Lutris starten. Nicht alle Blizzard-Spiele funktionieren.
-- **[Genshin & Hoyoverse 3rd Party Launcher](./hoyoplay)** - Genshin Impact, Honkai Star Rail, Zenless Zone Zero und Honkai Impact 3rd auf BlossomOS spielen.
-- **[Kompatibilität & Anti-Cheat](./anticheat)** - Spielekompatibilität prüfen, ProtonDB-Bewertungen erklärt und eine Übersicht aller wichtigen Anti-Cheat-Systeme.
+- **[Steam](/help/gaming/steam)** - Die beste Proton-Integration. Die meisten PC-Spiele laufen sofort.
+- **[Heroic Games Launcher](/help/gaming/heroic)** - Open-Source-Launcher für Epic Games Store und GOG. Wöchentliche Gratis-Spiele inklusive.
+- **[Lutris](/help/gaming/lutris)** - Universeller Launcher für Battle.net, EA, Ubisoft, Emulatoren und ältere Windows-Spiele.
+- **[Battle.net](/help/gaming/battlenet)** - Den Battle.net-Launcher über Lutris starten. Nicht alle Blizzard-Spiele funktionieren.
+- **[Genshin & Hoyoverse 3rd Party Launcher](/help/gaming/hoyoplay)** - Genshin Impact, Honkai Star Rail, Zenless Zone Zero und Honkai Impact 3rd auf BlossomOS spielen.
+- **[Kompatibilität & Anti-Cheat](/help/gaming/anticheat)** - Spielekompatibilität prüfen, ProtonDB-Bewertungen erklärt und eine Übersicht aller wichtigen Anti-Cheat-Systeme.
 
 ## Spielespeicher
 

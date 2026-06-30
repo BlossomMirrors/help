@@ -5,11 +5,15 @@ icon: zap
 order: 2
 ---
 
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
 Heroic ist ein Open-Source-Launcher für Epic Games Store und GOG, der nativ unter Linux läuft. Für den Launcher selbst ist kein Wine nötig.
 
 ## Installation
 
-**Heroic Games Launcher** in Arc Store installieren.
+<OpenInArc id="com.heroicgameslauncher.hgl" />
 
 ## Unterstützte Stores
 

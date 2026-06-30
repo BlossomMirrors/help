@@ -1,0 +1,65 @@
+---
+title: Testing features
+description: Find out which new system components and software versions are currently available for testing in the pre-release images (prerelease/latest) and how to try them out.
+icon: test-tube
+order: 2
+---
+
+BlossomOS is evolving rapidly. To extensively test new features before the official release, our `prerelease` and `latest` branches provide access to cutting-edge software stacks.
+
+Currently, testing is focused on two major updates that bring profound changes to the user interface and application performance.
+
+## Current Test Highlights
+
+### 1. KDE Plasma 6.7
+The latest iteration of the Plasma desktop environment brings massive optimisations for multitasking and daily workflows under Wayland:
+
+* **Virtual desktops per monitor:** Virtual desktops can finally be managed and switched independently on different screens.
+* **Global Push-to-Talk & Mic-Mute:** A system-wide hotkey allows you to mute your microphone globally or configure it as Push-to-Talk – regardless of which app is currently running.
+* **Instant Light/Dark Mode:** A dedicated switch in the Plasma panel enables lightning-fast switching between light and dark appearances.
+* **Union Theme Engine (Tech Preview):** Plasma 6.7 includes an initial preview of the new, unified CSS-based styling system, which ensures absolute design consistency across all Qt technologies in the long term.
+* **Enhanced Creator Protection:** Windows can now be specifically hidden from capture by screenshots or screen recordings.
+
+### 2. New Version of Arc Software
+The in-house BlossomOS software store "Arc Software" has been completely overhauled:
+
+* **Redesigned User Interface:** New animations and a refreshed design.
+* **Improved Software Providers:** AppImages, DEBs, and RPMs should now be significantly easier to install.
+* **KIO Support:** Arc Software now supports KIO to display the current status of a transaction.
+* **New Home Page:** The home page has been completely redesigned and supports Stories (curated articles about new apps from the BlossomOS team).
+* **The new PWAs are here:** You can now install the new PWAs on your system and use them. PWAs are web shortcuts to the websites of the respective apps but behave like native software.
+* **Improved Web Browser Integration:** Arc now supports integration with web browsers, allowing you to open app pages directly from the browser.
+* **Flatpak Extension Support:** Arc now supports the installation of Flatpak extensions, so you can enhance your Flatpak apps with new features.
+* **Improved Update Management:** Arc now features improved update management. The Arc runtime environment is taken into account, ensuring that apps updated previously run more stably. Additionally, apps can be updated automatically.
+* **Improved language support:** Arc Software now supports various languages, currently English and German.
+
+## How to participate in the test
+
+To test these features, you need to switch your system to one of our test images. Further information on image tags can be found on the ["Understanding Image Tags"](/help/contributor/image-tags) page.
+
+> [!WARNING]
+> **Caution:** Test images may contain unforeseen bugs. Preferably use them on test systems or ensure that your data is backed up. However, a rollback is possible at any time without any problems.
+
+Select the appropriate image for your hardware and perform the switch via `bootc`:
+
+### For Intel / AMD graphics cards:
+```bash
+sudo bootc switch registry.blossomos.org/blossom/image:latest
+```
+
+### For NVIDIA graphics cards:
+```bash
+sudo bootc switch registry.blossomos.org/blossom/image:latest-nvidia
+```
+
+After the switch, simply restart the system to boot into the updated environment:
+
+```bash
+sudo reboot
+```
+
+### Providing feedback and Rollback
+
+Should you encounter any bugs, please report them directly in our issue tracker so that we can fix them before they merge into the `prerelease` branch.
+
+If something doesn't work as expected, you can simply select the previous state in the bootloader (GRUB) during system startup or switch back to your old version in the running system via `sudo bootc rollback permanent`.

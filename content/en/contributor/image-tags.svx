@@ -1,0 +1,59 @@
+---
+title: Understanding Image Tags
+description: System components are updated and new images are released at regular intervals. This allows developers to use new features, fix existing issues, and test applications against pre-release versions.
+icon: donut
+order: 1
+---
+
+System components are updated and new images are released at regular intervals. This allows developers to use new features, fix existing issues, and test applications against pre-release versions.
+
+## Finding out which image is being used
+
+To find out which image is currently in use, the `sudo bootc status` command can be used. Here is an example output:
+
+```
+[koyu@anya] ~
+❯ sudo bootc status
+● Booted image: registry.blossomos.org/blossom/image:latest-dx
+        Digest: sha256:ed35e5378263911050ec4caadaf9332def2b16e5b22d7a7854140826beab45a5 (amd64)
+       Version: latest-44.20260629 (2026-06-29T21:36:08Z)
+  /usr overlay: persistent, read/write
+
+  Rollback image: registry.blossomos.org/blossom/image:latest-dx
+          Digest: sha256:ed35e5378263911050ec4caadaf9332def2b16e5b22d7a7854140826beab45a5 (amd64)
+         Version: latest-44.20260629 (2026-06-29T21:36:08Z)
+
+```
+
+## Finding the right image tag
+
+BlossomOS image tags are logically composed of the respective **release branch** and optional **extensions** for developers (`-dx`) or specific hardware (`-nvidia`).
+
+### 1. The Release Branches
+* **`latest`**: The current development branch. Contains the latest changes but may be unstable.
+* **`main`**: The stable standard release. Recommended for production use.
+* **`prerelease`**: Preview versions of upcoming releases. Ideal for testing new features before the official launch.
+
+### 2. The Extensions (Suffixes)
+* **No suffix**: The standard image for Intel/AMD graphics hardware.
+* **`-dx`**: Enables developer mode (contains additional SDKs and tools).
+* **`-nvidia`**: Contains the proprietary NVIDIA drivers directly out-of-the-box.
+* **`-nvidia-dx`**: The combination of NVIDIA driver support and developer tools.
+
+### Overview of all available tags
+
+| Release Branch | Standard (Intel/AMD) | With NVIDIA Drivers |
+| :--- | :--- | :--- |
+| **`main`** (Stable) | `main` <br> `main-dx` | `main-nvidia` <br> `main-nvidia-dx` |
+| **`latest`** (Bleeding Edge) | `latest` <br> `latest-dx` | `latest-nvidia` <br> `latest-nvidia-dx` |
+| **`prerelease`** (Pre-release) | `prerelease` <br> `prerelease-dx` | `prerelease-nvidia` <br> `prerelease-nvidia-dx` |
+
+## Developer Mode
+
+BlossomOS comes with a developer mode that provides all the necessary tools and libraries to facilitate application development and development of the system itself. This can be activated via an image with the `-dx` suffix. In the future, it will be possible to enable or disable developer mode using an `adjust` command.
+
+For example, to switch to the unstable image with developer tools and NVIDIA support, the system can be switched to the corresponding tag via `bootc`:
+
+```bash
+sudo bootc switch registry.blossomos.org/blossom/image:latest-nvidia-dx
+```

@@ -5,11 +5,15 @@ icon: play
 order: 3
 ---
 
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
 Lutris ist ein universeller Spiele-Manager, der Spiele aus fast jeder Quelle installieren und konfigurieren kann. Wine, Runner und Emulatoren werden automatisch über Community-gepflegte Installationsskripte verwaltet.
 
 ## Installation
 
-**Lutris** in Arc Store installieren.
+<OpenInArc id="net.lutris.Lutris" />
 
 ## Wofür Lutris gut ist
 

@@ -5,11 +5,15 @@ icon: sword
 order: 4
 ---
 
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
 Battle.net hat keine native Linux-Version. Du kannst es über Lutris starten, das Wine einrichtet und alles automatisch konfiguriert.
 
 ## Was du brauchst
 
-**Lutris** in Arc Store installieren.
+<OpenInArc id="net.lutris.Lutris" />
 
 ## Battle.net installieren
 

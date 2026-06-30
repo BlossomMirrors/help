@@ -5,6 +5,10 @@ icon: sparkles
 order: 5
 ---
 
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
 Hoyoverse bietet für keines ihrer Spiele nativen Linux-Support. Die Community hat eigene Open-Source-Launcher für jeden Titel gebaut und pflegt diese aktiv. Das sind keine offiziellen Hoyoverse-Produkte, aber sie werden weit verbreitet genutzt, aktiv gepflegt und sind direkt in Arc Store installierbar.
 
 > [!WARNING]
@@ -15,17 +19,25 @@ Hoyoverse bietet für keines ihrer Spiele nativen Linux-Support. Die Community h
 
 **An Anime Game Launcher** in Arc Store installieren. Community-gepflegter Linux-Launcher für Genshin Impact.
 
+<OpenInArc id="moe.launcher.an-anime-game-launcher" />
+
 ## Honkai: Star Rail
 
 **The Honkers Railway** in Arc Store installieren. Community-gepflegter Linux-Launcher für Honkai: Star Rail.
+
+<OpenInArc id="moe.launcher.the-honkers-railway-launcher" />
 
 ## Zenless Zone Zero
 
 **Sleepy Launcher** in Arc Store installieren. Community-gepflegter Linux-Launcher für Zenless Zone Zero.
 
+<OpenInArc id="moe.launcher.sleepy-launcher" />
+
 ## Honkai Impact 3rd
 
 **Honkers Launcher** in Arc Store installieren. Community-gepflegter Linux-Launcher für Honkai Impact 3rd.
+
+<OpenInArc id="moe.launcher.honkers-launcher" />
 
 > [!NOTE]
 > **Nach größeren Spiel-Updates**

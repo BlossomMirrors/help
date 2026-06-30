@@ -5,11 +5,15 @@ icon: steam
 order: 1
 ---
 
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
 Steam has the best Linux game support of any launcher, built around **Proton** which lets Windows games run natively on Linux.
 
 ## Installation
 
-Install **Steam** from Arc Store.
+<OpenInArc id="com.valvesoftware.Steam" />
 
 ## Changing the Proton Version
 

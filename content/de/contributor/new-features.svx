@@ -1,0 +1,65 @@
+---
+title: Features testen
+description: Erfahre, welche neuen Systemkomponenten und Software-Versionen aktuell in den Vorab-Images (prerelease/latest) zum Testen bereitstehen und wie du sie ausprobierst.
+icon: test-tube
+order: 2
+---
+
+BlossomOS entwickelt sich rasant weiter. Um neue Funktionen vor dem offiziellen Release ausgiebig zu testen, bieten unsere `prerelease`- und `latest`-Zweige Zugriff auf topaktuelle Software-Stacks.
+
+Aktuell stehen zwei große Updates im Fokus des Testings, die tiefgreifende Änderungen an der Benutzeroberfläche und der Anwendungsperformance mit sich bringen.
+
+## Aktuelle Test-Highlights
+
+### 1. KDE Plasma 6.7
+Die neueste Iteration der Plasma-Desktop-Umgebung bringt massive Optimierungen für Multitasking und den täglichen Workflow unter Wayland:
+
+* **Virtuelle Desktops pro Monitor:** Endlich können virtuelle Desktops unabhängig voneinander auf verschiedenen Bildschirmen verwaltet und gewechselt werden.
+* **Globales Push-to-Talk & Mic-Mute:** Ein systemweiter Hotkey erlaubt es dir, dein Mikrofon global stummzuschalten oder als Push-to-Talk zu konfigurieren – unabhängig davon, welche App gerade läuft.
+* **Instant Light/Dark Mode:** Ein dedizierter Schalter im Plasma-Panel ermöglicht den blitzschnellen Wechsel zwischen hellem und dunklem Erscheinungsbild.
+* **Union Theme Engine (Tech Preview):** Plasma 6.7 enthält eine erste Vorschau auf das neue, vereinheitlichte CSS-basierte Styling-System, das langfristig für ein absolut konsistentes Design über alle Qt-Technologien hinweg sorgt.
+* **Erweiterter Creator-Schutz:** Fenster können jetzt gezielt vor der Erfassung durch Screenshots oder Screen-Recordings versteckt werden.
+
+### 2. Neue Version von Arc Software
+Der hauseigene BlossomOS-Software-Store "Arc Software" wurde umfassend überarbeitet:
+
+* **Überarbeitete Benutzeroberfläche:** Neue Animationen und ein überarbeitetes Design
+* **Verbesserte Software-Provider:** AppImages, DEBs und RPMs sollten jetzt deutlich einfacher zu installieren sein
+* **Unterstützung für KIO:** Arc Software unterstützt nun KIO, um den aktuellen Zustand einer Transaktion anzuzeigen.
+* **Neue Startseite:** Die Startseite wurde komplett neu gestaltet und unterstützt Stories (kuratierte Artikel über neue Apps vom BlossomOS-Team)
+* **Die neuen PWAs sind da:** Du kannst jetzt die neuen PWAs auf deinem System installieren und sie nutzen. PWAs sind Internetverknüpfungen zu den Webseiten der jeweiligen Apps, verhalten sich aber wie native Software.
+* **Verbesserte Webbrowser-Integration:** Arc unterstützt nun die Integration mit Webbrowsern, sodass du App-Seiten direkt aus dem Browser öffnen kannst.
+* **Unterstützung für Flatpak-Erweiterungen:** Arc unterstützt nun die Installation von Flatpak-Erweiterungen, sodass du deine Flatpak-Apps mit neuen Features erweitern kannst.
+* **Verbessertes Update-Management:** Arc verfügt nun über ein verbessertes Update-Management. Es werden die Arc Laufzeitumgebung berücksichtigt, sodass Apps, die zuvor aktualisiert wurden, stabiler laufen. Außerdem können Apps automatisch aktualisiert werden.
+* **Verbesserte Sprachunterstützung:** Arc Software unterstützt nun verschiedene Sprachen, aktuell Deutsch und Englisch.
+
+## So nimmst du am Test teil
+
+Um diese Features zu testen, musst du dein System auf eines unserer Test-Images umstellen. Weitere Informationen zu Image-Tags findest du auf der Seite ["Image-Tags verstehen"](/help/contributor/image-tags).
+
+> [!WARNING]
+> **Achtung:** Test-Images können unvorhergesehene Fehler enthalten. Nutze sie vorzugsweise auf Testsystemen oder stelle sicher, dass deine Daten gesichert sind. Ein Rollback ist jedoch jederzeit problemlos möglich.
+
+Wähle das passende Image für deine Hardware und führe den Wechsel via `bootc` durch:
+
+### Für Intel- / AMD-Grafikkarten:
+```bash
+sudo bootc switch registry.blossomos.org/blossom/image:latest
+```
+
+### Für NVIDIA-Grafikkarten:
+```bash
+sudo bootc switch registry.blossomos.org/blossom/image:latest-nvidia
+```
+
+Nach dem Wechsel startest du das System einfach neu, um in die aktualisierte Umgebung zu booten:
+
+```bash
+sudo reboot
+```
+
+### Feedback geben und Rollback
+
+Solltest du auf Fehler stoßen, melde diese bitte direkt in unserem Issue-Tracker, damit wir sie vor dem Einfließen in den `prerelease`-Zweig beheben können.
+
+Falls etwas nicht wie gewünscht funktioniert, kannst du beim Systemstart im Bootloader (GRUB) einfach den vorherigen Zustand auswählen oder im laufenden System über `sudo bootc rollback permanent` auf deine alte Version zurückwechseln.
