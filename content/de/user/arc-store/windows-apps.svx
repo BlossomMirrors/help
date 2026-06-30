@@ -1,0 +1,24 @@
+---
+title: Windows-Apps
+description: Vorkonfigurierte Windows-Apps über Arc installieren oder andere über Lutris ausführen.
+icon: monitor
+order: 2
+---
+
+**Arc Store** öffnen und nach der gewünschten App suchen. Falls sie in der Kategorie **Windows-Apps** ist, ist sie bereits konfiguriert – auf Installieren klicken und wie jede native App starten.
+
+## Im Arc Store verfügbar
+
+- **Affinity v3** – Publisher, Designer und Photo in einer App. Vollständiges Wine-Prefix mit allen erforderlichen Laufzeitumgebungen vorinstalliert.
+- **Battle.net** – Blizzard-Launcher mit Spielen. Siehe [Battle.net-Anleitung](../../gaming/battlenet).
+
+Mit jedem Arc-Update kommen weitere Apps hinzu.
+
+## Nicht im Arc Store? Lutris verwenden
+
+Für alles, was nicht im Arc Store gelistet ist, **Lutris** aus dem Arc Store installieren. Lutris hat von der Community gepflegte Konfigurationen für Hunderte von Windows-Apps und -Spielen und richtet Wine automatisch ein.
+
+Siehe die [Lutris-Anleitung](../../gaming/lutris).
+
+> [!NOTE]
+> Apps mit Kernel-Level-Komponenten (wie Vanguard oder Ricochet Anti-Cheat) können auf Linux unabhängig von der Methode nicht ausgeführt werden. Siehe [Kompatibilität & Anti-Cheat](../../gaming/anticheat).

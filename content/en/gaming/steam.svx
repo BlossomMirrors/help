@@ -1,7 +1,7 @@
 ---
 title: Steam
 description: Install and configure Steam on BlossomOS.
-icon: steam
+icon: gamepad-2
 order: 1
 ---
 

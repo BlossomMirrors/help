@@ -6,6 +6,7 @@
 	import { icons } from '$lib/icons';
 	import { getDocsetIds, getDocsetMeta } from '$lib/docsets';
 	import BookOpenIcon from '@lucide/svelte/icons/book-open';
+	import SearchIcon from '@lucide/svelte/icons/search';
 	import * as m from '$lib/paraglide/messages';
 
 	let open = $state(false);
@@ -32,7 +33,12 @@
 	const docsetIds = $derived(getDocsetIds());
 
 	function iconComponent(node: NavNode) {
-		return node.icon ? icons[node.icon] : BookOpenIcon;
+		return node.icon ? (icons[node.icon] ?? BookOpenIcon) : BookOpenIcon;
+	}
+
+	function docsetIconComponent(id: string) {
+		const meta = getDocsetMeta(id);
+		return meta.icon ? (icons[meta.icon] ?? BookOpenIcon) : BookOpenIcon;
 	}
 </script>
 
@@ -40,38 +46,51 @@
 	bind:open
 	title={m.search_dialog_title()}
 	description={m.search_dialog_description()}
+	class="rounded-xl"
 >
-	<Command.Input placeholder={m.search_placeholder()} />
-	<div class="flex gap-1 border-y border-border px-3 py-1.5">
-		{#each docsetIds as dsId (dsId)}
-			<button
-				onclick={() => (selectedDocset = dsId)}
-				class="rounded-md px-2.5 py-1 text-xs font-medium transition-colors {dsId === selectedDocset
-					? 'bg-primary text-primary-foreground'
-					: 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'}"
-			>
-				{getDocsetMeta(dsId).title}
-			</button>
-		{/each}
-	</div>
-	<Command.List>
+	<Command.Input placeholder={m.search_placeholder()} class="h-10 text-base" />
+	{#if docsetIds.length > 1}
+		<div class="border-y border-border px-3 py-2">
+			<div class="flex gap-1 rounded-lg bg-muted/40 p-0.5">
+				{#each docsetIds as dsId (dsId)}
+					{@const DocsetIcon = docsetIconComponent(dsId)}
+					<button
+						onclick={() => (selectedDocset = dsId)}
+						class="flex flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-all {dsId ===
+						selectedDocset
+							? 'bg-popover text-foreground shadow-sm'
+							: 'text-muted-foreground hover:text-foreground'}"
+					>
+						<DocsetIcon size={12} strokeWidth={2} />
+						{getDocsetMeta(dsId).title}
+					</button>
+				{/each}
+			</div>
+		</div>
+	{/if}
+	<Command.List class="max-h-80">
 		<Command.Empty>
-			<p class="py-2 text-sm text-muted-foreground">{m.search_no_results()}</p>
+			<div class="flex flex-col items-center gap-2 py-10 text-muted-foreground">
+				<SearchIcon size={28} strokeWidth={1.25} class="opacity-30" />
+				<p class="text-sm">{m.search_no_results()}</p>
+			</div>
 		</Command.Empty>
-		<Command.Group heading={currentDocset.title}>
+		<Command.Group heading={currentDocset.title} class="px-2">
 			{#each allItems as item (item.href)}
 				{@const Icon = iconComponent(item)}
 				<Command.LinkItem
 					href={item.href}
 					value={item.title}
 					onclick={() => (open = false)}
-					class="flex items-center gap-2"
+					class="flex items-center gap-2.5 px-3 py-2"
 				>
-					<Icon size={14} strokeWidth={1.5} class="shrink-0 text-muted-foreground" />
+					<span class="flex size-6 shrink-0 items-center justify-center rounded bg-muted/60">
+						<Icon size={12} strokeWidth={1.75} />
+					</span>
 					<span class="flex-1 truncate">{item.title}</span>
 					{#if item.tag}
 						<span
-							class="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide
+							class="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide
 						{item.tag === 'beta' ? 'bg-primary/10 text-primary' : ''}
 						{item.tag === 'new' ? 'bg-tertiary-700/10 text-tertiary-700 dark:text-tertiary-400' : ''}
 						{item.tag === 'deprecated' ? 'bg-destructive/10 text-destructive' : ''}
@@ -83,7 +102,7 @@
 		</Command.Group>
 	</Command.List>
 	<div
-		class="border-t border-border px-3 py-2 flex items-center gap-3 text-[11px] text-muted-foreground"
+		class="flex items-center gap-4 border-t border-border bg-muted/20 px-4 py-2.5 text-[11px] text-muted-foreground"
 	>
 		<span class="flex items-center gap-1"
 			><Kbd.Root>↑</Kbd.Root><Kbd.Root>↓</Kbd.Root> {m.kbd_navigate()}</span

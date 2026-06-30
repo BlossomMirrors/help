@@ -1,0 +1,20 @@
+---
+title: Web-Apps
+description: Dienste wie WhatsApp, YouTube und Netflix direkt aus dem Arc Store installieren.
+icon: globe
+order: 1
+---
+
+Der Arc Store enthält eine Auswahl beliebter Web-Dienste, die sich wie jede andere App installieren und starten lassen – mit eigenem Fenster, Taskleisten-Eintrag und Desktop-Benachrichtigungen.
+
+## Installieren
+
+**Arc Store** öffnen und nach dem Dienst beim Namen suchen, oder die Kategorie **Web-Apps** durchstöbern. Auf **Installieren** klicken. Die App erscheint wie jedes andere Programm im Anwendungs-Launcher.
+
+## Benachrichtigungen
+
+Benachrichtigungserlaubnis erteilen wenn die App danach fragt, und Meldungen erscheinen wie native App-Benachrichtigungen in der Systemleiste.
+
+## Daten und Privatsphäre
+
+Jede App läuft in einem eigenen isolierten Profil – ihre Daten sind getrennt vom Browser und von anderen Apps. Beim Deinstallieren werden alle Daten entfernt.
