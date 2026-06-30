@@ -48,6 +48,9 @@ Die Image-Tags von BlossomOS setzen sich logisch aus dem jeweiligen **Release-Zw
 | **`latest`** (Bleeding Edge) | `latest` <br> `latest-dx` | `latest-nvidia` <br> `latest-nvidia-dx` |
 | **`prerelease`** (Vorabveröffentlichung) | `prerelease` <br> `prerelease-dx` | `prerelease-nvidia` <br> `prerelease-nvidia-dx` |
 
+> [!WARNING]
+> Das `prerelease`-Tag ist aktuell noch nicht aktiv, es wird in Zukunft verwendet werden.
+
 ## Entwicklermodus
 
 BlossomOS kommt mit einem Entwicklermodus, der alle benötigten Tools und Bibliotheken zur Verfügung stellt, um die Entwicklung von Anwendungen und die Entwicklung am System selbst zu erleichtern. Dieser kann über ein Image mit dem Suffix `-dx` aktiviert werden. In Zukunft wird es möglich sein den Entwicklermodus über einen `adjust`-Befehl zu aktivieren oder deaktivieren.
