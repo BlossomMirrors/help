@@ -54,5 +54,6 @@
 	"chat_suggestion_anticheat": "What anti-cheat systems work on BlossomOS?",
 	"chat_suggestion_windows": "How do I install Windows apps?",
 	"chat_scroll_to_bottom": "Scroll to bottom",
-	"chat_ask_placeholder": "Ask a question…"
+	"chat_ask_placeholder": "Ask a question…",
+	"proprietary": "Proprietary"
 }
