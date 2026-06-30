@@ -38,14 +38,14 @@
 				class="h-14 w-14 shrink-0 rounded-xl border border-border bg-muted object-cover"
 			/>
 			<div class="min-w-0 flex-1">
-				<div class="flex items-center gap-1">
-					<span class="truncate text-base font-semibold text-foreground">{app?.name ?? id}</span>
-					{#if app?.verified}
-						<BadgeCheck class="h-4 w-4 shrink-0 text-blue-500" />
-					{/if}
-				</div>
+				<span class="truncate text-base font-semibold text-foreground">{app?.name ?? id}</span>
 				{#if app?.developer_name}
-					<p class="truncate text-xs text-muted-foreground">{app.developer_name}</p>
+					<div class="flex items-center gap-1">
+						<span class="truncate text-xs text-muted-foreground">{app.developer_name}</span>
+						{#if app?.verified}
+							<BadgeCheck class="h-3.5 w-3.5 shrink-0 text-blue-500" />
+						{/if}
+					</div>
 				{/if}
 				{#if app?.summary}
 					<p class="mt-1 line-clamp-2 text-sm text-foreground/80">{app.summary}</p>
