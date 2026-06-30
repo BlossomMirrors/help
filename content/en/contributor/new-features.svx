@@ -7,7 +7,7 @@ order: 2
 
 BlossomOS is evolving rapidly. To extensively test new features before the official release, our `prerelease` and `latest` branches provide access to cutting-edge software stacks.
 
-Currently, testing is focused on two major updates that bring profound changes to the user interface and application performance.
+Currently, testing is focused on three major updates that bring profound changes to the user interface, application performance, and hardware support.
 
 ## Current Test Highlights
 
@@ -32,6 +32,12 @@ The in-house BlossomOS software store "Arc Software" has been completely overhau
 * **Flatpak Extension Support:** Arc now supports the installation of Flatpak extensions, so you can enhance your Flatpak apps with new features.
 * **Improved Update Management:** Arc now features improved update management. The Arc runtime environment is taken into account, ensuring that apps updated previously run more stably. Additionally, apps can be updated automatically.
 * **Improved language support:** Arc Software now supports various languages, currently English and German.
+
+### 3. Custom Kernel with Hardware and Performance Patchsets
+BlossomOS now ships a custom-built kernel (`kernel-blossomos`) on top of the stock Fedora kernel, carrying curated patchsets for better hardware support and responsiveness:
+
+* **fw16 patchset (Framework Laptop 16):** Fixes WiFi drops on the MediaTek `mt7925` chip caused by race conditions, NULL pointer dereferences, and mutex gaps during MLO link setup/teardown. Also adds PWM fan control support via `cros_ec_hwmon`, enabling proper fan curve control through `fw-fanctrl`.
+* **cachyos patchset (general performance):** Includes the BORE-cachy scheduler, which tracks per-task CPU burst time and applies a penalty score to throughput-heavy tasks, keeping interactive tasks snappy under load. Also adds cgroup VRAM accounting, exposing per-cgroup AMD dGPU VRAM usage for memory pressure-aware eviction.
 
 ## How to participate in the test
 

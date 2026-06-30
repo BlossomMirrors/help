@@ -7,7 +7,7 @@ order: 2
 
 BlossomOS entwickelt sich rasant weiter. Um neue Funktionen vor dem offiziellen Release ausgiebig zu testen, bieten unsere `prerelease`- und `latest`-Zweige Zugriff auf topaktuelle Software-Stacks.
 
-Aktuell stehen zwei große Updates im Fokus des Testings, die tiefgreifende Änderungen an der Benutzeroberfläche und der Anwendungsperformance mit sich bringen.
+Aktuell stehen drei große Updates im Fokus des Testings, die tiefgreifende Änderungen an der Benutzeroberfläche, der Anwendungsperformance und der Hardware-Unterstützung mit sich bringen.
 
 ## Aktuelle Test-Highlights
 
@@ -32,6 +32,12 @@ Der hauseigene BlossomOS-Software-Store "Arc Software" wurde umfassend überarbe
 * **Unterstützung für Flatpak-Erweiterungen:** Arc unterstützt nun die Installation von Flatpak-Erweiterungen, sodass du deine Flatpak-Apps mit neuen Features erweitern kannst.
 * **Verbessertes Update-Management:** Arc verfügt nun über ein verbessertes Update-Management. Es werden die Arc Laufzeitumgebung berücksichtigt, sodass Apps, die zuvor aktualisiert wurden, stabiler laufen. Außerdem können Apps automatisch aktualisiert werden.
 * **Verbesserte Sprachunterstützung:** Arc Software unterstützt nun verschiedene Sprachen, aktuell Deutsch und Englisch.
+
+### 3. Eigener Kernel mit Hardware- und Performance-Patchsets
+BlossomOS verwendet nun einen selbst gebauten Kernel (`kernel-blossomos`) auf Basis des regulären Fedora-Kernels, der kuratierte Patchsets für bessere Hardware-Unterstützung und Reaktionsfähigkeit mitbringt:
+
+* **fw16-Patchset (Framework Laptop 16):** Behebt WiFi-Aussetzer beim MediaTek-Chip `mt7925`, die durch Race Conditions, NULL-Pointer-Dereferenzierungen und Mutex-Lücken beim Auf- und Abbau von MLO-Links verursacht wurden. Außerdem wird PWM-Lüftersteuerung über `cros_ec_hwmon` hinzugefügt, was eine richtige Lüfterkurvensteuerung über `fw-fanctrl` ermöglicht.
+* **cachyos-Patchset (allgemeine Performance):** Enthält den BORE-cachy-Scheduler, der die CPU-Burst-Zeit pro Task verfolgt und einen Strafwert für durchsatzintensive Tasks vergibt, sodass interaktive Tasks auch unter Last reaktionsschnell bleiben. Außerdem wird Cgroup-VRAM-Accounting hinzugefügt, das den VRAM-Verbrauch von AMD-dGPUs pro Cgroup anzeigt und eine speicherdruckbewusste Freigabe ermöglicht.
 
 ## So nimmst du am Test teil
 
