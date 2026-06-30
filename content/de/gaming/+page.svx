@@ -14,6 +14,7 @@ BlossomOS macht Gaming unter Linux einfach. Alle Launcher sind im Arc Store zu f
 - **[Lutris](/help/gaming/lutris)** - Universeller Launcher für Battle.net, EA, Ubisoft, Emulatoren und ältere Windows-Spiele.
 - **[Battle.net](/help/gaming/battlenet)** - Den Battle.net-Launcher über Lutris starten. Nicht alle Blizzard-Spiele funktionieren.
 - **[Genshin & Hoyoverse 3rd Party Launcher](/help/gaming/hoyoplay)** - Genshin Impact, Honkai Star Rail, Zenless Zone Zero und Honkai Impact 3rd auf BlossomOS spielen.
+- **[Roblox](/help/gaming/roblox)** - Roblox auf BlossomOS spielen.
 - **[Kompatibilität & Anti-Cheat](/help/gaming/anticheat)** - Spielekompatibilität prüfen, ProtonDB-Bewertungen erklärt und eine Übersicht aller wichtigen Anti-Cheat-Systeme.
 
 ## Spielespeicher

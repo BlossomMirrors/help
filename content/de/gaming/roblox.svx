@@ -1,0 +1,53 @@
+---
+title: Roblox spielen mit Sober
+description: Da Roblox Wine aktiv blockiert, bietet der inoffizielle Launcher Sober dank einer spezialisierten Android-Runtime eine performante Alternative für den Linux-Desktop.
+icon: gamepad
+order: 3
+---
+
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
+Nachdem Roblox die Kompatibilität mit Wine durch die Einführung des Anti-Cheat-Systems Hyperion komplett unterbunden hat, waren Linux-Nutzer lange Zeit von der Plattform ausgesperrt. Mit **Sober** hat das Team hinter *Vinegar* jedoch eine innovative und extrem performante Alternative geschaffen.
+
+Anstatt das Windows-Release zu emulieren, nutzt Sober das offizielle **x86_64-Android-Build** von Roblox. Durch das Bereitstellen einer spezialisierten Laufzeitumgebung (Runtime) läuft das Spiel nativ auf dem Linux-Desktop, oft mit einer Performance, die selbst die Ausführung unter Windows übertrifft.
+
+## Systemanforderungen
+
+Da Sober auf dem x86_64-Build für Android basiert, gelten spezifische Prozessor-Voraussetzungen:
+
+* **Grafik:** OpenGL ES 3.0 fähig (Vulkan 1.1 dringend empfohlen)
+* **Prozessor:** x86_64/AMD64-CPU mit **SSE4.2-Unterstützung**.
+  *(Sober bietet eine Emulation für ältere CPUs, die nur SSE4.1 unterstützen, für optimale Frameraten ist SSE4.2 jedoch zwingend notwendig).*
+
+> [!IMPORTANT]
+> **Architektur-Einschränkung:** Sober läuft ausschließlich auf herkömmlichen Intel- und AMD-Prozessoren. Eine Ausführung auf ARM64-Geräten (wie dem Raspberry Pi oder ARM-Notebooks) über die PC-Version von Flatpak ist derzeit nicht direkt möglich.
+
+## Installation
+
+<OpenInArc id="org.vinegarhq.Sober" />
+
+## Ersteinrichtung und Roblox-Download
+
+* Öffne Sober nach der Installation über dein Anwendungsmenü
+* Beim ersten Start wählt Sober standardmäßig die automatische Installation. Der Launcher lädt das benötigte Android-APK-Paket im Hintergrund herunter und schließt sich danach kurz selbst.
+* Starte Sober erneut: Du kannst dich nun wie gewohnt in dein Roblox-Konto einloggen und Erlebnisse starten.
+
+## Features und Einschränkungen
+
+Da es sich hierbei um eine inoffizielle Brücke zur Android-Version handelt, gibt es einige architektonische Besonderheiten:
+
+### Vorteile
+
+**FPS Unlocker:** Über die Konfigurationen lässt sich das FPS-Limit aufheben. In Kombination mit dem schlanken Linux-Unterbau berichten viele Nutzer von extrem hohen, stabilen Frameraten.
+
+**Kein Wine-Overhead:** Die direkte Ausführung der x86_64-Instanz sorgt für eine hervorragende CPU-Auslastung und geringe Latenzen.
+
+### Einschränkungen & Risiken
+
+**Closed Source:** Im Gegensatz zu früheren Projekten wie Grapejuice ist Sober aktuell closed-source, um das Ausnutzen der Plattform für Exploits und Cheats zu verhindern.
+
+**Kein Support durch Roblox:** Sober ist ein reines Community-Projekt. Obwohl das Hyperion-Team in der Vergangenheit signalisiert hat, unschuldige Linux-Spieler nicht grundlos zu bannen, erfolgt die Nutzung auf eigene Gefahr. Updates seitens Roblox können die Kompatibilität jederzeit temporär einschränken.
+
+**Android-Eigenschaften:** Einige grafische Features (wie komplexe Schatten-Optionen) verhalten sich exakt so wie auf High-End-Mobilgeräten und weichen minimal vom Windows-Client ab.

@@ -1,0 +1,53 @@
+---
+title: Playing Roblox with Sober
+description: Since Roblox actively blocks Wine, the unofficial launcher Sober offers a high-performance alternative for the Linux desktop thanks to a specialised Android runtime.
+icon: gamepad
+order: 3
+---
+
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
+After Roblox completely cut off compatibility with Wine by introducing the Hyperion anti-cheat system, Linux users were locked out of the platform for a long time. However, with **Sober**, the team behind *Vinegar* has created an innovative and extremely high-performance alternative.
+
+Instead of emulating the Windows release, Sober uses the official **x86_64 Android build** of Roblox. By providing a specialised runtime environment, the game runs natively on the Linux desktop, often with performance that even exceeds running it on Windows.
+
+## System Requirements
+
+Since Sober is based on the x86_64 build for Android, specific processor requirements apply:
+
+* **Graphics:** OpenGL ES 3.0 capable (Vulkan 1.1 strongly recommended)
+* **Processor:** x86_64/AMD64 CPU with **SSE4.2 support**.
+  *(Sober offers emulation for older CPUs that only support SSE4.1, but SSE4.2 is mandatory for optimal frame rates).*
+
+> [!IMPORTANT]
+> **Architecture Restriction:** Sober runs exclusively on conventional Intel and AMD processors. Running it on ARM64 devices (such as the Raspberry Pi or ARM laptops) via the PC version of Flatpak is currently not directly possible.
+
+## Installation
+
+<OpenInArc id="org.vinegarhq.Sober" />
+
+## Initial Setup and Roblox Download
+
+* Open Sober from your application menu after installation.
+* On the first launch, Sober defaults to automatic installation. The launcher downloads the required Android APK package in the background and then briefly closes itself.
+* Start Sober again: You can now log into your Roblox account as usual and start experiences.
+
+## Features and Limitations
+
+Since this is an unofficial bridge to the Android version, there are some architectural peculiarities:
+
+### Advantages
+
+**FPS Unlocker:** The FPS limit can be removed via the configurations. In combination with the lean Linux foundation, many users report extremely high, stable frame rates.
+
+**No Wine Overhead:** Running the x86_64 instance directly ensures excellent CPU utilisation and low latency.
+
+### Limitations & Risks
+
+**Closed Source:** Unlike previous projects such as Grapejuice, Sober is currently closed-source to prevent the platform from being exploited for cheats.
+
+**No Support from Roblox:** Sober is purely a community project. Although the Hyperion team has indicated in the past that they will not ban innocent Linux players without reason, use is at your own risk. Updates from Roblox can temporarily restrict compatibility at any time.
+
+**Android Characteristics:** Some graphical features (such as complex shadow options) behave exactly as they do on high-end mobile devices and differ slightly from the Windows client.
