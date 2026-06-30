@@ -28,3 +28,5 @@ Battle.net has no native Linux version. You can run it through Lutris, which set
 ## Troubleshooting
 
 If the launcher fails to start or update, try switching to a different Wine-GE version in Lutris. Install **ProtonUp-Qt** from Arc Store to download and manage Wine-GE and Proton-GE versions for Lutris and other launchers.
+
+<OpenInArc id="net.davidotek.pupgui2" />

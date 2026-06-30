@@ -36,6 +36,8 @@ Per-game overrides always take priority over the global setting.
 
 Install **ProtonUp-Qt** from Arc Store to download and manage Proton-GE versions. Versions appear automatically in Steam's compatibility tool list.
 
+<OpenInArc id="net.davidotek.pupgui2" />
+
 ## Storage
 
 - **[Extra Drives](/help/user/drives)** - Set up and mount a second hard drive or SSD before adding it here.

@@ -50,6 +50,8 @@ Heroic ist ein Open-Source-Launcher für Epic Games Store und GOG, der nativ unt
 
 Für bessere Spielekompatibilität **ProtonUp-Qt** aus Arc Store installieren, Heroic als Launcher auswählen und eine Proton-GE-Version herunterladen. Sie erscheint dann in Heroics Wine-Einstellungen als Option.
 
+<OpenInArc id="net.davidotek.pupgui2" />
+
 ## Wöchentliche Gratis-Spiele
 
 Epic verschenkt jede Woche Spiele. Heroic zeigt sie auf dem Startbildschirm und du kannst sie beanspruchen ohne den Launcher zu verlassen. Beanspruchte Spiele bleiben dauerhaft in der Bibliothek.

@@ -36,6 +36,8 @@ Pro-Spiel-Einstellungen haben immer Vorrang vor der globalen Einstellung.
 
 **ProtonUp-Qt** aus Arc Store installieren, um Proton-GE-Versionen herunterzuladen und zu verwalten. Versionen erscheinen automatisch in Steams Kompatibilitätstool-Liste.
 
+<OpenInArc id="net.davidotek.pupgui2" />
+
 ## Speicher
 
 - **[Extra-Festplatten](/help/user/drives)** - Eine zweite Festplatte oder SSD einrichten und einbinden, bevor sie hier hinzugefügt wird.
