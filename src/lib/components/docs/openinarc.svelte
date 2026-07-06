@@ -19,12 +19,22 @@
 	};
 
 	let app = $state<AppData | undefined>(undefined);
+	let icon = $state('');
 
 	onMount(() => {
 		fetch(`https://arpi.blossomos.org/api/v1/apps/${id}?lang=${getLocale()}`)
 			.then((res) => res.json())
 			.then((data: AppData) => {
 				app = data;
+			});
+		icon = `https://arpi.blossomos.org/api/v1/apps/${id}/icon`;
+		fetch(icon)
+			.then((res) => {
+				if (!res.ok) throw new Error('Failed to fetch icon');
+				icon = res.url;
+			})
+			.catch(() => {
+				icon = '/default.svg';
 			});
 	});
 </script>
@@ -33,7 +43,7 @@
 	<div class="w-full max-w-sm overflow-hidden rounded-xl border border-border bg-card shadow-sm">
 		<div class="flex items-start gap-3 p-4">
 			<img
-				src={`https://arpi.blossomos.org/api/v1/apps/${id}/icon`}
+				src={icon}
 				alt={app?.name ?? id}
 				class="h-14 w-14 shrink-0 rounded-xl border border-border bg-muted object-cover"
 			/>

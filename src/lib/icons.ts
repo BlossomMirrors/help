@@ -9,6 +9,7 @@ import ChevronRight from '@lucide/svelte/icons/chevron-right';
 import CircleHelp from '@lucide/svelte/icons/circle-help';
 import Code from '@lucide/svelte/icons/code';
 import Database from '@lucide/svelte/icons/database';
+import Disc from '@lucide/svelte/icons/disc';
 import Download from '@lucide/svelte/icons/download';
 import FileText from '@lucide/svelte/icons/file-text';
 import Folder from '@lucide/svelte/icons/folder';
@@ -64,6 +65,7 @@ export const icons: Record<string, Component> = {
 	'circle-help': CircleHelp,
 	code: Code,
 	database: Database,
+	disc: Disc,
 	donut: Donut,
 	download: Download,
 	'file-text': FileText,

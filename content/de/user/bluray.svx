@@ -1,0 +1,80 @@
+---
+title: Blu-rays abspielen
+description: Kommerzielle Blu-ray-Discs mit VLC auf BlossomOS ansehen.
+icon: disc
+order: 6
+---
+
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
+Kommerzielle Blu-ray-Discs sind mit AACS verschlüsselt. VLC kann sie abspielen, braucht dafür aber zuerst eine Datenbank mit Entschlüsselungsschlüsseln. Diese Anleitung führt durch die einmalige Einrichtung.
+
+## VLC installieren
+
+VLC ist auf BlossomOS vorinstalliert. Falls du es entfernt hast, installiere es einfach wieder aus dem Arc Store:
+
+<OpenInArc id="org.videolan.VLC" />
+
+VLC kommt als Flatpak und bringt die Blu-ray-Bibliotheken (`libbluray` und `libaacs`) bereits mit. Du musst keine zusätzlichen Pakete installieren, nur die Schlüsseldatenbank unten.
+
+## Entschlüsselungsschlüssel herunterladen
+
+Die Schlüsseldatenbank wird auf [fvonline-db.bplaced.net](http://fvonline-db.bplaced.net) gepflegt. Wenn du unsicher bist, welche Datei die richtige ist, nutze den Direktdownload:
+
+[http://fvonline-db.bplaced.net/fv_download.php?lang=eng](http://fvonline-db.bplaced.net/fv_download.php?lang=eng)
+
+Entpacke das heruntergeladene Archiv. Darin findest du eine Datei namens `KEYDB.cfg`.
+
+## Schlüssel an die richtige Stelle kopieren
+
+Da VLC als Flatpak läuft, liegt seine Konfiguration in `~/.var/app` statt im üblichen `~/.config`.
+
+1. Entpacke zuerst die heruntergeladene ZIP-Datei.
+2. Benenne die keydb.cfg in KEYDB.cfg um (achte dabei unbedingt auf die Großbuchstaben).
+3. Kopiere die KEYDB.cfg dann in dieses Verzeichnis:
+`~/.var/app/org.videolan.VLC/config/aacs/` (falls der Ordner noch nicht da ist, leg ihn einfach an).
+4. Wenn die Datei am richtigen Platz ist, starte VLC, leg die Disc ein und spiele die Blu-ray-Disc ab.
+
+> [!WARNING]
+> Zielpfad und Dateiname müssen exakt stimmen: `~/.var/app/org.videolan.VLC/config/aacs/KEYDB.cfg`. Ein anderer Ordner oder ein kleingeschriebener Dateiname funktioniert nicht.
+
+## Blu-ray-Menüs
+
+Blu-ray-Menüs basieren auf Java (BD-J). Um sie zu nutzen, installiere die Java-Plugin-Erweiterung für VLC:
+
+<OpenInArc id="org.videolan.VLC.Plugin.bdj" />
+
+Nach der Installation VLC neu starten, dann funktionieren die Disc-Menüs wie auf einem normalen Blu-ray-Player.
+
+### Blu-ray-Menüs abschalten
+
+Wenn du die Erweiterung nicht installieren willst oder das Menü einer Disc Probleme macht, kannst du die Menüs überspringen und direkt den Film starten:
+
+1. **VLC** öffnen
+2. **Medien** → **Medium öffnen...** wählen
+3. **Blu-ray** auswählen und **Keine Disc-Menüs** ankreuzen
+4. Auf **Wiedergabe** klicken
+
+Um das dauerhaft einzustellen, gehe zu **Werkzeuge** → **Einstellungen** → **Input / Codecs**, oder nutze einfach weiterhin den Dialog **Medium öffnen**.
+
+## Schlüssel funktionieren nicht mehr?
+
+Die Schlüsseldatenbank wird ständig aktualisiert, sobald neue Discs erscheinen. Wenn sich eine Disc plötzlich mit einem Fehler wegen fehlendem Schlüssel weigert, lade eine frische Version der Datei von [fvonline-db.bplaced.net](http://fvonline-db.bplaced.net) herunter und ersetze deine bestehende `KEYDB.cfg`.
+
+## Fehlerbehebung
+
+<details>
+<summary>VLC meldet, die Disc sei verschlüsselt oder der AACS-Schlüssel fehle</summary>
+
+Deine `KEYDB.cfg` liegt entweder am falschen Ort oder ist zu alt für diese Disc. Prüfe den exakten Pfad oben, lade dann die neueste Schlüsseldatenbank herunter und ersetze die Datei.
+
+</details>
+
+<details>
+<summary>Das Laufwerk wird gar nicht erkannt</summary>
+
+Stelle sicher, dass das Laufwerk zuerst in **Dolphin** auftaucht. Externe USB-Laufwerke brauchen manchmal einen Moment zum Anlaufen. Wenn das Laufwerk erscheint, aber die Disc nicht, wirf sie aus und lege sie erneut ein.
+
+</details>

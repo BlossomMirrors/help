@@ -16,6 +16,10 @@ Welcome to BlossomOS.
 
 - **[Arc Store](./arc-store)** — Install Flatpaks, web apps, Windows apps, and CLI tools.
 
+## Multimedia
+
+- **[Playing Blu-rays](./bluray)** — Watch commercial Blu-ray discs in VLC.
+
 ## System
 
 - **[Blossom Cloud](./blossom-cloud)** — EU-hosted file sync, collaborative docs, and video calls.

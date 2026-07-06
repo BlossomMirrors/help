@@ -1,0 +1,80 @@
+---
+title: Playing Blu-rays
+description: Watch commercial Blu-ray discs in VLC on BlossomOS.
+icon: disc
+order: 6
+---
+
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
+Commercial Blu-ray discs are encrypted with AACS. VLC can play them, but it needs a decryption key database first. This guide walks you through the one-time setup.
+
+## Install VLC
+
+VLC comes preinstalled on BlossomOS. If you removed it, install it again from Arc Store:
+
+<OpenInArc id="org.videolan.VLC" />
+
+VLC ships as a Flatpak and already bundles the Blu-ray libraries (`libbluray` and `libaacs`). You do not need to install any extra packages, only the key database below.
+
+## Download the Decryption Keys
+
+The key database is maintained at [fvonline-db.bplaced.net](http://fvonline-db.bplaced.net). If you are unsure which file to pick, use the direct download:
+
+[http://fvonline-db.bplaced.net/fv_download.php?lang=eng](http://fvonline-db.bplaced.net/fv_download.php?lang=eng)
+
+Extract the downloaded archive. Inside you'll find a `KEYDB.cfg` file.
+
+## Copy the Keys to the Right Place
+
+Because VLC runs as a Flatpak, its configuration lives inside `~/.var/app` instead of the usual `~/.config`.
+
+1. Extract the downloaded ZIP file.
+2. Rename keydb.cfg to KEYDB.cfg (note the uppercase letters).
+3. Copy KEYDB.cfg to the following destination:
+`~/.var/app/org.videolan.VLC/config/aacs/` (create the directory if it doesn't already exist).
+4. Once the file is in place, launch VLC, insert a Blu-ray disc and play the disc.
+
+> [!WARNING]
+> The destination path and file name must match exactly: `~/.var/app/org.videolan.VLC/config/aacs/KEYDB.cfg`. A different folder or a lowercase file name will not work.
+
+## Blu-ray Menus
+
+Blu-ray menus are built with Java (BD-J). To use them, install the Java plugin extension for VLC:
+
+<OpenInArc id="org.videolan.VLC.Plugin.bdj" />
+
+After installing, restart VLC and the disc menus will work like on a standalone player.
+
+### Turn Off Blu-ray Menus
+
+If you don't want to install the extension, or a disc's menu misbehaves, you can skip the menus and jump straight to the movie:
+
+1. Open **VLC**
+2. Go to **Media** → **Open Disc...**
+3. Select **Blu-ray** and check **No disc menus**
+4. Click **Play**
+
+To make this permanent, go to **Tools** → **Preferences** → **Input / Codecs** and set **Default optical device** options accordingly, or simply keep using the **Open Disc** dialog.
+
+## Keys Stop Working?
+
+The key database is updated constantly as new discs are released. If a disc suddenly refuses to play with a missing-key error, download a fresh copy of the file from [fvonline-db.bplaced.net](http://fvonline-db.bplaced.net) and replace your existing `KEYDB.cfg`.
+
+## Troubleshooting
+
+<details>
+<summary>VLC says the disc is encrypted or the AACS key is missing</summary>
+
+Your `KEYDB.cfg` is either in the wrong place or too old for this disc. Verify the exact path above, then download the latest key database and replace the file.
+
+</details>
+
+<details>
+<summary>The drive is not detected at all</summary>
+
+Make sure the disc drive shows up in **Dolphin** first. External USB drives may need a moment to spin up. If the drive appears but the disc doesn't, try ejecting and reinserting it.
+
+</details>
