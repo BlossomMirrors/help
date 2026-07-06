@@ -7,7 +7,7 @@ order: 2
 
 BlossomOS entwickelt sich rasant weiter. Um neue Funktionen vor dem offiziellen Release ausgiebig zu testen, bieten unsere `prerelease`- und `latest`-Zweige Zugriff auf topaktuelle Software-Stacks.
 
-Aktuell stehen drei große Updates im Fokus des Testings, die tiefgreifende Änderungen an der Benutzeroberfläche, der Anwendungsperformance und der Hardware-Unterstützung mit sich bringen.
+Aktuell stehen vier große Updates im Fokus des Testings, die tiefgreifende Änderungen an der Benutzeroberfläche, der Anwendungsperformance, den System-Updates und der Hardware-Unterstützung mit sich bringen.
 
 ## Aktuelle Test-Highlights
 
@@ -38,6 +38,16 @@ BlossomOS verwendet nun einen selbst gebauten Kernel (`kernel-blossomos`) auf Ba
 
 * **fw16-Patchset (Framework Laptop 16):** Behebt WiFi-Aussetzer beim MediaTek-Chip `mt7925`, die durch Race Conditions, NULL-Pointer-Dereferenzierungen und Mutex-Lücken beim Auf- und Abbau von MLO-Links verursacht wurden. Außerdem wird PWM-Lüftersteuerung über `cros_ec_hwmon` hinzugefügt, was eine richtige Lüfterkurvensteuerung über `fw-fanctrl` ermöglicht.
 * **cachyos-Patchset (allgemeine Performance):** Enthält den BORE-cachy-Scheduler, der die CPU-Burst-Zeit pro Task verfolgt und einen Strafwert für durchsatzintensive Tasks vergibt, sodass interaktive Tasks auch unter Last reaktionsschnell bleiben. Außerdem wird Cgroup-VRAM-Accounting hinzugefügt, das den VRAM-Verbrauch von AMD-dGPUs pro Cgroup anzeigt und eine speicherdruckbewusste Freigabe ermöglicht.
+
+### 4. Software-Update-Modul für die Systemeinstellungen
+System-Updates haben jetzt ein grafisches Zuhause: Ein neues "Software Update"-Modul (KCM) integriert sich direkt in die KDE-Systemeinstellungen und verwaltet OS-Image-Updates über `rpm-ostree`, ganz ohne Terminal:
+
+* **Deployment-Übersicht:** Sieh auf einen Blick die aktuell gebootete Version sowie ausstehende und vorherige Deployments.
+* **Updates im Hintergrund mit Live-Fortschritt:** Lade ein OS-Update im Hintergrund herunter und verfolge den Fortschritt live in der Oberfläche. Das Update wird beim nächsten Neustart angewendet.
+* **Rollback mit einem Klick:** Wechsle direkt aus den Systemeinstellungen zum vorherigen Deployment zurück. Deine Dateien und Einstellungen bleiben unverändert.
+* **Automatische Updates:** Aktiviere oder deaktiviere automatische Updates mit einem einzigen Schalter (umgesetzt über die systemd-Unit `rpm-ostreed-automatic.timer`).
+* **Erkennung von Layered Packages:** Wenn mit `rpm-ostree` gelayerte Pakete ein Update blockieren, erkennt das Modul dies und bietet an, sie für dich zu entfernen.
+* **Natives Look & Feel:** Das Modul basiert auf Kirigami und fügt sich nahtlos in die Systemeinstellungen unter **System → Software Update** ein.
 
 ## So nimmst du am Test teil
 

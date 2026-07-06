@@ -7,7 +7,7 @@ order: 2
 
 BlossomOS is evolving rapidly. To extensively test new features before the official release, our `prerelease` and `latest` branches provide access to cutting-edge software stacks.
 
-Currently, testing is focused on three major updates that bring profound changes to the user interface, application performance, and hardware support.
+Currently, testing is focused on four major updates that bring profound changes to the user interface, application performance, system updates, and hardware support.
 
 ## Current Test Highlights
 
@@ -38,6 +38,16 @@ BlossomOS now ships a custom-built kernel (`kernel-blossomos`) on top of the sto
 
 * **fw16 patchset (Framework Laptop 16):** Fixes WiFi drops on the MediaTek `mt7925` chip caused by race conditions, NULL pointer dereferences, and mutex gaps during MLO link setup/teardown. Also adds PWM fan control support via `cros_ec_hwmon`, enabling proper fan curve control through `fw-fanctrl`.
 * **cachyos patchset (general performance):** Includes the BORE-cachy scheduler, which tracks per-task CPU burst time and applies a penalty score to throughput-heavy tasks, keeping interactive tasks snappy under load. Also adds cgroup VRAM accounting, exposing per-cgroup AMD dGPU VRAM usage for memory pressure-aware eviction.
+
+### 4. Software Update Module for System Settings
+System updates now have a graphical home: a new "Software Update" module (KCM) integrates directly into KDE System Settings and manages OS image updates via `rpm-ostree`, no terminal required:
+
+* **Deployment Overview:** See the currently booted version at a glance, along with any pending or previous deployments.
+* **Background Updates with Live Progress:** Download and stage an OS update in the background while following the progress live in the UI. The update is applied on the next restart.
+* **One-Click Rollback:** Roll back to the previous deployment directly from System Settings. Your files and settings stay unchanged.
+* **Automatic Updates:** Enable or disable automatic updates with a single switch (powered by the `rpm-ostreed-automatic.timer` systemd unit).
+* **Layered Package Detection:** If packages layered with `rpm-ostree` are blocking an update, the module detects them and offers to remove them for you.
+* **Native Look & Feel:** Built with Kirigami, the module integrates seamlessly into System Settings under **System → Software Update**.
 
 ## How to participate in the test
 
