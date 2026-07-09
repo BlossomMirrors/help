@@ -52,6 +52,7 @@ import Sword from '@lucide/svelte/icons/sword';
 import TestTube from '@lucide/svelte/icons/test-tube';
 import Sparkles from '@lucide/svelte/icons/sparkles';
 import ShieldCheck from '@lucide/svelte/icons/shield-check';
+import ScrollText from '@lucide/svelte/icons/scroll-text';
 
 export const icons: Record<string, Component> = {
 	'alert-triangle': AlertTriangle,
@@ -106,5 +107,6 @@ export const icons: Record<string, Component> = {
 	video: Video,
 	wifi: Wifi,
 	wrench: Wrench,
-	zap: Zap
+  zap: Zap,
+	'scroll-text': ScrollText
 };

@@ -1,0 +1,83 @@
+---
+title: Alpha 2
+---
+# Alpha 2
+
+### 1. BlossomUI Alpha 2
+Das Aussehen von BlossomOS bekommt mit diesem Release einen großen Sprung nach vorne. Vom Iconset bis zur Fensterdekorationwurde viel überarbeitet:
+
+- **Neue Ordner- und Dateimanager-Icons:** Überarbeitetes Iconset für Ordner und den Dateimanager.
+- **Weitere neue Icons:** Zahlreiche zusätzliche System- und App-Icons wurden ergänzt.
+- **Eigenes Plasma-Theme:** Ein komplett neu gestaltetes Plasma-Theme welches besser zum Rest von BlossomUI passt.
+- **GTK3-Theme:** Passendes GTK3-Theme für ein einheitliches Erscheinungsbild von GTK-Apps.
+- **GTK4-Theme:** Ergänzendes Theme für Anwendungen auf Basis von GTK4.
+- **QtQuick-Theme:** Eigenes Styling für QtQuick-basierte Oberflächen.
+- **Adwaita-Theme:**  Neues Adwaita-Theme für bessere Integration von GNOME-Apps.
+- **QQC2 / Kirigami-Theme:** Einheitliches Look & Feel für Kirigami-basierte Anwendungen.
+- **GTK-Fensterdekoration:** Neue Fensterdekoration für GTK-Anwendungen im BlossomUI-Stil.
+- **Neue System-Schriftart:** Eine neue Standardschriftart für ein moderneres Schriftbild im gesamten System.
+- **Neue Switches:** Überarbeitete Toggle-Switches mit klarerem visuellem Feedback.
+- **Blur-Masken:** Bleeding-Probleme bei Blur-Masken wurden behoben, wodurch Transparenzeffekte jetzt sauberer aussehen.
+- **Neuer "Willkommen"-Ladebildschirm:** Ein neu gestalteter Begrüßungsbildschirm beim Desktop-Start.
+- **Zahlreiche Design- & Installationsfixes:** Diverse kleinere Fehlerbehebungen rund um Theming und dessen Installation.
+
+### 2. Blossom Patches Alpha
+Neben dem Theming bringt dieses Release auch eine Reihe funktionaler Patches mit, die den Desktop-Alltag angenehmer machen sollen:
+
+- **Neue Digitaluhr:** Überarbeitete Uhr-Anzeige in der Taskleiste.
+- **Neues Startmenü:** Design-Fixes sowie ein neues, sich drehendes Icon beim öffnen des Startmenüs.
+- **Aufgeräumtere Taskleiste:** Neue Tray-Icons werden automatisch in das Überhangmenü sortiert, wodurch die Taskleiste übersichtlicher bleibt.
+- **Notification Badges in Rot:** Benachrichtigungs-Badges sehen jetzt wie gewohnt aus.
+- **Präziseres Batterie-Icon:** Genauere Darstellung des Akkustands im Panel.
+- **Reset-Buttons für Panels:** Neue Buttons, mit denen sich die Desktop-Panel-Konfiguration gezielt zurücksetzen lässt.
+- **Automatisches Theming:** Patches, die bei Adwaita- und Kirigami-Apps automatisch das zugehörige BlossomUI-Design anwenden.
+- **Design-Schnelleinstellungen:** Grundlage für die neuen Schnelleinstellungen zum Erscheinungsbild (siehe Punkt 4).
+
+### 3. Verbesserte Standardeinstellungen
+Auch abseits von Theming und Patches wurden die Werkseinstellungen von BlossomOS überarbeitet, damit sich das System aufgeräumter und durchdachter anfühlt:
+
+- **Angepinnte Favoriten im Startmenü:** Sinnvolle Vorauswahl an Apps direkt im Startmenü sichtbar.
+- **Angepinnte Apps an der Taskleiste:** Wichtige Anwendungen sind standardmäßig an der Taskleiste angepinnt.
+- **Weniger dauerhaft sichtbare Tray-Icons:** Reduzierte Standard-Applets im System-Tray für mehr Übersicht.
+- **Neue Bildschirmecken-Aktion:** "Blick auf Desktop" wird jetzt über eine Bildschirmecke statt über das große Desktop-Icon ermöglicht.
+- **Ruhigeres App-Startverhalten:** Startende Apps werden nicht mehr direkt neben dem Mauszeiger springend animiert.
+
+### 4. Design-Schnelleinstellungen (Erscheinungsbild)
+Ein neuer Schnellzugriff macht es einfacher, das Erscheinungsbild des Systems anzupassen: Farben, Hintergründe und weitere Design-Optionen lassen sich jetzt zentral und übersichtlich an einem Ort einstellen, ohne durch mehrere Menüs der Systemeinstellungen navigieren zu müssen.
+
+### 5. KDE Plasma 6.7
+Die neueste Iteration der Plasma-Desktop-Umgebung bringt massive Optimierungen für Multitasking und den täglichen Workflow:
+
+- **Virtuelle Desktops pro Monitor:** Endlich können virtuelle Desktops unabhängig voneinander auf verschiedenen Bildschirmen verwaltet und gewechselt werden.
+- **Globales Push-to-Talk & Mic-Mute:** Ein systemweiter Hotkey erlaubt es dir, dein Mikrofon global stummzuschalten oder als Push-to-Talk zu konfigurieren.
+- **Instant Light/Dark Mode:** Ein dedizierter Toggle-Switch im Plasma-Panel ermöglicht den sofortigen Wechsel zwischen dem hellem und dunklem Erscheinungsbild.
+- **Union Theme Engine (Tech Preview):** Plasma 6.7 enthält eine erste Vorschau auf das neue, vereinheitlichte CSS-basierte Styling-System, das langfristig für ein absolut konsistentes Design über alle möglichen App-Oberflächen hinweg sorgt.
+- **Erweiterter Schutz bei Bildschirmaufnahme:** Fenster können jetzt gezielt vor der Erfassung durch Screenshots oder Bildschirmaufnahmen versteckt werden.
+
+### 6. Neue Version von Arc Store
+Der hauseigene BlossomOS-Software-Store "Arc Store" wurde umfassend überarbeitet:
+
+- **Verbesserte Software-Provider:** AppImages, DEBs und RPMs sollten jetzt deutlich einfacher zu installieren sein.
+- **Unterstützung für KIO:** Arc Store unterstützt nun KIO, um den aktuellen Zustand einer Transaktion anzuzeigen.
+- **Neue Startseite:** Die Startseite wurde neu gestaltet und unterstützt Stories (kuratierte Artikel über neue Apps vom BlossomOS-Team).
+- **Die neuen PWAs sind da:** Du kannst jetzt die neuen PWAs auf deinem System installieren und nutzen. PWAs sind Internetverknüpfungen zu den Webseiten der jeweiligen Apps, verhalten sich aber wie native Software.
+- **Verbesserte Webbrowser-Integration:** Arc unterstützt nun die Integration mit Webbrowsern, sodass du App-Seiten direkt aus dem Browser öffnen kannst.
+- **Unterstützung für Flatpak-Erweiterungen:** Arc unterstützt nun die Installation von Flatpak-Erweiterungen, sodass du deine Flatpak-Apps mit neuen Features erweitern kannst.
+- **Verbessertes Update-Management:** Arc verfügt nun über ein verbessertes Update-Management, das die Arc-Laufzeitumgebung berücksichtigt, sodass bereits aktualisierte Apps stabiler laufen. Außerdem können Apps automatisch aktualisiert werden.
+- **Verbesserte Sprachunterstützung:** Arc Store unterstützt nun verschiedene Sprachen, aktuell Deutsch und Englisch.
+
+### 7. Eigener Kernel mit Hardware- und Performance-Patchsets
+BlossomOS verwendet nun einen selbst gebauten Kernel (`kernel-blossomos`) auf Basis des regulären Fedora-Kernels, der kuratierte Patchsets für bessere Hardware-Unterstützung und Reaktionsfähigkeit mitbringt:
+
+- **fw16-Patchset (Framework Laptop 16):** Behebt WiFi-Aussetzer beim MediaTek-Chip `mt7925`, die durch Race Conditions, NULL-Pointer-Dereferenzierungen und Mutex-Lücken beim Auf- und Abbau von MLO-Links verursacht wurden. Außerdem wird PWM-Lüftersteuerung über `cros_ec_hwmon` hinzugefügt, was eine richtige Lüfterkurvensteuerung über `fw-fanctrl` ermöglicht.
+- **cachyos-Patchset (allgemeine Performance):** Enthält den BORE-cachy-Scheduler, der die CPU-Burst-Zeit pro Task verfolgt und einen Strafwert für durchsatzintensive Tasks vergibt, sodass interaktive Tasks auch unter Last reaktionsschnell bleiben. Außerdem wird Cgroup-VRAM-Accounting hinzugefügt, das den VRAM-Verbrauch von AMD-dGPUs pro Cgroup anzeigt und eine speicherdruckbewusste Freigabe ermöglicht.
+
+### 8. Software-Update-Modul für die Systemeinstellungen
+System-Updates haben jetzt ein grafisches Zuhause: Ein neues "Software Update"-Modul (KCM) integriert sich direkt in die KDE-Systemeinstellungen und verwaltet OS-Image-Updates über `rpm-ostree`, ganz ohne Terminal:
+
+- **Deployment-Übersicht:** Sieh auf einen Blick die aktuell gebootete Version sowie ausstehende und vorherige Deployments.
+- **Updates im Hintergrund mit Live-Fortschritt:** Lade ein OS-Update im Hintergrund herunter und verfolge den Fortschritt live in der Oberfläche. Das Update wird beim nächsten Neustart angewendet.
+- **Rollback mit einem Klick:** Wechsle direkt aus den Systemeinstellungen zum vorherigen Deployment zurück. Deine Dateien und Einstellungen bleiben unverändert.
+- **Automatische Updates:** Aktiviere oder deaktiviere automatische Updates mit einem einzigen Schalter (umgesetzt über die systemd-Unit `rpm-ostreed-automatic.timer`).
+- **Erkennung von Layered Packages:** Wenn mit `rpm-ostree` gelayerte Pakete ein Update blockieren, erkennt das Modul dies und bietet an, sie für dich zu entfernen.
+- **Natives Look & Feel:** Das Modul basiert auf Kirigami und fügt sich nahtlos in die Systemeinstellungen unter **System → Software Update** ein.

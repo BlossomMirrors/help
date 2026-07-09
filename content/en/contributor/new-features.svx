@@ -9,49 +9,9 @@ BlossomOS is evolving rapidly. To extensively test new features before the offic
 
 Currently, testing is focused on four major updates that bring profound changes to the user interface, application performance, system updates, and hardware support.
 
-## Current Test Highlights
-
-### 1. KDE Plasma 6.7
-The latest iteration of the Plasma desktop environment brings massive optimisations for multitasking and daily workflows under Wayland:
-
-* **Virtual desktops per monitor:** Virtual desktops can finally be managed and switched independently on different screens.
-* **Global Push-to-Talk & Mic-Mute:** A system-wide hotkey allows you to mute your microphone globally or configure it as Push-to-Talk – regardless of which app is currently running.
-* **Instant Light/Dark Mode:** A dedicated switch in the Plasma panel enables lightning-fast switching between light and dark appearances.
-* **Union Theme Engine (Tech Preview):** Plasma 6.7 includes an initial preview of the new, unified CSS-based styling system, which ensures absolute design consistency across all Qt technologies in the long term.
-* **Enhanced Creator Protection:** Windows can now be specifically hidden from capture by screenshots or screen recordings.
-
-### 2. New Version of Arc Store
-The in-house BlossomOS software store "Arc Store" has been completely overhauled:
-
-* **Redesigned User Interface:** New animations and a refreshed design.
-* **Improved Software Providers:** AppImages, DEBs, and RPMs should now be significantly easier to install.
-* **KIO Support:** Arc Store now supports KIO to display the current status of a transaction.
-* **New Home Page:** The home page has been completely redesigned and supports Stories (curated articles about new apps from the BlossomOS team).
-* **The new PWAs are here:** You can now install the new PWAs on your system and use them. PWAs are web shortcuts to the websites of the respective apps but behave like native software.
-* **Improved Web Browser Integration:** Arc now supports integration with web browsers, allowing you to open app pages directly from the browser.
-* **Flatpak Extension Support:** Arc now supports the installation of Flatpak extensions, so you can enhance your Flatpak apps with new features.
-* **Improved Update Management:** Arc now features improved update management. The Arc runtime environment is taken into account, ensuring that apps updated previously run more stably. Additionally, apps can be updated automatically.
-* **Improved language support:** Arc Store now supports various languages, currently English and German.
-
-### 3. Custom Kernel with Hardware and Performance Patchsets
-BlossomOS now ships a custom-built kernel (`kernel-blossomos`) on top of the stock Fedora kernel, carrying curated patchsets for better hardware support and responsiveness:
-
-* **fw16 patchset (Framework Laptop 16):** Fixes WiFi drops on the MediaTek `mt7925` chip caused by race conditions, NULL pointer dereferences, and mutex gaps during MLO link setup/teardown. Also adds PWM fan control support via `cros_ec_hwmon`, enabling proper fan curve control through `fw-fanctrl`.
-* **cachyos patchset (general performance):** Includes the BORE-cachy scheduler, which tracks per-task CPU burst time and applies a penalty score to throughput-heavy tasks, keeping interactive tasks snappy under load. Also adds cgroup VRAM accounting, exposing per-cgroup AMD dGPU VRAM usage for memory pressure-aware eviction.
-
-### 4. Software Update Module for System Settings
-System updates now have a graphical home: a new "Software Update" module (KCM) integrates directly into KDE System Settings and manages OS image updates via `rpm-ostree`, no terminal required:
-
-* **Deployment Overview:** See the currently booted version at a glance, along with any pending or previous deployments.
-* **Background Updates with Live Progress:** Download and stage an OS update in the background while following the progress live in the UI. The update is applied on the next restart.
-* **One-Click Rollback:** Roll back to the previous deployment directly from System Settings. Your files and settings stay unchanged.
-* **Automatic Updates:** Enable or disable automatic updates with a single switch (powered by the `rpm-ostreed-automatic.timer` systemd unit).
-* **Layered Package Detection:** If packages layered with `rpm-ostree` are blocking an update, the module detects them and offers to remove them for you.
-* **Native Look & Feel:** Built with Kirigami, the module integrates seamlessly into System Settings under **System → Software Update**.
-
 ## How to participate in the test
 
-To test these features, you need to switch your system to one of our test images. Further information on image tags can be found on the ["Understanding Image Tags"](/help/contributor/image-tags) page.
+To test the new features, you need to switch your system to one of our test images. Further information on image tags can be found on the ["Understanding Image Tags"](/help/contributor/image-tags) page.
 
 > [!WARNING]
 > **Caution:** Test images may contain unforeseen bugs. Preferably use them on test systems or ensure that your data is backed up. However, a rollback is possible at any time without any problems.

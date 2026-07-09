@@ -9,49 +9,9 @@ BlossomOS entwickelt sich rasant weiter. Um neue Funktionen vor dem offiziellen 
 
 Aktuell stehen vier große Updates im Fokus des Testings, die tiefgreifende Änderungen an der Benutzeroberfläche, der Anwendungsperformance, den System-Updates und der Hardware-Unterstützung mit sich bringen.
 
-## Aktuelle Test-Highlights
-
-### 1. KDE Plasma 6.7
-Die neueste Iteration der Plasma-Desktop-Umgebung bringt massive Optimierungen für Multitasking und den täglichen Workflow unter Wayland:
-
-* **Virtuelle Desktops pro Monitor:** Endlich können virtuelle Desktops unabhängig voneinander auf verschiedenen Bildschirmen verwaltet und gewechselt werden.
-* **Globales Push-to-Talk & Mic-Mute:** Ein systemweiter Hotkey erlaubt es dir, dein Mikrofon global stummzuschalten oder als Push-to-Talk zu konfigurieren – unabhängig davon, welche App gerade läuft.
-* **Instant Light/Dark Mode:** Ein dedizierter Schalter im Plasma-Panel ermöglicht den blitzschnellen Wechsel zwischen hellem und dunklem Erscheinungsbild.
-* **Union Theme Engine (Tech Preview):** Plasma 6.7 enthält eine erste Vorschau auf das neue, vereinheitlichte CSS-basierte Styling-System, das langfristig für ein absolut konsistentes Design über alle Qt-Technologien hinweg sorgt.
-* **Erweiterter Creator-Schutz:** Fenster können jetzt gezielt vor der Erfassung durch Screenshots oder Screen-Recordings versteckt werden.
-
-### 2. Neue Version von Arc Store
-Der hauseigene BlossomOS-Software-Store "Arc Store" wurde umfassend überarbeitet:
-
-* **Überarbeitete Benutzeroberfläche:** Neue Animationen und ein überarbeitetes Design
-* **Verbesserte Software-Provider:** AppImages, DEBs und RPMs sollten jetzt deutlich einfacher zu installieren sein
-* **Unterstützung für KIO:** Arc Store unterstützt nun KIO, um den aktuellen Zustand einer Transaktion anzuzeigen.
-* **Neue Startseite:** Die Startseite wurde komplett neu gestaltet und unterstützt Stories (kuratierte Artikel über neue Apps vom BlossomOS-Team)
-* **Die neuen PWAs sind da:** Du kannst jetzt die neuen PWAs auf deinem System installieren und sie nutzen. PWAs sind Internetverknüpfungen zu den Webseiten der jeweiligen Apps, verhalten sich aber wie native Software.
-* **Verbesserte Webbrowser-Integration:** Arc unterstützt nun die Integration mit Webbrowsern, sodass du App-Seiten direkt aus dem Browser öffnen kannst.
-* **Unterstützung für Flatpak-Erweiterungen:** Arc unterstützt nun die Installation von Flatpak-Erweiterungen, sodass du deine Flatpak-Apps mit neuen Features erweitern kannst.
-* **Verbessertes Update-Management:** Arc verfügt nun über ein verbessertes Update-Management. Es werden die Arc Laufzeitumgebung berücksichtigt, sodass Apps, die zuvor aktualisiert wurden, stabiler laufen. Außerdem können Apps automatisch aktualisiert werden.
-* **Verbesserte Sprachunterstützung:** Arc Store unterstützt nun verschiedene Sprachen, aktuell Deutsch und Englisch.
-
-### 3. Eigener Kernel mit Hardware- und Performance-Patchsets
-BlossomOS verwendet nun einen selbst gebauten Kernel (`kernel-blossomos`) auf Basis des regulären Fedora-Kernels, der kuratierte Patchsets für bessere Hardware-Unterstützung und Reaktionsfähigkeit mitbringt:
-
-* **fw16-Patchset (Framework Laptop 16):** Behebt WiFi-Aussetzer beim MediaTek-Chip `mt7925`, die durch Race Conditions, NULL-Pointer-Dereferenzierungen und Mutex-Lücken beim Auf- und Abbau von MLO-Links verursacht wurden. Außerdem wird PWM-Lüftersteuerung über `cros_ec_hwmon` hinzugefügt, was eine richtige Lüfterkurvensteuerung über `fw-fanctrl` ermöglicht.
-* **cachyos-Patchset (allgemeine Performance):** Enthält den BORE-cachy-Scheduler, der die CPU-Burst-Zeit pro Task verfolgt und einen Strafwert für durchsatzintensive Tasks vergibt, sodass interaktive Tasks auch unter Last reaktionsschnell bleiben. Außerdem wird Cgroup-VRAM-Accounting hinzugefügt, das den VRAM-Verbrauch von AMD-dGPUs pro Cgroup anzeigt und eine speicherdruckbewusste Freigabe ermöglicht.
-
-### 4. Software-Update-Modul für die Systemeinstellungen
-System-Updates haben jetzt ein grafisches Zuhause: Ein neues "Software Update"-Modul (KCM) integriert sich direkt in die KDE-Systemeinstellungen und verwaltet OS-Image-Updates über `rpm-ostree`, ganz ohne Terminal:
-
-* **Deployment-Übersicht:** Sieh auf einen Blick die aktuell gebootete Version sowie ausstehende und vorherige Deployments.
-* **Updates im Hintergrund mit Live-Fortschritt:** Lade ein OS-Update im Hintergrund herunter und verfolge den Fortschritt live in der Oberfläche. Das Update wird beim nächsten Neustart angewendet.
-* **Rollback mit einem Klick:** Wechsle direkt aus den Systemeinstellungen zum vorherigen Deployment zurück. Deine Dateien und Einstellungen bleiben unverändert.
-* **Automatische Updates:** Aktiviere oder deaktiviere automatische Updates mit einem einzigen Schalter (umgesetzt über die systemd-Unit `rpm-ostreed-automatic.timer`).
-* **Erkennung von Layered Packages:** Wenn mit `rpm-ostree` gelayerte Pakete ein Update blockieren, erkennt das Modul dies und bietet an, sie für dich zu entfernen.
-* **Natives Look & Feel:** Das Modul basiert auf Kirigami und fügt sich nahtlos in die Systemeinstellungen unter **System → Software Update** ein.
-
 ## So nimmst du am Test teil
 
-Um diese Features zu testen, musst du dein System auf eines unserer Test-Images umstellen. Weitere Informationen zu Image-Tags findest du auf der Seite ["Image-Tags verstehen"](/help/contributor/image-tags).
+Um neue Features zu testen, musst du dein System auf eines unserer Test-Images umstellen. Weitere Informationen zu Image-Tags findest du auf der Seite ["Image-Tags verstehen"](/help/contributor/image-tags).
 
 > [!WARNING]
 > **Achtung:** Test-Images können unvorhergesehene Fehler enthalten. Nutze sie vorzugsweise auf Testsystemen oder stelle sicher, dass deine Daten gesichert sind. Ein Rollback ist jedoch jederzeit problemlos möglich.

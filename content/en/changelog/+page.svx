@@ -1,0 +1,8 @@
+---
+title: Changelog
+description: All new features & changes in BlossomOS.
+---
+
+# The latest new features & changes
+
+## [Alpha 2](/help/changelog/alpha-2)

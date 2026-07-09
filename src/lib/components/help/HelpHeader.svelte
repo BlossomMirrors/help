@@ -67,9 +67,9 @@
 	<button
 		onclick={() => window.dispatchEvent(new Event('open-chat'))}
 		class="flex h-8 items-center gap-1.5 rounded-md px-2.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-		aria-label="Ask AI"
+		aria-label={m.ask_ai()}
 	>
 		<SparklesIcon size={14} class="text-primary" />
-		<span class="hidden sm:inline">Ask AI</span>
+		<span class="hidden sm:inline">{m.ask_ai()}</span>
 	</button>
 </header>

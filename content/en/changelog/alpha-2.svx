@@ -1,0 +1,83 @@
+---
+title: Alpha 2
+---
+# Alpha 2
+
+### 1. BlossomUI Alpha 2
+The look of BlossomOS takes a huge leap forward with this release. From the icon set to the window decorations, a lot has been reworked:
+
+- **New folder and file manager icons:** Reworked icon set for folders and the file manager.
+- **More new icons:** Numerous additional system and app icons have been added.
+- **Custom Plasma theme:** A completely redesigned Plasma theme that fits better with the rest of BlossomUI.
+- **GTK3 theme:** Matching GTK3 theme for a consistent look across GTK apps.
+- **GTK4 theme:** Companion theme for apps built on GTK4.
+- **QtQuick theme:** Dedicated styling for QtQuick-based interfaces.
+- **Adwaita theme:** New Adwaita theme for better integration of GNOME apps.
+- **QQC2 / Kirigami theme:** Consistent look & feel for Kirigami-based applications.
+- **GTK window decoration:** New window decoration for GTK applications in the BlossomUI style.
+- **New system font:** A new default font for a more modern typeface across the whole system.
+- **New switches:** Reworked toggle switches with clearer visual feedback.
+- **Blur masks:** Bleeding issues with blur masks have been fixed, making transparency effects look cleaner now.
+- **New "Welcome" splash screen:** A newly designed welcome screen on desktop startup.
+- **Numerous design & installation fixes:** Various smaller bug fixes around theming and its installation.
+
+### 2. Blossom Patches Alpha
+Alongside theming, this release also brings a number of functional patches meant to make everyday desktop use more pleasant:
+
+- **New digital clock:** Reworked clock display in the taskbar.
+- **New start menu:** Design fixes plus a new, spinning icon when opening the start menu.
+- **Tidier taskbar:** New tray icons are now automatically sorted into the overflow menu, keeping the taskbar tidier.
+- **Notification badges in red:** Notification badges now look as expected.
+- **More precise battery icon:** More accurate display of battery status in the panel.
+- **Reset buttons for panels:** New buttons that let you specifically reset the desktop panel configuration.
+- **Automatic theming:** Patches that automatically apply the matching BlossomUI design to Adwaita and Kirigami apps.
+- **Design quick settings:** Foundation for the new appearance quick settings (see item 4).
+
+### 3. Improved default settings
+Beyond theming and patches, BlossomOS's factory settings have been reworked so the system feels tidier and more thought-through:
+
+- **Pinned favorites in the start menu:** A sensible preselection of apps visible right in the start menu.
+- **Pinned apps on the taskbar:** Important applications are pinned to the taskbar by default.
+- **Fewer permanently visible tray icons:** Reduced default applets in the system tray for a clearer overview.
+- **New screen corner action:** "Show Desktop" is now triggered via a screen corner instead of the large desktop icon.
+- **Calmer app launch behavior:** Launching apps no longer animate by jumping around next to the mouse cursor.
+
+### 4. Design quick settings (Appearance)
+A new quick-access panel makes it easier to customize the system's appearance: colors, backgrounds, and other design options can now be set centrally in one clear place, without navigating through several menus in System Settings.
+
+### 5. KDE Plasma 6.7
+The latest iteration of the Plasma desktop environment brings massive optimizations for multitasking and everyday workflow:
+
+- **Virtual desktops per monitor:** Virtual desktops can finally be managed and switched independently on different screens.
+- **Global push-to-talk & mic mute:** A system-wide hotkey lets you globally mute your microphone or configure it as push-to-talk.
+- **Instant light/dark mode:** A dedicated toggle switch in the Plasma panel enables an instant switch between light and dark appearance.
+- **Union Theme Engine (Tech Preview):** Plasma 6.7 includes an early preview of the new, unified CSS-based styling system, which will provide a fully consistent design across all kinds of app interfaces in the long run.
+- **Extended screen capture protection:** Windows can now be specifically hidden from being captured by screenshots or screen recordings.
+
+### 6. New version of Arc Store
+BlossomOS's own software store, "Arc Store," has been thoroughly reworked:
+
+- **Improved software providers:** AppImages, DEBs, and RPMs should now be noticeably easier to install.
+- **KIO support:** Arc Store now supports KIO to display the current status of a transaction.
+- **New homepage:** The homepage has been redesigned and now supports Stories (curated articles about new apps from the BlossomOS team).
+- **The new PWAs are here:** You can now install and use the new PWAs on your system. PWAs are web links to the respective apps' websites but behave like native software.
+- **Improved web browser integration:** Arc now supports integration with web browsers, so you can open app pages directly from the browser.
+- **Flatpak extension support:** Arc now supports installing Flatpak extensions, letting you extend your Flatpak apps with new features.
+- **Improved update management:** Arc now has improved update management that takes the Arc runtime into account, so already-updated apps run more stably. Apps can also be updated automatically.
+- **Improved language support:** Arc Store now supports multiple languages, currently German and English.
+
+### 7. Custom kernel with hardware and performance patchsets
+BlossomOS now uses a self-built kernel (`kernel-blossomos`) based on the regular Fedora kernel, bringing curated patchsets for better hardware support and responsiveness:
+
+- **fw16 patchset (Framework Laptop 16):** Fixes WiFi dropouts on the MediaTek `mt7925` chip caused by race conditions, NULL pointer dereferences, and mutex gaps when establishing and tearing down MLO links. It also adds PWM fan control via `cros_ec_hwmon`, enabling proper fan curve control through `fw-fanctrl`.
+- **cachyos patchset (general performance):** Includes the BORE-cachy scheduler, which tracks each task's CPU burst time and applies a penalty to throughput-heavy tasks, keeping interactive tasks responsive even under load. It also adds cgroup VRAM accounting, which shows AMD dGPU VRAM usage per cgroup and enables memory-pressure-aware freeing.
+
+### 8. Software update module for System Settings
+System updates now have a graphical home: a new "Software Update" module (KCM) integrates directly into KDE System Settings and manages OS image updates via `rpm-ostree`, no terminal required:
+
+- **Deployment overview:** See the currently booted version as well as pending and previous deployments at a glance.
+- **Background updates with live progress:** Download an OS update in the background and track its progress live in the interface. The update is applied on the next restart.
+- **One-click rollback:** Switch straight back to the previous deployment from System Settings. Your files and settings remain unchanged.
+- **Automatic updates:** Enable or disable automatic updates with a single switch (implemented via the `rpm-ostreed-automatic.timer` systemd unit).
+- **Layered package detection:** If packages layered via `rpm-ostree` are blocking an update, the module detects this and offers to remove them for you.
+- **Native look & feel:** The module is built on Kirigami and integrates seamlessly into System Settings under **System → Software Update**.
