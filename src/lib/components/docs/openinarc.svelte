@@ -95,7 +95,7 @@
 				aria-label={app ? m.open_in_arc_aria({ name: app.name }) : m.open_in_arc()}
 				class="w-full"
 			>
-				<img src="/arc.png" alt="Arc Software" class="h-4 w-4" />
+				<img src="/arc.png" alt="Arc Store" class="h-4 w-4" />
 				{m.open_in_arc()}
 			</Button>
 		</div>

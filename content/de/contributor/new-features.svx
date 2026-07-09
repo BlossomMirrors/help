@@ -20,18 +20,18 @@ Die neueste Iteration der Plasma-Desktop-Umgebung bringt massive Optimierungen f
 * **Union Theme Engine (Tech Preview):** Plasma 6.7 enthält eine erste Vorschau auf das neue, vereinheitlichte CSS-basierte Styling-System, das langfristig für ein absolut konsistentes Design über alle Qt-Technologien hinweg sorgt.
 * **Erweiterter Creator-Schutz:** Fenster können jetzt gezielt vor der Erfassung durch Screenshots oder Screen-Recordings versteckt werden.
 
-### 2. Neue Version von Arc Software
-Der hauseigene BlossomOS-Software-Store "Arc Software" wurde umfassend überarbeitet:
+### 2. Neue Version von Arc Store
+Der hauseigene BlossomOS-Software-Store "Arc Store" wurde umfassend überarbeitet:
 
 * **Überarbeitete Benutzeroberfläche:** Neue Animationen und ein überarbeitetes Design
 * **Verbesserte Software-Provider:** AppImages, DEBs und RPMs sollten jetzt deutlich einfacher zu installieren sein
-* **Unterstützung für KIO:** Arc Software unterstützt nun KIO, um den aktuellen Zustand einer Transaktion anzuzeigen.
+* **Unterstützung für KIO:** Arc Store unterstützt nun KIO, um den aktuellen Zustand einer Transaktion anzuzeigen.
 * **Neue Startseite:** Die Startseite wurde komplett neu gestaltet und unterstützt Stories (kuratierte Artikel über neue Apps vom BlossomOS-Team)
 * **Die neuen PWAs sind da:** Du kannst jetzt die neuen PWAs auf deinem System installieren und sie nutzen. PWAs sind Internetverknüpfungen zu den Webseiten der jeweiligen Apps, verhalten sich aber wie native Software.
 * **Verbesserte Webbrowser-Integration:** Arc unterstützt nun die Integration mit Webbrowsern, sodass du App-Seiten direkt aus dem Browser öffnen kannst.
 * **Unterstützung für Flatpak-Erweiterungen:** Arc unterstützt nun die Installation von Flatpak-Erweiterungen, sodass du deine Flatpak-Apps mit neuen Features erweitern kannst.
 * **Verbessertes Update-Management:** Arc verfügt nun über ein verbessertes Update-Management. Es werden die Arc Laufzeitumgebung berücksichtigt, sodass Apps, die zuvor aktualisiert wurden, stabiler laufen. Außerdem können Apps automatisch aktualisiert werden.
-* **Verbesserte Sprachunterstützung:** Arc Software unterstützt nun verschiedene Sprachen, aktuell Deutsch und Englisch.
+* **Verbesserte Sprachunterstützung:** Arc Store unterstützt nun verschiedene Sprachen, aktuell Deutsch und Englisch.
 
 ### 3. Eigener Kernel mit Hardware- und Performance-Patchsets
 BlossomOS verwendet nun einen selbst gebauten Kernel (`kernel-blossomos`) auf Basis des regulären Fedora-Kernels, der kuratierte Patchsets für bessere Hardware-Unterstützung und Reaktionsfähigkeit mitbringt:

@@ -20,18 +20,18 @@ The latest iteration of the Plasma desktop environment brings massive optimisati
 * **Union Theme Engine (Tech Preview):** Plasma 6.7 includes an initial preview of the new, unified CSS-based styling system, which ensures absolute design consistency across all Qt technologies in the long term.
 * **Enhanced Creator Protection:** Windows can now be specifically hidden from capture by screenshots or screen recordings.
 
-### 2. New Version of Arc Software
-The in-house BlossomOS software store "Arc Software" has been completely overhauled:
+### 2. New Version of Arc Store
+The in-house BlossomOS software store "Arc Store" has been completely overhauled:
 
 * **Redesigned User Interface:** New animations and a refreshed design.
 * **Improved Software Providers:** AppImages, DEBs, and RPMs should now be significantly easier to install.
-* **KIO Support:** Arc Software now supports KIO to display the current status of a transaction.
+* **KIO Support:** Arc Store now supports KIO to display the current status of a transaction.
 * **New Home Page:** The home page has been completely redesigned and supports Stories (curated articles about new apps from the BlossomOS team).
 * **The new PWAs are here:** You can now install the new PWAs on your system and use them. PWAs are web shortcuts to the websites of the respective apps but behave like native software.
 * **Improved Web Browser Integration:** Arc now supports integration with web browsers, allowing you to open app pages directly from the browser.
 * **Flatpak Extension Support:** Arc now supports the installation of Flatpak extensions, so you can enhance your Flatpak apps with new features.
 * **Improved Update Management:** Arc now features improved update management. The Arc runtime environment is taken into account, ensuring that apps updated previously run more stably. Additionally, apps can be updated automatically.
-* **Improved language support:** Arc Software now supports various languages, currently English and German.
+* **Improved language support:** Arc Store now supports various languages, currently English and German.
 
 ### 3. Custom Kernel with Hardware and Performance Patchsets
 BlossomOS now ships a custom-built kernel (`kernel-blossomos`) on top of the stock Fedora kernel, carrying curated patchsets for better hardware support and responsiveness:
