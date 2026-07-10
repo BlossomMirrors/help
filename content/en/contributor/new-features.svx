@@ -7,8 +7,6 @@ order: 2
 
 BlossomOS is evolving rapidly. To extensively test new features before the official release, our `prerelease` and `latest` branches provide access to cutting-edge software stacks.
 
-Currently, testing is focused on four major updates that bring profound changes to the user interface, application performance, system updates, and hardware support.
-
 ## How to participate in the test
 
 To test the new features, you need to switch your system to one of our test images. Further information on image tags can be found on the ["Understanding Image Tags"](/help/contributor/image-tags) page.
