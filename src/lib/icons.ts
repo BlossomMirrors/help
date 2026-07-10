@@ -107,6 +107,6 @@ export const icons: Record<string, Component> = {
 	video: Video,
 	wifi: Wifi,
 	wrench: Wrench,
-  zap: Zap,
+	zap: Zap,
 	'scroll-text': ScrollText
 };
