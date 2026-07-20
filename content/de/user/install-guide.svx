@@ -5,6 +5,10 @@ icon: download
 order: 1
 ---
 
+<script lang="ts">
+	import { OpenInArc } from '$lib/components/docs';
+</script>
+
 # BlossomOS installieren
 
 Diese Anleitung führt dich Schritt für Schritt durch das Herunterladen, Flashen und die Neuinstallation von BlossomOS.
@@ -53,6 +57,8 @@ Schreibe die ISO nach dem Download mit einem der folgenden Tools auf deinen USB-
    ![ISO Image Writer mit ausgewählter BlossomOS-ISO und USB-Stick](/screenshots/install-guide/iso-image-writer_de.png)
 
 2. Bestätige die Auswahl und warte auf den Abschluss. Da die Daten direkt auf den Stick synchronisiert werden, kannst du ihn direkt herausziehen.
+
+<OpenInArc id="org.kde.isoimagewriter" />
 
 ## Den Installer booten
 
