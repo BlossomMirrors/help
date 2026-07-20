@@ -1,0 +1,149 @@
+---
+title: BlossomOS installieren
+description: BlossomOS herunterladen, flashen und auf deinem PC installieren.
+icon: download
+order: 1
+---
+
+# BlossomOS installieren
+
+Diese Anleitung führt dich Schritt für Schritt durch das Herunterladen, Flashen und die Neuinstallation von BlossomOS.
+
+## Bevor du beginnst
+
+> [!WARNING]
+> **Sichere deine Daten**
+> Die Installation von BlossomOS löscht das Laufwerk, auf dem es installiert wird. Sichere alle wichtigen Daten von diesem Laufwerk, bevor du fortfährst.
+
+- Ein USB-Stick mit 16 GB oder mehr Speicherplatz
+- Ein moderner 64-Bit-Computer (Baujahr nach 2010)
+- Mehr als 35 GB freier Festplattenspeicher
+- 2 GB RAM oder mehr
+
+## BlossomOS herunterladen
+
+Lade die BlossomOS-ISO von [blossomos.org](https://blossomos.org) herunter. Wähle die ISO-Datei, die zu deiner Grafikkarte passt: die Standard-ISO für Intel/AMD oder die NVIDIA-ISO, falls du eine NVIDIA-Grafikkarte besitzt. Die Website erkennt deine GPU normalerweise automatisch und schlägt die passende Datei vor.
+
+## Die ISO flashen
+
+Schreibe die ISO nach dem Download mit einem der folgenden Tools auf deinen USB-Stick:
+
+- **Etcher (empfohlen)**: Kostenlos, quelloffen und für [Windows, macOS und Linux](https://etcher.balena.io/) verfügbar.
+- **ISO Image Writer**: Das integrierte USB-Flash-Tool von BlossomOS. Nutze dieses, wenn du bereits ein Gerät mit BlossomOS (oder einem anderen Linux) zur Hand hast und das Installationsmedium ohne zusätzliche Software erstellen möchtest.
+
+> [!CAUTION]
+> Beim Flashen werden alle Daten auf dem USB-Stick überschrieben. Vergewissere dich, dass du das richtige Gerät ausgewählt hast, bevor du fortfährst.
+
+**Mit Etcher:**
+
+1. Öffne Etcher, wähle die BlossomOS-ISO und deinen USB-Stick aus.
+2. Klicke auf **Flash!** und warte, bis der Vorgang abgeschlossen und verifiziert wurde.
+
+   ![Etcher mit ausgewählter BlossomOS-ISO und USB-Stick](/screenshots/install-guide/etcher.png)
+
+3. Wirf den Stick nach Abschluss des Vorgangs aus.
+
+> [!IMPORTANT]
+> Wenn du Ventoy verwenden möchtest, stelle sicher, dass du beim Booten der ISO-Datei die Option „GRUB“ auswählst.
+
+**Mit ISO Image Writer:**
+
+1. Öffne den **ISO Image Writer**, wähle die BlossomOS-ISO und deinen USB-Stick aus.
+
+   ![ISO Image Writer mit ausgewählter BlossomOS-ISO und USB-Stick](/screenshots/install-guide/iso-image-writer_de.png)
+
+2. Bestätige die Auswahl und warte auf den Abschluss. Da die Daten direkt auf den Stick synchronisiert werden, kannst du ihn direkt herausziehen.
+
+## Den Installer booten
+
+1. Stecke den USB-Stick in den PC, auf dem du BlossomOS installieren möchtest.
+2. Starte den PC neu und rufe das Boot-Menü auf. Dies geschieht meist durch Drücken einer Funktionstaste wie `F9`, `F11` oder `F12` unmittelbar nach dem Einschalten. Schau im Handbuch deines Mainboards nach, falls du dir unsicher bist.
+3. Wähle den USB-Stick im Boot-Menü aus.
+
+## Live-Umgebung
+
+BlossomOS startet zunächst in eine Live-Desktop-Umgebung, in der du das System ausprobieren kannst, bevor du etwas installierst.
+
+![BlossomOS Live-Installer Desktop](/screenshots/install-guide/live-desktop.png)
+
+> [!NOTE]
+> Die Leistung in der Live-Umgebung entspricht nicht der einer echten Installation. Zudem ist für die Installation von BlossomOS keine Internetverbindung erforderlich.
+
+Öffne den Installer vom Desktop aus, sobald du bereit bist.
+
+## Sprache, Region und Tastatur
+
+Wähle deine System-Sprache, Zeitzone und das Tastaturlayout aus.
+
+![Bildschirm zur Auswahl von Sprache, Region und Tastatur](/screenshots/install-guide/language.png)
+
+## Partitionierung
+
+> [!WARNING]
+> **Dadurch wird das ausgewählte Laufwerk gelöscht**
+> Stelle sicher, dass du das richtige Laufwerk auswählst. Andere am PC angeschlossene Laufwerke sollten sicherheitshalber entfernt werden, wenn du dir bei der Auswahl unsicher bist.
+
+Wähle das Laufwerk aus, auf dem BlossomOS installiert werden soll.
+
+![Bildschirm zur Festplattenauswahl im Installer](/screenshots/install-guide/partitioning.png)
+
+<details>
+<summary>Dual-Boot mit Windows</summary>
+
+Wenn du eine bestehende Windows-Installation behalten möchtest:
+
+1. Deaktiviere unter Windows **BitLocker** und den **Schnellstart** (Fast Startup) und starte neu.
+2. Verkleinere die Windows-Partition in der Datenträgerverwaltung, um Platz für BlossomOS zu schaffen.
+3. Starte den BlossomOS-Installer und wähle die automatische Partitionierung. Er wird den freigewordenen Platz neben Windows nutzen.
+
+Die Installation von BlossomOS auf einem **separaten** Laufwerk ist einfacher und vermeidet Probleme bei der Partitionsgrößenänderung, sofern dir eines zur Verfügung steht.
+
+</details>
+
+## Festplattenverschlüsselung
+
+Die Festplattenverschlüsselung ist optional. Überspringe diesen Schritt, außer du benötigst sie ausdrücklich – zum Beispiel, wenn Dritte physischen Zugriff auf das Laufwerk haben könnten.
+
+> [!WARNING]
+> Wenn du dein Verschlüsselungspasswort vergisst, können deine Daten nicht wiederhergestellt werden.
+
+![Bildschirm für das Passwort der Festplattenverschlüsselung](/screenshots/install-guide/encryption.png)
+
+## Installation
+
+Überprüfe die Zusammenfassung und bestätige, um die Installation zu starten. Je nach Geschwindigkeit deines Laufwerks kann dies einige Zeit in Anspruch nehmen. In der Regel dauert dies etwa 20 Minuten.
+
+![Bildschirm zum Installationsfortschritt](/screenshots/install-guide/installing.png)
+
+## Neustart
+
+Sobald die Installation abgeschlossen ist, starte den PC neu und entferne den USB-Stick während des Herunterfahrens.
+
+![Bildschirm „Installation abgeschlossen“](/screenshots/install-guide/reboot.png)
+
+## Secure Boot
+
+BlossomOS unterstützt Secure Boot auf der meisten Hardware. Falls dein PC nach der Installation nicht bootet und Secure Boot aktiviert ist, deaktiviere Secure Boot entweder im BIOS oder folge der Aufforderung zur Schlüsselregistrierung (Key Enrollment), falls diese beim Booten erscheint.
+
+> [!IMPORTANT]
+> Das Passwort für die Secure-Boot-Schlüsselregistrierung lautet `universalblue`.
+
+## Nach der Installation
+
+Nach dem Neustart des PCs gelangst du zum Einrichtungsbildschirm. Folge den Anweisungen auf dem Bildschirm, um Sprache, WLAN, Benutzerdaten und andere Einstellungen festzulegen.
+
+## Fehlerbehebung
+
+<details>
+<summary>Der PC bootet nicht vom USB-Stick</summary>
+
+Prüfe, ob der Stick korrekt geflasht wurde und ob das Booten von USB im BIOS aktiviert ist. Bei manchen PCs muss zudem **Secure Boot** vorübergehend deaktiviert werden, um überhaupt von einem USB-Stick booten zu können.
+
+</details>
+
+<details>
+<summary>Kein WLAN in der Live-Umgebung</summary>
+
+Für die Installation von BlossomOS ist keine Internetverbindung erforderlich, du kannst also auch ohne fortfahren. Falls du das Internet für Downloads während der Einrichtung benötigst, verbinde dich über das Netzwerksymbol auf dem Desktop oder nutze stattdessen eine Kabelverbindung.
+
+</details>

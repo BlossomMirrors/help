@@ -10,6 +10,7 @@ Welcome to BlossomOS.
 
 ## Getting Started
 
+- **[Installing BlossomOS](./install-guide)** — Download, flash, and install BlossomOS on your PC.
 - **[What's Preinstalled](./preinstalled)** — What comes with BlossomOS out of the box.
 
 ## Software

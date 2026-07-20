@@ -1,0 +1,149 @@
+---
+title: Installing BlossomOS
+description: Download, flash, and install BlossomOS on your PC.
+icon: download
+order: 1
+---
+
+# Installing BlossomOS
+
+This guide walks you through downloading, flashing, and installing BlossomOS from scratch.
+
+## Before You Start
+
+> [!WARNING]
+> **Back up your data**
+> Installing BlossomOS will erase the drive you install it on. Back up anything important from that drive before continuing.
+
+- A 16GB or larger USB flash drive
+- A modern 64-bit computer post-2010
+- More than 35GB of free disk space
+- 2GB of RAM or more
+
+## Download BlossomOS
+
+Download the BlossomOS ISO from [blossomos.org](https://blossomos.org). Pick the ISO that matches your GPU: the standard ISO for Intel/AMD, or the NVIDIA ISO if you have an NVIDIA graphics card. The website usually auto-detects your GPU and suggests the appropriate ISO file.
+
+## Flash the ISO
+
+Once downloaded, write the ISO to your USB drive with one of these tools:
+
+- **Etcher (recommended)**: Free, open-source, and available for [Windows, macOS, and Linux](https://etcher.balena.io/).
+- **ISO Image Writer**: BlossomOS's own built-in USB flasher. Use this if you already have a BlossomOS (or other Linux) machine handy and want to create the installer drive without installing anything extra.
+
+> [!CAUTION]
+> Flashing overwrites everything on the USB drive. Double-check you've selected the right device before continuing.
+
+**Using Etcher:**
+
+1. Open Etcher, select the BlossomOS ISO, and select your USB drive.
+2. Click **Flash!** and wait for it to finish and verify.
+
+   ![Etcher with the BlossomOS ISO and USB drive selected](/screenshots/install-guide/etcher.png)
+
+3. Eject the drive once flashing is done.
+
+> [!IMPORTANT]
+> If you plan to use Ventoy make sure you select the GRUB option when booting the ISO file.
+
+**Using ISO Image Writer:**
+
+1. Open **ISO Image Writer**, select the BlossomOS ISO, and select your USB drive.
+
+   ![ISO Image Writer with the BlossomOS ISO and USB drive selected](/screenshots/install-guide/iso-image-writer.png)
+
+2. Confirm the selection and wait for the process to complete. As the data is synchronised directly to the USB drive, it can be removed immediately.
+
+## Boot the Installer
+
+1. Plug the USB drive into the PC you want to install BlossomOS on.
+2. Restart the PC and open its boot menu. This is usually a function key like `F9`, `F11`, or `F12` pressed right after powering on. Check your motherboard's manual if you're not sure which key it is.
+3. Select the USB drive from the boot menu.
+
+## Live Environment
+
+BlossomOS boots into a live desktop first, letting you try it out before installing anything.
+
+![BlossomOS live installer desktop](/screenshots/install-guide/live-desktop.png)
+
+> [!NOTE]
+> Performance in the live environment isn't representative of a real install, and an internet connection isn't required to install BlossomOS.
+
+Open the installer from the desktop when you're ready to proceed.
+
+## Language, Region, and Keyboard
+
+Select your system language, timezone, and keyboard layout.
+
+![Language, region, and keyboard selection screen](/screenshots/install-guide/language.png)
+
+## Partitioning
+
+> [!WARNING]
+> **This will erase the selected drive**
+> Make sure you select the correct drive. Any other drives connected to the PC should be safely removed if you're not sure which one you're picking.
+
+Select the drive you want to install BlossomOS on.
+
+![Disk selection screen in the installer](/screenshots/install-guide/partitioning.png)
+
+<details>
+<summary>Dual booting with Windows</summary>
+
+If you want to keep an existing Windows installation:
+
+1. In Windows, disable **BitLocker** and **Fast Startup**, then reboot.
+2. Shrink the Windows partition in Disk Management to free up space for BlossomOS.
+3. Run the BlossomOS installer and choose automatic partitioning. It will use the freed-up space alongside Windows.
+
+Installing BlossomOS on a **separate** drive from Windows is simpler and avoids partition-resizing issues entirely, if you have one available.
+
+</details>
+
+## Disk Encryption
+
+Disk encryption is optional. Skip it unless you specifically need it, for example if someone else might have physical access to the drive.
+
+> [!WARNING]
+> If you forget your encryption password, your data cannot be recovered.
+
+![Disk encryption password screen](/screenshots/install-guide/encryption.png)
+
+## Installing
+
+Review the summary and confirm to start the install. This can take a while depending on your drive speed.
+
+![Installation progress screen](/screenshots/install-guide/installing.png)
+
+## Reboot
+
+Once installation finishes, reboot and remove the USB drive as your PC powers back on.
+
+![Installation complete screen](/screenshots/install-guide/reboot.png)
+
+## Secure Boot
+
+BlossomOS supports Secure Boot on most hardware. If your PC doesn't boot after installing and Secure Boot is enabled, either disable Secure Boot in your BIOS, or follow the on-screen key enrollment prompt if one appears at boot.
+
+> [!IMPORTANT]
+> The password for the Secure Boot key enrollment is `universalblue`.
+
+## Post-installation
+
+Once the PC reboots, you will be taken to the setup screen. Follow the on-screen instructions to set up your language, WiFi, user credentials, and other settings.
+
+## Troubleshooting
+
+<details>
+<summary>The PC won't boot from the USB drive</summary>
+
+Double-check the drive was flashed correctly and that USB boot is enabled in your BIOS. Some PCs also need **Secure Boot** temporarily disabled to boot from a USB drive at all.
+
+</details>
+
+<details>
+<summary>No Wi-Fi in the live environment</summary>
+
+An internet connection isn't required to install BlossomOS, so you can continue without it. If you need it for downloading things during setup, connect via the network icon on the desktop, or use a wired connection instead.
+
+</details>

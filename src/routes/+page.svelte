@@ -31,7 +31,10 @@
 <div class="min-h-screen bg-background">
 	<header class="sticky top-0 z-40 border-b border-border bg-card/80 backdrop-blur-sm">
 		<div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
-			<a href="/" class="font-serif text-xl font-semibold text-foreground">{m.help_title()}</a>
+			<a href="/" class="font-serif text-xl font-semibold text-foreground mt-1">
+			    <img src="/logo.svg" alt="logo" class="h-8 inline align-middle mb-1 mr-2" />
+			    {m.help_title()}
+			</a>
 			<div class="flex items-center gap-2">
 				<LanguageSwitcher />
 				<ModeToggle />
