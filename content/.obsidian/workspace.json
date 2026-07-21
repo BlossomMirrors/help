@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "17c46bb63dca630b",
+        "id": "7fbab93c85bf32eb",
         "type": "tabs",
         "children": [
           {
-            "id": "00f79dddbad5538d",
+            "id": "afa0a74822b839c4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "en/user/blossom-cloud.svx",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "blossom-cloud"
+              "title": "Neuer Tab"
             }
           }
         ]
@@ -191,18 +187,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "00f79dddbad5538d",
+  "active": "afa0a74822b839c4",
   "lastOpenFiles": [
-    "de/user/blossom-cloud.svx",
+    "en/user/contacts-calendar-sync.svx",
+    "de/user/contacts-calendar-sync.svx",
     "en/user/blossom-cloud.svx",
+    "de/user/blossom-cloud.svx",
     "de/user/arc-store.svx",
     "de/user/updates.svx",
     "de/user/updates.svx.tmp.752653.477c058dc263",
     "en/user/updates.svx",
     "en/user/updates.svx.tmp.752653.80f5a601bb9a",
-    "de/user/contacts-calendar-sync.svx",
     "en/user/contacts-calendar-sync.svx.tmp.752653.ed23233639ea",
-    "en/user/contacts-calendar-sync.svx.tmp.752653.72c3851d1729",
-    "en/user/contacts-calendar-sync.svx.tmp.752653.a9389f627e4c"
+    "en/user/contacts-calendar-sync.svx.tmp.752653.72c3851d1729"
   ]
 }

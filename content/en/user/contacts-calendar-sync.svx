@@ -83,7 +83,7 @@ Any app that supports CalDAV or CardDAV can connect the same way, using:
 - **Username:** your UUID for Blossom Cloud
 - **Password:** an app password, not your main account password
 
-Phones and other computers work the same way, look for CalDAV or CardDAV account setup in that device's own settings and use the same details.
+Phones and other computers work the same way, look for CalDAV or CardDAV account setup in that device's own settings and use the same details. On Android you can download [DAVx⁵](https://www.davx5.com/) to sync your calendar and contacts with your mobile device.
 
 ## Troubleshooting
 
