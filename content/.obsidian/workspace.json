@@ -90,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "de/gaming/anticheat.svx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +99,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Rückverweise auf anticheat"
+              "title": "Rückverweise"
             }
           },
           {
@@ -109,12 +108,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "de/gaming/anticheat.svx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Ausgehende Links von anticheat öffnen"
+              "title": "Ausgehende Links"
             }
           },
           {
@@ -152,13 +150,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "de/gaming/anticheat.svx",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Gliederung von anticheat"
+              "title": "Gliederung"
             }
           },
           {
@@ -190,8 +187,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5ae64311515e8e42",
+  "active": "00f79dddbad5538d",
   "lastOpenFiles": [
+    "de/gaming/anticheat.svx",
     "de/contributor/ai-guidelines.svx"
   ]
 }
