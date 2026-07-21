@@ -56,6 +56,14 @@ BlossomUI is built on KDE Plasma. Qt and QML knowledge is needed for theme and w
 > - One feature or fix per pull request
 > - Update documentation when changing user-facing behavior
 
+## Recommmendations
+
+### Help guide
+
+If you want to edit the help guide you can also use Obsidian to edit the `.svx` files in the content directory directly. You will profit from WYSIWYG editing, Git integration and more.
+
+<OpenInArc id="md.obsidian.Obsidian" />
+
 ## Reporting Issues
 
 Found a bug? Open an issue in the relevant Blossom Git repository. Include the BlossomOS version, steps to reproduce, and what you expected to happen.

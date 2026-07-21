@@ -1,5 +1,16 @@
 <script lang="ts" module>
-	export { Kbd, Steps, Step, Callout, pre, code, img, ProtonDBSearch } from '$lib/components/docs';
+	export {
+		a,
+		Kbd,
+		Steps,
+		Step,
+		Callout,
+		pre,
+		code,
+		img,
+		ProtonDBSearch,
+		OpenInArc
+	} from '$lib/components/docs';
 </script>
 
 <script lang="ts">

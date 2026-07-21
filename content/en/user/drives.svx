@@ -3,6 +3,7 @@ title: Extra Drives
 description: Set up additional hard drives on BlossomOS.
 icon: hard-drive
 order: 8
+image: /covers/hdd.jpg
 ---
 
 # Extra Drives

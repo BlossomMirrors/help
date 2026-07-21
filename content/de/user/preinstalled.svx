@@ -1,0 +1,71 @@
+---
+title: Vorinstallierte Software
+description: Jede App, die auf BlossomOS vorinstalliert ist, und wofür sie gedacht ist.
+icon: package
+order: 2
+image: /covers/gift.jpg
+---
+
+# Vorinstallierte Software
+
+BlossomOS wird mit einer sorgfältig ausgewählten Auswahl an Apps ausgeliefert, damit es direkt nach der Installation einsatzbereit ist, ohne dass du dich selbst auf die Suche nach den Grundlagen machen musst. Alles unten Genannte wird beim ersten Booten oder Update automatisch als Flatpak installiert, zusätzlich zum Standard-KDE-Plasma-Desktop (Dolphin, Konsole, Systemeinstellungen usw.).
+
+Alles hier kann entfernt werden, falls du es nicht benötigst, und jederzeit wieder über den Arc Store neu installiert werden.
+
+## Büro & Produktivität
+
+<OpenInArc id="org.libreoffice.LibreOffice" />
+
+<OpenInArc id="org.mozilla.thunderbird_esr" />
+
+## Grafik & Medien
+
+<OpenInArc id="org.gimp.GIMP" />
+
+<OpenInArc id="org.videolan.VLC" />
+
+<OpenInArc id="net.displaycal.DisplayCAL" />
+
+<OpenInArc id="org.kde.gwenview" />
+
+## Dienstprogramme
+
+<OpenInArc id="net.imput.helium" />
+
+<OpenInArc id="io.github.nokse22.Exhibit" />
+
+<OpenInArc id="org.kde.kalk" />
+
+<OpenInArc id="org.kde.kclock" />
+
+<OpenInArc id="org.kde.kweather" />
+
+<OpenInArc id="org.kde.qrca" />
+
+<OpenInArc id="org.qbittorrent.qBittorrent" />
+
+<OpenInArc id="org.kde.isoimagewriter" />
+
+Der ISO Image Writer ist auch das Tool, mit dem du einen BlossomOS-Installations-USB-Stick erstellen würdest. Siehe die **[Installationsanleitung](./install-guide)**.
+
+## Remote Desktop
+
+<OpenInArc id="com.rustdesk.RustDesk" />
+
+## Spiele
+
+<OpenInArc id="org.kde.knights" />
+
+<OpenInArc id="org.kde.kpat" />
+
+<OpenInArc id="org.kde.kmahjongg" />
+
+<OpenInArc id="org.kde.kmines" />
+
+## BlossomUI
+
+BlossomOS liefert auch einen eigenen Plasma-Stil, eine Fensterdekoration und ein Icon-Theme aus, die zusammenfassend als **BlossomUI** bezeichnet werden und dem Desktop sein Standard-Aussehen verleihen. Es ist keine App, die man startet, sondern das, was das gesamte System von Haus aus wie BlossomOS aussehen lässt.
+
+## Vermisst du etwas?
+
+Siehst du eine App nicht, die du erwarten würdest? Schau zuerst im **[Arc Store](./arc-store)** nach, die meiste Software ist nur eine Suche entfernt. Wenn du der Meinung bist, dass etwas standardmäßig vorinstalliert sein sollte, öffne ein Issue auf **[Blossom Git](https://dev.blossomos.org/blossom)**.

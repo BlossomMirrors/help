@@ -3,11 +3,10 @@ title: Playing Blu-rays
 description: Watch commercial Blu-ray discs in VLC on BlossomOS.
 icon: disc
 order: 6
+image: /covers/bluray.jpg
 ---
 
-<script lang="ts">
-	import { OpenInArc } from '$lib/components/docs';
-</script>
+# Playing Blu-rays
 
 Commercial Blu-ray discs are encrypted with AACS. VLC can play them, but it needs a decryption key database first. This guide walks you through the one-time setup.
 

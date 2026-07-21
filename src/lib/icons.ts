@@ -53,6 +53,7 @@ import TestTube from '@lucide/svelte/icons/test-tube';
 import Sparkles from '@lucide/svelte/icons/sparkles';
 import ShieldCheck from '@lucide/svelte/icons/shield-check';
 import ScrollText from '@lucide/svelte/icons/scroll-text';
+import ShoppingCart from '@lucide/svelte/icons/shopping-cart';
 
 export const icons: Record<string, Component> = {
 	'alert-triangle': AlertTriangle,
@@ -94,7 +95,8 @@ export const icons: Record<string, Component> = {
 	rocket: Rocket,
 	search: Search,
 	settings: Settings,
-	shield: Shield,
+  shield: Shield,
+	'shopping-cart': ShoppingCart,
 	sword: Sword,
 	star: Star,
 	sparkles: Sparkles,

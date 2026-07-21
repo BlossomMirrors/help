@@ -1,0 +1,49 @@
+---
+title: Arc Store
+description: Find, install, and manage apps, web apps, and more with Arc Store.
+icon: package-open
+order: 3
+image: /covers/shopping-bag.jpg
+---
+
+# Arc Store
+
+Arc Store is where you find and install software on BlossomOS. It's a single place for apps, web apps, and anything else you might download yourself, so you don't need to hunt down different tools for different kinds of software.
+
+> [!NOTE]
+> A new frontend for the Arc Store is currently in the works, so no screenshots will appear here until further notice.
+
+## What You Can Install
+
+**Apps.** The main library is Flathub, the biggest source of Linux apps, all sandboxed for safety. Search for what you need and install it with one click.
+
+**Web apps.** Services like Netflix, WhatsApp, or Pinterest can be added as if they were regular apps: their own icon in your app launcher, their own window, no browser tabs. Under the hood it's still the website, just wrapped up nicely.
+
+**Files you download yourself.** If you get an AppImage, or a `.deb`/`.rpm`/Arch package from somewhere other than Arc Store, opening it in your file manager hands it to Arc:
+
+- An **AppImage** just gets registered so it shows up in your app launcher like any other app. Nothing else on your system changes.
+- A **`.deb`, `.rpm`, or Arch package** gets installed inside an isolated container, a separate mini environment, so it can't interfere with the rest of BlossomOS. The app still shows up in your launcher afterwards like normal. Since these aren't sandboxed the way Flatpaks are, Arc offers to check Flathub for an alternative first, which is usually the safer and lighter choice if one exists.
+
+## Browsing
+
+The home screen shows popular and recently added apps, browsable categories, and curated picks from the BlossomOS team. Use the search bar to look for something specific.
+
+Every app's page shows what it does, screenshots, its developer, and whether that developer is verified.
+
+## Installing, Updating, and Removing
+
+Installing is one click. Everything in progress shows up under **Downloads & Updates**: active, pending, and completed, with a badge showing how many updates are waiting. Updates install in the background automatically, or you can turn that off in Settings and use **Update All** whenever you like.
+
+Some apps ask you to accept a license agreement before installing, that's the app's own license, not something Arc adds.
+
+## Adding Other Sources
+
+Apps normally come from Flathub, plus a couple of built-in BlossomOS sources that can't be removed. If you have a reason to add a third-party source (a repository), you can do that in Settings by giving it a name and URL. Arc will warn you before adding one, since a repository can offer any software it wants, only add ones you trust. The same warning shows up if a file you open needs a source that isn't set up yet.
+
+## Settings
+
+- **Auto-updates** - keep apps updated in the background, on or off.
+- **Security warnings** - the heads-up shown before installing non-Flatpak files or adding a new source. Turn off only if you know what you're doing.
+- **Concurrent downloads** - how many installs/updates can run at once.
+- **Repositories** - see and manage where your apps come from.
+- **Danger zone** - force an update check or restart Arc's background service, useful if something seems stuck.

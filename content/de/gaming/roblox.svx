@@ -5,10 +5,6 @@ icon: gamepad-2
 order: 3
 ---
 
-<script lang="ts">
-	import { OpenInArc } from '$lib/components/docs';
-</script>
-
 Nachdem Roblox die Kompatibilität mit Wine durch die Einführung des Anti-Cheat-Systems Hyperion komplett unterbunden hat, waren Linux-Nutzer lange Zeit von der Plattform ausgesperrt. Mit **Sober** hat das Team hinter *Vinegar* jedoch eine innovative und extrem performante Alternative geschaffen.
 
 Anstatt das Windows-Release zu emulieren, nutzt Sober das offizielle **x86_64-Android-Build** von Roblox. Durch das Bereitstellen einer spezialisierten Laufzeitumgebung (Runtime) läuft das Spiel nativ auf dem Linux-Desktop, oft mit einer Performance, die selbst die Ausführung unter Windows übertrifft.

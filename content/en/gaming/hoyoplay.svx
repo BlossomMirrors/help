@@ -5,10 +5,6 @@ icon: sparkles
 order: 5
 ---
 
-<script lang="ts">
-	import { OpenInArc } from '$lib/components/docs';
-</script>
-
 Hoyoverse does not provide native Linux support for any of their games. The community has built and maintains dedicated open-source launchers for each title. These are not official Hoyoverse products, but they are widely used, actively maintained, and installable directly from Arc Store.
 
 > [!WARNING]

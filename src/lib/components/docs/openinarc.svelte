@@ -40,7 +40,7 @@
 </script>
 
 <div class="my-4">
-	<div class="w-full max-w-sm overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+	<div class="w-full max-w-100 overflow-hidden rounded-xl border border-border bg-card shadow-sm">
 		<div class="flex items-start gap-3 p-4">
 			<img
 				src={icon}

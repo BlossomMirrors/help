@@ -3,11 +3,10 @@ title: Blu-rays abspielen
 description: Kommerzielle Blu-ray-Discs mit VLC auf BlossomOS ansehen.
 icon: disc
 order: 6
+image: /covers/bluray.jpg
 ---
 
-<script lang="ts">
-	import { OpenInArc } from '$lib/components/docs';
-</script>
+# Blu-rays abspielen
 
 Kommerzielle Blu-ray-Discs sind mit AACS verschlüsselt. VLC kann sie abspielen, braucht dafür aber zuerst eine Datenbank mit Entschlüsselungsschlüsseln. Diese Anleitung führt durch die einmalige Einrichtung.
 

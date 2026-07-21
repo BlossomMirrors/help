@@ -13,6 +13,7 @@
 	import { SvelteSet } from 'svelte/reactivity';
 	import { afterNavigate } from '$app/navigation';
 	import { initMdComponents } from '$lib/md-helper';
+	import { cn } from '$lib/utils';
 
 	let { children } = $props();
 
@@ -83,9 +84,38 @@
 	}
 
 	const currentArticle = $derived(flattenNav(nav).find((n) => n.href === currentPath));
+
+	const pageMetadata = $derived((page.data.metadata ?? {}) as Record<string, unknown>);
+	const pageTitle = $derived(`${currentArticle?.title ?? 'Help'} - ${m.help_title()}`);
+	const pageDescription = $derived(
+		typeof pageMetadata.description === 'string' ? pageMetadata.description : m.hero_subtitle()
+	);
+	const ogImage = $derived(
+		new URL(typeof pageMetadata.image === 'string' ? pageMetadata.image : '/og-image.png', page.url.origin)
+			.href
+	);
+	const headerImage = $derived(typeof pageMetadata.image === 'string' ? pageMetadata.image : null);
 </script>
 
-<svelte:head><title>{currentArticle?.title ?? 'Help'} - {m.help_title()}</title></svelte:head>
+<svelte:head>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDescription} />
+	<link rel="canonical" href={page.url.href} />
+
+	<meta property="og:type" content="article" />
+	<meta property="og:site_name" content={m.help_title()} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDescription} />
+	<meta property="og:url" content={page.url.href} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDescription} />
+	<meta name="twitter:image" content={ogImage} />
+</svelte:head>
 
 {#if sidebarOpen}
 	<button
@@ -117,9 +147,20 @@
 			onToggleSidebar={() => (sidebarOpen = !sidebarOpen)}
 		/>
 
+		{#if headerImage}
+			<img
+				src={headerImage}
+				alt=""
+				class="-mt-14 h-62 w-full object-cover object-center sm:h-86 mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] block"
+			/>
+		{/if}
+
 		<div class="flex flex-1">
-			<main class="min-w-0 flex-1 px-4 py-8 sm:px-8 lg:px-12">
-				<article bind:this={articleEl} class="prose max-w-3xl">
+			<main class={cn('min-w-0 flex-1 px-4 py-8 sm:px-8 lg:px-12', headerImage && '-mt-10 sm:-mt-16')}>
+				<article
+					bind:this={articleEl}
+					class={cn('prose max-w-3xl', headerImage && 'mt-3')}
+				>
 					{@render children()}
 				</article>
 			</main>

@@ -2,27 +2,28 @@
 title: User Guide
 icon: users
 order: 0
+image: /covers/handbook.jpg
 ---
 
 # User Guide
 
-Welcome to BlossomOS.
+Welcome to BlossomOS. In this guide, you will learn everything you need to know to use the system. This includes how to install it and what is ready after your first boot. You will also learn how to find and install more software and how to handle daily tasks like updates and extra hard drives.
 
 ## Getting Started
 
-- **[Installing BlossomOS](./install-guide)** — Download, flash, and install BlossomOS on your PC.
-- **[What's Preinstalled](./preinstalled)** — What comes with BlossomOS out of the box.
+- **[Installing BlossomOS](/help/user/install-guide)** — Download, flash, and install BlossomOS on your PC.
+- **[What's Preinstalled](/help/user/preinstalled)** — What comes with BlossomOS out of the box.
 
 ## Software
 
-- **[Arc Store](./arc-store)** — Install Flatpaks, web apps, Windows apps, and CLI tools.
+- **[Arc Store](/help/user/arc-store)** — Install Flatpaks, web apps, Windows apps, and CLI tools.
 
 ## Multimedia
 
-- **[Playing Blu-rays](./bluray)** — Watch commercial Blu-ray discs in VLC.
+- **[Playing Blu-rays](/help/user/bluray)** — Watch commercial Blu-ray discs in VLC.
 
 ## System
 
-- **[Blossom Cloud](./blossom-cloud)** — EU-hosted file sync, collaborative docs, and video calls.
-- **[System Updates](./updates)** — How atomic updates work and how to roll back.
-- **[Extra Drives](./drives)** — Set up and mount additional hard drives or SSDs.
+- **[Blossom Cloud](/help/user/blossom-cloud)** — EU-hosted file sync, collaborative docs, and video calls.
+- **[System Updates](/help/user/updates)** — How atomic updates work and how to roll back.
+- **[Extra Drives](/help/user/drives)** — Set up and mount additional hard drives or SSDs.

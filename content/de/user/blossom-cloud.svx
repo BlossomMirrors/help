@@ -1,0 +1,64 @@
+---
+title: Blossom Cloud
+description: Synchronisiere deine Dateien und starte Videoanrufe – gehostet in der EU mit starker Verschlüsselung.
+icon: cloud
+order: 5
+image: /covers/clouds.jpg
+---
+
+# Blossom Cloud
+
+Blossom Cloud hält deine Dateien auf all deinen Geräten synchron und lässt dich Videoanrufe starten, ohne dass du dafür ein extra Konto brauchst. Alles läuft auf Servern in der Europäischen Union unter der DSGVO, und deine Dateien sind durch eine starke Verschlüsselung geschützt – sowohl bei der Übertragung als auch bei der Speicherung.
+
+Blossom Cloud läuft über ein kostenpflichtiges Abo, dessen Preis sich nach dem benötigten Speicherplatz richtet.
+
+> [!NOTE]
+> Blossom Cloud wird derzeit intern getestet. Funktionen und Merkmale können sich noch ändern.
+
+## Erstelle dein Konto
+
+Gehe auf [auth.blossomos.org](https://auth.blossomos.org) und erstelle dein Blossom-Konto. Dieses Konto funktioniert für alle Online-Dienste von BlossomOS, du musst das also nur einmal machen.
+
+## Installiere die App
+
+Öffne den Arc Store und suche nach Nextcloud. Installiere die App und öffne sie dann über deinen App-Launcher.
+
+<OpenInArc id="com.nextcloud.desktopclient.nextcloud" />
+
+Wenn du nach einer Serveradresse gefragt wirst, gib `cloud.blossomos.org` ein.
+
+## Dateisynchronisation
+
+Sobald du angemeldet bist, wähle die Ordner aus, die du mit deinem Computer synchronisieren möchtest. Alles, was du dort ablegst, wird automatisch hochgeladen und erscheint auch auf deinen anderen Geräten. Wenn du eine Datei auf einem Gerät bearbeitest, ist sie beim nächsten Öffnen auf einem anderen Gerät direkt auf dem neuesten Stand.
+
+## Kontakte und Kalender
+
+Blossom Cloud synchronisiert auch deine Kontakte und deinen Kalender. Jede App auf deinem Handy oder Computer, die CalDAV oder CardDAV unterstützt, kann sich verbinden – nicht nur die eigenen Apps von Nextcloud. Du kannst also weiterhin die Kalender- oder Kontakte-App nutzen, die du am liebsten magst.
+
+Du benötigst dafür ein App-Passwort anstelle deines normalen Blossom-Passworts. Erstelle eines in deinen Kontosicherheitseinstellungen, bevor du die Synchronisation einrichtest.
+
+Schau unter [Kontakte und Kalender synchronisieren](/help/user/contacts-calendar-sync) nach, um eine Schritt-für-Schritt-Anleitung zu erhalten.
+
+## Videoanrufe
+
+Blossom Cloud bietet auch Videoanrufe an. Du kannst einen Anruf direkt aus der App heraus starten oder daran teilnehmen, ohne ein separates Konto einzurichten oder etwas Zusätzliches zu installieren.
+
+## Speicherplatz verwalten
+
+Dein verbrauchter und verfügbarer Speicherplatz wird in der App angezeigt. Wenn du an dein Limit stößt, kannst du Platz schaffen, indem du Dateien löschst, die du nicht mehr brauchst, oder dein Abo für mehr Speicherplatz upgradest.
+
+## Fehlerbehebung
+
+<details>
+<summary>Dateien werden nicht synchronisiert</summary>
+
+Prüfe, ob du angemeldet und mit dem Internet verbunden bist. Wenn die Synchronisation immer noch nicht klappt, melde dich in den App-Einstellungen ab und wieder an.
+
+</details>
+
+<details>
+<summary>Passwort vergessen</summary>
+
+Gehe auf auth.blossomos.org und nutze dort die Option zum Zurücksetzen des Passworts. Da dein Blossom-Konto für alle Dienste genutzt wird, aktualisiert dies auch deinen Login überall sonst.
+
+</details>

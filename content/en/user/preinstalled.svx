@@ -1,0 +1,69 @@
+---
+title: What's Preinstalled
+description: Every app that comes preinstalled on BlossomOS, and what it's for.
+icon: package
+order: 2
+image: /covers/gift.jpg
+---
+
+# What's Preinstalled
+
+BlossomOS ships with a curated set of apps so it's usable right after installation, without needing to hunt down the basics yourself. Everything below is installed automatically as a Flatpak the first time you boot or update, on top of the standard KDE Plasma desktop (Dolphin, Konsole, System Settings, and so on).
+
+Anything here can be removed if you don't need it, and reinstalled again from Arc Store at any time.
+
+## Office & Productivity
+
+<OpenInArc id="org.libreoffice.LibreOffice" />
+
+<OpenInArc id="org.mozilla.thunderbird_esr" />
+
+## Graphics & Media
+
+<OpenInArc id="org.gimp.GIMP" />
+
+<OpenInArc id="org.videolan.VLC" />
+
+<OpenInArc id="net.displaycal.DisplayCAL" />
+
+<OpenInArc id="org.kde.gwenview" />
+
+## Utilities
+
+<OpenInArc id="net.imput.helium" />
+
+<OpenInArc id="io.github.nokse22.Exhibit" />
+
+<OpenInArc id="org.kde.kalk" />
+
+<OpenInArc id="org.kde.kclock" />
+
+<OpenInArc id="org.kde.kweather" />
+
+<OpenInArc id="org.kde.qrca" />
+
+<OpenInArc id="org.qbittorrent.qBittorrent" />
+
+<OpenInArc id="org.kde.isoimagewriter" />
+
+## Remote Desktop
+
+<OpenInArc id="com.rustdesk.RustDesk" />
+
+## Games
+
+<OpenInArc id="org.kde.knights" />
+
+<OpenInArc id="org.kde.kpat" />
+
+<OpenInArc id="org.kde.kmahjongg" />
+
+<OpenInArc id="org.kde.kmines" />
+
+## BlossomUI
+
+BlossomOS also ships its own Plasma style, window decoration, and icon theme, collectively called **BlossomUI**, giving the desktop its default look. It isn't an app you launch, it's what makes the whole system look like BlossomOS out of the box.
+
+## Missing Something?
+
+Not seeing an app you'd expect? Check **[Arc Store](./arc-store)** first, most software is just a search away. If you think something should ship preinstalled by default, open an issue on **[Blossom Git](https://dev.blossomos.org/blossom)**.

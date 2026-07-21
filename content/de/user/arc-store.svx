@@ -1,0 +1,48 @@
+---
+title: Arc Store
+description: Finde, installiere und verwalte Apps, Web-Apps und vieles mehr mit dem Arc Store.
+icon: shopping-cart
+order: 3
+image: /covers/shopping-bag.jpg
+---
+# Arc Store
+
+Im Arc Store findest du die Software für BlossomOS und kannst sie direkt installieren. Hier ist alles an einem Ort: Apps, Web-Apps und alles andere, was du dir so runterlädst. So musst du nicht für jede Art von Software nach anderen Tools suchen.
+
+> [!NOTE]
+> Ein neues Frontend für den Arc Store ist aktuell in Arbeit, daher werden hier bis auf Weiteres keine Screenshots erscheinen.
+
+## Was du installieren kannst
+
+**Apps.** Die wichtigste Quelle ist Flathub, die größte Sammlung für Linux-Apps. Alle laufen zur Sicherheit in einer Sandbox. Such einfach nach dem, was du brauchst, und installier es mit einem Klick.
+
+**Web-Apps.** Dienste wie Netflix, WhatsApp oder Pinterest kannst du hinzufügen, als wären es ganz normale Apps: Sie kriegen ihr eigenes Icon im Launcher und ein eigenes Fenster, ganz ohne Browser-Tabs. Unter der Haube ist es immer noch die Webseite, nur eben schick verpackt.
+
+**Dateien, die du selbst runterlädst.** Wenn du ein AppImage oder ein Paket im Format `.deb`, `.rpm` oder Arch von irgendwo anders herbekommst, öffne es einfach in deinem Dateimanager. Er übergibt es dann an Arc:
+
+- Ein **AppImage** wird einfach registriert, damit es wie jede andere App in deinem Launcher auftaucht. An deinem restlichen System ändert sich nichts.
+- Ein **`.deb`-, `.rpm`- oder Arch-Paket** wird in einem isolierten Container installiert – also in einer eigenen kleinen Umgebung, damit es den Rest von BlossomOS nicht stört. Danach taucht die App ganz normal in deinem Launcher auf. Da diese Pakete nicht so abgesichert sind wie Flatpaks, schlägt Arc dir vor, erst mal auf Flathub nach einer Alternative zu suchen. Das ist meistens die sicherere und schlankere Wahl, falls es dort was gibt.
+
+## Stöbern
+
+Auf der Startseite siehst du beliebte und neue Apps, verschiedene Kategorien und Empfehlungen vom BlossomOS-Team. Wenn du was Bestimmtes suchst, nimm einfach die Suchleiste.
+
+Auf der Seite jeder App findest du Infos dazu, was sie kann, sowie Screenshots, den Entwickler und ob dieser verifiziert ist.
+
+## Installieren, Updaten und Entfernen
+
+Die Installation klappt mit einem Klick. Alles, was gerade läuft, siehst du unter **Downloads & Updates**: aktive, ausstehende und abgeschlossene Vorgänge. Ein kleiner Badge zeigt dir, wie viele Updates warten. Updates werden automatisch im Hintergrund installiert, aber du kannst das in den Einstellungen auch ausschalten und stattdessen jederzeit auf **Alle aktualisieren** klicken.
+
+Manche Apps verlangen, dass du vor der Installation einer Lizenzvereinbarung zustimmst. Das ist dann die eigene Lizenz der App, nicht etwas, das Arc hinzugefügt hat.
+
+## Andere Quellen hinzufügen
+
+Normalerweise kommen Apps von Flathub und ein paar fest eingebauten BlossomOS-Quellen, die man nicht entfernen kann. Wenn du einen Grund hast, eine Quelle von Drittanbietern (ein Repository) hinzuzufügen, kannst du das in den Einstellungen machen, indem du den Namen und die URL eingibst. Arc warnt dich vorher, da ein Repository jede beliebige Software anbieten kann – füge also nur Quellen hinzu, denen du wirklich vertraust. Die gleiche Warnung kommt auch, wenn eine Datei, die du öffnest, eine Quelle braucht, die noch nicht eingerichtet ist.
+
+## Einstellungen
+
+- **Automatische Updates** – schalte ein oder aus, ob Apps im Hintergrund aktuell gehalten werden sollen.
+- **Sicherheitswarnungen** – die Hinweise vor der Installation von Nicht-Flatpak-Dateien oder dem Hinzufügen neuer Quellen. Mach das nur aus, wenn du genau weißt, was du tust.
+- **Gleichzeitige Downloads** – wie viele Installs oder Updates zur selben Zeit laufen dürfen.
+- **Repositorys** – hier siehst und verwaltest du, woher deine Apps kommen.
+- **Gefahrenzone** – hier kannst du ein Update-Check erzwingen oder den Hintergrunddienst von Arc neu starten, falls mal was hängt.

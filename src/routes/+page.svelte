@@ -11,6 +11,9 @@
 	import BookOpenIcon from '@lucide/svelte/icons/book-open';
 	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
 	import { icons } from '$lib/icons';
+	import { page } from '$app/state';
+
+	const ogImage = $derived(new URL('/og-image.png', page.url.origin).href);
 
 	function openSearch() {
 		window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }));
@@ -26,7 +29,25 @@
 	);
 </script>
 
-<svelte:head><title>{m.help_title()}</title></svelte:head>
+<svelte:head>
+	<title>{m.help_title()}</title>
+	<meta name="description" content={m.hero_subtitle()} />
+	<link rel="canonical" href={page.url.href} />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content={m.help_title()} />
+	<meta property="og:title" content={m.help_title()} />
+	<meta property="og:description" content={m.hero_subtitle()} />
+	<meta property="og:url" content={page.url.href} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={m.help_title()} />
+	<meta name="twitter:description" content={m.hero_subtitle()} />
+	<meta name="twitter:image" content={ogImage} />
+</svelte:head>
 
 <div class="min-h-screen bg-background">
 	<header class="sticky top-0 z-40 border-b border-border bg-card/80 backdrop-blur-sm">

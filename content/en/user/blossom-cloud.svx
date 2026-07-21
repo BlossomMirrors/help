@@ -1,0 +1,64 @@
+---
+title: Blossom Cloud
+description: Sync your files and make video calls, hosted in the EU with strong encryption.
+icon: cloud
+order: 5
+image: /covers/clouds.jpg
+---
+
+# Blossom Cloud
+
+Blossom Cloud keeps your files in sync across every device you use and lets you jump on a video call without needing a separate account for it. Everything runs on servers located in the European Union, under GDPR, and your files are protected with strong encryption both while they travel and while they are stored.
+
+Blossom Cloud runs on a paid subscription, sized to how much storage you need.
+
+> [!NOTE]
+> Blossom Cloud is currently undergoing internal testing. The features and functionality may change.
+
+## Create Your Account
+
+Go to [auth.blossomos.org](https://auth.blossomos.org) and create your Blossom account. This same account works across BlossomOS's online services, so you only need to do this once.
+
+## Install the App
+
+Open Arc Store and search for Nextcloud. Install it, then open it from your app launcher.
+
+<OpenInArc id="com.nextcloud.desktopclient.nextcloud" />
+
+If you are asked for a server address, enter `cloud.blossomos.org`.
+
+## File Sync
+
+Once signed in, pick the folders you want to sync to your computer. Anything you put in it uploads automatically and shows up on your other devices too. Edit a file on one machine, and it is ready and up to date the next time you open it somewhere else.
+
+## Contacts and Calendar
+
+Blossom Cloud also syncs your contacts and calendar. Any app on your phone or computer that supports CalDAV or CardDAV can connect, not just Nextcloud's own apps, so you can keep using whatever calendar or contacts app you already prefer.
+
+You will need an app password rather than your regular Blossom account password. Generate one from your account security settings before setting up sync.
+
+See [Syncing Contacts and Calendar](/help/user/contacts-calendar-sync) for step by step setup instructions.
+
+## Video Calls
+
+Blossom Cloud includes video calling, so you can start or join a call straight from the app without setting up a separate account or installing anything extra.
+
+## Managing Storage
+
+Your used and available storage is shown in the app. If you are getting close to your limit, you can free up space by removing files you no longer need, or upgrade your plan for more room.
+
+## Troubleshooting
+
+<details>
+<summary>Files are not syncing</summary>
+
+Check that you are signed in and connected to the internet. If sync still is not happening, sign out and back in again from the app's settings.
+
+</details>
+
+<details>
+<summary>Forgot your password</summary>
+
+Go to auth.blossomos.org and use the password reset option there. Since your Blossom account is shared across services, this also updates your login everywhere else.
+
+</details>

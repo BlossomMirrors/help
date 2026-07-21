@@ -2,8 +2,28 @@
 title: Benutzerhandbuch
 icon: users
 order: 0
+image: /covers/handbook.jpg
 ---
 
 # Benutzerhandbuch
 
-Willkommen im BlossomOS Help Center. Stöbere in den Abschnitten oder drücke `⌘ K` um die Dokumentation zu durchsuchen.
+Willkommen bei BlossomOS. In diesem Guide erfährst du alles, was du wissen musst, um mit dem System klarzukommen: wie du es installierst, was nach dem ersten Booten schon am Start ist, wie du weitere Software findest und installierst und wie du dich um den täglichen Kram wie Updates und zusätzliche Festplatten kümmerst.
+
+## Erste Schritte
+
+- **[BlossomOS installieren](/help/user/install-guide)** — BlossomOS herunterladen, flashen und auf deinem PC installieren.
+- **[Vorinstallierte Software](/help/user/preinstalled)** — Was BlossomOS standardmäßig mitliefert.
+
+## Software
+
+- **[Arc Store](/help/user/arc-store)** — Flatpaks, Web-Apps, Windows-Anwendungen und CLI-Tools installieren.
+
+## Multimedia
+
+- **[Blu-rays abspielen](/help/user/bluray)** — Kommerzielle Blu-ray-Discs in VLC ansehen.
+
+## System
+
+- **[Blossom Cloud](/help/user/blossom-cloud)** — In der EU gehostete Dateisynchronisation, kollaborative Dokumente und Videoanrufe.
+- **[System-Updates](/help/user/updates)** — Wie atomare Updates funktionieren und wie man sie rückgängig macht.
+- **[Zusätzliche Laufwerke](/help/user/drives)** — Zusätzliche Festplatten oder SSDs einrichten und einbinden.

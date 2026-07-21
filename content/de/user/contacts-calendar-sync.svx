@@ -1,0 +1,102 @@
+---
+title: Kontakte und Kalender synchronisieren
+description: Verbinde deine Blossom Cloud-Kontakte und deinen Kalender mit jeder App, die CalDAV oder CardDAV unterstützt.
+icon: refresh-cw
+order: 5.5
+image: /covers/sync.jpg
+---
+
+# Kontakte und Kalender synchronisieren
+
+Blossom Cloud speichert deine Kontakte und deinen Kalender mit CalDAV und CardDAV. Das sind offene Standards, die von den meisten Kalender- und Kontakte-Apps unterstützt werden, nicht nur von den Nextcloud-eigenen Apps. In dieser Anleitung erfährst du, wie du ein App-Passwort erstellst, dein Konto in Merkuro verbindest und jede andere App auf die gleiche Weise einrichtest.
+
+BlossomOS wird mit der vorinstallierten **Merkuro** App-Suite ausgeliefert, bestehend aus Merkuro Calendar und Merkuro Contact, die sich direkt in die unten beschriebene Kontoeinrichtung integrieren. Du musst dafür keine separate App installieren.
+
+## Erstell dir ein App-Passwort
+
+Anstatt dein Haupt-Passwort für Blossom zu verwenden, sollten Kalender- und Kontakte-Apps ein eigenes App-Passwort nutzen. So bleibt dein Haupt-Passwort aus jeder App raus, die du verbindest, und du kannst den Zugriff für eine einzelne App später wieder entziehen, ohne dein Haupt-Passwort ändern zu müssen.
+
+1. Geh auf [cloud.blossomos.org/settings/user/security](https://cloud.blossomos.org/settings/user/security) und melde dich an.
+2. Ganz unten unter **Geräte & Sitzungen** gibst du einen Namen ein, den du später wiedererkennst, zum Beispiel „Kalender-Sync“, und klickst auf **Neues App-Passwort erstellen**.
+
+   ![Bereich für App-Passwörter in den Blossom Cloud Sicherheitseinstellungen](/screenshots/contacts-calendar-sync/app-password_de.png)
+
+3. Kopier dir das erstellte Passwort. Es wird nur ein einziges Mal angezeigt, also lass den Tab offen, bis du es unten eingegeben hast.
+
+   ![Generiertes App-Passwort, das einmalig angezeigt wird](/screenshots/contacts-calendar-sync/app-password-generated_de.png)
+
+> [!WARNING]
+> Dein Benutzername ist nicht dein Blossom-Nutzername, sondern eine ID, die vom Server generiert wird. Das ist eine technische Einschränkung.
+
+## Verbinde dein Konto in Merkuro
+
+> [!NOTE]
+> Normalerweise könnte dieses Konto auch einmalig in den Systemeinstellungen unter Online-Konten hinzugefügt und automatisch mit jeder App geteilt werden. Diese Seite ist momentan kaputt, also richte es stattdessen direkt in Merkuro ein. Das Konto funktioniert trotzdem überall sonst, sobald es hier hinzugefügt wurde; Merkuro, Merkuro Contact und das Uhr-Widget nutzen alle dasselbe Kalender- und Kontakte-Framework.
+
+1. Öffne **Merkuro Calendar**.
+2. Geh in die **Einstellungen**, dann auf **Merkuro-Kalender einrichten...**.
+3. Klick unter Konten auf **Konto hinzufügen** und wähl **DAV-Groupware-Ressource**.
+
+   ![Merkuro Konto-Anbieter Auswahl](/screenshots/contacts-calendar-sync/merkuro-add-account_de.png)
+
+4. Gib deinen Benutzernamen und das App-Passwort ein, das du oben erstellt hast.
+
+   ![Merkuro Kontoeinrichtungs-Formular mit Serveradresse und App-Passwort-Feldern](/screenshots/contacts-calendar-sync/merkuro-account-details_de.png)
+
+5. Wähl den Groupware-Server „Nextcloud“ aus dem Server-Dropdown aus.
+
+   ![Merkuro Kontoeinrichtungs-Formular mit Server-Auswahl](/screenshots/contacts-calendar-sync/server-selector_de.png)
+
+6. Gib als Serveradresse `cloud.blossomos.org` ein.
+
+   ![Merkuro Kontoeinrichtungs-Formular mit Serveradresse](/screenshots/contacts-calendar-sync/connection-details_de.png)
+
+7. Danach kannst du die Verbindung testen.
+
+    ![Merkuro Kontoeinrichtungs-Formular mit Verbindungstest](/screenshots/contacts-calendar-sync/connection-test_de.png)
+
+8. Achte darauf, dass sowohl **Kalender** als auch **Kontakte** für das Konto aktiviert sind, gib ihm einen Namen deiner Wahl und bestätige.
+
+![Merkuro Calendar, der einen synchronisierten Kalender anzeigt](/screenshots/contacts-calendar-sync/merkuro-calendar_de.png)
+
+9. Sobald das erledigt ist, kannst du die Kalender auswählen, die angezeigt werden sollen, und Merkuro Calendar neu starten, um sie zu sehen.
+
+> [!NOTE]
+> Merkuro Contact übernimmt dasselbe Konto automatisch, du musst es dort nicht nochmal hinzufügen.
+
+## Termine im Uhr-Widget anzeigen
+
+Die Uhr in der Taskleiste von Plasma kann dir auch deine Kalendertermine direkt im Flyout anzeigen.
+
+1. Mach einen Rechtsklick auf die Uhr in deiner Taskleiste und wähl **Digitale Uhr einrichten...**.
+2. Geh auf den Reiter **Kalender**.
+3. Aktivier den Kalender für Kalenderereignisse und drück auf **OK**.
+4. Mach nochmal einen Rechtsklick auf deine Uhr und wähl **Digitale Uhr einrichten...**.
+5. Wähl unter dem Reiter für Kalenderereignisse die Kalender aus, die angezeigt werden sollen.
+6. Klick auf die Uhr, um das Flyout zu öffnen. Tage mit Terminen sind markiert, und wenn du einen Tag anklickst, wird aufgelistet, was ansteht.
+
+## Andere Apps verbinden
+
+Jede App, die CalDAV oder CardDAV unterstützt, kann auf die gleiche Weise verbunden werden. Nutze dazu:
+
+- **Serveradresse:** `cloud.blossomos.org`
+- **Benutzername:** deine UUID für Blossom Cloud
+- **Passwort:** ein App-Passwort, nicht dein Haupt-Passwort
+
+Handys und andere Computer funktionieren genauso. Such einfach nach der CalDAV- oder CardDAV-Kontoeinrichtung in den Einstellungen des jeweiligen Geräts und benutz dieselben Daten.
+
+## Fehlerbehebung
+
+<details>
+<summary>Das Konto lässt sich nicht verbinden</summary>
+
+Überprüf nochmal, ob die Serveradresse keine Tippfehler hat und ob du wirklich das App-Passwort benutzt und nicht dein Haupt-Passwort. Wenn du dir nicht sicher bist, ob das App-Passwort noch gültig ist, erstell einfach ein neues und probier es nochmal.
+
+</details>
+
+<details>
+<summary>Termine oder Kontakte tauchen nicht auf</summary>
+
+Gib der Sache eine Minute Zeit. Der erste Sync kann ein bisschen dauern, je nachdem wie viel in deinem Kalender oder Adressbuch steht. Wenn danach immer noch nichts kommt, lösch das Konto nochmal aus den Merkuro-Kontoeinstellungen und füg es neu hinzu.
+
+</details>

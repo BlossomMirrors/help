@@ -5,10 +5,6 @@ icon: gamepad-2
 order: 1
 ---
 
-<script lang="ts">
-	import { OpenInArc } from '$lib/components/docs';
-</script>
-
 Steam hat die beste Linux-Unterstützung aller Spiele-Launcher, aufgebaut auf **Proton**, das Windows-Spiele nativ unter Linux laufen lässt.
 
 ## Installation

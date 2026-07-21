@@ -3,11 +3,8 @@ title: BlossomOS installieren
 description: BlossomOS herunterladen, flashen und auf deinem PC installieren.
 icon: download
 order: 1
+image: /covers/usb.jpg
 ---
-
-<script lang="ts">
-	import { OpenInArc } from '$lib/components/docs';
-</script>
 
 # BlossomOS installieren
 

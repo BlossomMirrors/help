@@ -3,6 +3,7 @@ title: Extra-Festplatten
 description: Zusätzliche Festplatten auf BlossomOS einrichten.
 icon: hard-drive
 order: 1
+image: /covers/hdd.jpg
 ---
 
 # Extra-Festplatten
