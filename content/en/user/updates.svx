@@ -1,0 +1,59 @@
+---
+title: System Updates
+description: How atomic updates work on BlossomOS and how to roll back if something goes wrong.
+icon: monitor
+order: 7
+---
+
+# System Updates
+
+BlossomOS updates itself as a whole image rather than one package at a time. Every update is built and tested as a complete system, then downloaded as a single unit and put in place for your next restart. Nothing is ever half updated, and every update can be undone. This is the same approach used by other Fedora based atomic systems like Kinoite, Bazzite, and Bluefin.
+
+![System Updates](/screenshots/updates.png)
+
+## Checking for Updates
+
+Open **System Settings** and go to **Software Update** under **System**, at the very bottom of the sidebar.
+
+If you're already on the newest version, you'll see **Your system is up to date**, along with the version you have installed. Click **Check for updates** to check again right away.
+
+If an update is available, you'll see the new version number, its approximate download size, and an **Update now** button. Starting it downloads the update in the background, you can keep using your computer while it downloads, and a progress view shows how far along it is, with an expandable transaction log if you want the details.
+
+## Applying an Update
+
+Once the download finishes, you'll see **Update ready** along with your current version and the version you'll be on after restarting. Updates are never applied without asking first, choose **Restart now** to apply it immediately, or **Restart later** to keep working and restart on your own time. The update stays staged and ready either way.
+
+## Automatic Updates
+
+Turn on **Automatic updates** on the same page and BlossomOS will download new updates overnight on its own. You'll see an **Update scheduled** notice, with the option to cancel it if you'd rather not update that day. As with a manual update, it still waits for you to restart once it's ready, it won't reboot your computer on its own.
+
+## Rolling Back
+
+Every update keeps the version you had before around too. If something's wrong after updating, go back to **System, Software Update** and click **Roll back** next to your previous version. Confirm, and the system restarts on the version you had before, with your files and settings exactly as you left them. You can update again later at any time.
+
+> [!NOTE]
+> Rollbacks work because updates never remove the previous version until you're clearly running fine on the new one. Nothing is deleted right away.
+
+## If BlossomOS Won't Start After an Update
+
+If an update leaves your system unable to boot, you don't need the desktop to recover. Restart your computer and watch for the boot menu that appears briefly before BlossomOS loads. It lists your current deployment alongside the one before it, pick the older one and your computer starts up on the version you had before the update.
+
+## Layered Packages Can Pause Updates
+
+If you install classic system packages directly on BlossomOS instead of using the Arc Store, you're tying your system to changes that might clash with new updates. If that happens, the **Software Updates** setting will show a warning listing the affected packages along with a **Remove packages…** button. Get rid of them and restart so updates can work normally again. To find out how to install software without running into this mess, check out **[Arc Store](./arc-store)**.
+
+## Troubleshooting
+
+<details>
+<summary>An update failed partway through</summary>
+
+Check your internet connection, then click **Try again** on the error screen. Your system stays on the version you were already running until an update finishes successfully, so a failed update doesn't leave you stuck.
+
+</details>
+
+<details>
+<summary>Updates aren't downloading automatically</summary>
+
+Confirm **Automatic updates** is switched on in **System, Software Update**. Automatic downloads happen overnight, so give it a day before assuming something's wrong.
+
+</details>

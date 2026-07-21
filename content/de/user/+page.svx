@@ -16,7 +16,7 @@ Willkommen bei BlossomOS. In diesem Guide erfährst du alles, was du wissen muss
 
 ## Software
 
-- **[Arc Store](/help/user/arc-store)** — Flatpaks, Web-Apps, Windows-Anwendungen und CLI-Tools installieren.
+- **[Arc Store](/help/user/arc-store)** — Flatpaks, Web-Apps, Windows-Anwendungen und Drittsoftware installieren.
 
 ## Multimedia
 

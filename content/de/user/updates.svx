@@ -1,0 +1,59 @@
+---
+title: Systemaktualisierungen
+description: Wie atomare Aktualisierungen auf BlossomOS funktionieren und wie du bei Problemen zurücksetzt.
+icon: monitor
+order: 7
+---
+
+# Systemaktualisierungen
+
+BlossomOS aktualisiert sich als Ganzes und nicht Paket für Paket. Jede Aktualisierung wird als vollständiges System gebaut und getestet, dann als ein einziges Paket heruntergeladen und für deinen nächsten Neustart bereitgestellt. Nichts ist jemals nur halb aktualisiert, und jede Aktualisierung lässt sich rückgängig machen. Dasselbe Prinzip nutzen auch andere atomare Systeme wie z.B. Kinoite, Bazzite und Bluefin.
+
+![Systemaktualisierungen](/screenshots/updates_de.png)
+
+## Nach Aktualisierungen suchen
+
+Öffne die **Systemeinstellungen** und gehe zu **Softwareaktualisierungen** unter **System**, ganz unten in der Seitenleiste.
+
+Wenn du bereits die neueste Version hast, siehst du **Dein System ist aktuell**, zusammen mit der installierten Version. Klicke auf **Auf Aktualisierungen prüfen**, um sofort erneut zu prüfen.
+
+Ist eine Aktualisierung verfügbar, siehst du die neue Versionsnummer, die ungefähre Downloadgröße und eine Schaltfläche **Jetzt aktualisieren**. Der Download läuft im Hintergrund, du kannst deinen Computer währenddessen weiter benutzen, und eine Fortschrittsansicht zeigt, wie weit es ist, mit einem ausklappbaren Transaktionslog für alle Details.
+
+## Eine Aktualisierung anwenden
+
+Sobald der Download fertig ist, siehst du **Aktualisierung bereit** zusammen mit deiner aktuellen Version und der Version, auf der du nach dem Neustart sein wirst. Aktualisierungen werden nie ohne Rückfrage angewendet, wähle **Jetzt neu starten**, um sie sofort zu übernehmen, oder **Später neu starten**, um weiterzuarbeiten und selbst zu entscheiden, wann. Die Aktualisierung bleibt so oder so bereit liegen.
+
+## Automatische Aktualisierungen
+
+Schalte **Automatische Aktualisierungen** auf derselben Seite ein, und BlossomOS lädt neue Aktualisierungen nachts von selbst herunter. Du siehst dann den Hinweis **Aktualisierung geplant**, mit der Möglichkeit, sie abzubrechen, falls du an diesem Tag nicht aktualisieren möchtest. Wie bei einer manuellen Aktualisierung wartet BlossomOS trotzdem auf deinen Neustart, sobald sie bereit ist, es startet deinen Computer nicht von selbst neu.
+
+## Zurücksetzen
+
+Jede Aktualisierung behält auch die Version, die du vorher hattest. Wenn nach einer Aktualisierung etwas nicht stimmt, geh zurück zu **System, Softwareaktualisierungen** und klicke auf **Zurücksetzen** neben deiner vorherigen Version. Bestätige, und das System startet mit der Version neu, die du vorher hattest, mit deinen Dateien und Einstellungen genau so, wie du sie verlassen hast. Du kannst später jederzeit wieder aktualisieren.
+
+> [!NOTE]
+> Zurücksetzen funktioniert, weil Aktualisierungen die vorherige Version erst entfernen, wenn klar ist, dass die neue einwandfrei läuft. Nichts wird sofort gelöscht.
+
+## Wenn BlossomOS nach einer Aktualisierung nicht mehr startet
+
+Wenn eine Aktualisierung dein System am Starten hindert, brauchst du den Desktop nicht, um es zu reparieren. Starte deinen Computer neu und achte auf das Bootmenü, das kurz erscheint, bevor BlossomOS lädt. Es listet deine aktuelle Version neben der davor auf, wähle die ältere aus, und dein Computer startet mit der Version, die du vor der Aktualisierung hattest.
+
+## Zusätzliche Pakete können Aktualisierungen anhalten
+
+Wenn du klassische Systempakete direkt auf BlossomOS installierst, statt über Arc Store, bindest du dein System an Änderungen, die mit neuen Aktualisierungen in Konflikt geraten können. Ist das passiert, zeigt die Einstellung **Softwareaktualisierungen** eine Warnung mit den betroffenen Paketen und einer Schaltfläche **Pakete entfernen…** an. Entferne sie und starte neu, damit Aktualisierungen wieder normal funktionieren. Wie du Software installierst, ohne in dieses Problem zu laufen, steht unter **[Arc Store](./arc-store)**.
+
+## Fehlerbehebung
+
+<details>
+<summary>Eine Aktualisierung ist mittendrin fehlgeschlagen</summary>
+
+Prüfe deine Internetverbindung und klicke dann auf **Erneut versuchen** im Fehlerbildschirm. Dein System bleibt auf der Version, die du bereits hattest, bis eine Aktualisierung erfolgreich abgeschlossen ist, eine fehlgeschlagene Aktualisierung lässt dich also nie hängen.
+
+</details>
+
+<details>
+<summary>Aktualisierungen werden nicht automatisch heruntergeladen</summary>
+
+Stelle sicher, dass **Automatische Aktualisierungen** in **Softwareaktualisierungen** eingeschaltet ist. Automatische Downloads laufen nachts, gib dem also einen Tag, bevor du von einem Problem ausgehst.
+
+</details>
