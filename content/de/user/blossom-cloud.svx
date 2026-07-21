@@ -25,7 +25,7 @@ Gehe auf [auth.blossomos.org](https://auth.blossomos.org) und erstelle dein Blos
 
 <OpenInArc id="com.nextcloud.desktopclient.nextcloud" />
 
-Wenn du nach einer Serveradresse gefragt wirst, gib `cloud.blossomos.org` ein.
+Wenn du nach einer Serveradresse gefragt wirst, gib `cloud.blossomos.org` ein. Füge die App unter **Systemeinstellungen > Autostart** zum Autostart hinzu, damit die Synchronisierung bei jedem Hochfahren deines Computers gestartet wird.
 
 ## Dateisynchronisation
 

@@ -25,7 +25,7 @@ Open Arc Store and search for Nextcloud. Install it, then open it from your app 
 
 <OpenInArc id="com.nextcloud.desktopclient.nextcloud" />
 
-If you are asked for a server address, enter `cloud.blossomos.org`.
+If you are asked for a server address, enter `cloud.blossomos.org`. Add the app to the autostart under **System Settings > Autostart** to start the sync whenever your computer boots up.
 
 ## File Sync
 
