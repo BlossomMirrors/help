@@ -5,6 +5,8 @@ icon: git-pull-request
 order: 0
 ---
 
+# Getting Started
+
 BlossomOS is based on **Fedora Linux**. Thank you for your interest in contributing!
 
 ## What is BlossomOS?
@@ -13,9 +15,9 @@ BlossomOS is a Fedora-based desktop platform built around digital independence a
 
 ## Repositories
 
-- **[blossom/docs](https://dev.blossomos.org/blossom/docs)** - This documentation site.
-- **[blossom/arc](https://dev.blossomos.org/blossom/arc)** - Arc, the BlossomOS software manager and app store.
-- **[blossom/blossomui](https://dev.blossomos.org/blossom/blossomui)** - BlossomUI, the KDE Plasma theme and desktop configuration.
+- **[blossom/help](https://dev.blossomos.org/blossom/help)** - This documentation site.
+- **[blossom/arc-store/arc](https://dev.blossomos.org/blossom/arc-store/arc)** - Arc, the BlossomOS software manager and app store.
+- **[blossom/ui/desktop-theme](https://dev.blossomos.org/blossom/ui/desktop-theme)** - BlossomUI, the KDE Plasma theme and desktop configuration.
 
 ## Prerequisites
 

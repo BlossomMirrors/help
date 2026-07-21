@@ -145,11 +145,7 @@
 								class={`flex w-full items-center gap-2.5 px-3 py-2 text-left text-sm cursor-pointer rounded-md ${i === activeIndex ? 'bg-black/10' : ''}`}
 							>
 								{#if game.image}
-									<img
-										src={game.image}
-										alt=""
-										class="h-8 w-14 shrink-0 rounded-sm object-cover"
-									/>
+									<img src={game.image} alt="" class="h-8 w-14 shrink-0 rounded-sm object-cover" />
 								{:else}
 									<span class="h-8 w-14 shrink-0 rounded bg-muted"></span>
 								{/if}

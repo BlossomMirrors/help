@@ -3,7 +3,10 @@ title: Image-Tags verstehen
 description: In regelmäßigen Abständen werden Systemkomponenten aktualisiert und neue Images veröffentlicht. Dies ermöglicht es Entwicklern neue Features zu nutzen, bestehende Probleme zu beheben und Anwendungen gegen Vorabversionen zu testen.
 icon: donut
 order: 1
+image: /covers/donut.jpg
 ---
+
+# Image-Tags verstehen
 
 In regelmäßigen Abständen werden Systemkomponenten aktualisiert und neue Images veröffentlicht. Dies ermöglicht es Entwicklern neue Features zu nutzen, bestehende Probleme zu beheben und Anwendungen gegen Vorabversionen zu testen.
 

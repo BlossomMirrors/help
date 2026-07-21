@@ -5,57 +5,67 @@ icon: git-pull-request
 order: 0
 ---
 
-BlossomOS basiert auf **Fedora Linux**. Danke für dein Interesse, beizutragen!
+# Erste Schritte
+
+BlossomOS basiert auf **Fedora Linux**. Danke, dass du Interesse hast mitzuhelfen!
 
 ## Was ist BlossomOS?
 
-BlossomOS ist eine Fedora-basierte Desktop-Plattform, die auf digitale Unabhängigkeit und Benutzerfreundlichkeit ausgerichtet ist. Sie wird mit einer angepassten KDE Plasma-Umgebung (**BlossomUI**) und **Arc** ausgeliefert, einem Software-Manager, der die Installation jeder App zu einem Ein-Klick-Erlebnis macht.
+BlossomOS ist eine auf Fedora basierende Desktop-Plattform, bei der sich alles um digitale Unabhängigkeit und einfache Bedienung dreht. Es wird mit einer angepassten KDE-Plasma-Umgebung (**BlossomUI**) und **Arc** ausgeliefert, einem Software-Manager, mit dem die Installation jeder App zum Kinderspiel wird.
 
 ## Repositories
 
-- **[blossom/docs](https://dev.blossomos.org/blossom/docs)** - Diese Dokumentationsseite.
-- **[blossom/arc](https://dev.blossomos.org/blossom/arc)** - Arc, der BlossomOS Software-Manager und App Store.
-- **[blossom/blossomui](https://dev.blossomos.org/blossom/blossomui)** - BlossomUI, das KDE Plasma-Theme und die Desktop-Konfiguration.
+- **[blossom/help](https://dev.blossomos.org/blossom/help)** – Diese Dokumentationsseite.
+- **[blossom/arc-store/arc](https://dev.blossomos.org/blossom/arc-store/arc)** – Arc, der BlossomOS Software-Manager und App Store.
+- **[blossom/ui/desktop-theme](https://dev.blossomos.org/blossom/ui/desktop-theme)** – BlossomUI, das KDE Plasma Theme und die Desktop-Konfiguration.
 
 ## Voraussetzungen
 
 <details>
-<summary>Fedora / RPM-Ökosystem</summary>
+<summary>Fedora / RPM Ökosystem</summary>
 
-BlossomOS ist Fedora-basiert. Kenntnisse von `dnf` und RPM-Packaging helfen bei Beiträgen auf Systemebene.
+BlossomOS basiert auf Fedora. Wenn du dich mit `dnf` und RPM-Paketen auskennst, hilft das bei Beiträgen auf Systemebene.
 
 </details>
 
 <details>
 <summary>Git und Blossom Git</summary>
 
-Alle Entwicklung wird mit Git verfolgt und auf [Blossom Git](https://dev.blossomos.org/blossom) gehostet. Du brauchst ein Blossom Git-Konto, um Pull Requests zu öffnen.
+Die gesamte Entwicklung wird mit Git verfolgt und auf [Blossom Git](https://dev.blossomos.org/blossom) gehostet. Du brauchst ein Blossom-Git-Konto, um Pull-Requests zu erstellen.
 
 </details>
 
 <details>
-<summary>KDE / Qt (für UI-Beiträge)</summary>
+<summary>KDE / Qt (für Beiträge zur Benutzeroberfläche)</summary>
 
-BlossomUI basiert auf KDE Plasma. Qt- und QML-Kenntnisse sind für Theme- und Widget-Beiträge nötig.
+BlossomUI baut auf KDE Plasma auf. Qt- und QML-Kenntnisse sind für Beiträge an Themes und Widgets nötig.
 
 </details>
 
-## Beitragen
+## Mitmachen
 
-1. Das relevante Repository auf Blossom Git **forken**
-2. Deinen Fork **klonen** und die in der `README` des Repos aufgeführten Build-Abhängigkeiten installieren
-3. Einen **Branch** für dein Feature oder deinen Fix erstellen. Auf eine Sache fokussiert halten
-4. Änderungen vornehmen und mit einer klaren englischen Commit-Nachricht **committen**
-5. Einen **Pull Request** auf Blossom Git öffnen und beschreiben was du geändert hast und warum
+1. **Forke** das entsprechende Repository auf Blossom Git.
+2. **Klone** deinen Fork und installiere die Build-Abhängigkeiten, die in der `README` des Repos stehen.
+3. **Erstelle einen Branch** für dein Feature oder deinen Fix. Konzentrier dich dabei auf eine Sache.
+4. Mach deine Änderungen und **committe** sie mit einer klaren englischen Nachricht.
+5. **Öffne einen Pull-Request** auf Blossom Git und beschreibe, was du warum geändert hast.
 
 ## Richtlinien
 
 > [!NOTE]
-> - Den bestehenden Code-Stil in jedem Repository befolgen
-> - Commit-Nachrichten auf Englisch
-> - Ein Feature oder Fix pro Pull Request
-> - Dokumentation aktualisieren bei nutzer-sichtbaren Änderungen
+> - Halte dich an den bestehenden Codestil im jeweiligen Repository.
+> - Commit-Nachrichten bitte auf Englisch.
+> - Ein Feature oder Fix pro Pull-Request.
+> - Aktualisiere die Doku, wenn du am Verhalten für Endnutzer was änderst.
 
-## Fehler melden
+## Empfehlungen
 
-Einen Bug gefunden? Eröffne ein Issue im entsprechenden Blossom Git-Repository. BlossomOS-Version, Schritte zur Reproduktion und erwartetes Verhalten angeben.
+### Hilfe-Guide
+
+Wenn du den Hilfe-Guide bearbeiten willst, kannst du auch Obsidian nutzen, um die `.svx`-Dateien im Content-Verzeichnis direkt zu bearbeiten. So profitierst du von WYSIWYG-Editing, Git-Integration und mehr.
+
+<OpenInArc id="md.obsidian.Obsidian" />
+
+## Probleme melden
+
+Einen Bug gefunden? Eröffne ein Issue im passenden Blossom-Git-Repository. Gib die BlossomOS-Version an, die Schritte zum Reproduzieren und was eigentlich hätte passieren sollen.

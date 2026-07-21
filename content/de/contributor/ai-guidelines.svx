@@ -3,7 +3,10 @@ title: LLM-Richtlinien
 description: Wie LLMs beim Contributen zu BlossomOS eingesetzt werden dürfen und was nicht erlaubt ist.
 icon: bot
 order: 1
+image: /covers/robot.jpg
 ---
+
+# LLM-Richtlinien
 
 BlossomOS-Contributors dürfen LLMs nutzen, um Code zu verstehen, Dokumentation zu lesen oder Probleme zu durchdenken. Es gibt dabei aber klare Grenzen.
 

@@ -3,7 +3,10 @@ title: Testing features
 description: Find out which new system components and software versions are currently available for testing in the pre-release images (prerelease/latest) and how to try them out.
 icon: test-tube
 order: 2
+image: /covers/lab.jpg
 ---
+
+# Testing features
 
 BlossomOS is evolving rapidly. To extensively test new features before the official release, our `prerelease` and `latest` branches provide access to cutting-edge software stacks.
 

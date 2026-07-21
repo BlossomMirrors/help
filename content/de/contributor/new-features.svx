@@ -3,7 +3,10 @@ title: Features testen
 description: Erfahre, welche neuen Systemkomponenten und Software-Versionen aktuell in den Vorab-Images (prerelease/latest) zum Testen bereitstehen und wie du sie ausprobierst.
 icon: test-tube
 order: 2
+image: /covers/lab.jpg
 ---
+
+# Features testen
 
 BlossomOS entwickelt sich rasant weiter. Um neue Funktionen vor dem offiziellen Release ausgiebig zu testen, bieten unsere `prerelease`- und `latest`-Zweige Zugriff auf topaktuelle Software-Stacks.
 
