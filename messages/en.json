@@ -19,6 +19,7 @@
 	"articles_count": "{count} articles",
 	"aria_close": "Close",
 	"aria_search": "Search",
+	"clear_search": "Clear search",
 	"aria_toggle_sidebar": "Toggle sidebar",
 	"aria_collapse": "Collapse",
 	"aria_expand": "Expand",
@@ -55,5 +56,6 @@
 	"chat_suggestion_windows": "How do I install Windows apps?",
 	"chat_scroll_to_bottom": "Scroll to bottom",
 	"chat_ask_placeholder": "Ask a question…",
-	"proprietary": "Proprietary"
+	"proprietary": "Proprietary",
+	"no_matching_games": "No matching games. Press Enter to search ProtonDB directly."
 }

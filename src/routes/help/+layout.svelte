@@ -150,7 +150,7 @@
 		/>
 
 		{#if headerImage}
-			<img
+			<enhanced:img
 				src={headerImage}
 				alt=""
 				class="-mt-14 h-62 w-full object-cover object-center sm:h-86 mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] block"

@@ -3,7 +3,9 @@ title: Genshin & Hoyoverse 3rd Party Launcher
 description: Genshin Impact, Honkai Star Rail, Zenless Zone Zero und Honkai Impact 3rd auf BlossomOS spielen.
 icon: sparkles
 order: 5
+image: /covers/genshin.jpg
 ---
+# Genshin & Hoyoverse 3rd Party Launcher
 
 Hoyoverse bietet für keines ihrer Spiele nativen Linux-Support. Die Community hat eigene Open-Source-Launcher für jeden Titel gebaut und pflegt diese aktiv. Das sind keine offiziellen Hoyoverse-Produkte, aber sie werden weit verbreitet genutzt, aktiv gepflegt und sind direkt in Arc Store installierbar.
 

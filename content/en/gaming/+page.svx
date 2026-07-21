@@ -4,6 +4,7 @@ description: Everything you need to game on BlossomOS.
 icon: gamepad-2
 order: 0
 ---
+# Gaming on BlossomOS
 
 BlossomOS makes gaming on Linux easy. All launchers are available in Arc Store.
 

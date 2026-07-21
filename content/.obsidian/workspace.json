@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "7fbab93c85bf32eb",
+        "id": "513e0b0c9af75cc8",
         "type": "tabs",
         "children": [
           {
-            "id": "afa0a74822b839c4",
+            "id": "27dc0c374bfa622d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "en/gaming/battlenet.svx",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Neuer Tab"
+              "title": "battlenet"
             }
           }
         ]
@@ -187,18 +191,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "afa0a74822b839c4",
+  "active": "27dc0c374bfa622d",
   "lastOpenFiles": [
-    "en/user/contacts-calendar-sync.svx",
-    "de/user/contacts-calendar-sync.svx",
-    "en/user/blossom-cloud.svx",
-    "de/user/blossom-cloud.svx",
-    "de/user/arc-store.svx",
-    "de/user/updates.svx",
-    "de/user/updates.svx.tmp.752653.477c058dc263",
-    "en/user/updates.svx",
-    "en/user/updates.svx.tmp.752653.80f5a601bb9a",
-    "en/user/contacts-calendar-sync.svx.tmp.752653.ed23233639ea",
-    "en/user/contacts-calendar-sync.svx.tmp.752653.72c3851d1729"
+    "de/gaming/battlenet.svx",
+    "en/gaming/battlenet.svx",
+    "en/gaming/lutris.svx",
+    "de/gaming/heroic.svx",
+    "en/gaming/heroic.svx",
+    "de/gaming/hoyoplay.svx",
+    "en/gaming/hoyoplay.svx",
+    "de/gaming/roblox.svx",
+    "en/gaming/roblox.svx",
+    "de/gaming/lutris.svx",
+    "de/gaming/+page.svx"
   ]
 }

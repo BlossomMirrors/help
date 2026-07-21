@@ -3,7 +3,9 @@ title: Steam
 description: Install and configure Steam on BlossomOS.
 icon: gamepad-2
 order: 1
+image: /covers/deck.jpg
 ---
+# Steam
 
 Steam has the best Linux game support of any launcher, built around **Proton** which lets Windows games run natively on Linux.
 

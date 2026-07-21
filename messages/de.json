@@ -19,6 +19,7 @@
 	"articles_count": "{count} Artikel",
 	"aria_close": "Schließen",
 	"aria_search": "Suchen",
+	"clear_search": "Suche löschen",
 	"aria_toggle_sidebar": "Seitenleiste umschalten",
 	"aria_collapse": "Einklappen",
 	"aria_expand": "Ausklappen",
@@ -55,5 +56,6 @@
 	"chat_suggestion_windows": "Wie installiere ich Windows-Apps?",
 	"chat_scroll_to_bottom": "Nach unten scrollen",
 	"chat_ask_placeholder": "Frage stellen…",
-	"proprietary": "Proprietär"
+	"proprietary": "Proprietär",
+	"no_matching_games": "Keine passenden Spiele gefunden. Drücke Enter, um direkt auf ProtonDB zu suchen."
 }

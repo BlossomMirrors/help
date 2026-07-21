@@ -3,7 +3,9 @@ title: Heroic Games Launcher
 description: Play Epic Games Store and GOG titles on BlossomOS.
 icon: zap
 order: 2
+image: /covers/heroic.jpg
 ---
+# Heroic Games Launcher
 
 Heroic is an open-source launcher for Epic Games Store and GOG that runs natively on Linux. No Wine wrapper is needed for the launcher itself.
 
@@ -69,3 +71,5 @@ Heroic does not auto-detect drives. You need to set the path manually:
 ## Compatibility
 
 - **[Compatibility & Anti-Cheat](./anticheat)** - ProtonDB ratings explained, anti-cheat status per game, and which multiplayer games work on Linux.
+
+![Valorant not working using Heroic Games Launcher](/screenshots/heroic/valorant.png)

@@ -3,7 +3,9 @@ title: Roblox spielen mit Sober
 description: Da Roblox Wine aktiv blockiert, bietet der inoffizielle Launcher Sober dank einer spezialisierten Android-Runtime eine performante Alternative für den Linux-Desktop.
 icon: gamepad-2
 order: 3
+image: /covers/roblox.jpg
 ---
+# Roblox spielen mit Sober
 
 Nachdem Roblox die Kompatibilität mit Wine durch die Einführung des Anti-Cheat-Systems Hyperion komplett unterbunden hat, waren Linux-Nutzer lange Zeit von der Plattform ausgesperrt. Mit **Sober** hat das Team hinter *Vinegar* jedoch eine innovative und extrem performante Alternative geschaffen.
 

@@ -3,7 +3,9 @@ title: Lutris
 description: Beliebige Spiele auf BlossomOS mit Lutris ausführen.
 icon: gamepad-2
 order: 3
+image: /covers/otter.jpg
 ---
+# Lutris
 
 Lutris ist ein universeller Spiele-Manager, der Spiele aus fast jeder Quelle installieren und konfigurieren kann. Wine, Runner und Emulatoren werden automatisch über Community-gepflegte Installationsskripte verwaltet.
 

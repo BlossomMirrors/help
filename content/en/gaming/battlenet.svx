@@ -3,7 +3,10 @@ title: Battle.net
 description: Run the Battle.net launcher on BlossomOS with Lutris.
 icon: sword
 order: 4
+image: /covers/battlenet.jpg
 ---
+
+# Battle.net
 
 Battle.net has no native Linux version. You can run it through Lutris, which sets up Wine and configures everything automatically.
 

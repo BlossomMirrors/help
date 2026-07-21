@@ -5,6 +5,7 @@ icon: shield-check
 order: 6
 ---
 
+# Kompatibilität & Anti-Cheat
 
 ## Vor dem Kauf prüfen
 
