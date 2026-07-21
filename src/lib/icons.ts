@@ -95,7 +95,7 @@ export const icons: Record<string, Component> = {
 	rocket: Rocket,
 	search: Search,
 	settings: Settings,
-  shield: Shield,
+	shield: Shield,
 	'shopping-cart': ShoppingCart,
 	sword: Sword,
 	star: Star,

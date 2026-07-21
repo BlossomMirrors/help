@@ -91,8 +91,10 @@
 		typeof pageMetadata.description === 'string' ? pageMetadata.description : m.hero_subtitle()
 	);
 	const ogImage = $derived(
-		new URL(typeof pageMetadata.image === 'string' ? pageMetadata.image : '/og-image.png', page.url.origin)
-			.href
+		new URL(
+			typeof pageMetadata.image === 'string' ? pageMetadata.image : '/og-image.png',
+			page.url.origin
+		).href
 	);
 	const headerImage = $derived(typeof pageMetadata.image === 'string' ? pageMetadata.image : null);
 </script>
@@ -156,11 +158,10 @@
 		{/if}
 
 		<div class="flex flex-1">
-			<main class={cn('min-w-0 flex-1 px-4 py-8 sm:px-8 lg:px-12', headerImage && '-mt-10 sm:-mt-16')}>
-				<article
-					bind:this={articleEl}
-					class={cn('prose max-w-3xl', headerImage && 'mt-3')}
-				>
+			<main
+				class={cn('min-w-0 flex-1 px-4 py-8 sm:px-8 lg:px-12', headerImage && '-mt-10 sm:-mt-16')}
+			>
+				<article bind:this={articleEl} class={cn('prose max-w-3xl', headerImage && 'mt-3')}>
 					{@render children()}
 				</article>
 			</main>
