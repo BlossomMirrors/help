@@ -5,6 +5,7 @@ export type DocsetMeta = {
 	title: string;
 	description?: string;
 	icon?: string;
+	image?: string;
 	order?: number;
 };
 
@@ -36,6 +37,7 @@ export function getDocsetMeta(id: string): DocsetMeta {
 		title: data?.title ?? id,
 		description: data?.description,
 		icon: data?.icon,
+		image: data?.image,
 		order: data?.order
 	};
 }

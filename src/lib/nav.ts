@@ -8,6 +8,7 @@ export type NavNode = {
 	href?: string;
 	tag?: NavTag;
 	icon?: string;
+	image?: string;
 	order: number;
 	children: NavNode[];
 };
@@ -17,6 +18,7 @@ type ContentMeta = {
 	order?: number;
 	tag?: NavTag;
 	icon?: string;
+	image?: string;
 };
 
 const allModules = import.meta.glob<{ metadata?: ContentMeta }>('/content/**/*.svx', {
@@ -45,6 +47,7 @@ function buildTree(entries: { rel: string; meta: ContentMeta }[], docset: string
 				title: meta.title ?? titleCase(docset),
 				href: `/help/${docset}`,
 				icon: meta.icon,
+				image: meta.image,
 				order: meta.order ?? 0,
 				children: []
 			});
@@ -66,6 +69,7 @@ function buildTree(entries: { rel: string; meta: ContentMeta }[], docset: string
 					existing.href = href;
 					if (meta.title) existing.title = meta.title;
 					if (meta.icon) existing.icon = meta.icon;
+					if (meta.image) existing.image = meta.image;
 					if (meta.tag) existing.tag = meta.tag;
 					if (meta.order !== undefined) existing.order = meta.order;
 				} else {
@@ -75,6 +79,7 @@ function buildTree(entries: { rel: string; meta: ContentMeta }[], docset: string
 						href,
 						tag: meta.tag,
 						icon: meta.icon,
+						image: meta.image,
 						order: meta.order ?? 999,
 						children: []
 					});

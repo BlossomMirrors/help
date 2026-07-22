@@ -10,8 +10,32 @@
 	import SparklesIcon from '@lucide/svelte/icons/sparkles';
 	import BookOpenIcon from '@lucide/svelte/icons/book-open';
 	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
+	import MessagesSquareIcon from '@lucide/svelte/icons/messages-square';
+	import MessageCircleIcon from '@lucide/svelte/icons/message-circle';
+	import AtSignIcon from '@lucide/svelte/icons/at-sign';
 	import { icons } from '$lib/icons';
 	import { page } from '$app/state';
+
+	const communityLinks = [
+		{
+			href: 'https://community.blossomos.org',
+			Icon: MessagesSquareIcon,
+			title: m.community_forum_title(),
+			desc: m.community_forum_desc()
+		},
+		{
+			href: 'https://discord.gg/dTqsBdxvNr',
+			Icon: MessageCircleIcon,
+			title: m.community_discord_title(),
+			desc: m.community_discord_desc()
+		},
+		{
+			href: 'https://bsky.app/profile/blossomos.org',
+			Icon: AtSignIcon,
+			title: m.community_bluesky_title(),
+			desc: m.community_bluesky_desc()
+		}
+	];
 
 	const ogImage = $derived(new URL('/og-image.png', page.url.origin).href);
 
@@ -24,9 +48,29 @@
 	}
 
 	const docsetIds = $derived(getDocsetIds());
-	const allArticles = $derived(
-		docsetIds.flatMap((id) => flattenNav(getNav(id)).filter((a) => a.slug !== '+page'))
+	const docsetData = $derived(
+		docsetIds.map((id) => ({
+			id,
+			meta: getDocsetMeta(id),
+			articles: flattenNav(getNav(id)).filter((a) => a.slug !== '+page')
+		}))
 	);
+	const allArticles = $derived(docsetData.flatMap((d) => d.articles));
+
+	function bentoClass(i: number) {
+		if (i === 0) return 'md:col-span-2 md:row-span-2';
+		if (i === 1) return 'md:col-span-2';
+		return '';
+	}
+
+	const heroCollage = [
+		{ src: '/covers/handbook.jpg', pos: 'top-6 left-[5%] w-36 h-44', rotate: '-rotate-6' },
+		{ src: '/covers/gaming.jpg', pos: 'top-48 left-[0%] w-28 h-28', rotate: 'rotate-3' },
+		{ src: '/covers/clouds.jpg', pos: 'bottom-4 left-[9%] w-32 h-40', rotate: 'rotate-2' },
+		{ src: '/covers/usb.jpg', pos: 'top-2 right-[5%] w-32 h-40', rotate: 'rotate-6' },
+		{ src: '/covers/robot.jpg', pos: 'top-44 right-[0%] w-28 h-28', rotate: '-rotate-3' },
+		{ src: '/covers/deck.jpg', pos: 'bottom-6 right-[8%] w-36 h-44', rotate: '-rotate-2' }
+	];
 </script>
 
 <svelte:head>
@@ -52,8 +96,12 @@
 <div class="min-h-screen bg-background">
 	<header class="sticky top-0 z-40 border-b border-border bg-card/80 backdrop-blur-sm">
 		<div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
-			<a href="/" class="font-serif text-xl font-semibold text-foreground mt-1">
-				<img src="/logo.svg" alt="logo" class="h-8 inline align-middle mb-1 mr-2" />
+			<a href="/" class="mt-1 font-serif text-xl font-semibold text-foreground">
+				<img
+					src="/logo.svg"
+					alt="logo"
+					class="mb-1 mr-2 inline h-8 align-middle transition-transform duration-300 hover:rotate-12"
+				/>
 				{m.help_title()}
 			</a>
 			<div class="flex items-center gap-2">
@@ -63,23 +111,53 @@
 		</div>
 	</header>
 
-	<section class="relative overflow-hidden px-4 py-24">
+	<section class="relative overflow-hidden px-4 py-28">
 		<div class="pointer-events-none absolute inset-0 -z-10">
 			<div
-				class="absolute left-1/2 top-0 h-100 w-150 -translate-x-1/2 rounded-full bg-primary/6 blur-3xl"
+				class="hero-blob absolute left-[15%] top-0 h-100 w-100 rounded-full bg-primary/10 blur-3xl"
+			></div>
+			<div
+				class="hero-blob-alt absolute right-[10%] top-20 h-80 w-80 rounded-full bg-tertiary-500/8 blur-3xl"
+			></div>
+			{#each heroCollage as chip, i (chip.src)}
+				<div
+					class="hero-float absolute hidden lg:block {chip.pos}"
+					style="animation-delay: {i * 400}ms"
+				>
+					<div
+						class="h-full w-full overflow-hidden rounded-2xl shadow-xl ring-1 ring-border/50 transition-all duration-500 {chip.rotate} hover:z-10 hover:scale-110 hover:rotate-0 hover:shadow-2xl"
+					>
+						<img src={chip.src} alt="" class="h-full w-full object-cover" />
+					</div>
+				</div>
+			{/each}
+			<div
+				class="absolute inset-0 bg-linear-to-b from-background/30 via-background/70 to-background"
 			></div>
 		</div>
-		<div class="mx-auto max-w-2xl text-center">
-			<p class="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">
+		<div class="relative mx-auto max-w-2xl text-center">
+			<p
+				class="animate-in fade-in slide-in-from-bottom-4 mb-3 text-xs font-semibold uppercase tracking-widest text-primary duration-700 fill-mode-both"
+			>
 				{m.help_center()}
 			</p>
-			<h1 class="mb-6 font-serif text-5xl leading-tight md:text-6xl">{m.hero_title()}</h1>
-			<p class="mb-10 text-lg text-muted-foreground">{m.hero_subtitle()}</p>
+			<h1
+				class="animate-in fade-in slide-in-from-bottom-6 mb-6 font-serif text-5xl leading-tight duration-700 delay-100 fill-mode-both md:text-6xl"
+			>
+				{m.hero_title()}
+			</h1>
+			<p
+				class="animate-in fade-in slide-in-from-bottom-6 mb-10 text-lg text-muted-foreground duration-700 delay-200 fill-mode-both"
+			>
+				{m.hero_subtitle()}
+			</p>
 
-			<div class="flex gap-3">
+			<div
+				class="animate-in fade-in slide-in-from-bottom-6 flex gap-3 duration-700 delay-300 fill-mode-both"
+			>
 				<button
 					onclick={openSearch}
-					class="group flex flex-1 cursor-text items-center gap-3 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 text-left shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
+					class="group flex flex-1 cursor-text items-center gap-3 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 text-left shadow-sm transition-all hover:border-primary/40 hover:bg-primary/3 pointer-cursor"
 				>
 					<SearchIcon size={18} class="shrink-0 text-muted-foreground" />
 					<span class="flex-1 text-sm text-muted-foreground">{m.search_placeholder()}</span>
@@ -87,7 +165,7 @@
 				</button>
 				<button
 					onclick={openChat}
-					class="flex shrink-0 items-center gap-2 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/3"
+					class="flex shrink-0 items-center gap-2 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 shadow-sm transition-all hover:border-primary/40 hover:bg-primary/3 pointer-cursor"
 				>
 					<SparklesIcon size={18} class="text-primary" />
 					<span class="text-sm font-medium text-foreground">{m.ask_ai()}</span>
@@ -96,76 +174,155 @@
 		</div>
 	</section>
 
-	<section class="mx-auto max-w-6xl px-4 pb-16">
-		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-			{#each docsetIds as id (id)}
-				{@const meta = getDocsetMeta(id)}
-				{@const nav = getNav(id)}
-				{@const articles = flattenNav(nav).filter((a) => a.slug !== '+page')}
+	<section class="mx-auto max-w-6xl px-4 pb-20">
+		<div class="grid grid-cols-1 gap-5 md:grid-cols-4 md:auto-rows-[13rem]">
+			{#each docsetData as { id, meta, articles }, i (id)}
 				{@const DocIcon = (meta.icon ? icons[meta.icon] : undefined) ?? BookOpenIcon}
-				<MagicCard
-					class="group flex flex-col rounded-(--radius-card) border border-border bg-card transition-colors hover:border-primary/30"
+				<div
+					class="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both {bentoClass(
+						i
+					)}"
+					style="animation-delay: {i * 130}ms"
 				>
-					<a href="/help/{id}" class="flex flex-1 flex-col p-6">
-						<div
-							class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"
-						>
-							<DocIcon size={20} strokeWidth={2} />
-						</div>
-						<h2 class="mb-1 font-semibold">{meta.title}</h2>
-						<p class="mb-4 flex-1 text-sm text-muted-foreground">
-							{m.articles_count({ count: articles.length || 1 })}
-						</p>
-						<ul class="mb-4 space-y-1">
-							{#each articles.slice(0, 2) as article (article.slug)}
-								<li class="truncate text-xs text-muted-foreground">· {article.title}</li>
-							{/each}
-						</ul>
-						<div class="flex items-center gap-1 text-sm font-medium text-primary">
-							{m.browse()}
-							<ArrowRightIcon size={14} class="transition-transform group-hover:translate-x-1" />
-						</div>
-					</a>
-				</MagicCard>
+					<MagicCard
+						class="group relative h-full overflow-hidden rounded-(--radius-card) border border-border"
+					>
+						<a href="/help/{id}" class="relative block h-44 md:h-full">
+							{#if meta.image}
+								<img
+									src={meta.image}
+									alt=""
+									class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+								/>
+								<div
+									class="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-black/0"
+								></div>
+								<div
+									class="absolute top-4 left-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md transition-transform duration-300 group-hover:-translate-y-1"
+								>
+									<DocIcon size={18} strokeWidth={2} />
+								</div>
+								<div class="absolute inset-x-4 bottom-4 text-white">
+									<h2 class="font-serif text-xl font-semibold drop-shadow-sm">{meta.title}</h2>
+									<p class="mt-1 text-xs text-white/75">
+										{m.articles_count({ count: articles.length || 1 })}
+									</p>
+									<div
+										class="mt-3 flex items-center gap-1 text-sm font-medium opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+									>
+										{m.browse()}
+										<ArrowRightIcon
+											size={14}
+											class="transition-transform group-hover:translate-x-1"
+										/>
+									</div>
+								</div>
+							{:else}
+								<div class="flex h-full flex-col justify-center bg-card p-6">
+									<div
+										class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"
+									>
+										<DocIcon size={20} strokeWidth={2} />
+									</div>
+									<h2 class="mb-1 font-semibold">{meta.title}</h2>
+									<p class="mb-3 text-sm text-muted-foreground">
+										{m.articles_count({ count: articles.length || 1 })}
+									</p>
+									<div class="flex items-center gap-1 text-sm font-medium text-primary">
+										{m.browse()}
+										<ArrowRightIcon
+											size={14}
+											class="transition-transform group-hover:translate-x-1"
+										/>
+									</div>
+								</div>
+							{/if}
+						</a>
+					</MagicCard>
+				</div>
 			{/each}
 		</div>
 
-		<div class="mt-16">
-			<p class="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
-				{m.all_articles_title()}
-			</p>
-			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-				{#each allArticles as article (article.href)}
-					<MagicCard
-						class="rounded-(--radius-card) border border-border bg-card transition-colors hover:border-primary/30"
+		<div class="mt-20">
+			<h3 class="mb-1 font-serif text-lg font-semibold">{m.community_title()}</h3>
+			<p class="mb-6 text-sm text-muted-foreground">{m.community_subtitle()}</p>
+			<div class="grid gap-4 sm:grid-cols-3">
+				{#each communityLinks as link, ci (link.href)}
+					<div
+						class="animate-in fade-in slide-in-from-bottom-4 h-full duration-500 fill-mode-both"
+						style="animation-delay: {ci * 100}ms"
 					>
-						<a href={article.href} class="flex items-start gap-3 p-4">
-							<div
-								class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded bg-primary/10 text-primary"
+						<MagicCard
+							class="group h-full rounded-(--radius-card) border border-border bg-card transition-colors hover:border-primary/30"
+						>
+							<a
+								href={link.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="flex h-full items-start gap-3 p-5"
 							>
-								<SearchIcon size={12} />
-							</div>
-							<div class="min-w-0">
-								<div class="flex items-center gap-2">
-									<p class="truncate text-sm font-medium">{article.title}</p>
-									{#if article.tag}
-										<span
-											class="shrink-0 rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide
-											{article.tag === 'beta' ? 'bg-primary/10 text-primary' : ''}
-											{article.tag === 'new' ? 'bg-tertiary-700/10 text-tertiary-700 dark:text-tertiary-400' : ''}
-											{article.tag === 'deprecated' ? 'bg-destructive/10 text-destructive' : ''}
-										"
-											>{article.tag === 'new'
-												? m.tag_new()
-												: article.tag === 'beta'
-													? m.tag_beta()
-													: m.tag_deprecated()}</span
-										>
-									{/if}
+								<div
+									class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110"
+								>
+									<link.Icon size={18} strokeWidth={2} />
 								</div>
+								<div class="min-w-0">
+									<p class="font-medium">{link.title}</p>
+									<p class="mt-0.5 text-sm text-muted-foreground">{link.desc}</p>
+								</div>
+							</a>
+						</MagicCard>
+					</div>
+				{/each}
+			</div>
+		</div>
+
+		<div class="mt-20">
+			<h3 class="mb-6 font-serif text-lg font-semibold">{m.all_articles_title()}</h3>
+			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+				{#each allArticles as article, ai (article.href)}
+					{@const ArticleIcon = (article.icon ? icons[article.icon] : undefined) ?? SearchIcon}
+					<a
+						href={article.href}
+						class="animate-in fade-in slide-in-from-bottom-4 group relative block h-36 overflow-hidden rounded-(--radius-card) border border-border transition-transform duration-500 fill-mode-both hover:-translate-y-1"
+						style="animation-delay: {Math.min(ai * 40, 600)}ms"
+					>
+						{#if article.image}
+							<img
+								src={article.image}
+								alt=""
+								class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+							/>
+							<div
+								class="absolute inset-0 bg-linear-to-t from-black/85 via-black/10 to-transparent"
+							></div>
+							{#if article.tag}
+								<span
+									class="absolute top-2 right-2 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide
+									{article.tag === 'beta' ? 'bg-primary text-primary-foreground' : ''}
+									{article.tag === 'new' ? 'bg-tertiary-500 text-white' : ''}
+									{article.tag === 'deprecated' ? 'bg-destructive text-white' : ''}
+								"
+								>
+									{article.tag === 'new'
+										? m.tag_new()
+										: article.tag === 'beta'
+											? m.tag_beta()
+											: m.tag_deprecated()}
+								</span>
+							{/if}
+							<p class="absolute inset-x-3 bottom-3 truncate text-sm font-medium text-white">
+								{article.title}
+							</p>
+						{:else}
+							<div
+								class="flex h-full flex-col items-center justify-center gap-2 bg-card p-3 text-center"
+							>
+								<ArticleIcon size={18} class="text-primary" />
+								<p class="truncate text-xs font-medium">{article.title}</p>
 							</div>
-						</a>
-					</MagicCard>
+						{/if}
+					</a>
 				{/each}
 			</div>
 		</div>
@@ -183,3 +340,40 @@
 		</div>
 	</footer>
 </div>
+
+<style>
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-14px);
+		}
+	}
+
+	.hero-float {
+		animation: float 6s ease-in-out infinite;
+	}
+
+	@keyframes drift {
+		0%,
+		100% {
+			transform: translate(0, 0) scale(1);
+		}
+		33% {
+			transform: translate(40px, -25px) scale(1.08);
+		}
+		66% {
+			transform: translate(-25px, 20px) scale(0.95);
+		}
+	}
+
+	.hero-blob {
+		animation: drift 18s ease-in-out infinite;
+	}
+
+	.hero-blob-alt {
+		animation: drift 22s ease-in-out infinite reverse;
+	}
+</style>
