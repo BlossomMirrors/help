@@ -3,7 +3,7 @@ title: LLM Guidelines
 description: How LLMs may and may not be used when contributing to BlossomOS.
 icon: bot
 order: 1
-image: /covers/robot.jpg
+image: /covers/hand.jpg
 ---
 
 # LLM Guidelines

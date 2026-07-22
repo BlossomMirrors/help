@@ -110,7 +110,7 @@
 						<div
 							class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"
 						>
-							<DocIcon size={20} strokeWidth={1.5} />
+							<DocIcon size={20} strokeWidth={2} />
 						</div>
 						<h2 class="mb-1 font-semibold">{meta.title}</h2>
 						<p class="mb-4 flex-1 text-sm text-muted-foreground">

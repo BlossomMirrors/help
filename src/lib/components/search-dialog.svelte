@@ -4,16 +4,14 @@
 	import * as Kbd from '$lib/components/ui/kbd/index.js';
 	import { getNav, flattenNav, type NavNode } from '$lib/nav';
 	import { icons } from '$lib/icons';
-	import { getDocsetIds, getDocsetMeta } from '$lib/docsets';
+	import { getDocsetIds } from '$lib/docsets';
 	import BookOpenIcon from '@lucide/svelte/icons/book-open';
 	import SearchIcon from '@lucide/svelte/icons/search';
 	import * as m from '$lib/paraglide/messages';
 
 	let open = $state(false);
-	let selectedDocset = $state(getDocsetIds()[0] ?? 'user');
 
-	export function openSearch(docset?: string) {
-		if (docset) selectedDocset = docset;
+	export function openSearch() {
 		open = true;
 	}
 
@@ -28,17 +26,13 @@
 		return () => window.removeEventListener('keydown', handleKeydown);
 	});
 
-	const allItems = $derived(flattenNav(getNav(selectedDocset)).filter((n) => n.href));
-	const currentDocset = $derived(getDocsetMeta(selectedDocset));
 	const docsetIds = $derived(getDocsetIds());
+	const allItems = $derived(
+		docsetIds.flatMap((id) => flattenNav(getNav(id)).filter((n) => n.href))
+	);
 
 	function iconComponent(node: NavNode) {
 		return node.icon ? (icons[node.icon] ?? BookOpenIcon) : BookOpenIcon;
-	}
-
-	function docsetIconComponent(id: string) {
-		const meta = getDocsetMeta(id);
-		return meta.icon ? (icons[meta.icon] ?? BookOpenIcon) : BookOpenIcon;
 	}
 </script>
 
@@ -49,33 +43,14 @@
 	class="rounded-xl"
 >
 	<Command.Input placeholder={m.search_placeholder()} class="h-10 text-base" />
-	{#if docsetIds.length > 1}
-		<div class="border-y border-border px-3 py-2">
-			<div class="flex gap-1 rounded-lg bg-muted/40 p-0.5">
-				{#each docsetIds as dsId (dsId)}
-					{@const DocsetIcon = docsetIconComponent(dsId)}
-					<button
-						onclick={() => (selectedDocset = dsId)}
-						class="flex flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-all {dsId ===
-						selectedDocset
-							? 'bg-popover text-foreground shadow-sm'
-							: 'text-muted-foreground hover:text-foreground'}"
-					>
-						<DocsetIcon size={12} strokeWidth={2} />
-						{getDocsetMeta(dsId).title}
-					</button>
-				{/each}
-			</div>
-		</div>
-	{/if}
-	<Command.List class="max-h-80">
+	<Command.List class="max-h-96">
 		<Command.Empty>
 			<div class="flex flex-col items-center gap-2 py-10 text-muted-foreground">
 				<SearchIcon size={28} strokeWidth={1.25} class="opacity-30" />
 				<p class="text-sm">{m.search_no_results()}</p>
 			</div>
 		</Command.Empty>
-		<Command.Group heading={currentDocset.title} class="px-2">
+		<Command.Group class="px-2">
 			{#each allItems as item (item.href)}
 				{@const Icon = iconComponent(item)}
 				<Command.LinkItem

@@ -13,6 +13,12 @@ Hoyoverse does not provide native Linux support for any of their games. The comm
 > **Not affiliated with Hoyoverse**
 > These launchers are third-party projects. They are not made or supported by Hoyoverse. Use them at your own discretion.
 
+## Recommended: Twintail Launcher
+
+This is the launcher we recommend in case you play more than just Genshin Impact. It also looks nicer and is easier to set up.
+
+<OpenInArc id="app.twintaillauncher.ttl" />
+
 ## Genshin Impact
 
 Install **An Anime Game Launcher** from Arc Store. Community-maintained Linux launcher for Genshin Impact.

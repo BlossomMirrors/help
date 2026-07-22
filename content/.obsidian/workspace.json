@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "en/gaming/battlenet.svx",
+                "file": "de/gaming/hoyoplay.svx",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "battlenet"
+              "title": "hoyoplay"
             }
           }
         ]
@@ -193,13 +193,13 @@
   },
   "active": "27dc0c374bfa622d",
   "lastOpenFiles": [
-    "de/gaming/battlenet.svx",
+    "en/gaming/hoyoplay.svx",
     "en/gaming/battlenet.svx",
+    "de/gaming/battlenet.svx",
     "en/gaming/lutris.svx",
     "de/gaming/heroic.svx",
     "en/gaming/heroic.svx",
     "de/gaming/hoyoplay.svx",
-    "en/gaming/hoyoplay.svx",
     "de/gaming/roblox.svx",
     "en/gaming/roblox.svx",
     "de/gaming/lutris.svx",

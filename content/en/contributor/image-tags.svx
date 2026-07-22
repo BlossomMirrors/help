@@ -1,9 +1,9 @@
 ---
 title: Understanding Image Tags
 description: System components are updated and new images are released at regular intervals. This allows developers to use new features, fix existing issues, and test applications against pre-release versions.
-icon: donut
+icon: tag
 order: 1
-image: /covers/donut.jpg
+image: /covers/tags.jpg
 ---
 
 # Understanding Image Tags

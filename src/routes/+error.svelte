@@ -21,16 +21,16 @@
 	<div class="mt-8 flex items-center gap-3">
 		<a
 			href="/help"
-			class="inline-flex items-center gap-2 rounded-[var(--radius-button)] bg-button px-4 py-2 text-sm font-medium text-button-foreground transition-colors hover:bg-button-hover"
+			class="inline-flex items-center gap-2 rounded-button bg-button px-4 py-2 text-sm font-medium text-button-foreground transition-colors hover:bg-button-hover"
 		>
-			<BookOpenIcon size={16} strokeWidth={1.5} />
+			<BookOpenIcon size={16} strokeWidth={2} />
 			Help Center
 		</a>
 		<a
 			href="/"
-			class="inline-flex items-center gap-2 rounded-[var(--radius-button)] border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-button-hover"
+			class="inline-flex items-center gap-2 rounded-button border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-button-hover"
 		>
-			<HomeIcon size={16} strokeWidth={1.5} />
+			<HomeIcon size={16} strokeWidth={2} />
 			Home
 		</a>
 	</div>

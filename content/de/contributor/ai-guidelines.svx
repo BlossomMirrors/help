@@ -3,7 +3,7 @@ title: LLM-Richtlinien
 description: Wie LLMs beim Contributen zu BlossomOS eingesetzt werden dürfen und was nicht erlaubt ist.
 icon: bot
 order: 1
-image: /covers/robot.jpg
+image: /covers/hand.jpg
 ---
 
 # LLM-Richtlinien
