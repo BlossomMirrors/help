@@ -175,7 +175,7 @@
 	</section>
 
 	<section class="mx-auto max-w-6xl px-4 pb-20">
-		<div class="grid grid-cols-1 gap-5 md:grid-cols-4 md:auto-rows-[13rem]">
+		<div class="grid grid-cols-1 gap-5 md:grid-cols-4 md:auto-rows-[15rem]">
 			{#each docsetData as { id, meta, articles }, i (id)}
 				{@const DocIcon = (meta.icon ? icons[meta.icon] : undefined) ?? BookOpenIcon}
 				<div
@@ -185,58 +185,49 @@
 					style="animation-delay: {i * 130}ms"
 				>
 					<MagicCard
-						class="group relative h-full overflow-hidden rounded-(--radius-card) border border-border"
+						class="group relative h-full overflow-hidden rounded-(--radius-card) border border-border bg-card"
 					>
-						<a href="/help/{id}" class="relative block h-44 md:h-full">
+						<a href="/help/{id}" class="relative flex h-64 flex-col md:h-full">
 							{#if meta.image}
-								<img
-									src={meta.image}
-									alt=""
-									class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-								/>
-								<div
-									class="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-black/0"
-								></div>
-								<div
-									class="absolute top-4 left-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md transition-transform duration-300 group-hover:-translate-y-1"
-								>
-									<DocIcon size={18} strokeWidth={2} />
-								</div>
-								<div class="absolute inset-x-4 bottom-4 text-white">
-									<h2 class="font-serif text-xl font-semibold drop-shadow-sm">{meta.title}</h2>
-									<p class="mt-1 text-xs text-white/75">
-										{m.articles_count({ count: articles.length || 1 })}
-									</p>
+								<div class="relative min-h-16 w-full flex-1">
+									<img
+										src={meta.image}
+										alt=""
+										class="mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+									/>
 									<div
-										class="mt-3 flex items-center gap-1 text-sm font-medium opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+										class="absolute top-3 left-3 flex h-9 w-9 items-center justify-center rounded-xl bg-card/80 text-primary ring-1 ring-border/50 backdrop-blur-sm"
 									>
-										{m.browse()}
-										<ArrowRightIcon
-											size={14}
-											class="transition-transform group-hover:translate-x-1"
-										/>
+										<DocIcon size={16} strokeWidth={2} />
 									</div>
 								</div>
 							{:else}
-								<div class="flex h-full flex-col justify-center bg-card p-6">
+								<div class="p-5 pb-0">
 									<div
-										class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"
+										class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"
 									>
 										<DocIcon size={20} strokeWidth={2} />
 									</div>
-									<h2 class="mb-1 font-semibold">{meta.title}</h2>
-									<p class="mb-3 text-sm text-muted-foreground">
-										{m.articles_count({ count: articles.length || 1 })}
-									</p>
-									<div class="flex items-center gap-1 text-sm font-medium text-primary">
-										{m.browse()}
-										<ArrowRightIcon
-											size={14}
-											class="transition-transform group-hover:translate-x-1"
-										/>
-									</div>
 								</div>
 							{/if}
+							<div class="shrink-0 p-5" class:pt-3={meta.image}>
+								<h2 class="font-serif text-lg font-semibold text-foreground md:text-xl">
+									{meta.title}
+								</h2>
+								{#if meta.description}
+									<p class="mt-1 line-clamp-2 text-sm text-muted-foreground">{meta.description}</p>
+								{/if}
+								<p class="mt-1 text-xs text-muted-foreground/70">
+									{m.articles_count({ count: articles.length || 1 })}
+								</p>
+								<div class="mt-3 flex items-center gap-1 text-sm font-medium text-primary">
+									{m.browse()}
+									<ArrowRightIcon
+										size={14}
+										class="transition-transform group-hover:translate-x-1"
+									/>
+								</div>
+							</div>
 						</a>
 					</MagicCard>
 				</div>
@@ -284,42 +275,40 @@
 					{@const ArticleIcon = (article.icon ? icons[article.icon] : undefined) ?? SearchIcon}
 					<a
 						href={article.href}
-						class="animate-in fade-in slide-in-from-bottom-4 group relative block h-36 overflow-hidden rounded-(--radius-card) border border-border transition-transform duration-500 fill-mode-both hover:-translate-y-1"
+						class="animate-in fade-in slide-in-from-bottom-4 group flex flex-col overflow-hidden rounded-(--radius-card) border border-border bg-card transition-transform duration-500 fill-mode-both hover:-translate-y-1"
 						style="animation-delay: {Math.min(ai * 40, 600)}ms"
 					>
 						{#if article.image}
-							<img
-								src={article.image}
-								alt=""
-								class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-							/>
-							<div
-								class="absolute inset-0 bg-linear-to-t from-black/85 via-black/10 to-transparent"
-							></div>
-							{#if article.tag}
-								<span
-									class="absolute top-2 right-2 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide
-									{article.tag === 'beta' ? 'bg-primary text-primary-foreground' : ''}
-									{article.tag === 'new' ? 'bg-tertiary-500 text-white' : ''}
-									{article.tag === 'deprecated' ? 'bg-destructive text-white' : ''}
-								"
-								>
-									{article.tag === 'new'
-										? m.tag_new()
-										: article.tag === 'beta'
-											? m.tag_beta()
-											: m.tag_deprecated()}
-								</span>
-							{/if}
-							<p class="absolute inset-x-3 bottom-3 truncate text-sm font-medium text-white">
-								{article.title}
-							</p>
+							<div class="relative h-20 w-full shrink-0">
+								<img
+									src={article.image}
+									alt=""
+									class="mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+								/>
+								{#if article.tag}
+									<span
+										class="absolute top-2 right-2 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide
+										{article.tag === 'beta' ? 'bg-primary text-primary-foreground' : ''}
+										{article.tag === 'new' ? 'bg-tertiary-500 text-white' : ''}
+										{article.tag === 'deprecated' ? 'bg-destructive text-white' : ''}
+									"
+									>
+										{article.tag === 'new'
+											? m.tag_new()
+											: article.tag === 'beta'
+												? m.tag_beta()
+												: m.tag_deprecated()}
+									</span>
+								{/if}
+							</div>
+							<div class="flex items-center gap-2 p-3">
+								<ArticleIcon size={14} class="shrink-0 text-primary" />
+								<p class="truncate text-sm font-medium">{article.title}</p>
+							</div>
 						{:else}
-							<div
-								class="flex h-full flex-col items-center justify-center gap-2 bg-card p-3 text-center"
-							>
-								<ArticleIcon size={18} class="text-primary" />
-								<p class="truncate text-xs font-medium">{article.title}</p>
+							<div class="flex items-center gap-2 p-3">
+								<ArticleIcon size={16} class="shrink-0 text-primary" />
+								<p class="truncate text-sm font-medium">{article.title}</p>
 							</div>
 						{/if}
 					</a>

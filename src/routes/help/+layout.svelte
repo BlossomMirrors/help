@@ -90,13 +90,14 @@
 	const pageDescription = $derived(
 		typeof pageMetadata.description === 'string' ? pageMetadata.description : m.hero_subtitle()
 	);
+	const headerImage = $derived(typeof pageMetadata.image === 'string' ? pageMetadata.image : null);
+	const isVideoHeader = $derived(headerImage ? /\.(mp4|webm|mov)$/i.test(headerImage) : false);
 	const ogImage = $derived(
 		new URL(
-			typeof pageMetadata.image === 'string' ? pageMetadata.image : '/og-image.png',
+			headerImage && !isVideoHeader ? `/og${currentPath.slice('/help'.length)}` : '/og-image.png',
 			page.url.origin
 		).href
 	);
-	const headerImage = $derived(typeof pageMetadata.image === 'string' ? pageMetadata.image : null);
 </script>
 
 <svelte:head>

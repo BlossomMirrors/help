@@ -51,6 +51,7 @@
 	},
 	"dependencies": {
 		"@anthropic-ai/sdk": "^0.104.2",
+		"@resvg/resvg-js": "^2.6.2",
 		"@sveltejs/enhanced-img": "^0.10.4",
 		"hast-util-to-html": "^9",
 		"lucide-svelte": "^1.0.1",
@@ -60,6 +61,7 @@
 		"rehype-slug": "^6.0.0",
 		"remark-directive": "^4.0.0",
 		"remark-gfm": "^4.0.1",
+		"satori": "^0.28.2",
 		"shiki": "^4.2.0",
 		"unist-util-visit": "^5"
 	}
