@@ -116,14 +116,14 @@
 			onfocus={() => (focused = true)}
 			onkeydown={handleKeydown}
 			{placeholder}
-			class="w-full rounded-lg border border-border bg-card px-9 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/25"
+			class="w-full rounded-lg border border-border bg-card px-9 py-2.5 text-sm text-foreground transition-colors outline-none placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/25"
 		/>
 		{#if query.length > 0}
 			<button
 				type="button"
 				onclick={clearQuery}
 				aria-label={m.clear_search()}
-				class="absolute top-1/2 right-3 -translate-y-1/2 text-muted-foreground hover:text-foreground cursor-pointer"
+				class="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-foreground"
 			>
 				<XIcon size={14} />
 			</button>
@@ -137,12 +137,12 @@
 			{#if results.length > 0}
 				<ul class="pt-4 pr-6">
 					{#each results as game, i (game.appId)}
-						<li class="list-none m-0">
+						<li class="m-0 list-none">
 							<button
 								type="button"
 								onclick={() => openGame(game.appId)}
 								onmouseenter={() => (activeIndex = i)}
-								class={`flex w-full items-center gap-2.5 px-3 py-2 text-left text-sm cursor-pointer rounded-md ${i === activeIndex ? 'bg-black/10' : ''}`}
+								class={`flex w-full cursor-pointer items-center gap-2.5 rounded-md px-3 py-2 text-left text-sm ${i === activeIndex ? 'bg-black/10' : ''}`}
 							>
 								{#if game.image}
 									<img src={game.image} alt="" class="h-8 w-14 shrink-0 rounded-sm object-cover" />
@@ -155,7 +155,7 @@
 					{/each}
 				</ul>
 			{:else}
-				<p class="px-8 py-2 mt-4 text-sm text-muted-foreground">
+				<p class="mt-4 px-8 py-2 text-sm text-muted-foreground">
 					{m.no_matching_games()}
 				</p>
 			{/if}

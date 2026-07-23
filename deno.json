@@ -1,0 +1,16 @@
+{
+	"nodeModulesDir": "auto",
+	"tasks": {
+		"dev": "deno run -A ./node_modules/.bin/vite dev",
+		"build": "deno run -A ./node_modules/.bin/vite build",
+		"preview": "deno run -A ./node_modules/.bin/vite preview",
+		"prepare": "deno run -A ./node_modules/.bin/svelte-kit sync || echo ''",
+		"check": "deno run -A ./node_modules/.bin/svelte-kit sync && deno run -A ./node_modules/.bin/svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "deno run -A ./node_modules/.bin/svelte-kit sync && deno run -A ./node_modules/.bin/svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "deno run -A ./node_modules/.bin/prettier --check . && deno run -A ./node_modules/.bin/eslint .",
+		"format": "deno run -A ./node_modules/.bin/prettier --write .",
+		"clear": "rm -rf .svelte-kit/generated node_modules/.vite",
+		"serve": "deno run -A ./.deno-deploy/server.ts"
+	},
+	"allowScripts": ["npm:sharp"]
+}

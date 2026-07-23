@@ -12,7 +12,7 @@
 </script>
 
 {#if sources.length > 0}
-	<div class="ml-8 mt-3 flex flex-wrap gap-2">
+	<div class="mt-3 ml-8 flex flex-wrap gap-2">
 		{#each sources as s (s.url)}
 			<a
 				href={s.url}

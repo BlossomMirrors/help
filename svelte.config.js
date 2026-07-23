@@ -3,7 +3,7 @@ import { highlight } from './src/lib/md-highlighter.js';
 import remarkGfm from 'remark-gfm';
 import remarkAlerts from './src/lib/remark-alerts.js';
 import rehypeSlug from 'rehype-slug';
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@deno/svelte-adapter';
 import { injectSvxComponents } from './src/lib/svx-inject-components.js';
 import { rehypeExtractHeadings } from './src/lib/rehype-extract-headings.js';
 

@@ -11,22 +11,15 @@ If you're seeing this, you've probably already done this step. Congrats!
 npx sv create my-app
 ```
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-bun x sv@0.16.1 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:none" sveltekit-adapter="adapter:node" mdsvex paraglide="languageTags:en, de+demo:no" mcp="ide:cursor,other+setup:remote" --install bun help
-```
-
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've installed dependencies with `deno install`, start a development server:
 
 ```sh
-npm run dev
+deno task dev
 
 # or start the server and open the app in a new browser tab
-npm run dev -- --open
+deno task dev -- --open
 ```
 
 ## Building
@@ -34,9 +27,13 @@ npm run dev -- --open
 To create a production version of your app:
 
 ```sh
-npm run build
+deno task build
 ```
 
-You can preview the production build with `npm run preview`.
+You can preview the production build with `deno task preview`, or run the built Deno server directly:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+deno task serve
+```
+
+This project deploys using [`@deno/svelte-adapter`](https://github.com/denoland/svelte-adapter), which outputs a Deno-native server to `.deno-deploy/`.

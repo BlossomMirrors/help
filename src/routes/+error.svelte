@@ -7,7 +7,7 @@
 <svelte:head><title>{page.status} - Blossom Help</title></svelte:head>
 
 <div class="flex min-h-screen flex-col items-center justify-center bg-background px-4 text-center">
-	<p class="font-serif text-[9rem] font-bold leading-none text-primary/10">{page.status}</p>
+	<p class="font-serif text-[9rem] leading-none font-bold text-primary/10">{page.status}</p>
 	<h1 class="mt-2 text-2xl font-semibold">
 		{page.error?.message ?? 'Something went wrong'}
 	</h1>

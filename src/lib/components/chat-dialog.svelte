@@ -199,11 +199,11 @@
 <Dialog.Root bind:open>
 	<Dialog.Portal>
 		<Dialog.Overlay
-			class="data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 z-50 bg-black/60 backdrop-blur-sm duration-150"
+			class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm duration-150 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0"
 		/>
 		<Dialog.Content
 			interactOutsideBehavior="ignore"
-			class="data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 fixed top-1/2 left-1/2 z-50 flex w-full max-w-lg -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-xl border border-border bg-popover shadow-xl duration-150 outline-none"
+			class="fixed top-1/2 left-1/2 z-50 flex w-full max-w-lg -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-xl border border-border bg-popover shadow-xl duration-150 outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95"
 			style="height: min(640px, 88vh);"
 		>
 			<!-- Header -->
@@ -247,7 +247,7 @@
 					{#each messages as msg, i (i)}
 						<div>
 							{#if msg.role === 'assistant' && msg.tools && msg.tools.length > 0}
-								<div class="ml-8 mb-1.5 flex flex-wrap gap-x-3 gap-y-1">
+								<div class="mb-1.5 ml-8 flex flex-wrap gap-x-3 gap-y-1">
 									{#each msg.tools as tool, i (i)}
 										<span class="flex items-center gap-1 text-xs text-muted-foreground/60">
 											<span class="inline-block h-1 w-1 rounded-full bg-muted-foreground/40"></span>
@@ -266,7 +266,7 @@
 					{#if loading}
 						<div>
 							{#if streamingTools.length > 0}
-								<div class="ml-8 mb-1.5 flex flex-wrap gap-x-3 gap-y-1">
+								<div class="mb-1.5 ml-8 flex flex-wrap gap-x-3 gap-y-1">
 									{#each streamingTools as tool, i (i)}
 										<span class="flex items-center gap-1.5 text-xs text-muted-foreground">
 											<span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary"

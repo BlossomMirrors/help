@@ -2,12 +2,12 @@ services:
   help:
     image: registry.blossomos.org/blossom/help:latest
     ports:
-      - '1001:3000'
+      - '1001:8000'
     environment:
       NODE_ENV: production
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
     healthcheck:
-      test: ['CMD', 'wget', '-qO-', 'http://localhost:3000/']
+      test: ['CMD', 'wget', '-qO-', 'http://localhost:8000/']
       interval: 30s
       timeout: 5s
       retries: 3

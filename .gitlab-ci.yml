@@ -1,4 +1,4 @@
-image: oven/bun:latest
+image: denoland/deno:latest
 
 stages:
   - check
@@ -8,8 +8,8 @@ stages:
 lint:
   stage: check
   script:
-    - bun install --frozen-lockfile
-    - bun run lint
+    - deno install --frozen
+    - deno task lint
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
@@ -18,9 +18,9 @@ lint:
 typecheck:
   stage: check
   script:
-    - bun install --frozen-lockfile
-    - bunx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
-    - ANTHROPIC_API_KEY=abc bun run check
+    - deno install --frozen
+    - deno run -A npm:@inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
+    - ANTHROPIC_API_KEY=abc deno task check
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
@@ -29,11 +29,11 @@ typecheck:
 build:
   stage: build
   script:
-    - bun install --frozen-lockfile
-    - bun run build
+    - deno install --frozen
+    - deno task build
   artifacts:
     paths:
-      - build/
+      - .deno-deploy/
     expire_in: 1 week
   cache:
     key: $CI_COMMIT_REF_SLUG

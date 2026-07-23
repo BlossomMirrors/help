@@ -124,7 +124,7 @@
 {#if !isChild}
 	<div bind:this={wrapperEl} class={cn('relative', className)}>
 		<svg
-			class="pointer-events-none absolute left-0 top-0"
+			class="pointer-events-none absolute top-0 left-0"
 			width="100%"
 			height="100%"
 			style="overflow: visible;"

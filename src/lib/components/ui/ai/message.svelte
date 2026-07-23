@@ -39,7 +39,7 @@
 		>
 			<SparklesIcon size={12} class="text-primary" />
 		</div>
-		<div class="prose prose-sm min-w-0 max-w-none flex-1 dark:prose-invert">
+		<div class="prose prose-sm dark:prose-invert max-w-none min-w-0 flex-1">
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html html}
 			{#if streaming}<span

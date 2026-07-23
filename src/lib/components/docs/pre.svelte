@@ -29,7 +29,7 @@
 		aria-label={m.aria_copy_code()}
 		class={cn(
 			'absolute top-2 right-2 z-10 flex h-7 w-7 items-center justify-center rounded border border-border bg-background/80 text-muted-foreground opacity-0 backdrop-blur-sm transition-all',
-			'hover:border-primary/40 hover:text-foreground group-hover:opacity-100',
+			'group-hover:opacity-100 hover:border-primary/40 hover:text-foreground',
 			copied && 'border-green-500/40 text-green-500 opacity-100'
 		)}
 	>

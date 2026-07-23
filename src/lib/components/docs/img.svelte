@@ -158,15 +158,15 @@
 		<enhanced:img
 			{src}
 			{alt}
-			class={cn('h-auto max-w-full max-h-150 rounded-xl shadow', className)}
+			class={cn('h-auto max-h-150 max-w-full rounded-xl shadow', className)}
 		/>
 	</DialogTrigger>
 	<DialogPortal>
 		<Dialog.Overlay
-			class="data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 z-50 bg-black/85 backdrop-blur-sm"
+			class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0"
 		/>
 		<Dialog.Content
-			class="data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 fixed top-1/2 left-1/2 z-50 h-[88vh] w-[95vw] max-w-6xl -translate-x-1/2 -translate-y-1/2 outline-none duration-100"
+			class="fixed top-1/2 left-1/2 z-50 h-[88vh] w-[95vw] max-w-6xl -translate-x-1/2 -translate-y-1/2 duration-100 outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95"
 		>
 			<div class="relative h-full w-full">
 				<!-- svelte-ignore a11y_no_static_element_interactions -->

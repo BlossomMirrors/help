@@ -70,6 +70,7 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 	const mod = await loader();
 	const metadata = mod.metadata ?? {};
 	const title = typeof metadata.title === 'string' ? metadata.title : m.help_title();
+	const description = typeof metadata.description === 'string' ? metadata.description : null;
 	const image = typeof metadata.image === 'string' ? metadata.image : null;
 	const isVideo = image ? /\.(mp4|webm|mov)$/i.test(image) : false;
 
@@ -86,70 +87,81 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 			props: {
 				style: {
 					display: 'flex',
+					flexDirection: 'column',
 					width: '1200px',
 					height: '630px',
-					position: 'relative',
 					background: '#0c0c12',
 					fontFamily: 'Aspekta'
 				},
 				children: [
 					{
-						type: 'img',
-						props: {
-							src: imageDataUri,
-							style: {
-								position: 'absolute',
-								top: 0,
-								left: 0,
-								width: '1200px',
-								height: '630px',
-								objectFit: 'cover'
-							}
-						}
-					},
-					{
 						type: 'div',
 						props: {
 							style: {
-								position: 'absolute',
-								top: 0,
-								left: 0,
-								width: '1200px',
-								height: '630px',
-								background:
-									'linear-gradient(to top, #0c0c12 20%, rgba(12,12,18,0.55) 48%, rgba(12,12,18,0.05) 78%, rgba(12,12,18,0) 100%)'
-							}
-						}
-					},
-					{
-						type: 'div',
-						props: {
-							style: {
-								position: 'absolute',
-								top: 48,
-								left: 48,
+								position: 'relative',
 								display: 'flex',
-								width: 64,
-								height: 64,
-								borderRadius: 16,
-								background: 'rgba(255,255,255,0.16)',
-								border: '1px solid rgba(255,255,255,0.25)',
-								alignItems: 'center',
-								justifyContent: 'center'
+								width: '1200px',
+								height: '360px',
+								overflow: 'hidden'
 							},
-							children: iconName ? [renderIcon(iconName, '#ffffff', 30)] : []
+							children: [
+								{
+									type: 'img',
+									props: {
+										src: imageDataUri,
+										style: {
+											position: 'absolute',
+											top: 0,
+											left: 0,
+											width: '1200px',
+											height: '360px',
+											objectFit: 'cover'
+										}
+									}
+								},
+								{
+									type: 'div',
+									props: {
+										style: {
+											position: 'absolute',
+											bottom: 0,
+											left: 0,
+											width: '1200px',
+											height: '140px',
+											background: 'linear-gradient(to top, #0c0c12, rgba(12,12,18,0))'
+										}
+									}
+								},
+								{
+									type: 'div',
+									props: {
+										style: {
+											position: 'absolute',
+											top: 48,
+											left: 48,
+											display: 'flex',
+											width: 64,
+											height: 64,
+											borderRadius: 16,
+											background: 'rgba(255,255,255,0.16)',
+											border: '1px solid rgba(255,255,255,0.25)',
+											alignItems: 'center',
+											justifyContent: 'center'
+										},
+										children: iconName ? [renderIcon(iconName, '#ffffff', 30)] : []
+									}
+								}
+							]
 						}
 					},
 					{
 						type: 'div',
 						props: {
 							style: {
-								position: 'absolute',
-								left: 64,
-								right: 64,
-								bottom: 56,
 								display: 'flex',
-								flexDirection: 'column'
+								flexDirection: 'column',
+								flex: 1,
+								padding: '32px 64px 48px'
 							},
 							children: [
 								{
@@ -158,11 +170,11 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 										style: {
 											display: 'flex',
 											color: '#3e78ff',
-											fontSize: 22,
+											fontSize: 20,
 											fontWeight: 700,
 											letterSpacing: 2,
 											textTransform: 'uppercase',
-											marginBottom: 20
+											marginBottom: 16
 										},
 										children: m.help_title()
 									}
@@ -174,13 +186,33 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 											display: 'flex',
 											fontFamily: 'Lora',
 											fontStyle: 'italic',
-											fontSize: 60,
+											fontSize: 52,
 											lineHeight: 1.15,
 											color: '#ededf0'
 										},
 										children: title
 									}
-								}
+								},
+								...(description
+									? [
+											{
+												type: 'div',
+												props: {
+													style: {
+														display: '-webkit-box',
+														WebkitBoxOrient: 'vertical',
+														WebkitLineClamp: 2,
+														overflow: 'hidden',
+														marginTop: 14,
+														fontSize: 24,
+														lineHeight: 1.35,
+														color: '#9a9aa8'
+													},
+													children: description
+												}
+											}
+										]
+									: [])
 							]
 						}
 					}

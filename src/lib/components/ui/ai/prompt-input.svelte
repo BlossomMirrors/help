@@ -50,7 +50,7 @@
 		rows={1}
 		oninput={resize}
 		{onkeydown}
-		class="max-h-[120px] flex-1 resize-none rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/40 disabled:opacity-50"
+		class="max-h-[120px] flex-1 resize-none rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm transition-colors outline-none placeholder:text-muted-foreground focus:border-primary/40 disabled:opacity-50"
 	></textarea>
 	<Button onclick={submit} disabled={disabled || !value.trim()} size="icon" class="mb-0.5 shrink-0">
 		<ArrowUpIcon size={16} />

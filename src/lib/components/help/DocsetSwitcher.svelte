@@ -33,7 +33,7 @@
 						href="/help/{dsId}"
 						{...props}
 						class="{props.class} flex items-center gap-2.5 {dsId === currentDocsetId
-							? 'text-primary font-medium'
+							? 'font-medium text-primary'
 							: ''}"
 					>
 						{#if ds.icon && icons[ds.icon]}

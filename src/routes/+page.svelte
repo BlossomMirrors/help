@@ -100,7 +100,7 @@
 				<img
 					src="/logo.svg"
 					alt="logo"
-					class="mb-1 mr-2 inline h-8 align-middle transition-transform duration-300 hover:rotate-12"
+					class="mr-2 mb-1 inline h-8 align-middle transition-transform duration-300 hover:rotate-12"
 				/>
 				{m.help_title()}
 			</a>
@@ -114,10 +114,10 @@
 	<section class="relative overflow-hidden px-4 py-28">
 		<div class="pointer-events-none absolute inset-0 -z-10">
 			<div
-				class="hero-blob absolute left-[15%] top-0 h-100 w-100 rounded-full bg-primary/10 blur-3xl"
+				class="hero-blob absolute top-0 left-[15%] h-100 w-100 rounded-full bg-primary/10 blur-3xl"
 			></div>
 			<div
-				class="hero-blob-alt absolute right-[10%] top-20 h-80 w-80 rounded-full bg-tertiary-500/8 blur-3xl"
+				class="hero-blob-alt absolute top-20 right-[10%] h-80 w-80 rounded-full bg-tertiary-500/8 blur-3xl"
 			></div>
 			{#each heroCollage as chip, i (chip.src)}
 				<div
@@ -137,27 +137,27 @@
 		</div>
 		<div class="relative mx-auto max-w-2xl text-center">
 			<p
-				class="animate-in fade-in slide-in-from-bottom-4 mb-3 text-xs font-semibold uppercase tracking-widest text-primary duration-700 fill-mode-both"
+				class="mb-3 animate-in text-xs font-semibold tracking-widest text-primary uppercase duration-700 fill-mode-both fade-in slide-in-from-bottom-4"
 			>
 				{m.help_center()}
 			</p>
 			<h1
-				class="animate-in fade-in slide-in-from-bottom-6 mb-6 font-serif text-5xl leading-tight duration-700 delay-100 fill-mode-both md:text-6xl"
+				class="mb-6 animate-in font-serif text-5xl leading-tight delay-100 duration-700 fill-mode-both fade-in slide-in-from-bottom-6 md:text-6xl"
 			>
 				{m.hero_title()}
 			</h1>
 			<p
-				class="animate-in fade-in slide-in-from-bottom-6 mb-10 text-lg text-muted-foreground duration-700 delay-200 fill-mode-both"
+				class="mb-10 animate-in text-lg text-muted-foreground delay-200 duration-700 fill-mode-both fade-in slide-in-from-bottom-6"
 			>
 				{m.hero_subtitle()}
 			</p>
 
 			<div
-				class="animate-in fade-in slide-in-from-bottom-6 flex gap-3 duration-700 delay-300 fill-mode-both"
+				class="flex animate-in gap-3 delay-300 duration-700 fill-mode-both fade-in slide-in-from-bottom-6"
 			>
 				<button
 					onclick={openSearch}
-					class="group flex flex-1 cursor-text items-center gap-3 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 text-left shadow-sm transition-all hover:border-primary/40 hover:bg-primary/3 pointer-cursor"
+					class="group pointer-cursor flex flex-1 cursor-text items-center gap-3 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 text-left shadow-sm transition-all hover:border-primary/40 hover:bg-primary/3"
 				>
 					<SearchIcon size={18} class="shrink-0 text-muted-foreground" />
 					<span class="flex-1 text-sm text-muted-foreground">{m.search_placeholder()}</span>
@@ -165,7 +165,7 @@
 				</button>
 				<button
 					onclick={openChat}
-					class="flex shrink-0 items-center gap-2 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 shadow-sm transition-all hover:border-primary/40 hover:bg-primary/3 pointer-cursor"
+					class="pointer-cursor flex shrink-0 items-center gap-2 rounded-(--radius-card) border border-border bg-card px-4 py-3.5 shadow-sm transition-all hover:border-primary/40 hover:bg-primary/3"
 				>
 					<SparklesIcon size={18} class="text-primary" />
 					<span class="text-sm font-medium text-foreground">{m.ask_ai()}</span>
@@ -175,11 +175,11 @@
 	</section>
 
 	<section class="mx-auto max-w-6xl px-4 pb-20">
-		<div class="grid grid-cols-1 gap-5 md:grid-cols-4 md:auto-rows-[15rem]">
+		<div class="grid grid-cols-1 gap-5 md:auto-rows-[15rem] md:grid-cols-4">
 			{#each docsetData as { id, meta, articles }, i (id)}
 				{@const DocIcon = (meta.icon ? icons[meta.icon] : undefined) ?? BookOpenIcon}
 				<div
-					class="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both {bentoClass(
+					class="animate-in duration-700 fill-mode-both fade-in slide-in-from-bottom-8 {bentoClass(
 						i
 					)}"
 					style="animation-delay: {i * 130}ms"
@@ -193,7 +193,7 @@
 									<img
 										src={meta.image}
 										alt=""
-										class="mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+										class="absolute inset-0 h-full w-full mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] object-cover transition-transform duration-500 group-hover:scale-105"
 									/>
 									<div
 										class="absolute top-3 left-3 flex h-9 w-9 items-center justify-center rounded-xl bg-card/80 text-primary ring-1 ring-border/50 backdrop-blur-sm"
@@ -240,7 +240,7 @@
 			<div class="grid gap-4 sm:grid-cols-3">
 				{#each communityLinks as link, ci (link.href)}
 					<div
-						class="animate-in fade-in slide-in-from-bottom-4 h-full duration-500 fill-mode-both"
+						class="h-full animate-in duration-500 fill-mode-both fade-in slide-in-from-bottom-4"
 						style="animation-delay: {ci * 100}ms"
 					>
 						<MagicCard
@@ -275,7 +275,7 @@
 					{@const ArticleIcon = (article.icon ? icons[article.icon] : undefined) ?? SearchIcon}
 					<a
 						href={article.href}
-						class="animate-in fade-in slide-in-from-bottom-4 group flex flex-col overflow-hidden rounded-(--radius-card) border border-border bg-card transition-transform duration-500 fill-mode-both hover:-translate-y-1"
+						class="group flex animate-in flex-col overflow-hidden rounded-(--radius-card) border border-border bg-card transition-transform duration-500 fill-mode-both fade-in slide-in-from-bottom-4 hover:-translate-y-1"
 						style="animation-delay: {Math.min(ai * 40, 600)}ms"
 					>
 						{#if article.image}
@@ -283,11 +283,11 @@
 								<img
 									src={article.image}
 									alt=""
-									class="mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+									class="absolute inset-0 h-full w-full mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] object-cover transition-transform duration-300 group-hover:scale-105"
 								/>
 								{#if article.tag}
 									<span
-										class="absolute top-2 right-2 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide
+										class="absolute top-2 right-2 rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase
 										{article.tag === 'beta' ? 'bg-primary text-primary-foreground' : ''}
 										{article.tag === 'new' ? 'bg-tertiary-500 text-white' : ''}
 										{article.tag === 'deprecated' ? 'bg-destructive text-white' : ''}

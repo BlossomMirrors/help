@@ -154,7 +154,7 @@
 			<enhanced:img
 				src={headerImage}
 				alt=""
-				class="-mt-14 h-62 w-full object-cover object-center sm:h-86 mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] block"
+				class="-mt-14 block h-62 w-full mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] object-cover object-center sm:h-86"
 			/>
 		{/if}
 
@@ -171,7 +171,7 @@
 				<aside
 					class="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-52 shrink-0 overflow-y-auto border-l border-border px-4 py-8 xl:block"
 				>
-					<p class="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+					<p class="mb-3 text-[11px] font-semibold tracking-widest text-muted-foreground uppercase">
 						{m.on_this_page()}
 					</p>
 					<Toc.Root toc={displayToc} />

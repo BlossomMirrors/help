@@ -1,15 +1,15 @@
-FROM oven/bun:latest AS builder
+FROM denoland/deno:latest AS builder
 WORKDIR /app
-COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile
+COPY package.json deno.json deno.lock ./
+RUN deno install --frozen
 COPY . .
-RUN bun run build
+RUN deno task build
 
-FROM oven/bun:latest AS runner
+FROM denoland/deno:latest AS runner
 WORKDIR /app
-COPY --from=builder /app/build ./build
-COPY package.json bun.lock ./
-RUN bun install --production --frozen-lockfile
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.deno-deploy ./.deno-deploy
+COPY package.json deno.json deno.lock ./
 ENV NODE_ENV=production
-EXPOSE 3000
-CMD ["node", "build/index.js"]
+EXPOSE 8000
+CMD ["deno", "run", "-A", "./.deno-deploy/server.ts"]

@@ -21,6 +21,6 @@
 </script>
 
 <aside class="my-4 rounded-r-lg border-l-4 px-4 py-3 {styles[type]}">
-	{#if title}<p class="mb-1 text-sm font-semibold uppercase tracking-wide">{title}</p>{/if}
+	{#if title}<p class="mb-1 text-sm font-semibold tracking-wide uppercase">{title}</p>{/if}
 	<div class="text-sm [&>p]:my-0">{@render children?.()}</div>
 </aside>

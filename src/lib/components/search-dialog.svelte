@@ -65,7 +65,7 @@
 					<span class="flex-1 truncate">{item.title}</span>
 					{#if item.tag}
 						<span
-							class="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide
+							class="rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase
 						{item.tag === 'beta' ? 'bg-primary/10 text-primary' : ''}
 						{item.tag === 'new' ? 'bg-tertiary-700/10 text-tertiary-700 dark:text-tertiary-400' : ''}
 						{item.tag === 'deprecated' ? 'bg-destructive/10 text-destructive' : ''}
