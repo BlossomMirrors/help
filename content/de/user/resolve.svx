@@ -1,0 +1,70 @@
+---
+title: DaVinci Resolve
+description: Behebe Codec-Fehler und verstehe die Unterschiede zwischen Free und Studio in DaVinci Resolve auf BlossomOS.
+icon: clapperboard
+order: 6.5
+image: /covers/video.jpg
+---
+
+# DaVinci Resolve
+
+DaVinci Resolve wird auf BlossomOS als Flatpak ausgeliefert. Es gibt sowohl die Free- als auch die Studio-Version, aber die App hat unter Linux Codec-Einschränkungen, die man in der Benutzeroberfläche nicht direkt sieht. Ein nicht unterstützter Clip lässt sich einfach nicht importieren, ohne dass eine Fehlermeldung erscheint. BlossomOS überwacht das im Hintergrund und gibt dir Bescheid, wenn es passiert. Auf dieser Seite erfährst du, was diese Benachrichtigungen bedeuten und wie du die Dateien fixen kannst, die Probleme machen.
+
+## Die „Arc Compat“-Benachrichtigung
+
+Während Resolve läuft, scannt ein kleiner Helfer namens Arc Compat das Debug-Log nach Fehlern wegen nicht unterstützter Codecs. Sobald etwas schiefgeht, ploppt eine Desktop-Benachrichtigung mit einem **Docs öffnen**-Button auf, der dich hierher geführt hat. Du musst das Tool nicht extra starten, es öffnet sich automatisch zusammen mit Resolve.
+
+Du wirst eine von zwei Meldungen sehen:
+
+- **„Codec 'xyz' can't be decoded by this version.“** — Der Video-Codec des Clips wird nicht unterstützt.
+- **„Can't decode audio in 'dateiname'.“** — Der Audio-Codec des Clips wird nicht unterstützt.
+
+In beiden Fällen ist die Lösung gleich: Konvertiere die Datei mit `convert-for-resolve` und importiere dann die konvertierte Kopie statt des Originals.
+
+## Eine Datei fixen
+
+`convert-for-resolve` ist direkt im Resolve-Flatpak enthalten. Führe es in dem Ordner aus, in dem deine Clips liegen:
+
+```
+flatpak run --command=convert-for-resolve com.blackmagic.Resolve
+```
+
+Für die Studio-Version nutzt du stattdessen `com.blackmagic.ResolveStudio`. Standardmäßig werden alle `.mp4`-Dateien im aktuellen Verzeichnis konvertiert; für andere Formate kannst du einfach eine andere Endung angeben:
+
+```
+flatpak run --command=convert-for-resolve com.blackmagic.Resolve .mkv
+```
+
+Das Tool prüft jede Datei mit `ffprobe` und kodiert nur das neu, was wirklich inkompatibel ist. Video-Streams, die schon in einem unterstützten Codec vorliegen (DNxHD/DNxHR, ProRes etc.), werden einfach kopiert; ansonsten erfolgt eine Umwandlung in DNxHR. Audio in PCM wird ebenfalls übernommen, alles andere wird in PCM umgewandelt. Die fertigen Dateien landen als `.mov` in einem Unterordner namens `converted/` und sind bereit für den Import.
+
+> [!NOTE]
+> Bei einer typischen Bildschirmaufnahme (`.mp4` mit H.264-Video und AAC-Audio) müssen beide Spuren neu kodiert werden, nicht nur der Ton, da der Import von AAC in keiner der beiden Versionen unterstützt wird.
+
+## Warum das so ist
+
+- **H.264/H.265 Decoding** ist in der Free-Version gar nicht verfügbar. In der Studio-Version wird dafür GPU-beschleunigtes Decoding benötigt. Bei AMD-Karten brauchst du dafür zusätzlich das `rocm-meta`-Paket auf deinem Host-System, da das Flatpak das nicht mitliefern kann. Ältere AMD-Karten vor der RDNA-Generation (RX 400/500-Serie und früher) haben den ROCm-Support vom Hersteller verloren und funktionieren so oder so nicht.
+- **H.264/H.265 Encoding** (beim Export) geht nur mit Nvidia-Karten über CUDA und setzt das `cuda-devel`-Paket auf dem Host voraus. Keine der Versionen hat einen eingebauten Software-Encoder für diese Formate.
+- **AAC-Audio** wird für den Import in keiner Version unterstützt, weshalb du die meisten Bildschirmaufnahmen vorher umwandeln musst.
+
+## Fehlerbehebung
+
+<details>
+<summary>Die Benachrichtigung erscheint nie, obwohl ein Clip offensichtlich nicht importiert werden konnte</summary>
+
+Arc Compat reagiert nur auf zwei ganz bestimmte Fehlermeldungen in Resolves eigenem Debug-Log. Wenn ein Clip aus einem anderen Grund scheitert, schlägt es nicht an. Schau am besten direkt unter `~/.var/app/com.blackmagic.Resolve/data/logs/ResolveDebug.txt` (oder dem Äquivalent für ResolveStudio) nach dem eigentlichen Fehler.
+
+</details>
+
+<details>
+<summary>convert-for-resolve sagt „command not found“</summary>
+
+Das ist ein Befehl innerhalb der Flatpak-Sandbox, kein Programm in deinem normalen System-Pfad. Du musst ihn immer über `flatpak run --command=convert-for-resolve <app-id>` aufrufen, nicht direkt.
+
+</details>
+
+<details>
+<summary>Die Studio-Version stürzt beim „Checking Licences...“-Startbildschirm mit einem USB-Dongle ab</summary>
+
+Das liegt an den udev-Berechtigungen, nicht an den Codecs. Du musst eine Regel hinzufügen, die Flatpak-Apps Zugriff auf die USB-Vendor-ID deines Keys erlaubt (`096e` für Blackmagic-Dongles). Danach den Stick einmal aus- und wieder einstecken.
+
+</details>

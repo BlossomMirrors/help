@@ -6,6 +6,7 @@ import BookOpen from '@lucide/svelte/icons/book-open';
 import Book from '@lucide/svelte/icons/book';
 import CheckCircle from '@lucide/svelte/icons/check-circle';
 import ChevronRight from '@lucide/svelte/icons/chevron-right';
+import Clapperboard from '@lucide/svelte/icons/clapperboard';
 import CircleHelp from '@lucide/svelte/icons/circle-help';
 import Code from '@lucide/svelte/icons/code';
 import Database from '@lucide/svelte/icons/database';
@@ -64,6 +65,7 @@ export const icons: Record<string, Component> = {
 	bot: Bot,
 	'check-circle': CheckCircle,
 	'chevron-right': ChevronRight,
+	clapperboard: Clapperboard,
 	'circle-help': CircleHelp,
 	code: Code,
 	database: Database,

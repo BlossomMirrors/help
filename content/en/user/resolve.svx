@@ -1,0 +1,70 @@
+---
+title: DaVinci Resolve
+description: Fix codec errors and understand Free vs Studio limitations in DaVinci Resolve on BlossomOS.
+icon: clapperboard
+order: 6.5
+image: /covers/video.jpg
+---
+
+# DaVinci Resolve
+
+DaVinci Resolve ships on BlossomOS as a Flatpak. Both the Free and Studio editions are available, but the underlying app has codec limitations on Linux that aren't obvious from the UI, since an unsupported clip just fails to import with no error dialog. BlossomOS watches for this in the background and notifies you when it happens, this page explains what those notifications mean and how to fix the file they're complaining about.
+
+## The "Arc Compat" Notification
+
+While Resolve is running, a small helper called Arc Compat watches its debug log for unsupported-codec errors and pops up a desktop notification the moment one happens, with an **Open Docs** button that brought you here. You don't need to start this yourself, it launches automatically alongside Resolve.
+
+You'll see one of two messages:
+
+- **"Codec 'xyz' can't be decoded by this version."** — the clip's video codec isn't supported.
+- **"Can't decode audio in 'filename'."** — the clip's audio codec isn't supported.
+
+Either way, the fix is the same: convert the file with `convert-for-resolve`, then import the converted copy instead of the original.
+
+## Fixing a File
+
+`convert-for-resolve` ships inside the Resolve Flatpak. Run it from the folder that contains your clips:
+
+```
+flatpak run --command=convert-for-resolve com.blackmagic.Resolve
+```
+
+For Studio, use `com.blackmagic.ResolveStudio` instead. By default it converts every `.mp4` in the current directory; pass a different extension for other containers:
+
+```
+flatpak run --command=convert-for-resolve com.blackmagic.Resolve .mkv
+```
+
+It probes each file with `ffprobe` and only re-encodes what's actually incompatible; video already in a supported codec (DNxHD/DNxHR, ProRes, etc.) is copied as-is, otherwise it's re-encoded to DNxHR. Audio already in PCM is copied as-is, otherwise it's re-encoded to PCM. Converted files land in a `converted/` subfolder as `.mov`, ready to import.
+
+> [!NOTE]
+> A typical screen recording (`.mp4` with H.264 video and AAC audio) needs both streams re-encoded, not just the audio, since AAC import isn't supported in either edition.
+
+## Why This Happens
+
+- **H.264/H.265 decode** is not available at all in the Free edition. In Studio it needs GPU-accelerated decode, which on AMD additionally requires the `rocm-meta` package on the host, outside anything the Flatpak can provide. Older pre-RDNA AMD cards (RX 400/500 series and earlier) lost ROCm support upstream and won't work regardless.
+- **H.264/H.265 encode** (on export) is Nvidia-only via CUDA, and needs the host's `cuda-devel` package. Neither edition has a built-in software encoder for these formats.
+- **AAC audio** isn't supported for import in either edition, which is why most screen recordings need conversion.
+
+## Troubleshooting
+
+<details>
+<summary>The notification never appears, even though a clip clearly failed to import</summary>
+
+Arc Compat only reacts to two specific error strings in Resolve's own debug log. If a clip fails for an unrelated reason, it won't fire. Check `~/.var/app/com.blackmagic.Resolve/data/logs/ResolveDebug.txt` (or the ResolveStudio equivalent) directly for the actual error.
+
+</details>
+
+<details>
+<summary>convert-for-resolve says "command not found"</summary>
+
+It's a command inside the Flatpak sandbox, not a program on your normal system path. Always invoke it through `flatpak run --command=convert-for-resolve <app-id>`, not directly.
+
+</details>
+
+<details>
+<summary>Studio segfaults at the "Checking Licences..." splash screen with a USB licence key</summary>
+
+This is a udev permissions issue, not a codec issue. Add a rule granting Flatpak apps access to your key's USB vendor ID (`096e` for Blackmagic's own dongles), then unplug and replug the key.
+
+</details>
