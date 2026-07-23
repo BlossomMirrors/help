@@ -21,6 +21,7 @@ Willkommen bei BlossomOS. In diesem Guide erfährst du alles, was du wissen muss
 ## Multimedia
 
 - **[Blu-rays abspielen](/help/user/bluray)** — Kommerzielle Blu-ray-Discs in VLC ansehen.
+- **[DaVinci Resolve](/help/user/resolve)** — Fix codec errors and understand Free vs Studio limitations.
 
 ## System
 
