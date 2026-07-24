@@ -67,7 +67,7 @@
 	<div class="shrink-0 px-3 pt-3">
 		<button
 			onclick={openSearch}
-			class="flex w-full items-center gap-2.5 rounded-[var(--radius-menu)] border border-border bg-muted/40 px-3 py-2 text-sm text-muted-foreground transition-colors hover:border-primary/30 hover:bg-muted"
+			class="flex w-full items-center gap-2.5 rounded-(--radius-menu) border border-border bg-muted/40 px-3 py-2 text-sm text-muted-foreground transition-colors hover:border-primary/30 hover:bg-muted"
 			aria-label={m.aria_search()}
 		>
 			<SearchIcon size={14} class="shrink-0" />

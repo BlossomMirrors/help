@@ -15,6 +15,21 @@
 	import AtSignIcon from '@lucide/svelte/icons/at-sign';
 	import { icons } from '$lib/icons';
 	import { page } from '$app/state';
+	import type { Picture } from '@sveltejs/enhanced-img';
+
+	const coverImages = import.meta.glob('/src/lib/images/covers/*.jpg', {
+		eager: true,
+		query: { enhanced: true },
+		import: 'default'
+	}) as Record<string, Picture>;
+
+	function resolveCover(path: string): Picture | string;
+	function resolveCover(path: string | undefined): Picture | string | undefined;
+	function resolveCover(path: string | undefined): Picture | string | undefined {
+		if (!path) return undefined;
+		const filename = path.split('/').pop();
+		return coverImages[`/src/lib/images/covers/${filename}`] ?? path;
+	}
 
 	const communityLinks = [
 		{
@@ -127,7 +142,11 @@
 					<div
 						class="h-full w-full overflow-hidden rounded-2xl shadow-xl ring-1 ring-border/50 transition-all duration-500 {chip.rotate} hover:z-10 hover:scale-110 hover:rotate-0 hover:shadow-2xl"
 					>
-						<img src={chip.src} alt="" class="h-full w-full object-cover" />
+						<enhanced:img
+							src={resolveCover(chip.src)}
+							alt=""
+							class="h-full w-full object-cover"
+						/>
 					</div>
 				</div>
 			{/each}
@@ -175,7 +194,7 @@
 	</section>
 
 	<section class="mx-auto max-w-6xl px-4 pb-20">
-		<div class="grid grid-cols-1 gap-5 md:auto-rows-[15rem] md:grid-cols-4">
+		<div class="grid grid-cols-1 gap-5 md:auto-rows-60 md:grid-cols-4">
 			{#each docsetData as { id, meta, articles }, i (id)}
 				{@const DocIcon = (meta.icon ? icons[meta.icon] : undefined) ?? BookOpenIcon}
 				<div
@@ -190,8 +209,8 @@
 						<a href="/help/{id}" class="relative flex h-64 flex-col md:h-full">
 							{#if meta.image}
 								<div class="relative min-h-16 w-full flex-1">
-									<img
-										src={meta.image}
+									<enhanced:img
+										src={resolveCover(meta.image)}
 										alt=""
 										class="absolute inset-0 h-full w-full mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] object-cover transition-transform duration-500 group-hover:scale-105"
 									/>
@@ -280,8 +299,8 @@
 					>
 						{#if article.image}
 							<div class="relative h-20 w-full shrink-0">
-								<img
-									src={article.image}
+								<enhanced:img
+									src={resolveCover(article.image)}
 									alt=""
 									class="absolute inset-0 h-full w-full mask-[linear-gradient(to_bottom,black_10%,transparent_95%)] object-cover transition-transform duration-300 group-hover:scale-105"
 								/>
