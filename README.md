@@ -30,10 +30,22 @@ To create a production version of your app:
 deno task build
 ```
 
-You can preview the production build with `deno task preview`, or run the built Deno server directly:
+You can preview the production build with `deno task preview`.
+
+## Deploying
+
+This project deploys to [Cloudflare Workers](https://developers.cloudflare.com/workers/) using [`@sveltejs/adapter-cloudflare`](https://svelte.dev/docs/kit/adapter-cloudflare), which outputs a Worker to `.svelte-kit/cloudflare/`.
+
+Copy `.dev.vars.example` to `.dev.vars` and fill in `ANTHROPIC_API_KEY` for local `wrangler dev`/`wrangler deploy`. In production, set it with:
 
 ```sh
-deno task serve
+deno run -A ./node_modules/.bin/wrangler secret put ANTHROPIC_API_KEY
 ```
 
-This project deploys using [`@deno/svelte-adapter`](https://github.com/denoland/svelte-adapter), which outputs a Deno-native server to `.deno-deploy/`.
+Then deploy with:
+
+```sh
+deno task deploy
+```
+
+CI (`.gitlab-ci.yml`) runs this on pushes to `main`, and needs a `CLOUDFLARE_API_TOKEN` CI/CD variable set in the project settings.

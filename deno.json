@@ -10,7 +10,8 @@
 		"lint": "deno run -A ./node_modules/.bin/prettier --check . && deno run -A ./node_modules/.bin/eslint .",
 		"format": "deno run -A ./node_modules/.bin/prettier --write .",
 		"clear": "rm -rf .svelte-kit/generated node_modules/.vite",
-		"serve": "deno run -A ./.deno-deploy/server.ts"
+		"deploy": "deno task build && deno run -A ./node_modules/.bin/wrangler deploy",
+		"cf-typegen": "deno run -A ./node_modules/.bin/wrangler types"
 	},
-	"allowScripts": ["npm:sharp"]
+	"allowScripts": ["npm:sharp", "npm:workerd"]
 }

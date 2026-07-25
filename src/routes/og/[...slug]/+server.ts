@@ -4,13 +4,20 @@ import { getDocsetMeta } from '$lib/docsets';
 import { renderIcon } from '$lib/server/og-icons';
 import { error, redirect } from '@sveltejs/kit';
 import satori from 'satori';
-import { Resvg } from '@resvg/resvg-js';
+import { Resvg, initWasm } from '@resvg/resvg-wasm';
 import type { Component } from 'svelte';
 import type { RequestHandler } from './$types';
 
 const pages = import.meta.glob<{ default: Component; metadata?: Record<string, unknown> }>(
 	'/content/**/*.svx'
 );
+
+let wasmReady: Promise<void> | null = null;
+
+function ensureWasmInit(fetch: typeof globalThis.fetch) {
+	wasmReady ??= initWasm(fetch('/wasm/resvg.wasm'));
+	return wasmReady;
+}
 
 let fontsPromise: Promise<
 	{ name: string; data: Buffer; weight: 400 | 700; style: 'normal' | 'italic' }[]
@@ -222,7 +229,13 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 		{ width: 1200, height: 630, fonts }
 	);
 
-	const png = new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();
+	await ensureWasmInit(fetch);
+	const png = new Resvg(svg, {
+		fitTo: { mode: 'width', value: 1200 },
+		font: { loadSystemFonts: false }
+	})
+		.render()
+		.asPng();
 
 	return new Response(new Uint8Array(png), {
 		headers: {

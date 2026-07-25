@@ -2,8 +2,7 @@ image: denoland/deno:latest
 
 stages:
   - check
-  - build
-  - docker
+  - deploy
 
 lint:
   stage: check
@@ -26,32 +25,14 @@ typecheck:
     paths:
       - node_modules/
 
-build:
-  stage: build
+deploy:
+  stage: deploy
   script:
     - deno install --frozen
-    - deno task build
-  artifacts:
-    paths:
-      - .deno-deploy/
-    expire_in: 1 week
+    - deno task deploy
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
       - node_modules/
-
-docker:
-  stage: docker
-  image:
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: ['']
-  script:
-    - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n $CI_REGISTRY_USER:$CI_REGISTRY_PASSWORD | base64 -w 0)\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor
-      --context $CI_PROJECT_DIR
-      --dockerfile $CI_PROJECT_DIR/Dockerfile
-      --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-      --destination $CI_REGISTRY_IMAGE:latest
   only:
     - main
