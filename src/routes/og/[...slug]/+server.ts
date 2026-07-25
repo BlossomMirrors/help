@@ -3,8 +3,6 @@ import * as m from '$lib/paraglide/messages';
 import { getDocsetMeta } from '$lib/docsets';
 import { renderIcon } from '$lib/server/og-icons';
 import { error, redirect } from '@sveltejs/kit';
-import satori from 'satori';
-import { Resvg, initWasm } from '@resvg/resvg-wasm';
 import type { Component } from 'svelte';
 import type { RequestHandler } from './$types';
 
@@ -12,39 +10,37 @@ const pages = import.meta.glob<{ default: Component; metadata?: Record<string, u
 	'/content/**/*.svx'
 );
 
-let wasmReady: Promise<void> | null = null;
-
-function ensureWasmInit(fetch: typeof globalThis.fetch) {
-	wasmReady ??= initWasm(fetch('/wasm/resvg.wasm'));
-	return wasmReady;
-}
-
 let fontsPromise: Promise<
-	{ name: string; data: Buffer; weight: 400 | 700; style: 'normal' | 'italic' }[]
+	{ name: string; data: ArrayBuffer; weight: 400 | 700; style: 'normal' | 'italic' }[]
 > | null = null;
 
-function loadFonts(fetch: typeof globalThis.fetch) {
+// Cloudflare Workers reject a Worker fetching its own zone over the public network
+// (error 1042), so static assets must be read via the ASSETS binding instead of a
+// plain same-origin fetch().
+type AssetFetch = (path: string) => Promise<Response>;
+
+function loadFonts(assetFetch: AssetFetch) {
 	if (!fontsPromise) {
 		fontsPromise = Promise.all([
-			fetch('/fonts-og/Aspekta-400.ttf').then((r) => r.arrayBuffer()),
-			fetch('/fonts-og/Aspekta-700.ttf').then((r) => r.arrayBuffer()),
-			fetch('/fonts-og/Lora-Italic.ttf').then((r) => r.arrayBuffer())
+			assetFetch('/fonts-og/Aspekta-400.ttf').then((r) => r.arrayBuffer()),
+			assetFetch('/fonts-og/Aspekta-700.ttf').then((r) => r.arrayBuffer()),
+			assetFetch('/fonts-og/Lora-Italic.ttf').then((r) => r.arrayBuffer())
 		]).then(([aspekta400, aspekta700, loraItalic]) => [
 			{
 				name: 'Aspekta',
-				data: Buffer.from(aspekta400),
+				data: aspekta400,
 				weight: 400 as const,
 				style: 'normal' as const
 			},
 			{
 				name: 'Aspekta',
-				data: Buffer.from(aspekta700),
+				data: aspekta700,
 				weight: 700 as const,
 				style: 'normal' as const
 			},
 			{
 				name: 'Lora',
-				data: Buffer.from(loraItalic),
+				data: loraItalic,
 				weight: 400 as const,
 				style: 'italic' as const
 			}
@@ -53,14 +49,17 @@ function loadFonts(fetch: typeof globalThis.fetch) {
 	return fontsPromise;
 }
 
-async function toDataUri(fetch: typeof globalThis.fetch, url: string) {
-	const res = await fetch(url);
+async function toDataUri(assetFetch: AssetFetch, url: string) {
+	const res = await assetFetch(url);
 	const buf = Buffer.from(await res.arrayBuffer());
 	const contentType = res.headers.get('content-type') ?? 'image/jpeg';
 	return `data:${contentType};base64,${buf.toString('base64')}`;
 }
 
-export const GET: RequestHandler = async ({ params, fetch }) => {
+export const GET: RequestHandler = async ({ params, request, platform }) => {
+	const assetFetch: AssetFetch = (path) =>
+		platform!.env.ASSETS.fetch(new URL(path, request.url));
+
 	const locale = getLocale();
 	const [docset, ...rest] = params.slug.split('/');
 	const path = rest.join('/');
@@ -86,9 +85,13 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 
 	const iconName = typeof metadata.icon === 'string' ? metadata.icon : getDocsetMeta(docset).icon;
 
-	const [fonts, imageDataUri] = await Promise.all([loadFonts(fetch), toDataUri(fetch, image)]);
+	const [fonts, imageDataUri] = await Promise.all([
+		loadFonts(assetFetch),
+		toDataUri(assetFetch, image)
+	]);
 
-	const svg = await satori(
+	const { renderOgPng } = await import('$lib/server/og-render');
+	const png = await renderOgPng(
 		{
 			type: 'div',
 			props: {
@@ -228,14 +231,6 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 		},
 		{ width: 1200, height: 630, fonts }
 	);
-
-	await ensureWasmInit(fetch);
-	const png = new Resvg(svg, {
-		fitTo: { mode: 'width', value: 1200 },
-		font: { loadSystemFonts: false }
-	})
-		.render()
-		.asPng();
 
 	return new Response(new Uint8Array(png), {
 		headers: {
