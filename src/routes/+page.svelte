@@ -115,7 +115,7 @@
 				<img
 					src="/logo.svg"
 					alt="logo"
-					class="mr-2 mb-1 inline h-8 align-middle transition-transform duration-300 hover:rotate-12"
+					class="mr-2 mb-1 inline h-8 align-middle"
 				/>
 				{m.help_title()}
 			</a>
