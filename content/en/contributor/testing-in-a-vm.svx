@@ -1,0 +1,47 @@
+---
+title: Testing in a virtual machine
+description: Set up a local virtual machine to safely test BlossomOS builds and software without touching your main system.
+icon: terminal
+order: 3
+image: /covers/hdd.jpg
+---
+
+# Testing in a virtual machine
+
+Testing on your main system is risky and makes quick experimentation difficult. By running BlossomOS in a virtual machine (VM), you can try out new packages, image tags, or custom changes safely and revert instantly using a snapshot.
+
+## Prerequisites
+
+- Hardware virtualisation enabled in the BIOS
+- KVM, QEMU, and libvirt
+- virt-manager
+
+`virt-manager` provides a graphical interface for creating and managing VMs. It comes pre-installed on the Developer Experience images (`-dx`). For more details, see [Understanding Image Tags](/help/contributor/image-tags).
+
+## 1. Install BlossomOS in the VM
+
+There's no shortcut here, just install BlossomOS in the VM the same way you'd install it on a real PC:
+
+1. Download the standard BlossomOS ISO from [blossomos.org](https://blossomos.org), you don't need the NVIDIA ISO in a VM. See [Installing BlossomOS](/help/user/install-guide) for details on the download.
+2. Open **virt-manager** and create a new VM, using the downloaded ISO as the install media.
+3. Choose **Fedora Linux** as the operating system, and give the VM at least 4 GB of RAM, 2 CPUs, and 35 GB of disk space.
+4. Start the VM and go through the installer as described in [Installing BlossomOS](/help/user/install-guide).
+
+> [!NOTE]
+> You can skip the flashing steps from that guide, in a VM the ISO is attached directly as virtual media instead of being written to a USB drive.
+
+## 2. Snapshot before testing
+
+Before installing untrusted software or trying out a risky change, create a snapshot so you can revert immediately:
+
+```bash
+virsh snapshot-create-as <vm-name> clean-state
+```
+
+Restore it at any time with:
+
+```bash
+virsh snapshot-revert <vm-name> clean-state
+```
+
+You can also create and restore snapshots directly from the virt-manager interface.

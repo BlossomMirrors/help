@@ -1,0 +1,47 @@
+---
+title: Testen in einer virtuellen Maschine
+description: Richte eine lokale virtuelle Maschine ein, um BlossomOS-Builds und Software sicher zu testen, ohne dein Hauptsystem anzufassen.
+icon: terminal
+order: 3
+image: /covers/hdd.jpg
+---
+
+# Testen in einer virtuellen Maschine
+
+Auf dem Hauptsystem zu testen ist riskant und macht schnelles Ausprobieren schwer. Wenn du BlossomOS in einer virtuellen Maschine (VM) laufen lässt, kannst du neue Pakete, Image-Tags oder eigene Änderungen gefahrlos ausprobieren und mit einem Snapshot sofort wieder zurücksetzen.
+
+## Voraussetzungen
+
+- Hardware-Virtualisierung im BIOS aktiviert
+- KVM, QEMU und libvirt
+- virt-manager
+
+`virt-manager` gibt dir eine grafische Oberfläche zum Erstellen und Verwalten von VMs. Auf den Developer-Experience-Images (`-dx`) ist es bereits vorinstalliert. Siehe dazu [Image Tags verstehen](/help/contributor/image-tags).
+
+## 1. BlossomOS in der VM installieren
+
+Hier gibt es keine Abkürzung, installier BlossomOS in der VM genauso, wie du es auf einem echten PC tun würdest:
+
+1. Lade das Standard-ISO von BlossomOS von [blossomos.org](https://blossomos.org) herunter, das NVIDIA-ISO brauchst du in einer VM nicht. Details zum Download stehen in [BlossomOS installieren](/help/user/install-guide).
+2. Öffne **virt-manager** und erstelle eine neue VM, das heruntergeladene ISO nutzt du dabei als Installationsmedium.
+3. Wähle **Fedora Linux** als Betriebssystem und gib der VM mindestens 4 GB RAM, 2 CPUs und 35 GB Speicherplatz.
+4. Starte die VM und durchlaufe den Installer wie in [BlossomOS installieren](/help/user/install-guide) beschrieben.
+
+> [!NOTE]
+> Die Schritte zum Flashen aus dieser Anleitung kannst du überspringen, in einer VM wird das ISO direkt als virtuelles Medium eingebunden statt auf einen USB-Stick geschrieben zu werden.
+
+## 2. Snapshot vor dem Testen
+
+Bevor du nicht vertrauenswürdige Software installierst oder eine riskante Änderung ausprobierst, erstelle einen Snapshot, damit du sofort zurücksetzen kannst:
+
+```bash
+virsh snapshot-create-as <vm-name> clean-state
+```
+
+Stelle ihn jederzeit wieder her mit:
+
+```bash
+virsh snapshot-revert <vm-name> clean-state
+```
+
+Snapshots kannst du auch direkt in der virt-manager-Oberfläche erstellen und wiederherstellen.
