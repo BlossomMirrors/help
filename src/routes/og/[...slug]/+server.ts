@@ -57,8 +57,7 @@ async function toDataUri(assetFetch: AssetFetch, url: string) {
 }
 
 export const GET: RequestHandler = async ({ params, request, platform }) => {
-	const assetFetch: AssetFetch = (path) =>
-		platform!.env.ASSETS.fetch(new URL(path, request.url));
+	const assetFetch: AssetFetch = (path) => platform!.env.ASSETS.fetch(new URL(path, request.url));
 
 	const locale = getLocale();
 	const [docset, ...rest] = params.slug.split('/');

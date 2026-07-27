@@ -112,11 +112,7 @@
 	<header class="sticky top-0 z-40 border-b border-border bg-card/80 backdrop-blur-sm">
 		<div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
 			<a href="/" class="mt-1 font-serif text-xl font-semibold text-foreground">
-				<img
-					src="/logo.svg"
-					alt="logo"
-					class="mr-2 mb-1 inline h-8 align-middle"
-				/>
+				<img src="/logo.svg" alt="logo" class="mr-2 mb-1 inline h-8 align-middle" />
 				{m.help_title()}
 			</a>
 			<div class="flex items-center gap-2">
@@ -142,11 +138,7 @@
 					<div
 						class="h-full w-full overflow-hidden rounded-2xl shadow-xl ring-1 ring-border/50 transition-all duration-500 {chip.rotate} hover:z-10 hover:scale-110 hover:rotate-0 hover:shadow-2xl"
 					>
-						<enhanced:img
-							src={resolveCover(chip.src)}
-							alt=""
-							class="h-full w-full object-cover"
-						/>
+						<enhanced:img src={resolveCover(chip.src)} alt="" class="h-full w-full object-cover" />
 					</div>
 				</div>
 			{/each}
