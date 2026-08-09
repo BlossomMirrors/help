@@ -1,4 +1,7 @@
+import { env } from '$env/dynamic/public';
 import { error, type RequestHandler } from '@sveltejs/kit';
+
+const ORIGIN = env.PUBLIC_ORIGIN || 'https://help.blossomos.org';
 
 export const prerender = true;
 
@@ -23,7 +26,7 @@ interface DocsetModule {
 	default: DocsetConfig;
 }
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async () => {
 	try {
 		const pageModules = import.meta.glob<MdsvexModule>('/content/en/**/*.svx', { eager: false });
 		const docsetModules = import.meta.glob<DocsetModule>('/content/en/**/+docset.ts');
@@ -66,7 +69,7 @@ export const GET: RequestHandler = async ({ url }) => {
 				pagesByDocset[docsetKey].push({
 					title: mod.metadata.title || 'Blossom Help',
 					description: mod.metadata.description,
-					url: `${url.origin}/md/${cleanRoute}.md`
+					url: `${ORIGIN}/md/${cleanRoute}.md`
 				});
 			}
 		}
