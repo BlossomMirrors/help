@@ -23,7 +23,7 @@ Diese Anleitung führt dich Schritt für Schritt durch das Herunterladen, Flashe
 
 ## BlossomOS herunterladen
 
-Lade die BlossomOS-ISO von [blossomos.org](https://blossomos.org) herunter. Wähle die ISO-Datei, die zu deiner Grafikkarte passt: die Standard-ISO für Intel/AMD oder die NVIDIA-ISO, falls du eine NVIDIA-Grafikkarte besitzt. Die Website erkennt deine GPU normalerweise automatisch und schlägt die passende Datei vor.
+Lade die BlossomOS-ISO von [blossom.computer](https://blossom.computer) herunter. Wähle die ISO-Datei, die zu deiner Grafikkarte passt: die Standard-ISO für Intel/AMD oder die NVIDIA-ISO, falls du eine NVIDIA-Grafikkarte besitzt. Die Website erkennt deine GPU normalerweise automatisch und schlägt die passende Datei vor.
 
 ## Die ISO flashen
 

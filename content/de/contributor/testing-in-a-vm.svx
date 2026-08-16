@@ -22,7 +22,7 @@ Auf dem Hauptsystem zu testen ist riskant und macht schnelles Ausprobieren schwe
 
 Hier gibt es keine Abkürzung, installier BlossomOS in der VM genauso, wie du es auf einem echten PC tun würdest:
 
-1. Lade das Standard-ISO von BlossomOS von [blossomos.org](https://blossomos.org) herunter, das NVIDIA-ISO brauchst du in einer VM nicht. Details zum Download stehen in [BlossomOS installieren](/help/user/install-guide).
+1. Lade das Standard-ISO von BlossomOS von [blossom.computer](https://blossom.computer) herunter, das NVIDIA-ISO brauchst du in einer VM nicht. Details zum Download stehen in [BlossomOS installieren](/help/user/install-guide).
 2. Öffne **virt-manager** und erstelle eine neue VM, das heruntergeladene ISO nutzt du dabei als Installationsmedium.
 3. Wähle **Fedora Linux** als Betriebssystem und gib der VM mindestens 4 GB RAM, 2 CPUs und 35 GB Speicherplatz.
 4. Starte die VM und durchlaufe den Installer wie in [BlossomOS installieren](/help/user/install-guide) beschrieben.

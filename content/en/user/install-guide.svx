@@ -23,7 +23,7 @@ This guide walks you through downloading, flashing, and installing BlossomOS fro
 
 ## Download BlossomOS
 
-Download the BlossomOS ISO from [blossomos.org](https://blossomos.org). Pick the ISO that matches your GPU: the standard ISO for Intel/AMD, or the NVIDIA ISO if you have an NVIDIA graphics card. The website usually auto-detects your GPU and suggests the appropriate ISO file.
+Download the BlossomOS ISO from [blossom.computer](https://blossom.computer). Pick the ISO that matches your GPU: the standard ISO for Intel/AMD, or the NVIDIA ISO if you have an NVIDIA graphics card. The website usually auto-detects your GPU and suggests the appropriate ISO file.
 
 ## Flash the ISO
 
