@@ -440,9 +440,10 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 				await writer.write(enc.encode(`\n[WEB_REFS]\n${refs}`));
 			}
 		} catch (e) {
-			const errMsg = e instanceof Error ? e.message : String(e);
+			console.error('[chat] upstream failure:', e);
 			try {
-				await writer.write(enc.encode(`\nError: ${errMsg.slice(0, 200)}`));
+				// Machine-readable marker; the client renders a translated message
+				await writer.write(enc.encode('\x02offline\x02'));
 			} catch {
 				// client disconnected, nothing left to write to
 			}

@@ -32,6 +32,15 @@
 		web_search: m.tool_search_web
 	};
 
+	const ERROR_LABELS: Record<string, () => string> = {
+		offline: m.chat_error_offline,
+		rate_limit: m.chat_error_rate_limit
+	};
+
+	function errorText(code: string): string {
+		return (ERROR_LABELS[code] ?? m.chat_error_offline)();
+	}
+
 	const STORAGE_KEY = 'chat-history';
 
 	let open = $state(false);
@@ -125,14 +134,20 @@
 		return { content, sources: [...docSources, ...webSources] };
 	}
 
-	// Strip \x01TOOLNAME\x01 markers and collect tool names
-	function parseStream(raw: string): { text: string; tools: string[] } {
+	// Strip \x01TOOLNAME\x01 and \x02ERRORCODE\x02 markers
+	function parseStream(raw: string): { text: string; tools: string[]; error?: string } {
 		const tools: string[] = [];
-		const text = raw.replace(/\x01([^\x01]+)\x01/g, (_, name: string) => {
-			if (!tools.includes(name)) tools.push(name);
-			return '';
-		});
-		return { text, tools };
+		let error: string | undefined;
+		const text = raw
+			.replace(/\x01([^\x01]+)\x01/g, (_, name: string) => {
+				if (!tools.includes(name)) tools.push(name);
+				return '';
+			})
+			.replace(/\x02([^\x02]+)\x02/g, (_, code: string) => {
+				error = code;
+				return '';
+			});
+		return { text, tools, error };
 	}
 
 	const streamingParsed = $derived(() => {
@@ -160,7 +175,7 @@
 			});
 
 			if (!res.ok) {
-				streamingText = (await res.text()) || 'Something went wrong. Please try again.';
+				streamingText = res.status === 429 ? '\x02rate_limit\x02' : '\x02offline\x02';
 			} else {
 				const reader = res.body!.getReader();
 				const dec = new TextDecoder();
@@ -172,12 +187,16 @@
 				}
 			}
 		} catch {
-			streamingText = 'Connection error. Please try again.';
+			streamingText = '\x02offline\x02';
 		}
 
-		const { text: finalText, tools: usedTools } = parseStream(streamingText);
+		const { text: finalText, tools: usedTools, error } = parseStream(streamingText);
 		const { content, sources } = parseResponse(finalText);
-		messages = [...messages, { role: 'assistant', content, sources, tools: usedTools }];
+		const finalContent = error ? [content, errorText(error)].filter(Boolean).join('\n\n') : content;
+		messages = [
+			...messages,
+			{ role: 'assistant', content: finalContent, sources, tools: usedTools }
+		];
 		streamingText = '';
 		streamingTools = [];
 		loading = false;

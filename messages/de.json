@@ -64,6 +64,8 @@
 	"chat_suggestion_windows": "Wie installiere ich Windows-Apps?",
 	"chat_scroll_to_bottom": "Nach unten scrollen",
 	"chat_ask_placeholder": "Frage stellen…",
+	"chat_error_offline": "Der KI-Assistent ist gerade offline, bitte versuche es später erneut.",
+	"chat_error_rate_limit": "Zu viele Anfragen. Bitte warte einen Moment und versuche es erneut.",
 	"proprietary": "Proprietär",
 	"no_matching_games": "Keine passenden Spiele gefunden. Drücke Enter, um direkt auf ProtonDB zu suchen."
 }

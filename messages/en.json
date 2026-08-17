@@ -64,6 +64,8 @@
 	"chat_suggestion_windows": "How do I install Windows apps?",
 	"chat_scroll_to_bottom": "Scroll to bottom",
 	"chat_ask_placeholder": "Ask a question…",
+	"chat_error_offline": "The AI assistant is offline right now, please try again later.",
+	"chat_error_rate_limit": "Too many requests. Please wait a moment and try again.",
 	"proprietary": "Proprietary",
 	"no_matching_games": "No matching games. Press Enter to search ProtonDB directly."
 }
