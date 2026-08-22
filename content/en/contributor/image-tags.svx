@@ -17,12 +17,12 @@ To find out which image is currently in use, the `sudo bootc status` command can
 ```
 [koyu@anya] ~
 ❯ sudo bootc status
-● Booted image: registry.blossomos.org/blossom/image:latest-dx
+● Booted image: registry.blossomos.org/blossom/image-dev:latest-dx
         Digest: sha256:ed35e5378263911050ec4caadaf9332def2b16e5b22d7a7854140826beab45a5 (amd64)
        Version: latest-44.20260629 (2026-06-29T21:36:08Z)
   /usr overlay: persistent, read/write
 
-  Rollback image: registry.blossomos.org/blossom/image:latest-dx
+  Rollback image: registry.blossomos.org/blossom/image-dev:latest-dx
           Digest: sha256:ed35e5378263911050ec4caadaf9332def2b16e5b22d7a7854140826beab45a5 (amd64)
          Version: latest-44.20260629 (2026-06-29T21:36:08Z)
 
@@ -52,6 +52,9 @@ BlossomOS image tags are logically composed of the respective **release branch**
 | **`prerelease`** (Pre-release) | `prerelease` <br> `prerelease-dx` | `prerelease-nvidia` <br> `prerelease-nvidia-dx` |
 
 > [!WARNING]
+> The `latest` tags are only available on the `image-dev` image (e.g. registry.blossomos.org/blossom/image-dev:latest)
+
+> [!WARNING]
 > The `prerelease` tag is currently not active and will be used in the future.
 
 ## Developer Mode
@@ -61,5 +64,5 @@ BlossomOS comes with a developer mode that provides all the necessary tools and 
 For example, to switch to the unstable image with developer tools and NVIDIA support, the system can be switched to the corresponding tag via `bootc`:
 
 ```bash
-sudo bootc switch registry.blossomos.org/blossom/image:latest-nvidia-dx
+sudo bootc switch registry.blossomos.org/blossom/image-dev:latest-nvidia-dx
 ```

@@ -1,6 +1,6 @@
 ---
 title: Image-Tags verstehen
-description: In regelmäßigen Abständen werden Systemkomponenten aktualisiert und neue Images veröffentlicht. Dies ermöglicht es Entwicklern neue Features zu nutzen, bestehende Probleme zu beheben und Anwendungen gegen Vorabversionen zu testen.
+description: Systemkomponenten werden regelmäßig aktualisiert und neue Images veröffentlicht. So kannst du neue Features nutzen, Fehler beheben und deine Apps mit Vorabversionen testen.
 icon: tag
 order: 1
 image: /covers/tags.jpg
@@ -8,58 +8,61 @@ image: /covers/tags.jpg
 
 # Image-Tags verstehen
 
-In regelmäßigen Abständen werden Systemkomponenten aktualisiert und neue Images veröffentlicht. Dies ermöglicht es Entwicklern neue Features zu nutzen, bestehende Probleme zu beheben und Anwendungen gegen Vorabversionen zu testen.
+Systemkomponenten werden regelmäßig aktualisiert und neue Images in festen Abständen veröffentlicht. Das gibt dir die Chance, neue Funktionen auszuprobieren, Bugs zu fixen und deine Anwendungen gegen Vorabversionen zu testen.
 
-## Herausfinden welches Image verwendet wird
+## Herausfinden, welches Image gerade läuft
 
-Um zu erfahren welches Image verwendet wird, kann der `sudo bootc status` Befehl verwendet werden. Hier eine Beispielausgabe:
+Um zu sehen, welches Image du gerade benutzt, nimmst du den Befehl `sudo bootc status`. Hier ist ein Beispiel, wie das aussehen kann:
 
 ```
 [koyu@anya] ~
 ❯ sudo bootc status
-● Booted image: registry.blossomos.org/blossom/image:latest-dx
+● Booted image: registry.blossomos.org/blossom/image-dev:latest-dx
         Digest: sha256:ed35e5378263911050ec4caadaf9332def2b16e5b22d7a7854140826beab45a5 (amd64)
        Version: latest-44.20260629 (2026-06-29T21:36:08Z)
   /usr overlay: persistent, read/write
 
-  Rollback image: registry.blossomos.org/blossom/image:latest-dx
+  Rollback image: registry.blossomos.org/blossom/image-dev:latest-dx
           Digest: sha256:ed35e5378263911050ec4caadaf9332def2b16e5b22d7a7854140826beab45a5 (amd64)
          Version: latest-44.20260629 (2026-06-29T21:36:08Z)
 
 ```
 
-## Das richtige Image-Tag finden
+## Den richtigen Image-Tag finden
 
-Die Image-Tags von BlossomOS setzen sich logisch aus dem jeweiligen **Release-Zweig** und optionalen **Erweiterungen** für Entwickler (`-dx`) oder spezifische Hardware (`-nvidia`) zusammen.
+Die Image-Tags von BlossomOS setzen sich logisch aus dem jeweiligen **Release-Branch** und optionalen **Erweiterungen** für Entwickler (`-dx`) oder spezielle Hardware (`-nvidia`) zusammen.
 
-### 1. Die Release-Zweige (Branches)
-* **`latest`**: Der aktuelle Entwicklungszweig. Enthält die neuesten Änderungen, kann aber instabil sein.
-* **`main`**: Das stabile Standard-Release. Empfohlen für den produktiven Einsatz.
-* **`prerelease`**: Vorschau-Versionen kommender Releases. Ideal zum Testen neuer Features vor dem offiziellen Start.
+### 1. Die Release-Branches
+* **`latest`**: Der aktuelle Entwicklungszweig. Hier kriegst du die neuesten Änderungen, aber es kann auch mal haken.
+* **`main`**: Das stabile Standard-Release. Das solltest du für den täglichen Einsatz nehmen.
+* **`prerelease`**: Vorschau-Versionen kommender Releases. Ideal, um neue Features vor dem offiziellen Start zu checken.
 
 ### 2. Die Erweiterungen (Suffixe)
-* **Kein Suffix**: Das Standard-Image für Intel-/AMD-Grafikhardware.
+* **Kein Suffix**: Das Standard-Image für Grafik-Hardware von Intel/AMD.
 * **`-dx`**: Aktiviert den Entwicklermodus (enthält zusätzliche SDKs und Tools).
-* **`-nvidia`**: Enthält die proprietären NVIDIA-Treiber direkt out-of-the-box.
-* **`-nvidia-dx`**: Die Kombination aus NVIDIA-Treibersupport und Entwicklertools.
+* **`-nvidia`**: Hier sind die proprietären NVIDIA-Treiber direkt mit an Bord.
+* **`-nvidia-dx`**: Die Kombi aus NVIDIA-Treiber-Support und Entwickler-Tools.
 
 ### Übersicht aller verfügbaren Tags
 
-| Release-Zweig | Standard (Intel/AMD) | Mit NVIDIA-Treibern |
+| Release-Branch | Standard (Intel/AMD) | Mit NVIDIA-Treibern |
 | :--- | :--- | :--- |
 | **`main`** (Stabil) | `main` <br> `main-dx` | `main-nvidia` <br> `main-nvidia-dx` |
 | **`latest`** (Bleeding Edge) | `latest` <br> `latest-dx` | `latest-nvidia` <br> `latest-nvidia-dx` |
-| **`prerelease`** (Vorabveröffentlichung) | `prerelease` <br> `prerelease-dx` | `prerelease-nvidia` <br> `prerelease-nvidia-dx` |
+| **`prerelease`** (Vorabversion) | `prerelease` <br> `prerelease-dx` | `prerelease-nvidia` <br> `prerelease-nvidia-dx` |
 
 > [!WARNING]
-> Das `prerelease`-Tag ist aktuell noch nicht aktiv, es wird in Zukunft verwendet werden.
+> Die `latest`-Tags gibt es nur beim `image-dev` Image (z.B. registry.blossomos.org/blossom/image-dev:latest)
+
+> [!WARNING]
+> Der `prerelease`-Tag ist aktuell noch nicht aktiv und wird erst in Zukunft genutzt.
 
 ## Entwicklermodus
 
-BlossomOS kommt mit einem Entwicklermodus, der alle benötigten Tools und Bibliotheken zur Verfügung stellt, um die Entwicklung von Anwendungen und die Entwicklung am System selbst zu erleichtern. Dieser kann über ein Image mit dem Suffix `-dx` aktiviert werden. In Zukunft wird es möglich sein den Entwicklermodus über einen `adjust`-Befehl zu aktivieren oder deaktivieren.
+BlossomOS kommt mit einem Entwicklermodus, der dir alle nötigen Tools und Bibliotheken liefert, damit du leichter Apps bauen oder am System selbst basteln kannst. Den aktivierst du über ein Image mit dem `-dx`-Suffix. Später wirst du den Entwicklermodus auch einfach per `adjust`-Befehl an- oder ausschalten können.
 
-Um beispielsweise auf das instabile Image mit Entwicklertools und NVIDIA-Unterstützung zu wechseln, kann das System via `bootc` auf das entsprechende Tag umgestellt werden:
+Wenn du zum Beispiel auf das unstable Image mit Entwickler-Tools und NVIDIA-Support wechseln willst, kannst du dein System per `bootc` auf den passenden Tag umstellen:
 
 ```bash
-sudo bootc switch registry.blossomos.org/blossom/image:latest-nvidia-dx
+sudo bootc switch registry.blossomos.org/blossom/image-dev:latest-nvidia-dx
 ```

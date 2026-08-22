@@ -21,12 +21,12 @@ Wähle das passende Image für deine Hardware und führe den Wechsel via `bootc`
 
 ### Für Intel- / AMD-Grafikkarten:
 ```bash
-sudo bootc switch registry.blossomos.org/blossom/image:latest
+sudo bootc switch registry.blossomos.org/blossom/image-dev:latest
 ```
 
 ### Für NVIDIA-Grafikkarten:
 ```bash
-sudo bootc switch registry.blossomos.org/blossom/image:latest-nvidia
+sudo bootc switch registry.blossomos.org/blossom/image-dev:latest-nvidia
 ```
 
 Nach dem Wechsel startest du das System einfach neu, um in die aktualisierte Umgebung zu booten:
