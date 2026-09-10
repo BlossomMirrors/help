@@ -52,10 +52,7 @@ Die Image-Tags von BlossomOS setzen sich logisch aus dem jeweiligen **Release-Br
 | **`prerelease`** (Vorabversion) | `prerelease` <br> `prerelease-dx` | `prerelease-nvidia` <br> `prerelease-nvidia-dx` |
 
 > [!WARNING]
-> Die `latest`-Tags gibt es nur beim `image-dev` Image (z.B. registry.blossomos.org/blossom/image-dev:latest)
-
-> [!WARNING]
-> Der `prerelease`-Tag ist aktuell noch nicht aktiv und wird erst in Zukunft genutzt.
+> Die `latest`- und `prerelease`-Tags gibt es nur beim `image-dev` Image (z.B. registry.blossomos.org/blossom/image-dev:latest)
 
 ## Entwicklermodus
 
