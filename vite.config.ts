@@ -29,6 +29,11 @@ export default defineConfig({
 		tailwindcss(),
 		enhancedImages(),
 		sveltekit(),
-		paraglideVitePlugin({ project: './project.inlang', outdir: './src/lib/paraglide' })
+		paraglideVitePlugin({
+			project: './project.inlang',
+			outdir: './src/lib/paraglide',
+			emitTsDeclarations: true,
+			strategy: ['cookie', 'preferredLanguage', 'baseLocale']
+		})
 	]
 });
