@@ -1,7 +1,7 @@
 import { env } from '$env/dynamic/public';
 import { error, type RequestHandler } from '@sveltejs/kit';
 
-const ORIGIN = env.PUBLIC_ORIGIN || 'https://help.blossomos.org';
+const ORIGIN = env.PUBLIC_ORIGIN || 'https://help.blossom.computer';
 
 export const prerender = true;
 
