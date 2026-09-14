@@ -11,8 +11,8 @@
 	import BookOpenIcon from '@lucide/svelte/icons/book-open';
 	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
 	import MessagesSquareIcon from '@lucide/svelte/icons/messages-square';
-	import MessageCircleIcon from '@lucide/svelte/icons/message-circle';
 	import AtSignIcon from '@lucide/svelte/icons/at-sign';
+	import { DiscordIcon } from '$lib/components/icons/discord/index.svelte';
 	import { icons } from '$lib/icons';
 	import { page } from '$app/state';
 	import type { Picture } from '@sveltejs/enhanced-img';
@@ -40,12 +40,12 @@
 		},
 		{
 			href: 'https://discord.gg/dTqsBdxvNr',
-			Icon: MessageCircleIcon,
+			Icon: DiscordIcon,
 			title: m.community_discord_title(),
 			desc: m.community_discord_desc()
 		},
 		{
-			href: 'https://bsky.app/profile/blossomos.org',
+			href: 'https://bsky.app/profile/blossom.computer',
 			Icon: AtSignIcon,
 			title: m.community_bluesky_title(),
 			desc: m.community_bluesky_desc()
