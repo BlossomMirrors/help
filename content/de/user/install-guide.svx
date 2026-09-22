@@ -129,7 +129,7 @@ Sobald die Installation abgeschlossen ist, starte den PC neu und entferne den US
 BlossomOS unterstützt Secure Boot auf der meisten Hardware. Falls dein PC nach der Installation nicht bootet und Secure Boot aktiviert ist, deaktiviere Secure Boot entweder im BIOS oder folge der Aufforderung zur Schlüsselregistrierung (Key Enrollment), falls diese beim Booten erscheint.
 
 > [!IMPORTANT]
-> Das Passwort für die Secure-Boot-Schlüsselregistrierung lautet `universalblue`.
+> Das Passwort für die Secure-Boot-Schlüsselregistrierung lautet `blossomos`.
 
 ## Nach der Installation
 

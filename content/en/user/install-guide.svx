@@ -129,7 +129,7 @@ Once installation finishes, reboot and remove the USB drive as your PC powers ba
 BlossomOS supports Secure Boot on most hardware. If your PC doesn't boot after installing and Secure Boot is enabled, either disable Secure Boot in your BIOS, or follow the on-screen key enrollment prompt if one appears at boot.
 
 > [!IMPORTANT]
-> The password for the Secure Boot key enrollment is `universalblue`.
+> The password for the Secure Boot key enrollment is `blossomos`.
 
 ## Post-installation
 
