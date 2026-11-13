@@ -1,0 +1,94 @@
+---
+title: Beat Saber & BSManager
+description: Beat Saber mit Mods in VR auf BlossomOS spielen.
+icon: gamepad-2
+order: 7
+image: /covers/games.jpg
+---
+# Beat Saber & BSManager
+
+**BSManager** macht das Modden von Beat Saber einfach. Es installiert Mods, eigene Songs und Playlists für dich und lässt dich mehrere Spielversionen gleichzeitig behalten. Die Version im Arc Store ist an BlossomOS angepasst, damit Mods sich installieren lassen und das Spiel ohne zusätzliche Einrichtung startet.
+
+## Installation
+
+<OpenInArc id="io.bsmanager.bsmanager" />
+
+Außerdem brauchst du:
+
+- **Steam** mit Beat Saber in deiner Bibliothek. Siehe die [Steam-Anleitung](/help/gaming/steam).
+- **WiVRn**, um dein VR-Headset zu verbinden.
+
+## VR einrichten (einmalig)
+
+Damit Beat Saber dein Headset findet, braucht Steam die Erlaubnis, WiVRn zu benutzen. Öffne ein Terminal und füge ein:
+
+```sh
+flatpak override --user com.valvesoftware.Steam \
+  --filesystem=xdg-config/openxr:ro \
+  --filesystem=xdg-run/wivrn:ro \
+  --filesystem=/var/lib/flatpak/app/io.github.wivrn.wivrn:ro
+```
+
+Öffne dann in BSManager die Startoptionen deiner Beat-Saber-Version und füge das hier ein:
+
+```
+XR_RUNTIME_JSON=/var/lib/flatpak/app/io.github.wivrn.wivrn/current/active/files/share/openxr/1/openxr_wivrn.json %command%
+```
+
+> [!NOTE]
+> **Im Internet eine andere Startoption gefunden?**
+> Viele Anleitungen empfehlen eine Startoption, die mit `PRESSURE_VESSEL_` beginnt. Die funktioniert mit BSManager nicht, nimm also die von oben.
+
+## Spielen
+
+1. **WiVRn** öffnen und das Headset verbinden.
+2. **Steam** öffnen. Es muss nur im Hintergrund laufen.
+3. **BSManager** öffnen und Beat Saber starten.
+
+> [!TIP]
+> **Kein Headset zur Hand?**
+> Füge `fpfc` zu den Startoptionen hinzu. Beat Saber startet dann als normales Fenster auf dem Desktop.
+
+## Problemlösung
+
+<details>
+<summary>„BSIPA-Installation fehlgeschlagen“</summary>
+
+Dein BSManager ist veraltet. Aktualisiere ihn im Arc Store und versuche es noch einmal.
+
+</details>
+
+<details>
+<summary>Das Spiel schließt sich sofort</summary>
+
+Beat Saber findet dein Headset nicht. Prüfe, ob:
+
+- dein Headset in WiVRn verbunden ist, und
+- du beide Schritte unter [VR einrichten](#vr-einrichten-einmalig) erledigt hast.
+
+</details>
+
+<details>
+<summary>Das Spiel schließt sich ein paar Sekunden nach dem Logo</summary>
+
+Beat Saber erreicht Steam nicht. Stelle sicher, dass Steam läuft und BSManager im Arc Store aktuell ist.
+
+</details>
+
+<details>
+<summary>„Could not locate game being injected!“</summary>
+
+Das erscheint nur, wenn du `Beat Saber.exe` selbst startest. Starte das Spiel stattdessen über BSManager.
+
+</details>
+
+<details>
+<summary>BSManager meldet „Unable to open steam“</summary>
+
+Das kannst du ignorieren. Das Spiel startet trotzdem, nur etwas später.
+
+</details>
+
+## Was ist anders als bei der normalen Version?
+
+Die normale Version von BSManager funktioniert auf BlossomOS nicht richtig: Mods lassen sich nicht installieren, und das Spiel schließt sich direkt nach dem Start. Die Version im Arc Store behebt beides. Wer die Details wissen will, findet den Build unter [blossom/arc-store/ports/bsmanager](https://dev.blossomos.org/blossom/arc-store/ports/bsmanager).

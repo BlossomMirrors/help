@@ -10,5 +10,5 @@ const highlighter = await createHighlighter({
 /** @param {string} code @param {string} [lang] */
 export async function highlight(code, lang = 'text') {
 	const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme }));
-	return `{@html \`${html}\`}`;
+	return `<CodeBlock>{@html \`${html}\`}</CodeBlock>`;
 }

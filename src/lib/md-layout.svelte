@@ -9,7 +9,8 @@
 		code,
 		img,
 		ProtonDBSearch,
-		OpenInArc
+		OpenInArc,
+		CodeBlock
 	} from '$lib/components/docs';
 </script>
 

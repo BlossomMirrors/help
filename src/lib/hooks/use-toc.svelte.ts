@@ -41,10 +41,18 @@ export class UseToc {
 		if (!this.#ref) return;
 
 		this.#toc = getToc(this.#ref);
+		let signature = headingSignature(this.#ref);
 
 		// should detect if a heading is added / removed / updated
 		const mutationObserver = new MutationObserver(() => {
 			if (!this.#ref) return;
+
+			// Ignore DOM changes that don't touch headings (e.g. a copy button
+			// swapping its icon), otherwise the whole TOC re-renders and its
+			// active state flickers.
+			const next = headingSignature(this.#ref);
+			if (next === signature) return;
+			signature = next;
 
 			this.#toc = getToc(this.#ref);
 		});
@@ -127,6 +135,13 @@ function createHeading(element: HTMLHeadingElement, index: number): Heading {
 		active: false,
 		children: []
 	};
+}
+
+/** Cheap fingerprint of the headings in `el`, used to skip TOC rebuilds when nothing relevant changed. */
+function headingSignature(el: HTMLElement): string {
+	return Array.from(el.querySelectorAll('h1, h2, h3, h4, h5, h6'))
+		.map((h) => `${h.tagName}#${h.id}:${h.textContent ?? ''}`)
+		.join('\n');
 }
 
 /** Gets all of the headings contained in the provided element and create a table of contents.
